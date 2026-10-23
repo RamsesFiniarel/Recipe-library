@@ -1,0 +1,117 @@
+<!-- Settings page: language, backups, nutrition database, tags and shelf
+     objects, on the library's wall; each change saves at once. -->
+<div class="page settings-page">
+  <div class="wall-backdrop" aria-hidden="true">
+    <div data-window-light></div>
+  </div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">
+        <h1 data-i18n="settings.title">Paramètres</h1>
+      </div>
+      <div class="topbar-actions">
+        <a class="btn btn-icon btn-round btn-surface" href="/" data-transition="crossfade"
+          aria-label="Retour à la bibliothèque" title="Retour à la bibliothèque"
+          data-i18n-attr="aria-label:common.backToLibrary title:common.backToLibrary">
+          <i data-icon="back"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="settings-main">
+    <section class="settings-card settings-card--row" aria-labelledby="settings-language-title">
+      <div>
+        <h2 class="settings-card-title" id="settings-language-title" data-i18n="settings.language">Langue</h2>
+        <p class="settings-card-hint" data-i18n="settings.languageHint">La langue de l'interface et de la base nutritionnelle.</p>
+      </div>
+      <div class="settings-segmented" role="radiogroup" aria-labelledby="settings-language-title" data-language-group></div>
+    </section>
+
+    <!-- Backups: the server's daily copies, export and import (see
+         settings.page.js). -->
+    <section class="settings-card" aria-labelledby="settings-backup-title">
+      <h2 class="settings-card-title" id="settings-backup-title" data-i18n="settings.backup">Sauvegarde</h2>
+      <p class="settings-card-hint" data-i18n="settings.backupHint">Toute la bibliothèque : livres, recettes, images et tags.</p>
+      <div class="settings-actions">
+        <div class="settings-action">
+          <div>
+            <p class="settings-action-label" data-i18n="settings.backupAuto">Copies automatiques</p>
+            <p class="settings-action-detail" data-backup-status></p>
+          </div>
+          <button type="button" class="settings-link" data-backup-now data-i18n="settings.backupNow">Sauvegarder maintenant</button>
+        </div>
+        <div class="settings-action">
+          <div>
+            <p class="settings-action-label" data-i18n="settings.export">Exporter</p>
+            <p class="settings-action-detail" data-i18n="settings.exportHint">Télécharger toute la bibliothèque dans un fichier.</p>
+          </div>
+          <a class="settings-link" data-backup-export download data-i18n="settings.exportAction">Télécharger</a>
+        </div>
+        <div class="settings-action">
+          <div>
+            <p class="settings-action-label" data-i18n="settings.import">Importer</p>
+            <p class="settings-action-detail" data-i18n="settings.importHint">Remplace la base de données par le fichier importé.</p>
+          </div>
+          <button type="button" class="settings-link" data-backup-import data-i18n="settings.importAction">Choisir un fichier</button>
+          <input type="file" accept=".db,.sqlite,.sqlite3" data-backup-file hidden />
+        </div>
+      </div>
+      <p class="settings-backup-message" data-backup-message role="status" hidden></p>
+    </section>
+
+    <section class="settings-card settings-card--row" aria-labelledby="settings-foods-title">
+      <div>
+        <h2 class="settings-card-title" id="settings-foods-title" data-i18n="settings.foods">Base nutritionnelle</h2>
+        <p class="settings-card-hint" data-i18n="settings.foodsHint">Les valeurs de chacun des aliments de la base, pour 100 g.</p>
+      </div>
+      <a class="settings-link" href="/parametres/nutrition" data-transition="crossfade">
+        <span data-i18n="settings.foodsOpen">Consulter</span><i data-icon="arrowRight"></i>
+      </a>
+    </section>
+
+    <!-- The automatic tags and what puts each on, then the ones added here. -->
+    <section class="settings-card" aria-labelledby="settings-tags-title">
+      <h2 class="settings-card-title" id="settings-tags-title" data-i18n="settings.tags">Tags</h2>
+      <h3 class="settings-subtitle" data-i18n="settings.autoTags">Automatiques</h3>
+      <dl class="settings-tag-rules" data-auto-tags></dl>
+
+      <h3 class="settings-subtitle" data-i18n="settings.customTags">Personnalisés</h3>
+      <ul class="settings-custom-tags" data-custom-tags></ul>
+      <form class="settings-tag-form" data-tag-form>
+        <input type="text" class="settings-tag-input" maxlength="30" autocomplete="off" data-tag-input
+          placeholder="Nouveau tag" aria-label="Nouveau tag" data-i18n-attr="placeholder:settings.newTag aria-label:settings.newTag" />
+        <button type="submit" class="settings-tag-add" data-i18n="settings.addTag">Ajouter</button>
+      </form>
+      <p class="settings-tag-error" data-tag-error hidden></p>
+    </section>
+
+    <section class="settings-card" aria-labelledby="settings-objects-title">
+      <h2 class="settings-card-title" id="settings-objects-title" data-i18n="settings.shelves">Étagères</h2>
+      <p class="settings-card-hint" data-i18n="settings.shelvesHint">Choix des objets sur les étagères de la bibliothèque.</p>
+      <div class="settings-toggles" data-shelf-objects></div>
+    </section>
+  </main>
+
+  <template data-template="custom-tag">
+    <li class="settings-custom-tag">
+      <span class="settings-custom-tag-label"></span>
+      <button type="button" class="settings-custom-tag-remove"><i data-icon="close"></i></button>
+    </li>
+  </template>
+
+  <template data-template="language-option">
+    <label class="settings-segment">
+      <input type="radio" name="language" />
+      <span class="settings-segment-label"></span>
+    </label>
+  </template>
+
+  <template data-template="shelf-object">
+    <label class="settings-toggle">
+      <span class="settings-toggle-label"></span>
+      <input type="checkbox" role="switch" class="settings-switch" />
+    </label>
+  </template>
+</div>

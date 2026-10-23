@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- The search results' book (.library-search-result-cover) in the header
+       buttons' brown, turned 30deg to the left; a cream rim on dark tabs. -->
+  <style>
+    .rim { fill: none; stroke: none; }
+    @media (prefers-color-scheme: dark) { .rim { stroke: #f5eee3; stroke-opacity: 0.55; } }
+  </style>
+  <defs>
+    <linearGradient id="cover" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4a382b"/>
+      <stop offset="0.65" stop-color="#3b2d23"/>
+    </linearGradient>
+    <clipPath id="shape">
+      <path d="M-15.5 -24H13.5A4.5 4.5 0 0 1 18 -19.5V19.5A4.5 4.5 0 0 1 13.5 24H-15.5A2.5 2.5 0 0 1 -18 21.5V-21.5A2.5 2.5 0 0 1 -15.5 -24Z"/>
+    </clipPath>
+  </defs>
+  <g transform="translate(32 32) rotate(-30)">
+    <g clip-path="url(#shape)">
+      <rect x="-18" y="-24" width="36" height="48" fill="url(#cover)"/>
+      <!-- The spine: a shaded band, then a light rule. -->
+      <rect x="-18" y="-24" width="5" height="48" fill="#000" fill-opacity="0.22"/>
+      <rect x="-13" y="-24" width="1.6" height="48" fill="#fff" fill-opacity="0.18"/>
+    </g>
+    <path class="rim" stroke-width="2.5" d="M-15.5 -24H13.5A4.5 4.5 0 0 1 18 -19.5V19.5A4.5 4.5 0 0 1 13.5 24H-15.5A2.5 2.5 0 0 1 -18 21.5V-21.5A2.5 2.5 0 0 1 -15.5 -24Z"/>
+  </g>
+</svg>

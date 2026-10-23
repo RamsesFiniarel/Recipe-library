@@ -1,0 +1,28 @@
+/* =====================================================================
+   Sunlight from a window on the left across a wall (see window-light.js),
+   on the library and settings pages: slanted panes (skewY), mullion and
+   monstera shadows, blurred and fading with distance. The SVG keeps a
+   margin wide enough for the blur, which the mask would otherwise cut.
+   ===================================================================== */
+.window-light {
+  position: absolute;
+  /* Slightly right of centre, running off the top and bottom. */
+  top: -50%;
+  left: 55%;
+  width: auto;
+  height: 165%;
+  aspect-ratio: 876 / 860;
+  overflow: visible;
+  opacity: 0.55;
+  filter: blur(4.5px);
+  translate: -50% 0;
+  transform: skewY(12deg);
+  transform-origin: left top;
+  mask-image: linear-gradient(100deg, #000 0%, rgba(0, 0, 0, 0.75) 55%, rgba(0, 0, 0, 0.15) 100%);
+  -webkit-mask-image: linear-gradient(100deg, #000 0%, rgba(0, 0, 0, 0.75) 55%, rgba(0, 0, 0, 0.15) 100%);
+  pointer-events: none;
+}
+
+.window-light-fill {
+  fill: var(--library-bg-window);
+}

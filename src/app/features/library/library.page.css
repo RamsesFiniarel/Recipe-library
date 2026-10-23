@@ -1,0 +1,2118 @@
+/* The library fills the window: the 3D scene takes all the space, the
+   transparent header floats over it. */
+.library-page {
+  position: relative;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.library-page .topbar {
+  position: absolute;
+  inset: 0 0 auto 0;
+  /* Above every full-bleed layer (the edit panel included); its transparent
+     background lets clicks through except on its controls. */
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* No eyebrow here: the title is centred against the actions row. */
+.library-page .topbar-inner {
+  align-items: center;
+}
+
+.library-page .topbar-actions {
+  pointer-events: auto;
+}
+
+/* The chef's-hat menu, in the search field's paper: stretches left on hover,
+   focus, first tap or edit mode, over new book and settings; the hat stays
+   at the right end and turns into edit mode's pencil. Icons grey until
+   pointed at (the pencil dark while editing). */
+.library-menu {
+  --library-menu-size: 2.5rem;
+  --library-menu-slot: 2.125rem;
+  display: flex;
+  align-items: center;
+  /* Right-aligned and clipped: the hidden icons wait to the hat's left. */
+  justify-content: flex-end;
+  width: var(--library-menu-size);
+  height: var(--library-menu-size);
+  overflow: hidden;
+  color: var(--color-page-text-muted);
+  background: color-mix(in srgb, var(--color-paper) 60%, transparent);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  transition:
+    width 420ms var(--ease-entrance),
+    background var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    opacity 600ms var(--ease) calc(var(--hero-duration) * 0.4),
+    visibility 0s linear calc(var(--hero-duration) * 0.4);
+}
+
+.library-menu:hover,
+.library-menu:has(:focus-visible),
+.library-menu.is-open,
+.library-page.is-editing .library-menu {
+  width: calc(var(--library-menu-size) + 2 * var(--library-menu-slot));
+  background: color-mix(in srgb, var(--color-paper) 85%, transparent);
+  border-color: var(--color-page-border-strong);
+}
+
+.library-menu-hat,
+.library-menu-btn {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  color: inherit;
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.library-menu-hat {
+  width: calc(var(--library-menu-size) - 2px);
+}
+
+.library-menu-hat .icon-swap {
+  width: 18px;
+  height: 18px;
+}
+
+.library-menu-btn {
+  width: var(--library-menu-slot);
+  opacity: 0;
+  transition:
+    opacity 200ms var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+
+.library-menu:hover .library-menu-btn,
+.library-menu:has(:focus-visible) .library-menu-btn,
+.library-menu.is-open .library-menu-btn,
+.library-page.is-editing .library-menu-btn {
+  opacity: 1;
+  transition-delay: 90ms, 0ms;
+}
+
+.library-menu-hat:hover,
+.library-menu-hat:focus-visible,
+.library-menu-hat.is-active,
+.library-menu-btn:hover,
+.library-menu-btn:focus-visible {
+  color: var(--color-page-text);
+  outline: none;
+}
+
+/* Hat to pencil when the menu opens (see .icon-swap). */
+.library-menu:hover .library-menu-hat .icon-swap-face--rest,
+.library-menu:has(:focus-visible) .library-menu-hat .icon-swap-face--rest,
+.library-menu.is-open .library-menu-hat .icon-swap-face--rest,
+.library-page.is-editing .library-menu-hat .icon-swap-face--rest {
+  transform: rotate(360deg) scale(0);
+  opacity: 0;
+}
+
+.library-menu:hover .library-menu-hat .icon-swap-face--hover,
+.library-menu:has(:focus-visible) .library-menu-hat .icon-swap-face--hover,
+.library-menu.is-open .library-menu-hat .icon-swap-face--hover,
+.library-page.is-editing .library-menu-hat .icon-swap-face--hover {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+/* The settings' wheel turns a little under the pointer. */
+.library-menu-btn--settings svg {
+  transition: rotate 500ms var(--ease-entrance);
+}
+
+.library-menu-btn--settings:hover svg,
+.library-menu-btn--settings:focus-visible svg {
+  rotate: 60deg;
+}
+
+/* ---------------------------------------------------------------------
+   Search (books and recipes). The slot keeps the header's place; the box
+   inside, anchored right, stretches into the hero's long bar.
+   --------------------------------------------------------------------- */
+.library-search {
+  position: relative;
+  width: 11rem;
+  height: 2.5rem;
+  transition: width var(--duration-base) var(--ease);
+}
+
+.library-search:focus-within {
+  width: 21rem;
+}
+
+/* Closed by a scroll: back to its size at once, no shrinking on the way. */
+.library-search.is-snapping {
+  transition: none;
+}
+
+.library-search-box {
+  /* Room kept at the end of the field (for the hero's "/" and arrow). */
+  --search-end: var(--space-3);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 100%;
+  height: 2.5rem;
+  margin-top: -1.25rem;
+  font-size: var(--text-sm);
+}
+
+.library-search-icon {
+  position: absolute;
+  top: 50%;
+  left: var(--space-3);
+  z-index: 1;
+  transform: translateY(-50%);
+  display: flex;
+  color: var(--color-page-text-muted);
+  pointer-events: none;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.library-search-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.library-search-input {
+  width: 100%;
+  height: 100%;
+  /* The text starts after the icon, and after the filters' chips if any. */
+  padding: 0 var(--search-end) 0 calc(var(--space-3) * 2 + 16px + var(--chips-width, 0px));
+  font-family: var(--font-body);
+  font-size: inherit;
+  color: var(--color-page-text);
+  background: color-mix(in srgb, var(--color-paper) 60%, transparent);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  transition:
+    background var(--duration-base) var(--ease),
+    border-color var(--duration-base) var(--ease),
+    box-shadow var(--duration-base) var(--ease);
+}
+
+.library-search-input::placeholder {
+  color: var(--color-page-text-muted);
+}
+
+/* Hides the native "clear" control (Escape empties the field). */
+.library-search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+/* Focus: no ring; the field firms up like paper laid on top (more opaque,
+   darker edge, lit rim, soft shadow). */
+.library-search-input:focus {
+  outline: none;
+  background: color-mix(in srgb, var(--color-paper) 94%, transparent);
+  border-color: color-mix(in srgb, var(--color-page-text) 22%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.7),
+    0 12px 30px -14px rgb(30 20 12 / 0.5);
+}
+
+.library-search-box:focus-within .library-search-icon {
+  color: var(--color-page-text);
+}
+
+/* The "/" shortcut hint, at the end of the hero bar only (the shortcut
+   works everywhere). */
+.library-search-kbd {
+  position: absolute;
+  top: 50%;
+  right: var(--space-3);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.3rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-page-text-muted);
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+
+/* Hovered, it lists the filters (see search-filters.js); greyed while the
+   bar is in use. */
+.library-page.is-hero .library-search-box:not(:focus-within):not(.has-value) .library-search-kbd {
+  opacity: 1;
+}
+
+.library-page.is-hero .library-search-kbd:hover {
+  color: var(--color-page-text);
+  opacity: 1;
+}
+
+/* The hero's placeholder: recipe names sliding up in turn (library.page.js). */
+.library-search-hint {
+  position: absolute;
+  inset: 0 var(--space-3) 0 calc(var(--space-3) * 2 + 16px);
+  overflow: hidden;
+  color: var(--color-page-text-muted);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.library-search-hint > span {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.library-search-hint > .is-entering {
+  animation: library-hint-in 420ms var(--ease-entrance) both;
+}
+
+.library-search-hint > .is-leaving {
+  animation: library-hint-out 320ms var(--ease) both;
+}
+
+/* Leaving the hero, the words change in place, without the slide. */
+.library-search-hint > .is-fading-in {
+  animation: library-hint-fade 260ms var(--ease) both;
+}
+
+.library-search-hint > .is-fading-out {
+  animation: library-hint-fade 200ms var(--ease) reverse both;
+}
+
+@keyframes library-hint-in {
+  from {
+    opacity: 0;
+    transform: translateY(55%);
+  }
+}
+
+@keyframes library-hint-out {
+  to {
+    opacity: 0;
+    transform: translateY(-55%);
+  }
+}
+
+@keyframes library-hint-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* Hero only: a round arrow opening the first result (like Enter). */
+.library-search-go {
+  position: absolute;
+  top: 50%;
+  right: 0.4375rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  color: var(--color-paper);
+  background: var(--color-page-text);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-50%) scale(0.8);
+  pointer-events: none;
+  transition:
+    opacity 200ms var(--ease),
+    transform 200ms var(--ease),
+    background var(--duration-fast) var(--ease);
+}
+
+.library-search-go:hover {
+  background: color-mix(in srgb, var(--color-page-text) 85%, var(--color-paper));
+}
+
+/* ---------------------------------------------------------------------
+   Search results: a frosted paper card under the field, books then recipes
+   under small labels, books tinted with their colour. The highlighted row
+   shows an arrow; Enter opens it.
+   --------------------------------------------------------------------- */
+.library-search-results {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  z-index: 3;
+  width: 100%;
+  max-height: min(64vh, 460px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-2);
+  background: color-mix(in srgb, var(--color-paper) 74%, transparent);
+  border: 1px solid rgb(255 255 255 / 0.5);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.55),
+    0 24px 48px -20px rgb(30 20 12 / 0.5);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  animation: library-results-in 180ms var(--ease) both;
+}
+
+@keyframes library-results-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+/* "display: flex" ties with the browser's [hidden] rule: restate it, or the
+   panel stays visible, empty, once the query is cleared. */
+.library-search-results[hidden] {
+  display: none;
+}
+
+.library-search-group + .library-search-group {
+  margin-top: var(--space-1);
+  padding-top: var(--space-1);
+  border-top: 1px solid color-mix(in srgb, var(--color-page-text) 8%, transparent);
+}
+
+.library-search-group-label {
+  margin: 0;
+  padding: var(--space-2) var(--space-2) var(--space-1);
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-page-text-muted);
+}
+
+.library-search-result {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-2);
+  text-align: left;
+  color: var(--color-page-text);
+  background: var(--color-paper);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease);
+}
+
+/* Solid rows on the frosted card, a hair apart so it shows between them. */
+.library-search-result + .library-search-result {
+  margin-top: 3px;
+}
+
+.library-search-result.is-active {
+  background: color-mix(in srgb, var(--color-page-text) 7%, var(--color-paper));
+}
+
+.library-search-result--book {
+  background: color-mix(in srgb, var(--result-color) 14%, var(--color-paper));
+}
+
+.library-search-result--book.is-active {
+  background: color-mix(in srgb, var(--result-color) 26%, var(--color-paper));
+}
+
+.library-search-result:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--color-page-text) 30%, transparent);
+  outline-offset: -2px;
+}
+
+/* A book: a small cover in its own colour, spine shaded on the left. */
+.library-search-result-cover {
+  flex-shrink: 0;
+  width: 1.375rem;
+  height: 1.875rem;
+  border-radius: 2px 4px 4px 2px;
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.22) 0 3px, rgb(255 255 255 / 0.18) 3px 4px, transparent 4px),
+    var(--result-color);
+  box-shadow: 0 1px 2px rgb(30 20 12 / 0.25);
+}
+
+/* A recipe: a page, on a pale square. */
+.library-search-result-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.875rem;
+  height: 1.875rem;
+  border-radius: var(--radius-sm);
+  color: var(--color-page-text-soft);
+  background: color-mix(in srgb, var(--color-page-text) 6%, var(--color-paper));
+}
+
+.library-search-result-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.library-search-result-title {
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-size: 0.975rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--color-page-text-soft);
+}
+
+/* The part of the title that matches what's typed. */
+.library-search-result-title mark {
+  color: var(--color-page-text);
+  font-weight: 650;
+  background: none;
+}
+
+.library-search-result-meta {
+  overflow: hidden;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-page-text-muted);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.library-search-result-go {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--color-page-text-soft);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition:
+    opacity var(--duration-fast) var(--ease),
+    transform var(--duration-fast) var(--ease);
+}
+
+.library-search-result.is-active .library-search-result-go {
+  opacity: 1;
+  transform: none;
+}
+
+.library-search-empty {
+  margin: 0;
+  padding: var(--space-4) var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-page-text-muted);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------
+   Search filters (see search-filters.js): chips at the start of the bar,
+   then the text, and a menu below listing commands, then value
+   suggestions. Each kind keeps a tint from the book palette.
+   --------------------------------------------------------------------- */
+.library-search-box [data-type="ingredient"] {
+  --filter-tint: #727d63;
+}
+
+.library-search-box [data-type="tag"] {
+  --filter-tint: #be8b44;
+}
+
+.library-search-box [data-type="time"] {
+  --filter-tint: #4d5b60;
+}
+
+.library-search-box [data-type="people"] {
+  --filter-tint: #ad5a3b;
+}
+
+/* Room for the chips: the header's bar widens while it holds some. */
+.library-page:not(.is-hero) .library-search:has(.library-search-chip) {
+  width: 26rem;
+}
+
+.library-search-chips {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--space-3) * 2 + 16px);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  /* Chips stop where the field keeps a few words; beyond, they scroll, the
+     first ones fading at the left. */
+  max-width: calc(100% - (var(--space-3) * 2 + 16px) - var(--search-end) - 4rem);
+  overflow-x: auto;
+  scrollbar-width: none;
+  transform: translateY(-50%);
+}
+
+.library-search-chips.is-scrolled {
+  mask-image: linear-gradient(to right, transparent, #000 1.5rem);
+}
+
+.library-search-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.library-page.is-hero .library-search-chips {
+  left: calc(1.25rem + 18px + var(--space-3));
+  max-width: calc(100% - (1.25rem + 18px + var(--space-3)) - var(--search-end) - 4rem);
+}
+
+.library-search-chip {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.35em;
+  height: 1.9em;
+  padding: 0 0.25em 0 0.6em;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: var(--color-page-text);
+  white-space: nowrap;
+  background: color-mix(in srgb, var(--filter-tint) 14%, var(--color-paper));
+  border: 1px solid color-mix(in srgb, var(--filter-tint) 28%, transparent);
+  border-radius: var(--radius-full);
+  animation: library-chip-in 240ms var(--ease-entrance) both;
+}
+
+.library-search-chip > svg {
+  flex: none;
+  width: 1.1em;
+  height: 1.1em;
+  color: var(--filter-tint);
+}
+
+/* The one whose value is being typed: an outline waiting to be filled. */
+.library-search-chip.is-pending {
+  padding-right: 0.7em;
+  color: var(--color-page-text-soft);
+  background: transparent;
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--filter-tint) 55%, transparent);
+}
+
+@keyframes library-chip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+.library-search-chip-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.45em;
+  height: 1.45em;
+  padding: 0;
+  color: var(--color-page-text-muted);
+  background: none;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease),
+    background var(--duration-fast) var(--ease);
+}
+
+.library-search-chip-remove:hover {
+  color: var(--color-page-text);
+  background: color-mix(in srgb, var(--filter-tint) 18%, transparent);
+}
+
+.library-search-chip-remove svg {
+  width: 0.85em;
+  height: 0.85em;
+}
+
+/* While a value is typed, the field says what it expects (the hero
+   otherwise hides its own placeholder behind the cycling hint). */
+.library-page .library-search-box.is-pending .library-search-input::placeholder {
+  color: color-mix(in srgb, var(--color-page-text-muted) 80%, transparent);
+}
+
+/* The menu: the results' frosted paper, under the bar. */
+.library-search-menu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  width: max(100%, 21rem);
+  max-height: min(60vh, 420px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-page-text);
+  background: color-mix(in srgb, var(--color-paper) 82%, transparent);
+  border: 1px solid rgb(255 255 255 / 0.5);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.55),
+    0 24px 48px -20px rgb(30 20 12 / 0.5);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  animation: library-results-in 180ms var(--ease) both;
+}
+
+.library-search-menu[hidden] {
+  display: none;
+}
+
+.library-page.is-hero .library-search-menu {
+  top: calc(100% + var(--space-3));
+  width: 100%;
+  font-size: 0.9375rem;
+}
+
+/* Header results wait behind an open menu; the hero's cards dim. */
+.library-search-box.is-menu-open .library-search-results {
+  display: none;
+}
+
+.library-hero-results {
+  transition: opacity var(--duration-base) var(--ease);
+}
+
+.library-page:has(.library-search-box.is-menu-open) .library-hero-results {
+  opacity: 0.3;
+}
+
+.library-search-menu-label {
+  margin: 0;
+  padding: var(--space-1) var(--space-2) var(--space-2);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-page-text-muted);
+}
+
+.library-search-menu-empty {
+  margin: 0;
+  padding: var(--space-1) var(--space-2) var(--space-2);
+  font-size: 0.875em;
+  color: var(--color-page-text-muted);
+}
+
+/* A command: icon on a tinted square, name, description and keys. */
+.library-search-command {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 0.4rem var(--space-2);
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease);
+}
+
+.library-search-command.is-active {
+  background: color-mix(in srgb, var(--color-page-text) 7%, transparent);
+}
+
+.library-search-command-icon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.125em;
+  height: 2.125em;
+  color: var(--filter-tint);
+  background: color-mix(in srgb, var(--filter-tint) 15%, var(--color-paper));
+  border-radius: var(--radius-sm);
+}
+
+.library-search-command-text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.library-search-command-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.library-search-command-hint {
+  font-size: 0.85em;
+  color: var(--color-page-text-muted);
+}
+
+.library-search-command-key {
+  flex: none;
+  padding: 0.1em 0.45em;
+  font-family: var(--font-body);
+  font-size: 0.8em;
+  color: var(--color-page-text-soft);
+  background: var(--color-paper);
+  border: 1px solid color-mix(in srgb, var(--color-page-text) 16%, transparent);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+}
+
+/* Ingredient suggestions: the typed part picked out, recipe count right. */
+.library-search-ideas {
+  display: flex;
+  flex-direction: column;
+}
+
+.library-search-idea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 0.45rem var(--space-2);
+  font: inherit;
+  text-align: left;
+  color: var(--color-page-text-soft);
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+
+.library-search-idea.is-active {
+  color: var(--color-page-text);
+  background: color-mix(in srgb, var(--color-page-text) 7%, transparent);
+}
+
+.library-search-idea mark {
+  font-weight: 650;
+  color: var(--color-page-text);
+  background: none;
+}
+
+.library-search-idea-count {
+  font-size: 0.8em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-page-text-muted);
+}
+
+/* Tags, times and numbers of people: pills to pick from. */
+.library-search-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0 var(--space-2) var(--space-2);
+}
+
+.library-search-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  height: 2em;
+  padding: 0 0.8em;
+  font: inherit;
+  color: var(--color-page-text);
+  background: var(--color-paper);
+  border: 1px solid color-mix(in srgb, var(--color-page-text) 14%, transparent);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease),
+    background var(--duration-fast) var(--ease),
+    transform var(--duration-fast) var(--ease);
+}
+
+.library-search-pill.is-active {
+  background: color-mix(in srgb, var(--color-page-text) 6%, var(--color-paper));
+  border-color: color-mix(in srgb, var(--color-page-text) 45%, transparent);
+  transform: translateY(-1px);
+}
+
+/* ---------------------------------------------------------------------
+   Landing hero: title, subtitle and a long search bar centred over the
+   blurred, darkened shelves. Scrolling, Space or the scroll hint sends
+   title and bar back to the header as the scene comes into focus;
+   scrolling up past the shelves returns (placeHero, exitHero, enterHero in
+   library.page.js, setHero in scene.js). Title and bar move by transforms
+   (--hero-*-transform); the bar's sizes are real, never a zoom.
+   --------------------------------------------------------------------- */
+/* How far title, subtitle and bar rise while results show, to centre the
+   whole (updateHeroLift()). Registered so it eases. */
+@property --hero-lift {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+
+.library-page {
+  /* Kept in step with scene.js's camera move (same duration, same curve). */
+  --hero-duration: 1100ms;
+  --hero-ease: cubic-bezier(0.65, 0, 0.35, 1);
+  --hero-ink: #fbf5ec;
+  transition: --hero-lift 650ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* The lift, as a separate property from the hero moves. */
+.library-page .topbar-title h1,
+.library-page .library-search-box,
+.library-hero-stack {
+  translate: 0 calc(-1 * var(--hero-lift));
+}
+
+/* Sized to its text, so its centre is the word's centre. */
+.library-page .topbar-title h1 {
+  display: inline-block;
+  transform-origin: center;
+}
+
+.library-page.is-hero .topbar-title h1 {
+  color: var(--hero-ink);
+  text-shadow: 0 2px 28px rgb(0 0 0 / 0.28);
+  transform: var(--hero-title-transform, none);
+}
+
+.library-page.is-hero .library-search-box {
+  --search-end: 6.25rem;
+  width: var(--hero-search-width, 100%);
+  height: 3.25rem;
+  margin-top: -1.625rem;
+  font-size: 1.0625rem;
+  transform: var(--hero-search-transform, none);
+}
+
+/* Kept composited after the hero first shows, so moves never re-rasterise
+   the text (a flicker). */
+.library-page.has-hero .topbar-title h1,
+.library-page.has-hero .library-search-box {
+  will-change: transform;
+}
+
+.library-page.is-hero .library-search-icon {
+  left: 1.25rem;
+}
+
+.library-page.is-hero .library-search-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.library-page.is-hero .library-search-input {
+  padding: 0 var(--search-end) 0 calc(1.25rem + 18px + var(--space-3) + var(--chips-width, 0px));
+  background: color-mix(in srgb, var(--color-paper) 80%, transparent);
+  border-color: rgb(255 255 255 / 0.35);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.1),
+    0 18px 40px -16px rgb(0 0 0 / 0.55);
+}
+
+.library-page.is-hero .library-search-input:focus {
+  background: color-mix(in srgb, var(--color-paper) 96%, transparent);
+  border-color: rgb(255 255 255 / 0.6);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.8),
+    0 1px 2px rgb(0 0 0 / 0.1),
+    0 22px 48px -16px rgb(0 0 0 / 0.65);
+}
+
+.library-page.is-hero .library-search-kbd {
+  right: calc(var(--search-end) - 3rem);
+  opacity: 0.45;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* The hero placeholder stands in for the field's own through the move back,
+   ending on the same words in the same spot. */
+.library-page.is-hero .library-search-input::placeholder,
+.library-page.is-hero-transition .library-search-input::placeholder {
+  color: transparent;
+}
+
+.library-page.is-hero .library-search-hint {
+  inset: 0 var(--search-end) 0 calc(1.25rem + 18px + var(--space-3));
+  transition: opacity 200ms var(--ease);
+}
+
+.library-page.is-hero .library-search-box:not(.has-value) .library-search-hint,
+.library-page.is-hero-transition .library-search-box:not(.has-value) .library-search-hint {
+  opacity: 1;
+}
+
+.library-page.is-hero .library-search-go {
+  opacity: 0.35;
+  transform: translateY(-50%) scale(1);
+  pointer-events: auto;
+}
+
+.library-page.is-hero .library-search-box.has-value .library-search-go {
+  opacity: 1;
+}
+
+/* Between hero and header, everything eases over the scene's move. */
+.library-page.is-hero-transition .topbar-title h1 {
+  transition:
+    transform var(--hero-duration) var(--hero-ease),
+    color var(--hero-duration) var(--hero-ease),
+    text-shadow var(--hero-duration) var(--hero-ease);
+}
+
+.library-page.is-hero-transition .library-search-box {
+  transition:
+    transform var(--hero-duration) var(--hero-ease),
+    width var(--hero-duration) var(--hero-ease),
+    height var(--hero-duration) var(--hero-ease),
+    margin-top var(--hero-duration) var(--hero-ease),
+    font-size var(--hero-duration) var(--hero-ease);
+}
+
+.library-page.is-hero-transition .library-search-icon {
+  transition: left var(--hero-duration) var(--hero-ease);
+}
+
+.library-page.is-hero-transition .library-search-icon svg {
+  transition:
+    width var(--hero-duration) var(--hero-ease),
+    height var(--hero-duration) var(--hero-ease);
+}
+
+.library-page.is-hero-transition .library-search-kbd {
+  transition: right var(--hero-duration) var(--hero-ease);
+}
+
+/* Returning to the hero, the bar's "/" and arrow show once it's nearly in
+   place (they leave at once). */
+.library-page.is-hero.is-hero-transition .library-search-kbd {
+  transition:
+    right var(--hero-duration) var(--hero-ease),
+    opacity 400ms var(--ease) calc(var(--hero-duration) * 0.6);
+}
+
+.library-page.is-hero.is-hero-transition .library-search-go {
+  transition:
+    opacity 400ms var(--ease) calc(var(--hero-duration) * 0.6),
+    transform 400ms var(--ease) calc(var(--hero-duration) * 0.6),
+    background var(--duration-fast) var(--ease);
+}
+
+.library-page.is-hero-transition .library-search-hint {
+  transition:
+    left var(--hero-duration) var(--hero-ease),
+    right var(--hero-duration) var(--hero-ease);
+}
+
+.library-page.is-hero-transition .library-search-input {
+  transition:
+    padding var(--hero-duration) var(--hero-ease),
+    background var(--hero-duration) var(--hero-ease),
+    box-shadow var(--hero-duration) var(--hero-ease),
+    border-color var(--duration-base) var(--ease);
+}
+
+/* First arrival only: the title clears out of a blur, then the rest follows. */
+.library-page.is-hero-intro .topbar-title h1 {
+  animation: library-hero-title-in 1200ms var(--ease-entrance) backwards;
+}
+
+.library-page.is-hero-intro .library-search-box {
+  animation: library-hero-in 900ms var(--ease-entrance) 320ms backwards;
+}
+
+@keyframes library-hero-title-in {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+  }
+}
+
+@keyframes library-hero-in {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+/* No usual header entrance: it would shift measured elements and replay
+   as the hero gives way. */
+.library-page.has-hero .topbar-inner {
+  animation: none;
+}
+
+/* The menu fades in after the hero goes, and leaves quickly when it returns. */
+.library-page.is-hero .library-menu {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 200ms var(--ease),
+    visibility 0s linear 200ms;
+}
+
+/* The hero layer: subtitle and scroll hint around the title and bar slots;
+   click-through except its buttons. */
+.library-hero {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-6);
+  color: var(--hero-ink);
+  pointer-events: none;
+  transition:
+    opacity 450ms var(--ease),
+    visibility 0s linear 0s;
+}
+
+.library-page:not(.is-hero) .library-hero {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 450ms var(--ease),
+    visibility 0s linear 450ms;
+}
+
+.library-hero-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* A little above the middle: the scroll hint sits below. */
+  margin-top: -4vh;
+}
+
+.library-hero-title-slot {
+  width: var(--hero-title-w, 0px);
+  height: var(--hero-title-h, 0px);
+}
+
+.library-hero-subtitle {
+  margin: var(--space-2) 0 0;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  text-align: center;
+  color: rgb(251 245 236 / 0.78);
+  text-shadow: 0 1px 16px rgb(0 0 0 / 0.3);
+}
+
+.library-hero-count {
+  color: var(--hero-ink);
+  font-weight: 500;
+  transition: opacity 500ms var(--ease);
+}
+
+.library-hero-count:empty {
+  opacity: 0;
+}
+
+.library-hero-search-slot {
+  width: var(--hero-search-width, 0px);
+  height: 3.25rem;
+  margin-top: var(--space-7);
+}
+
+/* Hero results: one centred row of cards under the bar, as many as fit
+   (renderHeroResults()), out of the flow. */
+.library-hero-stack {
+  position: relative;
+}
+
+.library-hero-results {
+  /* The book page's recipe card, two thirds the size. */
+  --hero-card-width: 124px;
+  position: absolute;
+  top: calc(100% + 2.5rem);
+  left: 50%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-4);
+  width: calc(100vw - 2 * var(--page-gutter));
+  translate: -50% 0;
+}
+
+.library-hero-card {
+  flex: none;
+  width: var(--hero-card-width);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Recipe: the paper card a third smaller, its type slightly less. */
+.library-hero-card--recipe {
+  --paper-curl: 31px;
+  gap: 1rem;
+  padding: 1rem 0.6667rem 0.6667rem;
+}
+
+.library-hero-card--recipe .recipe-card-title {
+  font-size: 0.8125rem;
+}
+
+.library-hero-card--recipe .recipe-card-meta {
+  font-size: 0.5625rem;
+}
+
+/* The highlighted result (pointer or arrow keys) turns its corner too. */
+.library-hero-card--recipe.is-active {
+  --curl: var(--paper-curl);
+  transform: translateY(-3px);
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.18)) drop-shadow(0 14px 22px rgba(0, 0, 0, 0.32));
+}
+
+/* Book: the small result cover grown into a card, spine shaded on the left,
+   title centred 30% down. */
+.library-hero-card--book {
+  position: relative;
+  aspect-ratio: 1 / 1.3;
+  padding: 0;
+  color: var(--book-ink);
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.22) 0 7px, rgb(255 255 255 / 0.18) 7px 9px, transparent 9px),
+    var(--book-color);
+  border: none;
+  border-radius: 3px var(--radius-sm) var(--radius-sm) 3px;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.18)) drop-shadow(0 8px 14px rgba(0, 0, 0, 0.28));
+  transition: transform 420ms var(--ease), filter 420ms var(--ease);
+}
+
+.library-hero-card--book:hover,
+.library-hero-card--book:focus-visible,
+.library-hero-card--book.is-active {
+  transform: translateY(-3px);
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.18)) drop-shadow(0 14px 22px rgba(0, 0, 0, 0.32));
+  outline: none;
+}
+
+.library-hero-card-title {
+  position: absolute;
+  top: 30%;
+  left: calc(0.6667rem + 9px);
+  right: 0.6667rem;
+  translate: 0 -50%;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+.library-hero-results-empty {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  text-align: center;
+  color: rgb(251 245 236 / 0.7);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease);
+}
+
+.library-hero-results-empty.is-shown {
+  opacity: 1;
+}
+
+/* While results are up, the scroll hint makes way for them. */
+.library-page:has(.library-hero-card) .library-hero-scroll {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* A lone chevron, bottom centre, gently bobbing: scroll on to the shelves. */
+.library-hero-scroll {
+  position: absolute;
+  bottom: var(--space-6);
+  left: 50%;
+  translate: -50% 0;
+  display: flex;
+  padding: var(--space-2);
+  color: rgb(251 245 236 / 0.75);
+  background: none;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    color var(--duration-fast) var(--ease),
+    opacity var(--duration-base) var(--ease);
+}
+
+.library-hero-scroll:hover,
+.library-hero-scroll:focus-visible {
+  color: #fff;
+  outline: none;
+}
+
+.library-hero-scroll svg {
+  width: 22px;
+  height: 22px;
+  animation: library-hero-bob 1.8s ease-in-out infinite;
+}
+
+/* First arrival: the hero's own pieces rise in, one after the other. */
+.library-page.is-hero-intro .library-hero-subtitle {
+  animation: library-hero-rise 900ms var(--ease-entrance) 160ms backwards;
+}
+
+.library-page.is-hero-intro .library-hero-scroll {
+  animation: library-hero-rise 900ms var(--ease-entrance) 900ms backwards;
+}
+
+@keyframes library-hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+}
+
+@keyframes library-hero-bob {
+  0%,
+  100% {
+    transform: translateY(-2px);
+  }
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+/* A dusk between the blurred scene and the text, for contrast, deeper at
+   the edges and top. */
+.library-hero-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to bottom, rgb(16 11 8 / 0.35), rgb(16 11 8 / 0) 26%),
+    radial-gradient(ellipse 70% 65% at 50% 48%, rgb(16 11 8 / 0.42), rgba(16, 11, 8, 0.774) 72%, rgba(16, 11, 8, 0.928) 100%);
+  opacity: 0;
+  transition: opacity var(--hero-duration) var(--hero-ease);
+}
+
+.library-page.is-hero .library-hero-veil {
+  opacity: 1;
+}
+
+/* Small screens: search and button wrap onto their own full-width line. */
+@media (max-width: 600px) {
+  .library-page .topbar-inner {
+    flex-wrap: wrap;
+  }
+
+  .library-page .topbar-actions {
+    width: 100%;
+  }
+
+  .library-search,
+  .library-search:focus-within {
+    width: 100%;
+  }
+
+  .library-search-results {
+    width: 100%;
+  }
+}
+
+.library-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--library-bg-base);
+}
+
+/* The add-shelf "+", centred where the scene puts it below the last shelf
+   (--x/--y, placeAddShelfButton()), softly pulsing. */
+.library-add-shelf {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  margin: -1.25rem 0 0 -1.25rem;
+  translate: var(--x, 0) var(--y, 0);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--duration-base) var(--ease),
+    visibility 0s linear var(--duration-base),
+    background var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.library-add-shelf.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 400ms var(--ease),
+    visibility 0s linear 0s,
+    background var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+  animation: library-add-shelf-pulse 1.8s var(--ease) infinite;
+}
+
+.library-add-shelf:hover,
+.library-add-shelf:focus-visible {
+  animation-play-state: paused;
+}
+
+@keyframes library-add-shelf-pulse {
+  0% {
+    box-shadow:
+      var(--shadow-lg),
+      0 0 0 0 rgb(59 45 35 / 0.35);
+  }
+  70%,
+  100% {
+    box-shadow:
+      var(--shadow-lg),
+      0 0 0 12px rgb(59 45 35 / 0);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Edit mode side panel (toggle in library.page.js; scene.js setEditMode()
+   moves the camera: frontal, shelves pushed left, canvas still full-screen).
+   --------------------------------------------------------------------- */
+/* Opening is slower than closing (panel cards and texture popover). */
+:root {
+  --open-duration: 800ms;
+}
+
+/* The edit panel uses the header buttons' brown, not the orange accent. */
+.library-edit-panel,
+.library-texture-popover {
+  --color-accent: var(--color-surface);
+  --color-accent-strong: #2a2019;
+  --color-accent-on: var(--color-surface-text);
+  --color-accent-tint: rgba(59, 45, 35, 0.16);
+}
+
+.library-edit-panel {
+  position: absolute;
+  inset: 0 0 0 auto;
+  width: 40%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  /* Top clears the topbar; right and bottom match the title's edge margin. */
+  padding-top: 6rem;
+  padding-right: var(--space-6);
+  padding-bottom: var(--space-6);
+  /* Full height, over the topbar: a click-through shell, only the cards take
+     pointer events, so the edit button stays clickable. */
+  pointer-events: none;
+}
+
+/* The hover popup's translucent paper, as a full section, growing in from
+   the right. */
+.library-edit-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-paper) 40%, transparent);
+  border: 1px solid var(--color-paper-border);
+  box-shadow: var(--shadow-lg);
+  transform-origin: right center;
+  opacity: 0;
+  transform: scaleX(0.7);
+  /* No pointer events while invisible, so books underneath stay usable. */
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease), transform var(--duration-base) var(--ease);
+}
+
+.library-edit-panel.is-open .library-edit-card {
+  opacity: 1;
+  transform: scaleX(1);
+  transition: opacity var(--open-duration) var(--ease-entrance), transform var(--open-duration) var(--ease-entrance);
+  pointer-events: auto;
+}
+
+/* Full height, never scrolling: the preview absorbs extra space. */
+/* The tint is drawn by ::before, masked so the preview is a rounded hole
+   showing the shelf (SVG mask, updatePreviewHole()). */
+.library-edit-card--book {
+  position: relative;
+  isolation: isolate;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  background: none;
+}
+
+.library-edit-card--book::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--color-paper) 40%, transparent);
+  -webkit-mask-image: var(--hole-mask, linear-gradient(#000 0 0));
+  mask-image: var(--hole-mask, linear-gradient(#000 0 0));
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+
+.library-edit-empty {
+  margin: auto 0;
+  font-size: var(--text-sm);
+  color: var(--color-page-text-muted);
+  text-align: center;
+}
+
+.library-edit-book {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* Same [hidden] pitfall as .library-search-results. */
+.library-edit-book[hidden] {
+  display: none;
+}
+
+.library-edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.library-edit-label {
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-page-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.library-edit-title-input {
+  padding: var(--space-2) var(--space-3);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-page-text);
+  background: var(--color-page-bg);
+  border: 1px solid var(--color-page-border);
+  border-radius: var(--radius-sm);
+}
+
+.library-edit-title-input:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-tint);
+}
+
+/* As tall as the page-colour swatches but twice as wide (picked more
+   often). Native swatch padding and borders are cleared, or the colour
+   would sit in a smaller box. */
+.library-edit-color-input {
+  width: 4rem;
+  height: 2rem;
+  padding: 0;
+  border: 1px solid var(--color-page-border);
+  border-radius: var(--radius-sm);
+  background: none;
+  cursor: pointer;
+}
+
+.library-edit-color-input::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.library-edit-color-input::-webkit-color-swatch {
+  border: none;
+}
+
+.library-edit-color-input::-moz-color-swatch {
+  border: none;
+}
+
+.library-edit-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.library-edit-swatch {
+  position: relative;
+  width: 4rem;
+  height: 2rem;
+  border-radius: var(--radius-sm);
+  background: var(--swatch-color);
+  border: 1px solid var(--color-page-border);
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.library-edit-swatch input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.library-edit-swatch:has(input:checked) {
+  border: none;
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+/* The card's tint (40% paper) is cut out under the canvas, which paints a
+   lighter one (22%). Takes the space the input sections leave; no fixed
+   aspect ratio, so the card never overflows. */
+/* Under the fields, as big as the rest of the card. */
+.library-edit-preview {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-paper) 22%, transparent);
+}
+
+.library-edit-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* Fields on top, three per row: cover and page colours, then width, height
+   and gloss. */
+.library-edit-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4) var(--space-5);
+  flex: 0 0 auto;
+}
+
+.library-edit-fields > :nth-child(2) {
+  grid-column: span 2;
+}
+
+/* Colour picker and picture button share one footprint: two alternatives. */
+.library-edit-cover-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.library-edit-texture-button {
+  width: 4rem;
+  height: 2rem;
+  padding: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-page-text-muted);
+  background: var(--color-page-bg);
+  border: 1px dashed var(--color-page-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.library-edit-color-input.is-selected,
+.library-edit-texture-button.is-selected {
+  border: none;
+  box-shadow: 0 0 0 2px var(--color-accent);
+}
+
+/* Same 4rem x 2rem footprint as the Images button it stands in for. */
+.library-edit-cover-confirm {
+  display: flex;
+  justify-content: space-between;
+  width: 4rem;
+  height: 2rem;
+}
+
+.library-edit-cover-confirm[hidden],
+.library-edit-texture-button[hidden] {
+  display: none;
+}
+
+.library-edit-cover-confirm .btn-icon {
+  width: 1.85rem;
+  min-height: 1.85rem;
+  height: 1.85rem;
+}
+
+.library-edit-range {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--color-accent);
+}
+
+/* Fills the area left of the edit panel, over the shelf, with the panel's
+   margins and card look. */
+.library-texture-popover {
+  position: absolute;
+  top: 6rem;
+  bottom: var(--space-6);
+  left: var(--space-6);
+  right: calc(40% + var(--space-4));
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-paper) 70%, transparent);
+  border: 1px solid var(--color-paper-border);
+  box-shadow: var(--shadow-lg);
+  transform-origin: right center;
+  animation: library-texture-popover-in var(--open-duration) var(--ease-entrance);
+}
+
+.library-texture-popover[hidden] {
+  display: none;
+}
+
+@keyframes library-texture-popover-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* The jacket laid flat, back | spine | cover: each picture at the face's
+   real proportions (--face-ratio), side by side with soft folds and one
+   shadow; names below. */
+.library-texture-pattern {
+  flex: 1 1 auto;
+  min-height: 0;
+  container-type: size;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+/* Face height: the smaller of the area's height minus the names row, and
+   what fits all three across (--width-units, ratios summed). */
+.library-texture-jacket,
+.library-texture-names {
+  --names-row: calc(1.25rem + var(--space-2));
+  --face-height: min(100cqh - var(--names-row), 100cqw / var(--width-units));
+  display: flex;
+}
+
+.library-texture-jacket {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.18),
+    0 10px 24px rgb(0 0 0 / 0.22);
+}
+
+/* A face without a picture shows the cover's colour (--jacket-color). */
+.library-texture-zone {
+  position: relative;
+  flex: none;
+  width: calc(var(--face-height) * var(--face-ratio));
+  height: var(--face-height);
+  background: var(--zone-picture, none) center / 100% 100% no-repeat, var(--jacket-color, var(--color-page-bg));
+  cursor: pointer;
+  transition: filter var(--duration-fast) var(--ease);
+}
+
+.library-texture-zone:hover {
+  filter: brightness(1.06);
+}
+
+/* The fold: shade then light where a face meets the previous one. */
+.library-texture-zone + .library-texture-zone::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -4px;
+  z-index: 1;
+  width: 8px;
+  background: linear-gradient(
+    90deg,
+    rgb(0 0 0 / 0),
+    rgb(0 0 0 / 0.2) 50%,
+    rgb(255 255 255 / 0.14) 50%,
+    rgb(255 255 255 / 0)
+  );
+  pointer-events: none;
+}
+
+/* Inside the jacket, which clips anything beyond its edge. */
+.library-texture-zone:focus-within {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+}
+
+.library-texture-zone-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* No picture: a "+" on a paper disc, no wider than the spine. */
+.library-texture-zone-add {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(2rem, 80%);
+  aspect-ratio: 1;
+  color: var(--color-page-text-muted);
+  background: color-mix(in srgb, var(--color-paper) 85%, transparent);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.library-texture-zone-add svg {
+  width: 14px;
+  height: 14px;
+}
+
+.library-texture-zone.has-picture .library-texture-zone-add {
+  display: none;
+}
+
+/* Names as wide as their faces (the spine's spills evenly). */
+.library-texture-zone-label {
+  display: flex;
+  flex: none;
+  justify-content: center;
+  width: calc(var(--face-height) * var(--face-ratio));
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  line-height: 1.25rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--color-page-text-muted);
+}
+
+.library-texture-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+/* The header's round icon buttons, turning orange on hover. */
+.library-texture-action {
+  background: color-mix(in srgb, var(--color-paper) 60%, transparent);
+  color: var(--color-page-text-muted);
+  border-color: var(--color-paper-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.library-texture-action:hover,
+.library-texture-action:focus-visible {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-on);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------------------------------------------------------------------
+   Backdrop behind the 3D scene (colours: --library-bg-* in tokens.css).
+   Back to front: top-left glow, five diagonal streaks, window light, a
+   soft central highlight.
+   --------------------------------------------------------------------- */
+.library-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.library-bg-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(100% 100% at 0% 0%, var(--library-bg-corner) 0%, var(--library-bg-base) 100%);
+  mask-image: radial-gradient(125% 100% at 0% 0%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.224) 88.2883%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: radial-gradient(125% 100% at 0% 0%, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.224) 88.2883%, rgba(0, 0, 0, 0) 100%);
+}
+
+.library-bg-streak {
+  position: absolute;
+  inset: 0;
+  opacity: 0.2;
+  /* rgb(from ...) gives a transparent version of the same hue; fading to
+     "transparent" (black) would darken the streak's middle. */
+  background: linear-gradient(var(--library-bg-streak) 0%, rgb(from var(--library-bg-streak) r g b / 0) 100%);
+  transform: skewX(45deg);
+}
+
+.library-bg-streak-3 {
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 9%, rgb(0, 0, 0) 20%, rgba(0, 0, 0, 0.55) 28%, rgba(0, 0, 0, 0.424) 40%, rgb(0, 0, 0) 48%, rgba(0, 0, 0, 0.267) 54%, rgba(0, 0, 0, 0.13) 78%, rgb(0, 0, 0) 88%, rgba(0, 0, 0, 0) 97%);
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 9%, rgb(0, 0, 0) 20%, rgba(0, 0, 0, 0.55) 28%, rgba(0, 0, 0, 0.424) 40%, rgb(0, 0, 0) 48%, rgba(0, 0, 0, 0.267) 54%, rgba(0, 0, 0, 0.13) 78%, rgb(0, 0, 0) 88%, rgba(0, 0, 0, 0) 97%);
+}
+
+.library-bg-streak-4 {
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 17%, rgba(0, 0, 0, 0.55) 26%, rgb(0, 0, 0) 35%, rgba(0, 0, 0, 0) 47%, rgba(0, 0, 0, 0.13) 69%, rgb(0, 0, 0) 79%, rgba(0, 0, 0, 0) 97%);
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 17%, rgba(0, 0, 0, 0.55) 26%, rgb(0, 0, 0) 35%, rgba(0, 0, 0, 0) 47%, rgba(0, 0, 0, 0.13) 69%, rgb(0, 0, 0) 79%, rgba(0, 0, 0, 0) 97%);
+}
+
+.library-bg-streak-5 {
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 20%, rgba(0, 0, 0, 0.55) 27%, rgb(0, 0, 0) 42%, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.13) 67%, rgb(0, 0, 0) 74%, rgb(0, 0, 0) 82%, rgba(0, 0, 0, 0.47) 88%, rgba(0, 0, 0, 0) 97%);
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 20%, rgba(0, 0, 0, 0.55) 27%, rgb(0, 0, 0) 42%, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.13) 67%, rgb(0, 0, 0) 74%, rgb(0, 0, 0) 82%, rgba(0, 0, 0, 0.47) 88%, rgba(0, 0, 0, 0) 97%);
+}
+
+/* Window light more blurred while the hero shows. */
+.library-page.has-hero .window-light {
+  transition: filter var(--hero-duration) var(--hero-ease);
+}
+
+.library-page.is-hero .window-light {
+  filter: blur(16px);
+}
+
+.library-bg-highlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, var(--library-bg-highlight) 0%, transparent 50%, transparent 100%);
+}
+
+/* One faint streak in front of the shelves, for depth; never blocks the
+   pointer. */
+.library-fg-streak {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.12;
+  background: linear-gradient(var(--library-bg-streak) 0%, rgb(from var(--library-bg-streak) r g b / 0) 100%);
+  mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 42%, rgb(0, 0, 0) 58%, rgba(0, 0, 0, 0) 100%);
+  -webkit-mask-image: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 42%, rgb(0, 0, 0) 58%, rgba(0, 0, 0, 0) 100%);
+  transform: skewX(45deg);
+  pointer-events: none;
+}
+
+.library-canvas {
+  /* Positioned, so the canvas stacks with .library-bg in DOM order (an
+     unpositioned canvas paints below it). */
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* Opacity duration kept in sync with CANVAS_FADE_DURATION_MS in scene.js. */
+  transition:
+    opacity 520ms ease,
+    filter var(--hero-duration) var(--hero-ease),
+    transform var(--hero-duration) var(--hero-ease);
+}
+
+/* Hero: the shelves out of focus; a slight scale keeps the blur's rim off
+   screen. */
+.library-page.is-hero .library-canvas {
+  filter: blur(12px) saturate(0.9);
+  transform: scale(1.06);
+}
+
+/* While a book flies open (openBookAndNavigate()), the canvas is above the
+   header, so the book passes in front of the title. */
+.library-canvas.is-opening {
+  z-index: 5;
+}
+
+/* Fades just before navigating to the book (CANVAS_FADE_* in scene.js). */
+.library-canvas.is-closing {
+  opacity: 0;
+}
+
+/* The header fades too, faster: the canvas is above it during the flight,
+   so an opaque header would show through the fading book. */
+.library-page:has(.library-canvas.is-closing) .topbar {
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease);
+}
+
+/* Leader line from the hovered book to the popup: two thin segments via an
+   elbow, placed every frame by JS, fading with the popup. */
+.library-hover-line {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease);
+}
+
+.library-hover-line.is-visible {
+  opacity: 1;
+}
+
+.library-hover-line-segment {
+  stroke: var(--color-surface-text-soft);
+  stroke-width: 1;
+}
+
+.library-hover-line-dot {
+  fill: var(--color-surface-text);
+}
+
+/* Popup anchor: only a translate() written every frame (left/top would snap
+   to device pixels and step); the inner .library-hover-popup has the look
+   and its own scaleY open/close, kept apart from that transform. */
+.library-hover-popup-anchor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.library-hover-popup {
+  /* Fixed size (two words fit; keeps the JS clamp exact mid-transition). */
+  width: 12rem;
+  height: 4.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-md);
+  background: color-mix(in srgb, var(--color-paper) 70%, transparent);
+  border: 1px solid var(--color-paper-border);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  overflow: hidden;
+  /* Opens and closes in place: a vertical scale around its own centre. */
+  transform-origin: center;
+  transform: scaleY(0.15);
+  transition: opacity var(--duration-base) var(--ease), transform var(--duration-base) var(--ease);
+}
+
+.library-hover-popup.is-visible {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.library-hover-popup-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-base);
+  line-height: 1.25;
+  color: var(--color-page-text);
+}
+
+.library-hover-popup-meta {
+  font-size: var(--text-xs);
+  color: var(--color-page-text-muted);
+  white-space: nowrap;
+}
+
+/* Opening loader: over everything, the hero's dusk colour (paper when
+   opening on the shelves), a breathing book. Fades when the scene is ready
+   (.is-done). */
+.library-loader {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-5);
+  background: radial-gradient(ellipse 80% 70% at 50% 45%, #2b2019, #17110d);
+  color: rgb(251 245 236 / 0.7);
+  transition:
+    opacity 700ms var(--ease),
+    visibility 0s linear 700ms;
+}
+
+.library-loader.is-light {
+  background: var(--library-bg-base);
+  color: var(--color-page-text-muted);
+}
+
+.library-loader.is-done {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* The book holds the middle of the screen; the words hang under it. */
+.library-loader-mark {
+  position: relative;
+}
+
+.library-loader-text {
+  position: absolute;
+  top: calc(100% + var(--space-4));
+  left: 50%;
+  width: max-content;
+  max-width: 80vw;
+  translate: -50% 0;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}

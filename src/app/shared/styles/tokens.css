@@ -1,0 +1,107 @@
+/* =====================================================================
+   Design tokens: colour, type, spacing and elevation, used everywhere
+   instead of raw values. 4/8px spacing, ~1.25 type scale, a display serif
+   and a reading sans, semantic roles (page / paper / wood / accent),
+   contrast >= 4.5:1 for body text.
+   ===================================================================== */
+
+:root {
+  /* --- Page: light travertine, shared by the UI and the 3D scene ------ */
+  --color-page-bg: #f2ede4;
+  --color-page-bg-sunken: #e8e1d4;
+  --color-page-text: #241f1b;
+  --color-page-text-soft: #554c43;
+  --color-page-text-muted: #7d7265;
+  --color-page-border: rgba(36, 31, 27, 0.12);
+  --color-page-border-strong: rgba(36, 31, 27, 0.24);
+  --color-page-hover: rgba(36, 31, 27, 0.05);
+
+  /* --- Paper: writing and decision surfaces (fields, modals) ---------- */
+  --color-paper: #fbf9f4;
+  --color-paper-sunken: #f5f1e8;
+  --color-paper-border: rgba(36, 31, 27, 0.14);
+
+  /* --- Wood: "recipe" objects (cards), echoing the 3D shelf ----------- */
+  --color-surface: #3b2d23;
+  --color-surface-top: #4a382b;
+  --color-surface-text: #f5eee3;
+  --color-surface-text-soft: #cfbfa9;
+  --color-surface-text-muted: #a2917d;
+  --color-surface-border: rgba(245, 238, 227, 0.12);
+  --color-surface-border-strong: rgba(245, 238, 227, 0.3);
+
+  /* --- Accent: burnt orange, dark enough to carry white text ---------- */
+  --color-accent: #b3500f;
+  --color-accent-strong: #94400a;
+  --color-accent-on: #fdf8f0;
+  --color-accent-tint: rgba(179, 80, 15, 0.13);
+
+  /* --- States -------------------------------------------------------- */
+  --color-danger: #9b3124;
+  --color-danger-strong: #7f2619;
+  --color-danger-tint: rgba(155, 49, 36, 0.1);
+
+  /* --- Library backdrop (home page) ------------------------------------
+     Gradient colours behind the 3D scene (.library-bg-*). */
+  --library-bg-base: #a09c96;
+  --library-bg-corner: #d5c8bf;
+  --library-bg-streak: #fff2d7;
+  --library-bg-highlight: #ffeed7aa;
+  /* Sunlight through a window, falling on the wall behind the shelves. */
+  --library-bg-window: #fff3dc;
+
+  --test : #ffd8b4;
+
+  /* --- Typography ----------------------------------------------------- */
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: clamp(1.9rem, 1.35rem + 1.9vw, 2.6rem);
+
+  --leading-tight: 1.15;
+  --leading-normal: 1.6;
+  --leading-relaxed: 1.72;
+
+  --tracking-wide: 0.08em;
+  --tracking-caps: 0.12em;
+
+  /* --- Rhythm (4/8px grid) -------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  --page-gutter: clamp(1.25rem, 4vw, 3rem);
+  --content-max: 1120px;
+  --reading-max: 720px;
+
+  /* --- Shapes and elevation -------------------------------------------- */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-full: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(36, 31, 27, 0.06);
+  --shadow-sm: 0 1px 2px rgba(36, 31, 27, 0.06), 0 2px 8px rgba(36, 31, 27, 0.06);
+  --shadow-md: 0 2px 4px rgba(36, 31, 27, 0.08), 0 10px 24px rgba(36, 31, 27, 0.1);
+  --shadow-lg: 0 4px 10px rgba(36, 31, 27, 0.1), 0 24px 56px rgba(36, 31, 27, 0.18);
+
+  /* --- Motion ---------------------------------------------------------- */
+  --ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 140ms;
+  --duration-base: 220ms;
+  --duration-slow: 520ms;
+
+  color-scheme: light;
+}

@@ -1,0 +1,103 @@
+/* Light reset + global typographic settings. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Scrollbars hidden everywhere; scrolling still works. */
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  margin: 0;
+  background: var(--color-page-bg);
+  color: var(--color-page-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: var(--leading-normal);
+  font-feature-settings: "cv05" 1, "ss01" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings in the display serif, the rest in the sans. */
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+  line-height: var(--leading-tight);
+  color: var(--color-page-text);
+  text-wrap: balance;
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  margin: 0;
+}
+
+button {
+  background: none;
+  border: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* A single, visible focus ring everywhere (keyboard accessibility). */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--color-accent-tint);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+#app {
+  min-height: 100%;
+}

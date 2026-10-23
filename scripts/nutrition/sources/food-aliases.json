@@ -1,0 +1,1078 @@
+[
+ {
+  "alias": "5 épices",
+  "ciqual": 11081
+ },
+ {
+  "alias": "abricot",
+  "ciqual": 13000
+ },
+ {
+  "alias": "agar",
+  "ciqual": 11085
+ },
+ {
+  "alias": "agneau",
+  "ciqual": 21504
+ },
+ {
+  "alias": "ail",
+  "ciqual": 11000
+ },
+ {
+  "alias": "ail rôti",
+  "ciqual": 11306
+ },
+ {
+  "alias": "aileron de poulet",
+  "ciqual": 36023
+ },
+ {
+  "alias": "amaretto",
+  "ciqual": 1003
+ },
+ {
+  "alias": "ananas",
+  "ciqual": 13002
+ },
+ {
+  "alias": "aneth",
+  "ciqual": 11093
+ },
+ {
+  "alias": "anis",
+  "ciqual": 11081
+ },
+ {
+  "alias": "arôme de vanille",
+  "ciqual": 11098
+ },
+ {
+  "alias": "aubergine",
+  "ciqual": 20053
+ },
+ {
+  "alias": "baie de sichuan",
+  "ciqual": 11015
+ },
+ {
+  "alias": "banane",
+  "ciqual": 13005
+ },
+ {
+  "alias": "basil",
+  "ciqual": 11033
+ },
+ {
+  "alias": "basilic",
+  "ciqual": 11033
+ },
+ {
+  "alias": "betterave",
+  "ciqual": 20003
+ },
+ {
+  "alias": "beurre",
+  "ciqual": 16400
+ },
+ {
+  "alias": "beurre clarifié",
+  "ciqual": 16401
+ },
+ {
+  "alias": "beurre demi-sel",
+  "ciqual": 16402
+ },
+ {
+  "alias": "beurre salé",
+  "ciqual": 16403
+ },
+ {
+  "alias": "bicarbonate",
+  "ciqual": 11507
+ },
+ {
+  "alias": "biscuit cuillère",
+  "ciqual": 24430
+ },
+ {
+  "alias": "bière blanche",
+  "ciqual": 5009
+ },
+ {
+  "alias": "blanc d'oeuf",
+  "ciqual": 22001
+ },
+ {
+  "alias": "boeuf",
+  "ciqual": 6231
+ },
+ {
+  "alias": "boeuf haché",
+  "ciqual": 6254
+ },
+ {
+  "alias": "boeuf à braiser",
+  "ciqual": 6231
+ },
+ {
+  "alias": "bouillon",
+  "ciqual": 11001,
+  "ratio": 0.02
+ },
+ {
+  "alias": "bouillon cube",
+  "ciqual": 11001
+ },
+ {
+  "alias": "bouillon de boeuf",
+  "ciqual": 11001,
+  "ratio": 0.02
+ },
+ {
+  "alias": "bouillon de légumes",
+  "ciqual": 11041,
+  "ratio": 0.02
+ },
+ {
+  "alias": "bouillon de volaille",
+  "ciqual": 11174,
+  "ratio": 0.02
+ },
+ {
+  "alias": "brocoli",
+  "ciqual": 20057
+ },
+ {
+  "alias": "cacahuète",
+  "ciqual": 15001
+ },
+ {
+  "alias": "cacao",
+  "ciqual": 18100
+ },
+ {
+  "alias": "café",
+  "ciqual": 18073
+ },
+ {
+  "alias": "café en poudre",
+  "ciqual": 18005
+ },
+ {
+  "alias": "canelle",
+  "ciqual": 11025
+ },
+ {
+  "alias": "cannelle",
+  "ciqual": 11025
+ },
+ {
+  "alias": "cardamome",
+  "ciqual": 11075
+ },
+ {
+  "alias": "carotte",
+  "ciqual": 20009
+ },
+ {
+  "alias": "cassonade",
+  "ciqual": 31017
+ },
+ {
+  "alias": "chair de tomate",
+  "ciqual": 20169
+ },
+ {
+  "alias": "champignon",
+  "ciqual": 20056
+ },
+ {
+  "alias": "chatâigne",
+  "ciqual": 15024
+ },
+ {
+  "alias": "cheddar",
+  "ciqual": 12726
+ },
+ {
+  "alias": "chocolat",
+  "ciqual": 31085
+ },
+ {
+  "alias": "chocolat noir",
+  "ciqual": 31085
+ },
+ {
+  "alias": "chocolat noir 80%",
+  "ciqual": 31074
+ },
+ {
+  "alias": "chou blanc",
+  "ciqual": 20116
+ },
+ {
+  "alias": "chou chinois",
+  "ciqual": 20167
+ },
+ {
+  "alias": "chou-fleur",
+  "ciqual": 20016
+ },
+ {
+  "alias": "châtaigne",
+  "ciqual": 15024
+ },
+ {
+  "alias": "ciboulette",
+  "ciqual": 20034
+ },
+ {
+  "alias": "cinq épices",
+  "ciqual": 11081
+ },
+ {
+  "alias": "citron",
+  "ciqual": 13009
+ },
+ {
+  "alias": "citron confit",
+  "ciqual": 13009
+ },
+ {
+  "alias": "citron vert",
+  "ciqual": 13067
+ },
+ {
+  "alias": "clou de girofle",
+  "ciqual": 11052
+ },
+ {
+  "alias": "cognac",
+  "ciqual": 1023
+ },
+ {
+  "alias": "collier d'agneau",
+  "ciqual": 21514
+ },
+ {
+  "alias": "concentré de tomate",
+  "ciqual": 20068
+ },
+ {
+  "alias": "concombre",
+  "ciqual": 20019
+ },
+ {
+  "alias": "coq",
+  "ciqual": 36016
+ },
+ {
+  "alias": "coriandre",
+  "ciqual": 11094
+ },
+ {
+  "alias": "cornichon",
+  "ciqual": 11004
+ },
+ {
+  "alias": "coulis de tomate",
+  "ciqual": 20170
+ },
+ {
+  "alias": "courgette",
+  "ciqual": 20020
+ },
+ {
+  "alias": "couscous",
+  "ciqual": 9610
+ },
+ {
+  "alias": "cream cheese",
+  "ciqual": 12068
+ },
+ {
+  "alias": "crozet",
+  "ciqual": 9810
+ },
+ {
+  "alias": "crème",
+  "ciqual": 19410
+ },
+ {
+  "alias": "crème de coco",
+  "ciqual": 18041
+ },
+ {
+  "alias": "crème entière",
+  "ciqual": 19417
+ },
+ {
+  "alias": "crème fraîche",
+  "ciqual": 19410
+ },
+ {
+  "alias": "crème fraîche liquide",
+  "ciqual": 19417
+ },
+ {
+  "alias": "crème liquide",
+  "ciqual": 19417
+ },
+ {
+  "alias": "cucurma",
+  "ciqual": 11089
+ },
+ {
+  "alias": "cuisse de poulet",
+  "ciqual": 36024
+ },
+ {
+  "alias": "cumin",
+  "ciqual": 11042
+ },
+ {
+  "alias": "curacao",
+  "ciqual": 1003
+ },
+ {
+  "alias": "curcuma",
+  "ciqual": 11089
+ },
+ {
+  "alias": "curry",
+  "ciqual": 11005
+ },
+ {
+  "alias": "câpre",
+  "ciqual": 11040
+ },
+ {
+  "alias": "cébette",
+  "ciqual": 20034,
+  "piece": 20
+ },
+ {
+  "alias": "céleri",
+  "ciqual": 20023
+ },
+ {
+  "alias": "céleri-rave",
+  "ciqual": 20055
+ },
+ {
+  "alias": "eau",
+  "ciqual": 18066
+ },
+ {
+  "alias": "eau minérale",
+  "ciqual": 18044
+ },
+ {
+  "alias": "eau pétillante",
+  "ciqual": 18046
+ },
+ {
+  "alias": "extrait de vanille",
+  "ciqual": 11098
+ },
+ {
+  "alias": "farine",
+  "ciqual": 9436
+ },
+ {
+  "alias": "farine de blé",
+  "ciqual": 9436
+ },
+ {
+  "alias": "farine de sarrasin",
+  "ciqual": 9540
+ },
+ {
+  "alias": "fenugrec",
+  "ciqual": 11077
+ },
+ {
+  "alias": "feta",
+  "ciqual": 12066
+ },
+ {
+  "alias": "figue",
+  "ciqual": 13012
+ },
+ {
+  "alias": "filet de poulet",
+  "ciqual": 36017
+ },
+ {
+  "alias": "flocon d'avoine",
+  "ciqual": 32140
+ },
+ {
+  "alias": "fond de veau",
+  "ciqual": 11304
+ },
+ {
+  "alias": "fromage blanc",
+  "ciqual": 19646
+ },
+ {
+  "alias": "fromage blanc 0%",
+  "ciqual": 19644
+ },
+ {
+  "alias": "fromage de chèvre",
+  "ciqual": 12812
+ },
+ {
+  "alias": "fromage grec",
+  "ciqual": 19860
+ },
+ {
+  "alias": "fromage râpé",
+  "ciqual": 12118
+ },
+ {
+  "alias": "fécule de maïs",
+  "ciqual": 9510
+ },
+ {
+  "alias": "fêta",
+  "ciqual": 12066
+ },
+ {
+  "alias": "garam masala",
+  "ciqual": 11081
+ },
+ {
+  "alias": "garam massala",
+  "ciqual": 11081
+ },
+ {
+  "alias": "garlic",
+  "ciqual": 11000
+ },
+ {
+  "alias": "ghee",
+  "ciqual": 16401
+ },
+ {
+  "alias": "gingembre",
+  "ciqual": 11074
+ },
+ {
+  "alias": "gingembre en poudre",
+  "ciqual": 11006
+ },
+ {
+  "alias": "gingembre moulu",
+  "ciqual": 11006
+ },
+ {
+  "alias": "girofle",
+  "ciqual": 11052
+ },
+ {
+  "alias": "glace",
+  "ciqual": 18066
+ },
+ {
+  "alias": "glaçon",
+  "ciqual": 18066
+ },
+ {
+  "alias": "gochugaru",
+  "ciqual": 11088
+ },
+ {
+  "alias": "graine de coriandre",
+  "ciqual": 11026
+ },
+ {
+  "alias": "graine de fenouil",
+  "ciqual": 11066
+ },
+ {
+  "alias": "graine de moutarde",
+  "ciqual": 11081
+ },
+ {
+  "alias": "graine de sésame",
+  "ciqual": 15010
+ },
+ {
+  "alias": "gros sel",
+  "ciqual": 11017
+ },
+ {
+  "alias": "gélatine",
+  "ciqual": 11007
+ },
+ {
+  "alias": "haricot rouge",
+  "ciqual": 20524
+ },
+ {
+  "alias": "honey",
+  "ciqual": 31008
+ },
+ {
+  "alias": "huile d'olive",
+  "ciqual": 17270
+ },
+ {
+  "alias": "huile de sésame",
+  "ciqual": 17400
+ },
+ {
+  "alias": "huile de tournesol",
+  "ciqual": 17440
+ },
+ {
+  "alias": "huile neutre",
+  "ciqual": 17440
+ },
+ {
+  "alias": "huile végétale",
+  "ciqual": 17001
+ },
+ {
+  "alias": "italian herbs",
+  "ciqual": 11081
+ },
+ {
+  "alias": "jarret",
+  "ciqual": 6150
+ },
+ {
+  "alias": "jaune d'oeuf",
+  "ciqual": 22002
+ },
+ {
+  "alias": "jus d'ananas",
+  "ciqual": 2073
+ },
+ {
+  "alias": "jus d'orange",
+  "ciqual": 2070
+ },
+ {
+  "alias": "jus de citron",
+  "ciqual": 2028
+ },
+ {
+  "alias": "jus de citron vert",
+  "ciqual": 2030
+ },
+ {
+  "alias": "jus de cranberry",
+  "ciqual": 2381
+ },
+ {
+  "alias": "ketchup",
+  "ciqual": 11008
+ },
+ {
+  "alias": "lait",
+  "ciqual": 19041
+ },
+ {
+  "alias": "lait de coco",
+  "ciqual": 18041
+ },
+ {
+  "alias": "laitue",
+  "ciqual": 20031
+ },
+ {
+  "alias": "lardon",
+  "ciqual": 28720
+ },
+ {
+  "alias": "laurier",
+  "ciqual": 11053
+ },
+ {
+  "alias": "lemon juice",
+  "ciqual": 2028
+ },
+ {
+  "alias": "lentille",
+  "ciqual": 20359
+ },
+ {
+  "alias": "levure",
+  "ciqual": 11046
+ },
+ {
+  "alias": "levure chimique",
+  "ciqual": 11046
+ },
+ {
+  "alias": "levure de boulanger",
+  "ciqual": 11045
+ },
+ {
+  "alias": "levure en poudre",
+  "ciqual": 11046
+ },
+ {
+  "alias": "levure sèche",
+  "ciqual": 11045
+ },
+ {
+  "alias": "maizena",
+  "ciqual": 9510
+ },
+ {
+  "alias": "mangue",
+  "ciqual": 13025
+ },
+ {
+  "alias": "mascarpone",
+  "ciqual": 19584
+ },
+ {
+  "alias": "maïs à popcorn",
+  "ciqual": 9545
+ },
+ {
+  "alias": "maïzena",
+  "ciqual": 9510
+ },
+ {
+  "alias": "menthe",
+  "ciqual": 11027
+ },
+ {
+  "alias": "miel",
+  "ciqual": 31008
+ },
+ {
+  "alias": "mirin",
+  "ciqual": 1006
+ },
+ {
+  "alias": "moutarde",
+  "ciqual": 11013
+ },
+ {
+  "alias": "muscade",
+  "ciqual": 11048
+ },
+ {
+  "alias": "navet",
+  "ciqual": 20064
+ },
+ {
+  "alias": "noix",
+  "ciqual": 15005
+ },
+ {
+  "alias": "noix de beurre",
+  "ciqual": 16400
+ },
+ {
+  "alias": "noix de muscade",
+  "ciqual": 11048
+ },
+ {
+  "alias": "oeuf",
+  "ciqual": 22000
+ },
+ {
+  "alias": "oignon",
+  "ciqual": 20034
+ },
+ {
+  "alias": "oignon grelot",
+  "ciqual": 20034,
+  "piece": 15
+ },
+ {
+  "alias": "oignon jaune",
+  "ciqual": 20239
+ },
+ {
+  "alias": "oignon nouveau",
+  "ciqual": 20034,
+  "piece": 20
+ },
+ {
+  "alias": "oignon rouge",
+  "ciqual": 20238
+ },
+ {
+  "alias": "olive oil",
+  "ciqual": 17270
+ },
+ {
+  "alias": "onion",
+  "ciqual": 20034
+ },
+ {
+  "alias": "onion nouveau",
+  "ciqual": 20034,
+  "piece": 20
+ },
+ {
+  "alias": "orange",
+  "ciqual": 13034
+ },
+ {
+  "alias": "origan",
+  "ciqual": 11035
+ },
+ {
+  "alias": "pain",
+  "ciqual": 7100
+ },
+ {
+  "alias": "pain de mie",
+  "ciqual": 7200
+ },
+ {
+  "alias": "paleron",
+  "ciqual": 6270
+ },
+ {
+  "alias": "paprika",
+  "ciqual": 11049
+ },
+ {
+  "alias": "parmesan",
+  "ciqual": 12120
+ },
+ {
+  "alias": "pepper",
+  "ciqual": 11015
+ },
+ {
+  "alias": "piment",
+  "ciqual": 20151
+ },
+ {
+  "alias": "piment de cayenne",
+  "ciqual": 11088
+ },
+ {
+  "alias": "piment séché",
+  "ciqual": 11088
+ },
+ {
+  "alias": "plat de côte",
+  "ciqual": 6231
+ },
+ {
+  "alias": "poire",
+  "ciqual": 13037
+ },
+ {
+  "alias": "poireau",
+  "ciqual": 20039
+ },
+ {
+  "alias": "pois chiche",
+  "ciqual": 20532
+ },
+ {
+  "alias": "poitrine de boeuf",
+  "ciqual": 6231
+ },
+ {
+  "alias": "poivre",
+  "ciqual": 11015
+ },
+ {
+  "alias": "poivre du sichuan",
+  "ciqual": 11015
+ },
+ {
+  "alias": "poivron",
+  "ciqual": 20087
+ },
+ {
+  "alias": "poivron rouge",
+  "ciqual": 20087
+ },
+ {
+  "alias": "pomme",
+  "ciqual": 13039
+ },
+ {
+  "alias": "pomme de terre",
+  "ciqual": 4008
+ },
+ {
+  "alias": "porc",
+  "ciqual": 28001
+ },
+ {
+  "alias": "potimarron",
+  "ciqual": 20132
+ },
+ {
+  "alias": "potiron",
+  "ciqual": 20044
+ },
+ {
+  "alias": "poudre curry",
+  "ciqual": 11005
+ },
+ {
+  "alias": "poudre d'ail",
+  "ciqual": 11023
+ },
+ {
+  "alias": "poudre d'oignon",
+  "ciqual": 20180
+ },
+ {
+  "alias": "poudre de cacao",
+  "ciqual": 18100
+ },
+ {
+  "alias": "poudre de piment",
+  "ciqual": 11088
+ },
+ {
+  "alias": "poulet",
+  "ciqual": 36016
+ },
+ {
+  "alias": "pulpe de tomate",
+  "ciqual": 20169
+ },
+ {
+  "alias": "purée de tomate",
+  "ciqual": 20170
+ },
+ {
+  "alias": "pâte brisé",
+  "ciqual": 23414
+ },
+ {
+  "alias": "pâte brisée",
+  "ciqual": 23414
+ },
+ {
+  "alias": "pâtes",
+  "ciqual": 9810
+ },
+ {
+  "alias": "pêche",
+  "ciqual": 13043
+ },
+ {
+  "alias": "ras el hanout",
+  "ciqual": 11081
+ },
+ {
+  "alias": "reblochon",
+  "ciqual": 12045
+ },
+ {
+  "alias": "red pepper",
+  "ciqual": 20087
+ },
+ {
+  "alias": "rhum",
+  "ciqual": 1004
+ },
+ {
+  "alias": "riesling",
+  "ciqual": 5215
+ },
+ {
+  "alias": "riz",
+  "ciqual": 9100
+ },
+ {
+  "alias": "riz basmati",
+  "ciqual": 9119
+ },
+ {
+  "alias": "safran",
+  "ciqual": 11039
+ },
+ {
+  "alias": "saké",
+  "ciqual": 1026
+ },
+ {
+  "alias": "salade",
+  "ciqual": 20031
+ },
+ {
+  "alias": "salade verte",
+  "ciqual": 20031
+ },
+ {
+  "alias": "salt",
+  "ciqual": 11017
+ },
+ {
+  "alias": "sauce béarnaise",
+  "ciqual": 11102
+ },
+ {
+  "alias": "sauce soja",
+  "ciqual": 11104
+ },
+ {
+  "alias": "sauce soya",
+  "ciqual": 11104
+ },
+ {
+  "alias": "sauce tomate",
+  "ciqual": 20170
+ },
+ {
+  "alias": "sel",
+  "ciqual": 11017
+ },
+ {
+  "alias": "semoule",
+  "ciqual": 9610
+ },
+ {
+  "alias": "sucre",
+  "ciqual": 31016
+ },
+ {
+  "alias": "sucre blanc",
+  "ciqual": 31016
+ },
+ {
+  "alias": "sucre en poudre",
+  "ciqual": 31016
+ },
+ {
+  "alias": "sucre roux",
+  "ciqual": 31017
+ },
+ {
+  "alias": "sumac",
+  "ciqual": 11081
+ },
+ {
+  "alias": "surce",
+  "ciqual": 31016
+ },
+ {
+  "alias": "sésame",
+  "ciqual": 15010
+ },
+ {
+  "alias": "tahin",
+  "ciqual": 15203
+ },
+ {
+  "alias": "tahini",
+  "ciqual": 15203
+ },
+ {
+  "alias": "tahiné",
+  "ciqual": 15203
+ },
+ {
+  "alias": "thym",
+  "ciqual": 11070
+ },
+ {
+  "alias": "tomate",
+  "ciqual": 20276
+ },
+ {
+  "alias": "tomate concassée",
+  "ciqual": 20169
+ },
+ {
+  "alias": "tomate pelée",
+  "ciqual": 20169
+ },
+ {
+  "alias": "tortilla",
+  "ciqual": 7815
+ },
+ {
+  "alias": "vanille",
+  "ciqual": 11057
+ },
+ {
+  "alias": "viande de boeuf",
+  "ciqual": 6231
+ },
+ {
+  "alias": "viande de boeuf hachée",
+  "ciqual": 6254
+ },
+ {
+  "alias": "viande hachée",
+  "ciqual": 6254
+ },
+ {
+  "alias": "vin blanc",
+  "ciqual": 5215
+ },
+ {
+  "alias": "vin rouge",
+  "ciqual": 5214
+ },
+ {
+  "alias": "vinaigre",
+  "ciqual": 11018
+ },
+ {
+  "alias": "vodka",
+  "ciqual": 1008
+ },
+ {
+  "alias": "wrapper",
+  "ciqual": 51550
+ },
+ {
+  "alias": "yaourt",
+  "ciqual": 19593
+ },
+ {
+  "alias": "yaourt grec",
+  "ciqual": 19860
+ },
+ {
+  "alias": "yaourt à la grecque",
+  "ciqual": 19860
+ },
+ {
+  "alias": "zeste de citron",
+  "ciqual": 13125
+ },
+ {
+  "alias": "échalote",
+  "ciqual": 20097
+ },
+ {
+  "alias": "échine",
+  "ciqual": 28302
+ },
+ {
+  "alias": "échine de porc",
+  "ciqual": 28302
+ },
+ {
+  "alias": "épaule d'agneau",
+  "ciqual": 21504
+ },
+ {
+  "alias": "épaule de porc",
+  "ciqual": 28001
+ },
+ {
+  "alias": "épice",
+  "ciqual": 11081
+ },
+ {
+  "alias": "épices",
+  "ciqual": 11081
+ }
+]

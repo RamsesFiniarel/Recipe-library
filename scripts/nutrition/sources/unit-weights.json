@@ -1,0 +1,4898 @@
+[
+ {
+  "ciqual": 22000,
+  "food": "Oeuf cru",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petit œuf (calibre S)",
+  "grams": 44.0,
+  "source": "USDA SR Legacy #171287 « Egg, whole, raw, fresh » : 1 medium = 44 g"
+ },
+ {
+  "ciqual": 22000,
+  "food": "Oeuf cru",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 œuf moyen (calibre M)",
+  "grams": 50.0,
+  "source": "USDA SR Legacy #171287 « Egg, whole, raw, fresh » : 1 large = 50 g"
+ },
+ {
+  "ciqual": 22000,
+  "food": "Oeuf cru",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 gros œuf (calibre L)",
+  "grams": 56.0,
+  "source": "USDA SR Legacy #171287 « Egg, whole, raw, fresh » : 1 extra large = 56 g"
+ },
+ {
+  "ciqual": 22002,
+  "food": "Oeuf, jaune (jaune d'oeuf), cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 jaune d'œuf",
+  "grams": 17.0,
+  "source": "USDA SR Legacy #172184 « Egg, yolk, raw, fresh » : 1 large = 17 g"
+ },
+ {
+  "ciqual": 22001,
+  "food": "Oeuf, blanc (blanc d'oeuf), cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 blanc d'œuf",
+  "grams": 33.0,
+  "source": "USDA SR Legacy #172183 « Egg, white, raw, fresh » : 1 large = 33 g"
+ },
+ {
+  "ciqual": 11000,
+  "food": "Ail, cru",
+  "unit": "clove",
+  "size": null,
+  "label": "1 gousse d'ail",
+  "grams": 3.0,
+  "source": "USDA SR Legacy #169230 « Garlic, raw » : 1 clove = 3 g"
+ },
+ {
+  "ciqual": 11000,
+  "food": "Ail, cru",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café d'ail haché",
+  "grams": 2.8,
+  "source": "USDA SR Legacy #169230 « Garlic, raw » : 1 tsp = 2.8 g"
+ },
+ {
+  "ciqual": 20034,
+  "food": "Oignon, cru",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petit oignon",
+  "grams": 70.0,
+  "source": "USDA SR Legacy #170000 « Onions, raw » : 1 small = 70 g"
+ },
+ {
+  "ciqual": 20034,
+  "food": "Oignon, cru",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 oignon moyen",
+  "grams": 110.0,
+  "source": "USDA SR Legacy #170000 « Onions, raw » : 1 medium (2-1/2\" dia) = 110 g"
+ },
+ {
+  "ciqual": 20034,
+  "food": "Oignon, cru",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 gros oignon",
+  "grams": 150.0,
+  "source": "USDA SR Legacy #170000 « Onions, raw » : 1 large = 150 g"
+ },
+ {
+  "ciqual": 20034,
+  "food": "Oignon, cru",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe d'oignon haché",
+  "grams": 10.0,
+  "source": "USDA SR Legacy #170000 « Onions, raw » : 1 tbsp chopped = 10 g"
+ },
+ {
+  "ciqual": 20238,
+  "food": "Oignon rouge, cru",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 oignon rouge moyen",
+  "grams": 110.0,
+  "source": "USDA SR Legacy #170000 « Onions, raw » : 1 medium (2-1/2\" dia) = 110 g"
+ },
+ {
+  "ciqual": 20239,
+  "food": "Oignon jaune, cru",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 oignon jaune moyen",
+  "grams": 110.0,
+  "source": "USDA SR Legacy #170000 « Onions, raw » : 1 medium (2-1/2\" dia) = 110 g"
+ },
+ {
+  "ciqual": 20097,
+  "food": "Échalote, crue",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe d'échalote hachée",
+  "grams": 10.0,
+  "source": "USDA SR Legacy #170499 « Shallots, raw » : 1 tbsp chopped = 10 g"
+ },
+ {
+  "ciqual": 20009,
+  "food": "Carotte, crue",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petite carotte",
+  "grams": 50.0,
+  "source": "USDA SR Legacy #170393 « Carrots, raw » : 1 small (5-1/2\" long) = 50 g"
+ },
+ {
+  "ciqual": 20009,
+  "food": "Carotte, crue",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 carotte moyenne",
+  "grams": 61.0,
+  "source": "USDA SR Legacy #170393 « Carrots, raw » : 1 medium = 61 g"
+ },
+ {
+  "ciqual": 20009,
+  "food": "Carotte, crue",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse carotte",
+  "grams": 72.0,
+  "source": "USDA SR Legacy #170393 « Carrots, raw » : 1 large (7-1/4\" to 8-/1/2\" long) = 72 g"
+ },
+ {
+  "ciqual": 20039,
+  "food": "Poireau, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 poireau (blanc et vert tendre)",
+  "grams": 89.0,
+  "source": "USDA SR Legacy #169246 « Leeks, (bulb and lower leaf-portion), raw » : 1 leek = 89 g"
+ },
+ {
+  "ciqual": 20020,
+  "food": "Courgette, chair et peau, crue",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petite courgette",
+  "grams": 118.0,
+  "source": "USDA SR Legacy #169291 « Squash, summer, zucchini, includes skin, raw » : 1 small = 118 g"
+ },
+ {
+  "ciqual": 20020,
+  "food": "Courgette, chair et peau, crue",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 courgette moyenne",
+  "grams": 196.0,
+  "source": "USDA SR Legacy #169291 « Squash, summer, zucchini, includes skin, raw » : 1 medium = 196 g"
+ },
+ {
+  "ciqual": 20020,
+  "food": "Courgette, chair et peau, crue",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse courgette",
+  "grams": 323.0,
+  "source": "USDA SR Legacy #169291 « Squash, summer, zucchini, includes skin, raw » : 1 large = 323 g"
+ },
+ {
+  "ciqual": 20053,
+  "food": "Aubergine, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 grosse aubergine (env. 550 g)",
+  "grams": 548.0,
+  "source": "USDA SR Legacy #169228 « Eggplant, raw » : 1 eggplant, unpeeled (approx 1-1/4 lb) = 548 g"
+ },
+ {
+  "ciqual": 20087,
+  "food": "Poivron rouge, cru",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petit poivron rouge",
+  "grams": 74.0,
+  "source": "USDA SR Legacy #170108 « Peppers, sweet, red, raw » : 1 small = 74 g"
+ },
+ {
+  "ciqual": 20087,
+  "food": "Poivron rouge, cru",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 poivron rouge moyen",
+  "grams": 119.0,
+  "source": "USDA SR Legacy #170108 « Peppers, sweet, red, raw » : 1 medium (approx 2-3/4\" long, 2-1/2 dia.) = 119 g"
+ },
+ {
+  "ciqual": 20087,
+  "food": "Poivron rouge, cru",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 gros poivron rouge",
+  "grams": 164.0,
+  "source": "USDA SR Legacy #170108 « Peppers, sweet, red, raw » : 1 large (2-1/4 per pound, approx 3-3/4\" long, 3\" dia.) = 164 g"
+ },
+ {
+  "ciqual": 20085,
+  "food": "Poivron vert, cru",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petit poivron vert",
+  "grams": 74.0,
+  "source": "USDA SR Legacy #170427 « Peppers, sweet, green, raw » : 1 small = 74 g"
+ },
+ {
+  "ciqual": 20085,
+  "food": "Poivron vert, cru",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 poivron vert moyen",
+  "grams": 119.0,
+  "source": "USDA SR Legacy #170427 « Peppers, sweet, green, raw » : 1 medium (approx 2-3/4\" long, 2-1/2\" dia) = 119 g"
+ },
+ {
+  "ciqual": 20085,
+  "food": "Poivron vert, cru",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 gros poivron vert",
+  "grams": 164.0,
+  "source": "USDA SR Legacy #170427 « Peppers, sweet, green, raw » : 1 large (2-1/4 per lb, approx 3-3/4\" long, 3\" dia) = 164 g"
+ },
+ {
+  "ciqual": 20168,
+  "food": "Poivron jaune, cru",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 gros poivron jaune",
+  "grams": 186.0,
+  "source": "USDA SR Legacy #169383 « Peppers, sweet, yellow, raw » : 1 pepper, large (3-3/4\" long, 3\" dia) = 186 g"
+ },
+ {
+  "ciqual": 20385,
+  "food": "Tomate sans précision, crue (aliment moyen)",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petite tomate",
+  "grams": 91.0,
+  "source": "USDA SR Legacy #170457 « Tomatoes, red, ripe, raw, year round average » : 1 small whole (2-2/5\" dia) = 91 g"
+ },
+ {
+  "ciqual": 20385,
+  "food": "Tomate sans précision, crue (aliment moyen)",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 tomate moyenne",
+  "grams": 123.0,
+  "source": "USDA SR Legacy #170457 « Tomatoes, red, ripe, raw, year round average » : 1 medium whole (2-3/5\" dia) = 123 g"
+ },
+ {
+  "ciqual": 20385,
+  "food": "Tomate sans précision, crue (aliment moyen)",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse tomate",
+  "grams": 182.0,
+  "source": "USDA SR Legacy #170457 « Tomatoes, red, ripe, raw, year round average » : 1 large whole (3\" dia) = 182 g"
+ },
+ {
+  "ciqual": 20276,
+  "food": "Tomate ronde, crue",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petite tomate",
+  "grams": 91.0,
+  "source": "USDA SR Legacy #170457 « Tomatoes, red, ripe, raw, year round average » : 1 small whole (2-2/5\" dia) = 91 g"
+ },
+ {
+  "ciqual": 20276,
+  "food": "Tomate ronde, crue",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 tomate moyenne",
+  "grams": 123.0,
+  "source": "USDA SR Legacy #170457 « Tomatoes, red, ripe, raw, year round average » : 1 medium whole (2-3/5\" dia) = 123 g"
+ },
+ {
+  "ciqual": 20276,
+  "food": "Tomate ronde, crue",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse tomate",
+  "grams": 182.0,
+  "source": "USDA SR Legacy #170457 « Tomatoes, red, ripe, raw, year round average » : 1 large whole (3\" dia) = 182 g"
+ },
+ {
+  "ciqual": 20172,
+  "food": "Tomate cerise, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 tomate cerise",
+  "grams": 17.0,
+  "source": "USDA SR Legacy #170457 « Tomatoes, red, ripe, raw, year round average » : 1 cherry = 17 g"
+ },
+ {
+  "ciqual": 20019,
+  "food": "Concombre, chair et peau, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 concombre",
+  "grams": 301.0,
+  "source": "USDA SR Legacy #168409 « Cucumber, with peel, raw » : 1 cucumber (8-1/4\") = 301 g"
+ },
+ {
+  "ciqual": 4008,
+  "food": "Pomme de terre, sans peau, crue",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petite pomme de terre",
+  "grams": 170.0,
+  "source": "USDA SR Legacy #170026 « Potatoes, flesh and skin, raw » : 1 Potato small (1-3/4\" to 2-1/2\" dia) = 170 g"
+ },
+ {
+  "ciqual": 4008,
+  "food": "Pomme de terre, sans peau, crue",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 pomme de terre moyenne",
+  "grams": 213.0,
+  "source": "USDA SR Legacy #170026 « Potatoes, flesh and skin, raw » : 1 Potato medium (2-1/4\" to 3-1/4\" dia) = 213 g"
+ },
+ {
+  "ciqual": 4008,
+  "food": "Pomme de terre, sans peau, crue",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse pomme de terre",
+  "grams": 369.0,
+  "source": "USDA SR Legacy #170026 « Potatoes, flesh and skin, raw » : 1 Potato large (3\" to 4-1/4\" dia) = 369 g"
+ },
+ {
+  "ciqual": 4101,
+  "food": "Patate douce, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 patate douce (13 cm)",
+  "grams": 130.0,
+  "source": "USDA SR Legacy #168482 « Sweet potato, raw, unprepared (Includes foods for USDA's Food Distribution Program) » : 1 sweetpotato, 5\" long = 130 g"
+ },
+ {
+  "ciqual": 20023,
+  "food": "Céleri branche, cru",
+  "unit": "stalk",
+  "size": null,
+  "label": "1 branche de céleri",
+  "grams": 40.0,
+  "source": "USDA SR Legacy #169988 « Celery, raw » : 1 stalk, medium (7-1/2\" - 8\" long) = 40 g"
+ },
+ {
+  "ciqual": 20016,
+  "food": "Chou-fleur, cru",
+  "unit": "head",
+  "size": "small",
+  "label": "1 petit chou-fleur",
+  "grams": 265.0,
+  "source": "USDA SR Legacy #169986 « Cauliflower, raw » : 1 head small (4\" dia.) = 265 g"
+ },
+ {
+  "ciqual": 20016,
+  "food": "Chou-fleur, cru",
+  "unit": "head",
+  "size": "medium",
+  "label": "1 chou-fleur moyen",
+  "grams": 588.0,
+  "source": "USDA SR Legacy #169986 « Cauliflower, raw » : 1 head medium (5-6\" dia.) = 588 g"
+ },
+ {
+  "ciqual": 20016,
+  "food": "Chou-fleur, cru",
+  "unit": "head",
+  "size": "large",
+  "label": "1 gros chou-fleur",
+  "grams": 840.0,
+  "source": "USDA SR Legacy #169986 « Cauliflower, raw » : 1 head large (6-7\" dia.) = 840 g"
+ },
+ {
+  "ciqual": 20016,
+  "food": "Chou-fleur, cru",
+  "unit": "floret",
+  "size": null,
+  "label": "1 bouquet de chou-fleur",
+  "grams": 13.0,
+  "source": "USDA SR Legacy #169986 « Cauliflower, raw » : 1 floweret = 13 g"
+ },
+ {
+  "ciqual": 20057,
+  "food": "Brocoli, cru",
+  "unit": "head",
+  "size": null,
+  "label": "1 pied de brocoli",
+  "grams": 151.0,
+  "source": "USDA SR Legacy #170379 « Broccoli, raw » : 1 stalk = 151 g"
+ },
+ {
+  "ciqual": 20057,
+  "food": "Brocoli, cru",
+  "unit": "floret",
+  "size": null,
+  "label": "1 bouquet de brocoli",
+  "grams": 31.0,
+  "source": "USDA SR Legacy #170379 « Broccoli, raw » : 1 spear (about 5\" long) = 31 g"
+ },
+ {
+  "ciqual": 20069,
+  "food": "Chou vert, cru",
+  "unit": "head",
+  "size": "small",
+  "label": "1 petit chou vert",
+  "grams": 714.0,
+  "source": "USDA SR Legacy #169975 « Cabbage, raw » : 1 head, small (about 4-1/2\" dia) = 714 g"
+ },
+ {
+  "ciqual": 20069,
+  "food": "Chou vert, cru",
+  "unit": "head",
+  "size": "medium",
+  "label": "1 chou vert moyen",
+  "grams": 908.0,
+  "source": "USDA SR Legacy #169975 « Cabbage, raw » : 1 head, medium (about 5-3/4\" dia) = 908 g"
+ },
+ {
+  "ciqual": 20069,
+  "food": "Chou vert, cru",
+  "unit": "head",
+  "size": "large",
+  "label": "1 gros chou vert",
+  "grams": 1248.0,
+  "source": "USDA SR Legacy #169975 « Cabbage, raw » : 1 head, large (about 7\" dia) = 1248 g"
+ },
+ {
+  "ciqual": 20069,
+  "food": "Chou vert, cru",
+  "unit": "leaf",
+  "size": null,
+  "label": "1 feuille de chou",
+  "grams": 23.0,
+  "source": "USDA SR Legacy #169975 « Cabbage, raw » : 1 leaf, medium = 23 g"
+ },
+ {
+  "ciqual": 20014,
+  "food": "Chou rouge, cru",
+  "unit": "head",
+  "size": "medium",
+  "label": "1 chou rouge moyen",
+  "grams": 839.0,
+  "source": "USDA SR Legacy #169977 « Cabbage, red, raw » : 1 head, medium (about 5\" dia) = 839 g"
+ },
+ {
+  "ciqual": 20056,
+  "food": "Champignon de Paris ou champignon de couche, cru",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petit champignon de Paris",
+  "grams": 10.0,
+  "source": "USDA SR Legacy #169251 « Mushrooms, white, raw » : 1 small = 10 g"
+ },
+ {
+  "ciqual": 20056,
+  "food": "Champignon de Paris ou champignon de couche, cru",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 champignon de Paris moyen",
+  "grams": 18.0,
+  "source": "USDA SR Legacy #169251 « Mushrooms, white, raw » : 1 medium = 18 g"
+ },
+ {
+  "ciqual": 20056,
+  "food": "Champignon de Paris ou champignon de couche, cru",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 gros champignon de Paris",
+  "grams": 23.0,
+  "source": "USDA SR Legacy #169251 « Mushrooms, white, raw » : 1 large = 23 g"
+ },
+ {
+  "ciqual": 20059,
+  "food": "Épinard, cru",
+  "unit": "leaf",
+  "size": null,
+  "label": "1 feuille d'épinard",
+  "grams": 10.0,
+  "source": "USDA SR Legacy #168462 « Spinach, raw » : 1 leaf = 10 g"
+ },
+ {
+  "ciqual": 20059,
+  "food": "Épinard, cru",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse d'épinards crus (240 ml)",
+  "grams": 30.0,
+  "source": "USDA SR Legacy #168462 « Spinach, raw » : 1 cup = 30 g"
+ },
+ {
+  "ciqual": 20031,
+  "food": "Laitue, crue",
+  "unit": "head",
+  "size": null,
+  "label": "1 laitue",
+  "grams": 360.0,
+  "source": "USDA SR Legacy #169249 « Lettuce, green leaf, raw » : 1 head = 360 g"
+ },
+ {
+  "ciqual": 20031,
+  "food": "Laitue, crue",
+  "unit": "leaf",
+  "size": "large",
+  "label": "1 grande feuille de laitue",
+  "grams": 24.0,
+  "source": "USDA SR Legacy #169249 « Lettuce, green leaf, raw » : 1 leaf outer = 24 g"
+ },
+ {
+  "ciqual": 20031,
+  "food": "Laitue, crue",
+  "unit": "leaf",
+  "size": "small",
+  "label": "1 petite feuille de laitue",
+  "grams": 4.8,
+  "source": "USDA SR Legacy #169249 « Lettuce, green leaf, raw » : 1 leaf inner = 4.8 g"
+ },
+ {
+  "ciqual": 20045,
+  "food": "Radis rouge, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 radis",
+  "grams": 4.5,
+  "source": "USDA SR Legacy #169276 « Radishes, raw » : 1 medium (3/4\" to 1\" dia) = 4.5 g"
+ },
+ {
+  "ciqual": 20091,
+  "food": "Betterave rouge, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 betterave (5 cm)",
+  "grams": 82.0,
+  "source": "USDA SR Legacy #169145 « Beets, raw » : 1 beet (2\" dia) = 82 g"
+ },
+ {
+  "ciqual": 20064,
+  "food": "Navet, pelé, cru",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petit navet",
+  "grams": 61.0,
+  "source": "USDA SR Legacy #170465 « Turnips, raw » : 1 small = 61 g"
+ },
+ {
+  "ciqual": 20064,
+  "food": "Navet, pelé, cru",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 navet moyen",
+  "grams": 122.0,
+  "source": "USDA SR Legacy #170465 « Turnips, raw » : 1 medium = 122 g"
+ },
+ {
+  "ciqual": 20064,
+  "food": "Navet, pelé, cru",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 gros navet",
+  "grams": 183.0,
+  "source": "USDA SR Legacy #170465 « Turnips, raw » : 1 large = 183 g"
+ },
+ {
+  "ciqual": 20028,
+  "food": "Fenouil, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 bulbe de fenouil",
+  "grams": 234.0,
+  "source": "USDA SR Legacy #169385 « Fennel, bulb, raw » : 1 bulb = 234 g"
+ },
+ {
+  "ciqual": 20052,
+  "food": "Artichaut, cru",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 artichaut moyen",
+  "grams": 128.0,
+  "source": "USDA SR Legacy #169205 « Artichokes, (globe or french), raw » : 1 artichoke, medium = 128 g"
+ },
+ {
+  "ciqual": 20052,
+  "food": "Artichaut, cru",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 gros artichaut",
+  "grams": 162.0,
+  "source": "USDA SR Legacy #169205 « Artichokes, (globe or french), raw » : 1 artichoke, large = 162 g"
+ },
+ {
+  "ciqual": 13004,
+  "food": "Avocat, chair sans peau, sans noyau, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 avocat (chair)",
+  "grams": 201.0,
+  "source": "USDA SR Legacy #171705 « Avocados, raw, all commercial varieties » : 1 avocado, NS as to Florida or California = 201 g"
+ },
+ {
+  "ciqual": 20072,
+  "food": "Petits pois, crus",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 145.0,
+  "source": "USDA SR Legacy #170419 « Peas, green, raw » : 1 cup = 145 g"
+ },
+ {
+  "ciqual": 20061,
+  "food": "Haricot vert, cru",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 100.0,
+  "source": "USDA SR Legacy #169961 « Beans, snap, green, raw » : 1 cup 1/2\" pieces = 100 g"
+ },
+ {
+  "ciqual": 20108,
+  "food": "Maïs doux, en épis, surgelé, cru",
+  "unit": "ear",
+  "size": "small",
+  "label": "1 petit épi de maïs (grains)",
+  "grams": 73.0,
+  "source": "USDA SR Legacy #169998 « Corn, sweet, yellow, raw » : 1 ear, small (5-1/2\" to 6-1/2\" long) = 73 g"
+ },
+ {
+  "ciqual": 20108,
+  "food": "Maïs doux, en épis, surgelé, cru",
+  "unit": "ear",
+  "size": "medium",
+  "label": "1 épi de maïs moyen (grains)",
+  "grams": 102.0,
+  "source": "USDA SR Legacy #169998 « Corn, sweet, yellow, raw » : 1 ear, medium (6-3/4\" to 7-1/2\" long) yields = 102 g"
+ },
+ {
+  "ciqual": 20108,
+  "food": "Maïs doux, en épis, surgelé, cru",
+  "unit": "ear",
+  "size": "large",
+  "label": "1 gros épi de maïs (grains)",
+  "grams": 143.0,
+  "source": "USDA SR Legacy #169998 « Corn, sweet, yellow, raw » : 1 ear, large (7-3/4\" to 9\" long) yields = 143 g"
+ },
+ {
+  "ciqual": 11074,
+  "food": "Gingembre, racine fraîche",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de gingembre râpé",
+  "grams": 2.0,
+  "source": "USDA SR Legacy #169231 « Ginger root, raw » : 1 tsp = 2 g"
+ },
+ {
+  "ciqual": 20151,
+  "food": "Piment, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 piment",
+  "grams": 45.0,
+  "source": "USDA SR Legacy #170106 « Peppers, hot chili, red, raw » : 1 pepper = 45 g"
+ },
+ {
+  "ciqual": 13184,
+  "food": "Olive (aliment moyen)",
+  "unit": "piece",
+  "size": null,
+  "label": "1 olive",
+  "grams": 4.4,
+  "source": "USDA SR Legacy #169094 « Olives, ripe, canned (small-extra large) » : 1 large = 4.4 g"
+ },
+ {
+  "ciqual": 13184,
+  "food": "Olive (aliment moyen)",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe d'olives",
+  "grams": 8.4,
+  "source": "USDA SR Legacy #169094 « Olives, ripe, canned (small-extra large) » : 1 tbsp = 8.4 g"
+ },
+ {
+  "ciqual": 13032,
+  "food": "Olive noire, en saumure, égouttée",
+  "unit": "piece",
+  "size": null,
+  "label": "1 olive",
+  "grams": 4.4,
+  "source": "USDA SR Legacy #169094 « Olives, ripe, canned (small-extra large) » : 1 large = 4.4 g"
+ },
+ {
+  "ciqual": 13032,
+  "food": "Olive noire, en saumure, égouttée",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe d'olives",
+  "grams": 8.4,
+  "source": "USDA SR Legacy #169094 « Olives, ripe, canned (small-extra large) » : 1 tbsp = 8.4 g"
+ },
+ {
+  "ciqual": 13033,
+  "food": "Olive verte, en saumure, égouttée",
+  "unit": "piece",
+  "size": null,
+  "label": "1 olive",
+  "grams": 4.4,
+  "source": "USDA SR Legacy #169094 « Olives, ripe, canned (small-extra large) » : 1 large = 4.4 g"
+ },
+ {
+  "ciqual": 13033,
+  "food": "Olive verte, en saumure, égouttée",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe d'olives",
+  "grams": 8.4,
+  "source": "USDA SR Legacy #169094 « Olives, ripe, canned (small-extra large) » : 1 tbsp = 8.4 g"
+ },
+ {
+  "ciqual": 11040,
+  "food": "Câpres, au vinaigre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de câpres égouttées",
+  "grams": 8.6,
+  "source": "USDA SR Legacy #172238 « Capers, canned » : 1 tbsp, drained = 8.6 g"
+ },
+ {
+  "ciqual": 11040,
+  "food": "Câpres, au vinaigre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.87,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #172238 « Capers, canned » : 1 tbsp, drained = 8.6 g"
+ },
+ {
+  "ciqual": 20279,
+  "food": "Asperge, verte, crue",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 asperge verte moyenne",
+  "grams": 16.0,
+  "source": "USDA SR Legacy #168389 « Asparagus, raw » : 1 spear, medium (5-1/4\" to 7\" long) = 16 g"
+ },
+ {
+  "ciqual": 20279,
+  "food": "Asperge, verte, crue",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse asperge verte",
+  "grams": 20.0,
+  "source": "USDA SR Legacy #168389 « Asparagus, raw » : 1 spear, large (7-1/4\" to 8-1/2\") = 20 g"
+ },
+ {
+  "ciqual": 20026,
+  "food": "Endive, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 endive",
+  "grams": 53.0,
+  "source": "USDA SR Legacy #170404 « Chicory, witloof, raw » : 1 head = 53 g"
+ },
+ {
+  "ciqual": 20058,
+  "food": "Chou de Bruxelles, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 chou de Bruxelles",
+  "grams": 19.0,
+  "source": "USDA SR Legacy #170383 « Brussels sprouts, raw » : 1 sprout = 19 g"
+ },
+ {
+  "ciqual": 11003,
+  "food": "Ciboule ou ciboulette, fraîche",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de ciboulette ciselée",
+  "grams": 3.0,
+  "source": "USDA SR Legacy #169994 « Chives, raw » : 1 tbsp chopped = 3 g"
+ },
+ {
+  "ciqual": 11003,
+  "food": "Ciboule ou ciboulette, fraîche",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de ciboulette ciselée",
+  "grams": 1.0,
+  "source": "USDA SR Legacy #169994 « Chives, raw » : 1 tsp chopped = 1 g"
+ },
+ {
+  "ciqual": 11014,
+  "food": "Persil, frais",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de persil haché",
+  "grams": 3.8,
+  "source": "USDA SR Legacy #170416 « Parsley, fresh » : 1 tbsp = 3.8 g"
+ },
+ {
+  "ciqual": 11014,
+  "food": "Persil, frais",
+  "unit": "sprig",
+  "size": null,
+  "label": "1 brin de persil",
+  "grams": 1.0,
+  "source": "USDA SR Legacy #170416 « Parsley, fresh » : 10 sprigs = 10 g"
+ },
+ {
+  "ciqual": 11033,
+  "food": "Basilic, frais",
+  "unit": "leaf",
+  "size": null,
+  "label": "1 feuille de basilic",
+  "grams": 0.5,
+  "source": "USDA SR Legacy #172232 « Basil, fresh » : 5 leaves = 2.5 g"
+ },
+ {
+  "ciqual": 11033,
+  "food": "Basilic, frais",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de basilic ciselé",
+  "grams": 2.65,
+  "source": "USDA SR Legacy #172232 « Basil, fresh » : 2 tbsp, chopped = 5.3 g"
+ },
+ {
+  "ciqual": 11094,
+  "food": "Coriandre, fraiche",
+  "unit": "sprig",
+  "size": null,
+  "label": "1 brin de coriandre",
+  "grams": 2.22,
+  "source": "USDA SR Legacy #169997 « Coriander (cilantro) leaves, raw » : 9 sprigs = 20 g"
+ },
+ {
+  "ciqual": 11027,
+  "food": "Menthe, fraîche",
+  "unit": "leaf",
+  "size": null,
+  "label": "1 feuille de menthe",
+  "grams": 0.05,
+  "source": "USDA SR Legacy #173474 « Peppermint, fresh » : 2 leaves = 0.1 g"
+ },
+ {
+  "ciqual": 11027,
+  "food": "Menthe, fraîche",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de menthe ciselée",
+  "grams": 1.6,
+  "source": "USDA SR Legacy #173474 « Peppermint, fresh » : 2 tbsp = 3.2 g"
+ },
+ {
+  "ciqual": 11070,
+  "food": "Thym, frais",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de thym frais",
+  "grams": 0.8,
+  "source": "USDA SR Legacy #173470 « Thyme, fresh » : 1 tsp = 0.8 g"
+ },
+ {
+  "ciqual": 11068,
+  "food": "Romarin, frais",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de romarin frais",
+  "grams": 0.7,
+  "source": "USDA SR Legacy #173473 « Rosemary, fresh » : 1 tsp = 0.7 g"
+ },
+ {
+  "ciqual": 11068,
+  "food": "Romarin, frais",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de romarin frais",
+  "grams": 1.7,
+  "source": "USDA SR Legacy #173473 « Rosemary, fresh » : 1 tbsp = 1.7 g"
+ },
+ {
+  "ciqual": 11093,
+  "food": "Aneth, frais",
+  "unit": "sprig",
+  "size": null,
+  "label": "1 brin d'aneth",
+  "grams": 0.2,
+  "source": "USDA SR Legacy #172233 « Dill weed, fresh » : 5 sprigs = 1 g"
+ },
+ {
+  "ciqual": 11024,
+  "food": "Persil, séché",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 0.5,
+  "source": "USDA SR Legacy #170930 « Spices, parsley, dried » : 1 tsp = 0.5 g"
+ },
+ {
+  "ciqual": 11024,
+  "food": "Persil, séché",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 1.6,
+  "source": "USDA SR Legacy #170930 « Spices, parsley, dried » : 1 tbsp = 1.6 g"
+ },
+ {
+  "ciqual": 11024,
+  "food": "Persil, séché",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.03,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170930 « Spices, parsley, dried » : 1 tsp = 0.5 g"
+ },
+ {
+  "ciqual": 11032,
+  "food": "Basilic, séché",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 0.7,
+  "source": "USDA SR Legacy #171317 « Spices, basil, dried » : 1 tsp, leaves = 0.7 g"
+ },
+ {
+  "ciqual": 11032,
+  "food": "Basilic, séché",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 2.1,
+  "source": "USDA SR Legacy #171317 « Spices, basil, dried » : 1 tbsp, leaves = 2.1 g"
+ },
+ {
+  "ciqual": 11032,
+  "food": "Basilic, séché",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.04,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #171317 « Spices, basil, dried » : 1 tsp, leaves = 0.7 g"
+ },
+ {
+  "ciqual": 11035,
+  "food": "Origan, séché",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 1.0,
+  "source": "USDA SR Legacy #171328 « Spices, oregano, dried » : 1 tsp, leaves = 1 g"
+ },
+ {
+  "ciqual": 11035,
+  "food": "Origan, séché",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 3.0,
+  "source": "1 c. à soupe = 3 c. à café ; base : USDA SR Legacy #171328 « Spices, oregano, dried » : 1 tsp, leaves = 1 g"
+ },
+ {
+  "ciqual": 11035,
+  "food": "Origan, séché",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.06,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #171328 « Spices, oregano, dried » : 1 tsp, leaves = 1 g"
+ },
+ {
+  "ciqual": 11038,
+  "food": "Thym, séché",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 1.0,
+  "source": "USDA SR Legacy #170938 « Spices, thyme, dried » : 1 tsp, leaves = 1 g"
+ },
+ {
+  "ciqual": 11038,
+  "food": "Thym, séché",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 2.7,
+  "source": "USDA SR Legacy #170938 « Spices, thyme, dried » : 1 tbsp, leaves = 2.7 g"
+ },
+ {
+  "ciqual": 11038,
+  "food": "Thym, séché",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.06,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170938 « Spices, thyme, dried » : 1 tsp, leaves = 1 g"
+ },
+ {
+  "ciqual": 11036,
+  "food": "Romarin, séché",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 1.2,
+  "source": "USDA SR Legacy #171333 « Spices, rosemary, dried » : 1 tsp = 1.2 g"
+ },
+ {
+  "ciqual": 11036,
+  "food": "Romarin, séché",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 3.3,
+  "source": "USDA SR Legacy #171333 « Spices, rosemary, dried » : 1 tbsp = 3.3 g"
+ },
+ {
+  "ciqual": 11036,
+  "food": "Romarin, séché",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.07,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #171333 « Spices, rosemary, dried » : 1 tsp = 1.2 g"
+ },
+ {
+  "ciqual": 11063,
+  "food": "Aneth, séché",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 1.0,
+  "source": "USDA SR Legacy #171322 « Spices, dill weed, dried » : 1 tsp = 1 g"
+ },
+ {
+  "ciqual": 11063,
+  "food": "Aneth, séché",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 3.1,
+  "source": "USDA SR Legacy #171322 « Spices, dill weed, dried » : 1 tbsp = 3.1 g"
+ },
+ {
+  "ciqual": 11063,
+  "food": "Aneth, séché",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.06,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #171322 « Spices, dill weed, dried » : 1 tsp = 1 g"
+ },
+ {
+  "ciqual": 11050,
+  "food": "Estragon, séché",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 0.6,
+  "source": "USDA SR Legacy #170937 « Spices, tarragon, dried » : 1 tsp, leaves = 0.6 g"
+ },
+ {
+  "ciqual": 11050,
+  "food": "Estragon, séché",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 1.8,
+  "source": "USDA SR Legacy #170937 « Spices, tarragon, dried » : 1 tbsp, leaves = 1.8 g"
+ },
+ {
+  "ciqual": 11050,
+  "food": "Estragon, séché",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.04,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170937 « Spices, tarragon, dried » : 1 tsp, leaves = 0.6 g"
+ },
+ {
+  "ciqual": 11060,
+  "food": "Herbes de Provence, séchées",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café (densité du thym séché en feuilles)",
+  "grams": 1.0,
+  "source": "USDA SR Legacy #170938 « Spices, thyme, dried » : 1 tsp, leaves = 1 g"
+ },
+ {
+  "ciqual": 11060,
+  "food": "Herbes de Provence, séchées",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe (densité du thym séché en feuilles)",
+  "grams": 2.7,
+  "source": "USDA SR Legacy #170938 « Spices, thyme, dried » : 1 tbsp, leaves = 2.7 g"
+ },
+ {
+  "ciqual": 11060,
+  "food": "Herbes de Provence, séchées",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.06,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170938 « Spices, thyme, dried » : 1 tsp, leaves = 1 g"
+ },
+ {
+  "ciqual": 11005,
+  "food": "Curry, poudre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.0,
+  "source": "USDA SR Legacy #170924 « Spices, curry powder » : 1 tsp = 2 g"
+ },
+ {
+  "ciqual": 11005,
+  "food": "Curry, poudre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 6.3,
+  "source": "USDA SR Legacy #170924 « Spices, curry powder » : 1 tbsp = 6.3 g"
+ },
+ {
+  "ciqual": 11005,
+  "food": "Curry, poudre",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.12,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170924 « Spices, curry powder » : 1 tsp = 2 g"
+ },
+ {
+  "ciqual": 11042,
+  "food": "Cumin, graine",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.1,
+  "source": "USDA SR Legacy #170923 « Spices, cumin seed » : 1 tsp, whole = 2.1 g"
+ },
+ {
+  "ciqual": 11042,
+  "food": "Cumin, graine",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 6.0,
+  "source": "USDA SR Legacy #170923 « Spices, cumin seed » : 1 tbsp, whole = 6 g"
+ },
+ {
+  "ciqual": 11042,
+  "food": "Cumin, graine",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.13,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170923 « Spices, cumin seed » : 1 tsp, whole = 2.1 g"
+ },
+ {
+  "ciqual": 11049,
+  "food": "Paprika, poudre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.3,
+  "source": "USDA SR Legacy #171329 « Spices, paprika » : 1 tsp = 2.3 g"
+ },
+ {
+  "ciqual": 11049,
+  "food": "Paprika, poudre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 6.8,
+  "source": "USDA SR Legacy #171329 « Spices, paprika » : 1 tbsp = 6.8 g"
+ },
+ {
+  "ciqual": 11049,
+  "food": "Paprika, poudre",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.14,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #171329 « Spices, paprika » : 1 tsp = 2.3 g"
+ },
+ {
+  "ciqual": 11025,
+  "food": "Cannelle, poudre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.6,
+  "source": "USDA SR Legacy #171320 « Spices, cinnamon, ground » : 1 tsp = 2.6 g"
+ },
+ {
+  "ciqual": 11025,
+  "food": "Cannelle, poudre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 7.8,
+  "source": "USDA SR Legacy #171320 « Spices, cinnamon, ground » : 1 tbsp = 7.8 g"
+ },
+ {
+  "ciqual": 11025,
+  "food": "Cannelle, poudre",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.16,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #171320 « Spices, cinnamon, ground » : 1 tsp = 2.6 g"
+ },
+ {
+  "ciqual": 11089,
+  "food": "Curcuma, poudre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 3.0,
+  "source": "USDA SR Legacy #172231 « Spices, turmeric, ground » : 1 tsp = 3 g"
+ },
+ {
+  "ciqual": 11089,
+  "food": "Curcuma, poudre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 9.4,
+  "source": "USDA SR Legacy #172231 « Spices, turmeric, ground » : 1 tbsp = 9.4 g"
+ },
+ {
+  "ciqual": 11089,
+  "food": "Curcuma, poudre",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.19,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #172231 « Spices, turmeric, ground » : 1 tsp = 3 g"
+ },
+ {
+  "ciqual": 11048,
+  "food": "Noix de muscade",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.2,
+  "source": "USDA SR Legacy #171326 « Spices, nutmeg, ground » : 1 tsp = 2.2 g"
+ },
+ {
+  "ciqual": 11048,
+  "food": "Noix de muscade",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 7.0,
+  "source": "USDA SR Legacy #171326 « Spices, nutmeg, ground » : 1 tbsp = 7 g"
+ },
+ {
+  "ciqual": 11048,
+  "food": "Noix de muscade",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.14,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #171326 « Spices, nutmeg, ground » : 1 tsp = 2.2 g"
+ },
+ {
+  "ciqual": 11088,
+  "food": "Poivre de Cayenne ou piment de Cayenne, poudre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 1.8,
+  "source": "USDA SR Legacy #170932 « Spices, pepper, red or cayenne » : 1 tsp = 1.8 g"
+ },
+ {
+  "ciqual": 11088,
+  "food": "Poivre de Cayenne ou piment de Cayenne, poudre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 5.3,
+  "source": "USDA SR Legacy #170932 « Spices, pepper, red or cayenne » : 1 tbsp = 5.3 g"
+ },
+ {
+  "ciqual": 11088,
+  "food": "Poivre de Cayenne ou piment de Cayenne, poudre",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.11,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170932 « Spices, pepper, red or cayenne » : 1 tsp = 1.8 g"
+ },
+ {
+  "ciqual": 11006,
+  "food": "Gingembre, poudre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 1.8,
+  "source": "USDA SR Legacy #170926 « Spices, ginger, ground » : 1 tsp = 1.8 g"
+ },
+ {
+  "ciqual": 11006,
+  "food": "Gingembre, poudre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 5.2,
+  "source": "USDA SR Legacy #170926 « Spices, ginger, ground » : 1 tbsp = 5.2 g"
+ },
+ {
+  "ciqual": 11006,
+  "food": "Gingembre, poudre",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.11,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170926 « Spices, ginger, ground » : 1 tsp = 1.8 g"
+ },
+ {
+  "ciqual": 11052,
+  "food": "Clou de girofle",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.1,
+  "source": "USDA SR Legacy #171321 « Spices, cloves, ground » : 1 tsp = 2.1 g"
+ },
+ {
+  "ciqual": 11052,
+  "food": "Clou de girofle",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 6.5,
+  "source": "USDA SR Legacy #171321 « Spices, cloves, ground » : 1 tbsp = 6.5 g"
+ },
+ {
+  "ciqual": 11052,
+  "food": "Clou de girofle",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.13,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #171321 « Spices, cloves, ground » : 1 tsp = 2.1 g"
+ },
+ {
+  "ciqual": 11039,
+  "food": "Safran",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 0.7,
+  "source": "USDA SR Legacy #170934 « Spices, saffron » : 1 tsp = 0.7 g"
+ },
+ {
+  "ciqual": 11039,
+  "food": "Safran",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 2.1,
+  "source": "USDA SR Legacy #170934 « Spices, saffron » : 1 tbsp = 2.1 g"
+ },
+ {
+  "ciqual": 11039,
+  "food": "Safran",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.04,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170934 « Spices, saffron » : 1 tsp = 0.7 g"
+ },
+ {
+  "ciqual": 11075,
+  "food": "Cardamome, poudre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.0,
+  "source": "USDA SR Legacy #170919 « Spices, cardamom » : 1 tsp, ground = 2 g"
+ },
+ {
+  "ciqual": 11075,
+  "food": "Cardamome, poudre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 5.8,
+  "source": "USDA SR Legacy #170919 « Spices, cardamom » : 1 tbsp, ground = 5.8 g"
+ },
+ {
+  "ciqual": 11075,
+  "food": "Cardamome, poudre",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.12,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170919 « Spices, cardamom » : 1 tsp, ground = 2 g"
+ },
+ {
+  "ciqual": 11026,
+  "food": "Coriandre, graine",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 1.8,
+  "source": "USDA SR Legacy #170922 « Spices, coriander seed » : 1 tsp = 1.8 g"
+ },
+ {
+  "ciqual": 11026,
+  "food": "Coriandre, graine",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 5.0,
+  "source": "USDA SR Legacy #170922 « Spices, coriander seed » : 1 tbsp = 5 g"
+ },
+ {
+  "ciqual": 11026,
+  "food": "Coriandre, graine",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.11,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170922 « Spices, coriander seed » : 1 tsp = 1.8 g"
+ },
+ {
+  "ciqual": 11023,
+  "food": "Ail séché, poudre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 3.1,
+  "source": "USDA SR Legacy #171325 « Spices, garlic powder » : 1 tsp = 3.1 g"
+ },
+ {
+  "ciqual": 11023,
+  "food": "Ail séché, poudre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 9.7,
+  "source": "USDA SR Legacy #171325 « Spices, garlic powder » : 1 tbsp = 9.7 g"
+ },
+ {
+  "ciqual": 11023,
+  "food": "Ail séché, poudre",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.19,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #171325 « Spices, garlic powder » : 1 tsp = 3.1 g"
+ },
+ {
+  "ciqual": 11064,
+  "food": "Carvi, graine",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.1,
+  "source": "USDA SR Legacy #170918 « Spices, caraway seed » : 1 tsp = 2.1 g"
+ },
+ {
+  "ciqual": 11064,
+  "food": "Carvi, graine",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 6.7,
+  "source": "USDA SR Legacy #170918 « Spices, caraway seed » : 1 tbsp = 6.7 g"
+ },
+ {
+  "ciqual": 11064,
+  "food": "Carvi, graine",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.13,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170918 « Spices, caraway seed » : 1 tsp = 2.1 g"
+ },
+ {
+  "ciqual": 11077,
+  "food": "Fenugrec, graine",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 3.7,
+  "source": "USDA SR Legacy #171324 « Spices, fenugreek seed » : 1 tsp = 3.7 g"
+ },
+ {
+  "ciqual": 11077,
+  "food": "Fenugrec, graine",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 11.1,
+  "source": "USDA SR Legacy #171324 « Spices, fenugreek seed » : 1 tbsp = 11.1 g"
+ },
+ {
+  "ciqual": 11077,
+  "food": "Fenugrec, graine",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.23,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #171324 « Spices, fenugreek seed » : 1 tsp = 3.7 g"
+ },
+ {
+  "ciqual": 11015,
+  "food": "Poivre noir, poudre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.3,
+  "source": "USDA SR Legacy #170931 « Spices, pepper, black » : 1 tsp, ground = 2.3 g"
+ },
+ {
+  "ciqual": 11015,
+  "food": "Poivre noir, poudre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 6.9,
+  "source": "USDA SR Legacy #170931 « Spices, pepper, black » : 1 tbsp, ground = 6.9 g"
+ },
+ {
+  "ciqual": 11015,
+  "food": "Poivre noir, poudre",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.14,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170931 « Spices, pepper, black » : 1 tsp, ground = 2.3 g"
+ },
+ {
+  "ciqual": 11019,
+  "food": "Poivre blanc, poudre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.3,
+  "source": "USDA SR Legacy #170931 « Spices, pepper, black » : 1 tsp, ground = 2.3 g"
+ },
+ {
+  "ciqual": 11019,
+  "food": "Poivre blanc, poudre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 6.9,
+  "source": "USDA SR Legacy #170931 « Spices, pepper, black » : 1 tbsp, ground = 6.9 g"
+ },
+ {
+  "ciqual": 11019,
+  "food": "Poivre blanc, poudre",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.14,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #170931 « Spices, pepper, black » : 1 tsp, ground = 2.3 g"
+ },
+ {
+  "ciqual": 11017,
+  "food": "Sel blanc alimentaire, non iodé, non fluoré (marin, ignigène ou gemme)",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 6.0,
+  "source": "USDA SR Legacy #173468 « Salt, table » : 1 tsp = 6 g"
+ },
+ {
+  "ciqual": 11017,
+  "food": "Sel blanc alimentaire, non iodé, non fluoré (marin, ignigène ou gemme)",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 18.0,
+  "source": "USDA SR Legacy #173468 « Salt, table » : 1 tbsp = 18 g"
+ },
+ {
+  "ciqual": 11017,
+  "food": "Sel blanc alimentaire, non iodé, non fluoré (marin, ignigène ou gemme)",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.38,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #173468 « Salt, table » : 1 tsp = 6 g"
+ },
+ {
+  "ciqual": 11058,
+  "food": "Sel blanc alimentaire, iodé, non fluoré (marin, ignigène ou gemme)",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 6.0,
+  "source": "USDA SR Legacy #173468 « Salt, table » : 1 tsp = 6 g"
+ },
+ {
+  "ciqual": 11058,
+  "food": "Sel blanc alimentaire, iodé, non fluoré (marin, ignigène ou gemme)",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 18.0,
+  "source": "USDA SR Legacy #173468 « Salt, table » : 1 tbsp = 18 g"
+ },
+ {
+  "ciqual": 11058,
+  "food": "Sel blanc alimentaire, iodé, non fluoré (marin, ignigène ou gemme)",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.38,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #173468 « Salt, table » : 1 tsp = 6 g"
+ },
+ {
+  "ciqual": 11096,
+  "food": "Sel blanc alimentaire, iodé, fluoré à 25 mg /100 g (marin, ignigène ou gemme)",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 6.0,
+  "source": "USDA SR Legacy #173468 « Salt, table » : 1 tsp = 6 g"
+ },
+ {
+  "ciqual": 11096,
+  "food": "Sel blanc alimentaire, iodé, fluoré à 25 mg /100 g (marin, ignigène ou gemme)",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 18.0,
+  "source": "USDA SR Legacy #173468 « Salt, table » : 1 tbsp = 18 g"
+ },
+ {
+  "ciqual": 11096,
+  "food": "Sel blanc alimentaire, iodé, fluoré à 25 mg /100 g (marin, ignigène ou gemme)",
+  "unit": "pinch",
+  "size": null,
+  "label": "1 pincée",
+  "grams": 0.38,
+  "source": "1 pincée ≈ 1/16 de c. à café (mesure usuelle) ; base : USDA SR Legacy #173468 « Salt, table » : 1 tsp = 6 g"
+ },
+ {
+  "ciqual": 13039,
+  "food": "Pomme, chair et peau, crue",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petite pomme",
+  "grams": 149.0,
+  "source": "USDA SR Legacy #171688 « Apples, raw, with skin (Includes foods for USDA's Food Distribution Program) » : 1 small (2-3/4\" dia) = 149 g"
+ },
+ {
+  "ciqual": 13039,
+  "food": "Pomme, chair et peau, crue",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 pomme moyenne",
+  "grams": 182.0,
+  "source": "USDA SR Legacy #171688 « Apples, raw, with skin (Includes foods for USDA's Food Distribution Program) » : 1 medium (3\" dia) = 182 g"
+ },
+ {
+  "ciqual": 13039,
+  "food": "Pomme, chair et peau, crue",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse pomme",
+  "grams": 223.0,
+  "source": "USDA SR Legacy #171688 « Apples, raw, with skin (Includes foods for USDA's Food Distribution Program) » : 1 large (3-1/4\" dia) = 223 g"
+ },
+ {
+  "ciqual": 13037,
+  "food": "Poire, chair et peau, crue",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petite poire",
+  "grams": 152.0,
+  "source": "USDA SR Legacy #167776 « Pears, raw, bartlett (Includes foods for USDA's Food Distribution Program) » : 1 small = 152 g"
+ },
+ {
+  "ciqual": 13037,
+  "food": "Poire, chair et peau, crue",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 poire moyenne",
+  "grams": 177.0,
+  "source": "USDA SR Legacy #167776 « Pears, raw, bartlett (Includes foods for USDA's Food Distribution Program) » : 1 medium = 177 g"
+ },
+ {
+  "ciqual": 13037,
+  "food": "Poire, chair et peau, crue",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse poire",
+  "grams": 227.0,
+  "source": "USDA SR Legacy #167776 « Pears, raw, bartlett (Includes foods for USDA's Food Distribution Program) » : 1 large = 227 g"
+ },
+ {
+  "ciqual": 13005,
+  "food": "Banane, chair sans peau, crue",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petite banane",
+  "grams": 101.0,
+  "source": "USDA SR Legacy #173944 « Bananas, raw » : 1 small (6\" to 6-7/8\" long) = 101 g"
+ },
+ {
+  "ciqual": 13005,
+  "food": "Banane, chair sans peau, crue",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 banane moyenne",
+  "grams": 118.0,
+  "source": "USDA SR Legacy #173944 « Bananas, raw » : 1 medium (7\" to 7-7/8\" long) = 118 g"
+ },
+ {
+  "ciqual": 13005,
+  "food": "Banane, chair sans peau, crue",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse banane",
+  "grams": 136.0,
+  "source": "USDA SR Legacy #173944 « Bananas, raw » : 1 large (8\" to 8-7/8\" long) = 136 g"
+ },
+ {
+  "ciqual": 13034,
+  "food": "Orange, chair sans peau, sans pépins, crue",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petite orange",
+  "grams": 96.0,
+  "source": "USDA SR Legacy #169097 « Oranges, raw, all commercial varieties » : 1 small (2-3/8\" dia) = 96 g"
+ },
+ {
+  "ciqual": 13034,
+  "food": "Orange, chair sans peau, sans pépins, crue",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 orange moyenne",
+  "grams": 131.0,
+  "source": "USDA SR Legacy #169097 « Oranges, raw, all commercial varieties » : 1 fruit (2-5/8\" dia) = 131 g"
+ },
+ {
+  "ciqual": 13034,
+  "food": "Orange, chair sans peau, sans pépins, crue",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse orange",
+  "grams": 184.0,
+  "source": "USDA SR Legacy #169097 « Oranges, raw, all commercial varieties » : 1 large (3-1/16\" dia) = 184 g"
+ },
+ {
+  "ciqual": 13009,
+  "food": "Citron, chair sans peau, sans pépins, cru",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petit citron (chair)",
+  "grams": 58.0,
+  "source": "USDA SR Legacy #167746 « Lemons, raw, without peel » : 1 fruit (2-1/8\" dia) = 58 g"
+ },
+ {
+  "ciqual": 13009,
+  "food": "Citron, chair sans peau, sans pépins, cru",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 citron moyen (chair)",
+  "grams": 84.0,
+  "source": "USDA SR Legacy #167746 « Lemons, raw, without peel » : 1 fruit (2-3/8\" dia) = 84 g"
+ },
+ {
+  "ciqual": 2028,
+  "food": "Jus de citron, pur jus",
+  "unit": "juice",
+  "size": null,
+  "label": "le jus d'1 citron",
+  "grams": 48.0,
+  "source": "USDA SR Legacy #167747 « Lemon juice, raw » : 1 lemon yields = 48 g"
+ },
+ {
+  "ciqual": 2028,
+  "food": "Jus de citron, pur jus",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 244.0,
+  "source": "USDA SR Legacy #167747 « Lemon juice, raw » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 2028,
+  "food": "Jus de citron, pur jus",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.25,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #167747 « Lemon juice, raw » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 2028,
+  "food": "Jus de citron, pur jus",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 5.08,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : 1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #167747 « Lemon juice, raw » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 13125,
+  "food": "Citron, zeste, cru",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de zeste de citron",
+  "grams": 6.0,
+  "source": "USDA SR Legacy #167749 « Lemon peel, raw » : 1 tbsp = 6 g"
+ },
+ {
+  "ciqual": 13125,
+  "food": "Citron, zeste, cru",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de zeste de citron",
+  "grams": 2.0,
+  "source": "USDA SR Legacy #167749 « Lemon peel, raw » : 1 tsp = 2 g"
+ },
+ {
+  "ciqual": 13067,
+  "food": "Citron vert ou lime, chair sans peau, sans pépins, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 citron vert (chair)",
+  "grams": 67.0,
+  "source": "USDA SR Legacy #168155 « Limes, raw » : 1 fruit (2\" dia) = 67 g"
+ },
+ {
+  "ciqual": 13040,
+  "food": "Pomelo (dit Pamplemousse), chair sans peau, sans pépins, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 pomelo (chair)",
+  "grams": 246.0,
+  "source": "USDA SR Legacy #174673 « Grapefruit, raw, pink and red, all areas » : 0.5 fruit (3-3/4\" dia) = 123 g"
+ },
+ {
+  "ciqual": 13024,
+  "food": "Clémentine ou mandarine, chair sans peau, sans pépins, crue",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petite clémentine",
+  "grams": 76.0,
+  "source": "USDA SR Legacy #169105 « Tangerines, (mandarin oranges), raw » : 1 small (2-1/4\" dia) = 76 g"
+ },
+ {
+  "ciqual": 13024,
+  "food": "Clémentine ou mandarine, chair sans peau, sans pépins, crue",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 clémentine moyenne",
+  "grams": 88.0,
+  "source": "USDA SR Legacy #169105 « Tangerines, (mandarin oranges), raw » : 1 medium (2-1/2\" dia) = 88 g"
+ },
+ {
+  "ciqual": 13024,
+  "food": "Clémentine ou mandarine, chair sans peau, sans pépins, crue",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse clémentine",
+  "grams": 120.0,
+  "source": "USDA SR Legacy #169105 « Tangerines, (mandarin oranges), raw » : 1 large (2-3/4\" dia) = 120 g"
+ },
+ {
+  "ciqual": 13021,
+  "food": "Kiwi, chair sans peau, avec pépins, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 kiwi",
+  "grams": 69.0,
+  "source": "USDA SR Legacy #168153 « Kiwifruit, green, raw » : 1 fruit (2\" dia) = 69 g"
+ },
+ {
+  "ciqual": 13043,
+  "food": "Pêche, chair et peau, sans noyau, crue",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petite pêche",
+  "grams": 130.0,
+  "source": "USDA SR Legacy #169928 « Peaches, yellow, raw » : 1 small (2-1/2\" dia) = 130 g"
+ },
+ {
+  "ciqual": 13043,
+  "food": "Pêche, chair et peau, sans noyau, crue",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 pêche moyenne",
+  "grams": 150.0,
+  "source": "USDA SR Legacy #169928 « Peaches, yellow, raw » : 1 medium (2-2/3\" dia) = 150 g"
+ },
+ {
+  "ciqual": 13043,
+  "food": "Pêche, chair et peau, sans noyau, crue",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse pêche",
+  "grams": 175.0,
+  "source": "USDA SR Legacy #169928 « Peaches, yellow, raw » : 1 large (2-3/4\" dia) = 175 g"
+ },
+ {
+  "ciqual": 13000,
+  "food": "Abricot, dénoyauté, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 abricot",
+  "grams": 35.0,
+  "source": "USDA SR Legacy #171697 « Apricots, raw » : 1 apricot = 35 g"
+ },
+ {
+  "ciqual": 13100,
+  "food": "Prune, sans noyau, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 prune",
+  "grams": 66.0,
+  "source": "USDA SR Legacy #169949 « Plums, raw » : 1 fruit (2-1/8\" dia) = 66 g"
+ },
+ {
+  "ciqual": 13014,
+  "food": "Fraise, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 fraise",
+  "grams": 12.0,
+  "source": "USDA SR Legacy #167762 « Strawberries, raw » : 1 medium (1-1/4\" dia) = 12 g"
+ },
+ {
+  "ciqual": 13014,
+  "food": "Fraise, crue",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de fraises (240 ml)",
+  "grams": 144.0,
+  "source": "USDA SR Legacy #167762 « Strawberries, raw » : 1 cup, whole = 144 g"
+ },
+ {
+  "ciqual": 13015,
+  "food": "Framboise, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 framboise",
+  "grams": 1.9,
+  "source": "USDA SR Legacy #167755 « Raspberries, raw » : 10 raspberries = 19 g"
+ },
+ {
+  "ciqual": 13015,
+  "food": "Framboise, crue",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de framboises (240 ml)",
+  "grams": 123.0,
+  "source": "USDA SR Legacy #167755 « Raspberries, raw » : 1 cup = 123 g"
+ },
+ {
+  "ciqual": 13028,
+  "food": "Myrtille, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 myrtille",
+  "grams": 1.36,
+  "source": "USDA SR Legacy #171711 « Blueberries, raw » : 50 berries = 68 g"
+ },
+ {
+  "ciqual": 13028,
+  "food": "Myrtille, crue",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de myrtilles (240 ml)",
+  "grams": 148.0,
+  "source": "USDA SR Legacy #171711 « Blueberries, raw » : 1 cup = 148 g"
+ },
+ {
+  "ciqual": 13395,
+  "food": "Raisin cru (aliment moyen)",
+  "unit": "piece",
+  "size": null,
+  "label": "1 grain de raisin",
+  "grams": 4.9,
+  "source": "USDA SR Legacy #174683 « Grapes, red or green (European type, such as Thompson seedless), raw » : 10 grapes = 49 g"
+ },
+ {
+  "ciqual": 13395,
+  "food": "Raisin cru (aliment moyen)",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de raisin (240 ml)",
+  "grams": 151.0,
+  "source": "USDA SR Legacy #174683 « Grapes, red or green (European type, such as Thompson seedless), raw » : 1 cup = 151 g"
+ },
+ {
+  "ciqual": 13008,
+  "food": "Ceriser, chair et peau, sans noyau, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 cerise",
+  "grams": 8.2,
+  "source": "USDA SR Legacy #171719 « Cherries, sweet, raw » : 1 cherry = 8.2 g"
+ },
+ {
+  "ciqual": 13008,
+  "food": "Ceriser, chair et peau, sans noyau, crue",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de cerises dénoyautées (240 ml)",
+  "grams": 154.0,
+  "source": "USDA SR Legacy #171719 « Cherries, sweet, raw » : 1 cup, without pits = 154 g"
+ },
+ {
+  "ciqual": 13025,
+  "food": "Mangue, chair sans peau, sans noyau, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 mangue (chair)",
+  "grams": 336.0,
+  "source": "USDA SR Legacy #169910 « Mangos, raw » : 1 fruit without refuse = 336 g"
+ },
+ {
+  "ciqual": 13002,
+  "food": "Ananas, chair sans peau, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 ananas (chair)",
+  "grams": 905.0,
+  "source": "USDA SR Legacy #169124 « Pineapple, raw, all varieties » : 1 fruit = 905 g"
+ },
+ {
+  "ciqual": 13002,
+  "food": "Ananas, chair sans peau, cru",
+  "unit": "slice",
+  "size": null,
+  "label": "1 tranche d'ananas",
+  "grams": 84.0,
+  "source": "USDA SR Legacy #169124 « Pineapple, raw, all varieties » : 1 slice (3-1/2\" dia x 3/4\" thick) = 84 g"
+ },
+ {
+  "ciqual": 13026,
+  "food": "Melon cantaloup (par ex.: Charentais), chair sans peau, sans pépins, cru",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petit melon (chair)",
+  "grams": 441.0,
+  "source": "USDA SR Legacy #169092 « Melons, cantaloupe, raw » : 1 melon, small (about 4-1/4\" dia) = 441 g"
+ },
+ {
+  "ciqual": 13026,
+  "food": "Melon cantaloup (par ex.: Charentais), chair sans peau, sans pépins, cru",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 melon moyen (chair)",
+  "grams": 552.0,
+  "source": "USDA SR Legacy #169092 « Melons, cantaloupe, raw » : 1 melon, medium (about 5\" dia) = 552 g"
+ },
+ {
+  "ciqual": 13036,
+  "food": "Pastèque, chair sans peau, sans pépins, crue",
+  "unit": "slice",
+  "size": null,
+  "label": "1 tranche de pastèque",
+  "grams": 286.0,
+  "source": "USDA SR Legacy #167765 « Watermelon, raw » : 1 wedge (approx 1/16 of melon) = 286 g"
+ },
+ {
+  "ciqual": 13012,
+  "food": "Figue, crue",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 petite figue",
+  "grams": 40.0,
+  "source": "USDA SR Legacy #173021 « Figs, raw » : 1 small (1-1/2\" dia) = 40 g"
+ },
+ {
+  "ciqual": 13012,
+  "food": "Figue, crue",
+  "unit": "piece",
+  "size": "medium",
+  "label": "1 figue moyenne",
+  "grams": 50.0,
+  "source": "USDA SR Legacy #173021 « Figs, raw » : 1 medium (2-1/4\" dia) = 50 g"
+ },
+ {
+  "ciqual": 13012,
+  "food": "Figue, crue",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 grosse figue",
+  "grams": 64.0,
+  "source": "USDA SR Legacy #173021 « Figs, raw » : 1 large (2-1/2\" dia) = 64 g"
+ },
+ {
+  "ciqual": 13011,
+  "food": "Datte, chair et peau, sans noyau, sèche",
+  "unit": "piece",
+  "size": "small",
+  "label": "1 datte (type Deglet Nour)",
+  "grams": 7.1,
+  "source": "USDA SR Legacy #171726 « Dates, deglet noor » : 1 date, pitted = 7.1 g"
+ },
+ {
+  "ciqual": 13011,
+  "food": "Datte, chair et peau, sans noyau, sèche",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 datte Medjool",
+  "grams": 24.0,
+  "source": "USDA SR Legacy #168191 « Dates, medjool » : 1 date, pitted = 24 g"
+ },
+ {
+  "ciqual": 15006,
+  "food": "Noix de coco, chair, fraîche",
+  "unit": "piece",
+  "size": null,
+  "label": "la chair d'1 noix de coco",
+  "grams": 397.0,
+  "source": "USDA SR Legacy #170169 « Nuts, coconut meat, raw » : 1 medium = 397 g"
+ },
+ {
+  "ciqual": 15007,
+  "food": "Noix de coco, chair, sèche",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de noix de coco râpée (240 ml)",
+  "grams": 93.0,
+  "source": "USDA SR Legacy #168586 « Nuts, coconut meat, dried (desiccated), sweetened, shredded » : 1 cup, shredded = 93 g"
+ },
+ {
+  "ciqual": 15007,
+  "food": "Noix de coco, chair, sèche",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 5.81,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168586 « Nuts, coconut meat, dried (desiccated), sweetened, shredded » : 1 cup, shredded = 93 g"
+ },
+ {
+  "ciqual": 13018,
+  "food": "Grenade, chair sans peau, avec pépins, crue",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de grains de grenade (240 ml)",
+  "grams": 174.0,
+  "source": "USDA SR Legacy #169134 « Pomegranates, raw » : 0.5 cup arils (seed/juice sacs) = 87 g"
+ },
+ {
+  "ciqual": 13016,
+  "food": "Fruit de la passion ou maracudja, chair sans peau, avec pépins, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 fruit de la passion (chair)",
+  "grams": 18.0,
+  "source": "USDA SR Legacy #169108 « Passion-fruit, (granadilla), purple, raw » : 1 fruit without refuse = 18 g"
+ },
+ {
+  "ciqual": 13046,
+  "food": "Raisin sec",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de raisins secs (240 ml)",
+  "grams": 145.0,
+  "source": "USDA SR Legacy #168165 « Raisins, dark, seedless (Includes foods for USDA's Food Distribution Program) » : 1 cup (not packed) = 145 g"
+ },
+ {
+  "ciqual": 13046,
+  "food": "Raisin sec",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 9.06,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168165 « Raisins, dark, seedless (Includes foods for USDA's Food Distribution Program) » : 1 cup (not packed) = 145 g"
+ },
+ {
+  "ciqual": 13178,
+  "food": "Canneberge ou cranberry, séchée, sucrée",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de cranberries séchées (240 ml)",
+  "grams": 160.0,
+  "source": "USDA SR Legacy #171723 « Cranberries, dried, sweetened (Includes foods for USDA's Food Distribution Program) » : 0.25 cup = 40 g"
+ },
+ {
+  "ciqual": 13178,
+  "food": "Canneberge ou cranberry, séchée, sucrée",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 10.0,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #171723 « Cranberries, dried, sweetened (Includes foods for USDA's Food Distribution Program) » : 0.25 cup = 40 g"
+ },
+ {
+  "ciqual": 13001,
+  "food": "Abricot, dénoyauté, sec",
+  "unit": "piece",
+  "size": null,
+  "label": "1 abricot sec",
+  "grams": 7.0,
+  "source": "USDA SR Legacy #173941 « Apricots, dried, sulfured, uncooked » : 1 half = 3.5 g (× 2)"
+ },
+ {
+  "ciqual": 13042,
+  "food": "Pruneau, sans noyau, sec",
+  "unit": "piece",
+  "size": null,
+  "label": "1 pruneau",
+  "grams": 9.5,
+  "source": "USDA SR Legacy #168162 « Plums, dried (prunes), uncooked » : 1 prune, pitted = 9.5 g"
+ },
+ {
+  "ciqual": 13013,
+  "food": "Figue, sèche",
+  "unit": "piece",
+  "size": null,
+  "label": "1 figue sèche",
+  "grams": 8.4,
+  "source": "USDA SR Legacy #174665 « Figs, dried, uncooked » : 1 fig = 8.4 g"
+ },
+ {
+  "ciqual": 15000,
+  "food": "Amande, avec peau, sans sel ajouté",
+  "unit": "piece",
+  "size": null,
+  "label": "1 amande",
+  "grams": 1.2,
+  "source": "USDA SR Legacy #170567 « Nuts, almonds » : 1 almond = 1.2 g"
+ },
+ {
+  "ciqual": 15000,
+  "food": "Amande, avec peau, sans sel ajouté",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse d'amandes entières (240 ml)",
+  "grams": 143.0,
+  "source": "USDA SR Legacy #170567 « Nuts, almonds » : 1 cup, whole = 143 g"
+ },
+ {
+  "ciqual": 15000,
+  "food": "Amande, avec peau, sans sel ajouté",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 8.94,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170567 « Nuts, almonds » : 1 cup, whole = 143 g"
+ },
+ {
+  "ciqual": 15041,
+  "food": "Amande, émondée, sans sel ajouté",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe d'amandes émondées",
+  "grams": 9.1,
+  "source": "USDA SR Legacy #170568 « Nuts, almonds, blanched » : 1 tbsp = 9.1 g"
+ },
+ {
+  "ciqual": 15041,
+  "food": "Amande, émondée, sans sel ajouté",
+  "unit": "tbsp",
+  "size": "powder",
+  "label": "1 c. à soupe de poudre d'amande",
+  "grams": 5.94,
+  "source": "USDA SR Legacy #170567 « Nuts, almonds » : 1 cup, ground = 95 g (× 0.0625)"
+ },
+ {
+  "ciqual": 15005,
+  "food": "Noix, cerneau, séchée",
+  "unit": "piece",
+  "size": null,
+  "label": "1 cerneau de noix",
+  "grams": 2.02,
+  "source": "USDA SR Legacy #170187 « Nuts, walnuts, english » : 1 oz (14 halves) = 28.35 g (× 0.0714286)"
+ },
+ {
+  "ciqual": 15005,
+  "food": "Noix, cerneau, séchée",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de noix hachées (240 ml)",
+  "grams": 117.0,
+  "source": "USDA SR Legacy #170187 « Nuts, walnuts, english » : 1 cup, chopped = 117 g"
+ },
+ {
+  "ciqual": 15005,
+  "food": "Noix, cerneau, séchée",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 7.31,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170187 « Nuts, walnuts, english » : 1 cup, chopped = 117 g"
+ },
+ {
+  "ciqual": 15004,
+  "food": "Noisette, sans sel ajouté",
+  "unit": "piece",
+  "size": null,
+  "label": "1 noisette",
+  "grams": 1.4,
+  "source": "USDA SR Legacy #170581 « Nuts, hazelnuts or filberts » : 10 nuts = 14 g"
+ },
+ {
+  "ciqual": 15004,
+  "food": "Noisette, sans sel ajouté",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de noisettes (240 ml)",
+  "grams": 135.0,
+  "source": "USDA SR Legacy #170581 « Nuts, hazelnuts or filberts » : 1 cup, whole = 135 g"
+ },
+ {
+  "ciqual": 15004,
+  "food": "Noisette, sans sel ajouté",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 8.44,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170581 « Nuts, hazelnuts or filberts » : 1 cup, whole = 135 g"
+ },
+ {
+  "ciqual": 15054,
+  "food": "Noix de cajou, grillée, sans sel ajouté",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de noix de cajou",
+  "grams": 8.6,
+  "source": "USDA SR Legacy #170571 « Nuts, cashew nuts, dry roasted, without salt added » : 1 tbsp = 8.6 g"
+ },
+ {
+  "ciqual": 15054,
+  "food": "Noix de cajou, grillée, sans sel ajouté",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de noix de cajou (240 ml)",
+  "grams": 137.0,
+  "source": "USDA SR Legacy #170571 « Nuts, cashew nuts, dry roasted, without salt added » : 1 cup, halves and whole = 137 g"
+ },
+ {
+  "ciqual": 15044,
+  "food": "Pistache, grillée, sans sel ajouté",
+  "unit": "piece",
+  "size": null,
+  "label": "1 pistache",
+  "grams": 0.7,
+  "source": "USDA SR Legacy #170185 « Nuts, pistachio nuts, dry roasted, without salt added » : 1 kernel = 0.7 g"
+ },
+ {
+  "ciqual": 15044,
+  "food": "Pistache, grillée, sans sel ajouté",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de pistaches (240 ml)",
+  "grams": 123.0,
+  "source": "USDA SR Legacy #170185 « Nuts, pistachio nuts, dry roasted, without salt added » : 1 cup = 123 g"
+ },
+ {
+  "ciqual": 15044,
+  "food": "Pistache, grillée, sans sel ajouté",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 7.69,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170185 « Nuts, pistachio nuts, dry roasted, without salt added » : 1 cup = 123 g"
+ },
+ {
+  "ciqual": 15001,
+  "food": "Cacahuète, sans sel ajouté",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de cacahuètes (240 ml)",
+  "grams": 146.0,
+  "source": "USDA SR Legacy #172430 « Peanuts, all types, raw » : 1 cup = 146 g"
+ },
+ {
+  "ciqual": 15001,
+  "food": "Cacahuète, sans sel ajouté",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 9.12,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #172430 « Peanuts, all types, raw » : 1 cup = 146 g"
+ },
+ {
+  "ciqual": 15025,
+  "food": "Pignon de pin",
+  "unit": "piece",
+  "size": null,
+  "label": "1 pignon de pin",
+  "grams": 0.17,
+  "source": "USDA SR Legacy #170591 « Nuts, pine nuts, dried » : 10 nuts = 1.7 g"
+ },
+ {
+  "ciqual": 15025,
+  "food": "Pignon de pin",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de pignons (240 ml)",
+  "grams": 135.0,
+  "source": "USDA SR Legacy #170591 « Nuts, pine nuts, dried » : 1 cup = 135 g"
+ },
+ {
+  "ciqual": 15025,
+  "food": "Pignon de pin",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 8.44,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170591 « Nuts, pine nuts, dried » : 1 cup = 135 g"
+ },
+ {
+  "ciqual": 15010,
+  "food": "Sésame, graine",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de graines de sésame",
+  "grams": 9.0,
+  "source": "USDA SR Legacy #170150 « Seeds, sesame seeds, whole, dried » : 1 tbsp = 9 g"
+ },
+ {
+  "ciqual": 15010,
+  "food": "Sésame, graine",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 3.0,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #170150 « Seeds, sesame seeds, whole, dried » : 1 tbsp = 9 g"
+ },
+ {
+  "ciqual": 15047,
+  "food": "Chia, graine, séchée",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de graines de chia (240 ml)",
+  "grams": 168.0,
+  "source": "USDA FNDDS 2021-2023 #2707590 « Chia seeds » : 1 cup = 168 g"
+ },
+ {
+  "ciqual": 15047,
+  "food": "Chia, graine, séchée",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 10.5,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA FNDDS 2021-2023 #2707590 « Chia seeds » : 1 cup = 168 g"
+ },
+ {
+  "ciqual": 15047,
+  "food": "Chia, graine, séchée",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 3.5,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : 1 c. à soupe = 1/16 de tasse US ; base : USDA FNDDS 2021-2023 #2707590 « Chia seeds » : 1 cup = 168 g"
+ },
+ {
+  "ciqual": 15034,
+  "food": "Lin, graine",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de graines de lin",
+  "grams": 10.3,
+  "source": "USDA SR Legacy #169414 « Seeds, flaxseed » : 1 tbsp, whole = 10.3 g"
+ },
+ {
+  "ciqual": 15034,
+  "food": "Lin, graine",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de graines de lin",
+  "grams": 3.4,
+  "source": "USDA SR Legacy #169414 « Seeds, flaxseed » : 1 tsp, whole = 3.4 g"
+ },
+ {
+  "ciqual": 15011,
+  "food": "Tournesol, graine",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de graines de tournesol (240 ml)",
+  "grams": 140.0,
+  "source": "USDA SR Legacy #170562 « Seeds, sunflower seed kernels, dried » : 1 cup = 140 g"
+ },
+ {
+  "ciqual": 15011,
+  "food": "Tournesol, graine",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 8.75,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170562 « Seeds, sunflower seed kernels, dried » : 1 cup = 140 g"
+ },
+ {
+  "ciqual": 15064,
+  "food": "Courge, graine, séchée",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de graines de courge (240 ml)",
+  "grams": 129.0,
+  "source": "USDA SR Legacy #170556 « Seeds, pumpkin and squash seed kernels, dried » : 1 cup = 129 g"
+ },
+ {
+  "ciqual": 15064,
+  "food": "Courge, graine, séchée",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 8.06,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170556 « Seeds, pumpkin and squash seed kernels, dried » : 1 cup = 129 g"
+ },
+ {
+  "ciqual": 15202,
+  "food": "Beurre de cacahuète ou pâte d'arachide",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de beurre de cacahuète",
+  "grams": 16.0,
+  "source": "USDA SR Legacy #172470 « Peanut butter, smooth style, without salt » : 2 tbsp = 32 g"
+ },
+ {
+  "ciqual": 15202,
+  "food": "Beurre de cacahuète ou pâte d'arachide",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 5.33,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #172470 « Peanut butter, smooth style, without salt » : 2 tbsp = 32 g"
+ },
+ {
+  "ciqual": 15203,
+  "food": "Tahin ou purée de sésame",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de tahin",
+  "grams": 15.0,
+  "source": "USDA SR Legacy #169410 « Seeds, sesame butter, tahini, from raw and stone ground kernels » : 1 tbsp = 15 g"
+ },
+ {
+  "ciqual": 15203,
+  "food": "Tahin ou purée de sésame",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 5.0,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #169410 « Seeds, sesame butter, tahini, from raw and stone ground kernels » : 1 tbsp = 15 g"
+ },
+ {
+  "ciqual": 15026,
+  "food": "Noix de pécan, sans sel ajouté",
+  "unit": "piece",
+  "size": null,
+  "label": "1 noix de pécan",
+  "grams": 1.5,
+  "source": "USDA FNDDS 2021-2023 #2707522 « Pecans, unroasted » : 1 nut = 1.5 g"
+ },
+ {
+  "ciqual": 15008,
+  "food": "Noix du Brésil ou noix d'Amazonie, sans sel ajouté",
+  "unit": "piece",
+  "size": null,
+  "label": "1 noix du Brésil",
+  "grams": 5.0,
+  "source": "USDA SR Legacy #170569 « Nuts, brazilnuts, dried, unblanched » : 1 kernel = 5 g"
+ },
+ {
+  "ciqual": 15027,
+  "food": "Noix de macadamia, sans sel ajouté",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de noix de macadamia (240 ml)",
+  "grams": 134.0,
+  "source": "USDA SR Legacy #170178 « Nuts, macadamia nuts, raw » : 1 cup, whole or halves = 134 g"
+ },
+ {
+  "ciqual": 15027,
+  "food": "Noix de macadamia, sans sel ajouté",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 8.38,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170178 « Nuts, macadamia nuts, raw » : 1 cup, whole or halves = 134 g"
+ },
+ {
+  "ciqual": 9435,
+  "food": "Farine de blé tendre ou froment T65",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de farine (240 ml)",
+  "grams": 125.0,
+  "source": "USDA SR Legacy #168894 « Wheat flour, white, all-purpose, enriched, bleached » : 1 cup = 125 g"
+ },
+ {
+  "ciqual": 9435,
+  "food": "Farine de blé tendre ou froment T65",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 7.81,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168894 « Wheat flour, white, all-purpose, enriched, bleached » : 1 cup = 125 g"
+ },
+ {
+  "ciqual": 9435,
+  "food": "Farine de blé tendre ou froment T65",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.6,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : 1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168894 « Wheat flour, white, all-purpose, enriched, bleached » : 1 cup = 125 g"
+ },
+ {
+  "ciqual": 9436,
+  "food": "Farine de blé tendre ou froment T55 (pour pains)",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de farine (240 ml)",
+  "grams": 125.0,
+  "source": "USDA SR Legacy #168894 « Wheat flour, white, all-purpose, enriched, bleached » : 1 cup = 125 g"
+ },
+ {
+  "ciqual": 9436,
+  "food": "Farine de blé tendre ou froment T55 (pour pains)",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 7.81,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168894 « Wheat flour, white, all-purpose, enriched, bleached » : 1 cup = 125 g"
+ },
+ {
+  "ciqual": 9436,
+  "food": "Farine de blé tendre ou froment T55 (pour pains)",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.6,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : 1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168894 « Wheat flour, white, all-purpose, enriched, bleached » : 1 cup = 125 g"
+ },
+ {
+  "ciqual": 9440,
+  "food": "Farine de blé tendre ou froment T45 (pour pâtisserie)",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de farine (240 ml)",
+  "grams": 125.0,
+  "source": "USDA SR Legacy #168894 « Wheat flour, white, all-purpose, enriched, bleached » : 1 cup = 125 g"
+ },
+ {
+  "ciqual": 9440,
+  "food": "Farine de blé tendre ou froment T45 (pour pâtisserie)",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 7.81,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168894 « Wheat flour, white, all-purpose, enriched, bleached » : 1 cup = 125 g"
+ },
+ {
+  "ciqual": 9440,
+  "food": "Farine de blé tendre ou froment T45 (pour pâtisserie)",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.6,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : 1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168894 « Wheat flour, white, all-purpose, enriched, bleached » : 1 cup = 125 g"
+ },
+ {
+  "ciqual": 9410,
+  "food": "Farine de blé tendre ou froment T110",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de farine complète (240 ml)",
+  "grams": 120.0,
+  "source": "USDA SR Legacy #168893 « Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program) » : 1 cup = 120 g"
+ },
+ {
+  "ciqual": 9410,
+  "food": "Farine de blé tendre ou froment T110",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 7.5,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168893 « Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program) » : 1 cup = 120 g"
+ },
+ {
+  "ciqual": 9415,
+  "food": "Farine de blé tendre ou froment T150",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de farine complète (240 ml)",
+  "grams": 120.0,
+  "source": "USDA SR Legacy #168893 « Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program) » : 1 cup = 120 g"
+ },
+ {
+  "ciqual": 9415,
+  "food": "Farine de blé tendre ou froment T150",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 7.5,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168893 « Wheat flour, whole-grain (Includes foods for USDA's Food Distribution Program) » : 1 cup = 120 g"
+ },
+ {
+  "ciqual": 9510,
+  "food": "Amidon de maïs ou fécule de maïs",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de fécule de maïs (240 ml)",
+  "grams": 128.0,
+  "source": "USDA SR Legacy #169698 « Cornstarch » : 1 cup = 128 g"
+ },
+ {
+  "ciqual": 9510,
+  "food": "Amidon de maïs ou fécule de maïs",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 8.0,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #169698 « Cornstarch » : 1 cup = 128 g"
+ },
+ {
+  "ciqual": 9510,
+  "food": "Amidon de maïs ou fécule de maïs",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 2.67,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : 1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #169698 « Cornstarch » : 1 cup = 128 g"
+ },
+ {
+  "ciqual": 9100,
+  "food": "Riz blanc, cru",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de riz cru (240 ml)",
+  "grams": 185.0,
+  "source": "USDA SR Legacy #168877 « Rice, white, long-grain, regular, raw, enriched » : 1 cup = 185 g"
+ },
+ {
+  "ciqual": 9100,
+  "food": "Riz blanc, cru",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 11.56,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168877 « Rice, white, long-grain, regular, raw, enriched » : 1 cup = 185 g"
+ },
+ {
+  "ciqual": 9119,
+  "food": "Riz thaï ou basmati, cru",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de riz cru (240 ml)",
+  "grams": 185.0,
+  "source": "USDA SR Legacy #168877 « Rice, white, long-grain, regular, raw, enriched » : 1 cup = 185 g"
+ },
+ {
+  "ciqual": 9119,
+  "food": "Riz thaï ou basmati, cru",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 11.56,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168877 « Rice, white, long-grain, regular, raw, enriched » : 1 cup = 185 g"
+ },
+ {
+  "ciqual": 9102,
+  "food": "Riz complet, cru",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de riz complet cru (240 ml)",
+  "grams": 185.0,
+  "source": "USDA SR Legacy #169703 « Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program) » : 1 cup = 185 g"
+ },
+ {
+  "ciqual": 9102,
+  "food": "Riz complet, cru",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 11.56,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #169703 « Rice, brown, long-grain, raw (Includes foods for USDA's Food Distribution Program) » : 1 cup = 185 g"
+ },
+ {
+  "ciqual": 9610,
+  "food": "Semoule de blé dur, crue",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de semoule crue (240 ml)",
+  "grams": 173.0,
+  "source": "USDA SR Legacy #169699 « Couscous, dry » : 1 cup = 173 g"
+ },
+ {
+  "ciqual": 9610,
+  "food": "Semoule de blé dur, crue",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 10.81,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #169699 « Couscous, dry » : 1 cup = 173 g"
+ },
+ {
+  "ciqual": 9340,
+  "food": "Quinoa, cru",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de quinoa cru (240 ml)",
+  "grams": 170.0,
+  "source": "USDA SR Legacy #168874 « Quinoa, uncooked » : 1 cup = 170 g"
+ },
+ {
+  "ciqual": 9340,
+  "food": "Quinoa, cru",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 10.62,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168874 « Quinoa, uncooked » : 1 cup = 170 g"
+ },
+ {
+  "ciqual": 32140,
+  "food": "Flocons d'avoine",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de flocons d'avoine (240 ml)",
+  "grams": 81.0,
+  "source": "USDA SR Legacy #173904 « Cereals, oats, regular and quick, not fortified, dry » : 1 cup = 81 g"
+ },
+ {
+  "ciqual": 32140,
+  "food": "Flocons d'avoine",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 5.06,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #173904 « Cereals, oats, regular and quick, not fortified, dry » : 1 cup = 81 g"
+ },
+ {
+  "ciqual": 9690,
+  "food": "Boulgour de blé, cru",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de boulgour cru (240 ml)",
+  "grams": 140.0,
+  "source": "USDA SR Legacy #170688 « Bulgur, dry » : 1 cup = 140 g"
+ },
+ {
+  "ciqual": 9690,
+  "food": "Boulgour de blé, cru",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 8.75,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170688 « Bulgur, dry » : 1 cup = 140 g"
+ },
+ {
+  "ciqual": 7200,
+  "food": "Pain de mie blanc, préemballé",
+  "unit": "slice",
+  "size": null,
+  "label": "1 tranche de pain de mie",
+  "grams": 29.0,
+  "source": "USDA SR Legacy #174924 « Bread, white, commercially prepared (includes soft bread crumbs) » : 1 slice = 29 g"
+ },
+ {
+  "ciqual": 7815,
+  "food": "Tortilla souple (à garnir), à base de blé",
+  "unit": "piece",
+  "size": null,
+  "label": "1 tortilla de blé",
+  "grams": 49.0,
+  "source": "USDA SR Legacy #167535 « Tortillas, ready-to-bake or -fry, flour, shelf stable » : 1 tortilla = 49 g"
+ },
+ {
+  "ciqual": 7180,
+  "food": "Pain pita",
+  "unit": "piece",
+  "size": null,
+  "label": "1 pain pita",
+  "grams": 60.0,
+  "source": "USDA SR Legacy #172816 « Bread, pita, white, unenriched » : 1 pita, large (6-1/2\" dia) = 60 g"
+ },
+ {
+  "ciqual": 7001,
+  "food": "Pain blanc (par ex. : baguette, boule…)",
+  "unit": "piece",
+  "size": null,
+  "label": "1 baguette",
+  "grams": 250,
+  "source": "Poids usuel de la baguette en France (250 g)"
+ },
+ {
+  "ciqual": 7007,
+  "food": "Pain de tradition française (par ex. : baguette, boule…)",
+  "unit": "piece",
+  "size": null,
+  "label": "1 baguette",
+  "grams": 250,
+  "source": "Poids usuel de la baguette en France (250 g)"
+ },
+ {
+  "ciqual": 20359,
+  "food": "Lentille, sèche (aliment moyen)",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de lentilles sèches (240 ml)",
+  "grams": 192.0,
+  "source": "USDA SR Legacy #172420 « Lentils, raw » : 1 cup = 192 g"
+ },
+ {
+  "ciqual": 20359,
+  "food": "Lentille, sèche (aliment moyen)",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de lentilles sèches",
+  "grams": 12.0,
+  "source": "USDA SR Legacy #172420 « Lentils, raw » : 1 tablespoon = 12 g"
+ },
+ {
+  "ciqual": 20585,
+  "food": "Lentille verte, sèche",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de lentilles sèches (240 ml)",
+  "grams": 192.0,
+  "source": "USDA SR Legacy #172420 « Lentils, raw » : 1 cup = 192 g"
+ },
+ {
+  "ciqual": 20585,
+  "food": "Lentille verte, sèche",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de lentilles sèches",
+  "grams": 12.0,
+  "source": "USDA SR Legacy #172420 « Lentils, raw » : 1 tablespoon = 12 g"
+ },
+ {
+  "ciqual": 20535,
+  "food": "Lentille corail, sèche",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de lentilles sèches (240 ml)",
+  "grams": 192.0,
+  "source": "USDA SR Legacy #172420 « Lentils, raw » : 1 cup = 192 g"
+ },
+ {
+  "ciqual": 20535,
+  "food": "Lentille corail, sèche",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de lentilles sèches",
+  "grams": 12.0,
+  "source": "USDA SR Legacy #172420 « Lentils, raw » : 1 tablespoon = 12 g"
+ },
+ {
+  "ciqual": 20516,
+  "food": "Pois chiche, sec",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de pois chiches secs (240 ml)",
+  "grams": 200.0,
+  "source": "USDA SR Legacy #173756 « Chickpeas (garbanzo beans, bengal gram), mature seeds, raw » : 1 cup = 200 g"
+ },
+ {
+  "ciqual": 20516,
+  "food": "Pois chiche, sec",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de pois chiches secs",
+  "grams": 12.5,
+  "source": "USDA SR Legacy #173756 « Chickpeas (garbanzo beans, bengal gram), mature seeds, raw » : 1 tbsp = 12.5 g"
+ },
+ {
+  "ciqual": 20532,
+  "food": "Pois chiche, appertisé, égoutté",
+  "unit": "can",
+  "size": null,
+  "label": "1 boîte de pois chiches égouttés",
+  "grams": 253.0,
+  "source": "USDA SR Legacy #173800 « Chickpeas (garbanzo beans, bengal gram), mature seeds, canned, drained solids » : 1 can drained = 253 g"
+ },
+ {
+  "ciqual": 20525,
+  "food": "Haricot rouge, sec",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de haricots rouges secs (240 ml)",
+  "grams": 184.0,
+  "source": "USDA SR Legacy #175193 « Beans, kidney, all types, mature seeds, raw » : 1 cup = 184 g"
+ },
+ {
+  "ciqual": 20525,
+  "food": "Haricot rouge, sec",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 11.5,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #175193 « Beans, kidney, all types, mature seeds, raw » : 1 cup = 184 g"
+ },
+ {
+  "ciqual": 20501,
+  "food": "Haricot blanc, sec",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de haricots blancs secs (240 ml)",
+  "grams": 202.0,
+  "source": "USDA SR Legacy #175202 « Beans, white, mature seeds, raw » : 1 cup = 202 g"
+ },
+ {
+  "ciqual": 20501,
+  "food": "Haricot blanc, sec",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de haricots blancs secs",
+  "grams": 12.6,
+  "source": "USDA SR Legacy #175202 « Beans, white, mature seeds, raw » : 1 tbsp = 12.6 g"
+ },
+ {
+  "ciqual": 9614,
+  "food": "Polenta ou semoule de maïs, précuite, à cuire",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de polenta (240 ml)",
+  "grams": 157.0,
+  "source": "USDA SR Legacy #168867 « Cornmeal, degermed, enriched, yellow » : 1 cup = 157 g"
+ },
+ {
+  "ciqual": 9614,
+  "food": "Polenta ou semoule de maïs, précuite, à cuire",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 9.81,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168867 « Cornmeal, degermed, enriched, yellow » : 1 cup = 157 g"
+ },
+ {
+  "ciqual": 9540,
+  "food": "Farine de sarrasin",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de farine de sarrasin (240 ml)",
+  "grams": 120.0,
+  "source": "USDA SR Legacy #170687 « Buckwheat flour, whole-groat » : 1 cup = 120 g"
+ },
+ {
+  "ciqual": 9540,
+  "food": "Farine de sarrasin",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 7.5,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170687 « Buckwheat flour, whole-groat » : 1 cup = 120 g"
+ },
+ {
+  "ciqual": 11045,
+  "food": "Levure de boulanger déshydratée",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de levure de boulanger sèche",
+  "grams": 4.0,
+  "source": "USDA SR Legacy #175043 « Leavening agents, yeast, baker's, active dry » : 1 tsp = 4 g"
+ },
+ {
+  "ciqual": 11045,
+  "food": "Levure de boulanger déshydratée",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de levure de boulanger sèche",
+  "grams": 12.0,
+  "source": "USDA SR Legacy #175043 « Leavening agents, yeast, baker's, active dry » : 1 tbsp = 12 g"
+ },
+ {
+  "ciqual": 11010,
+  "food": "Levure de boulanger fraîche",
+  "unit": "piece",
+  "size": null,
+  "label": "1 cube de levure fraîche",
+  "grams": 42,
+  "source": "Conditionnement standard du commerce en France (cube de 42 g)"
+ },
+ {
+  "ciqual": 11046,
+  "food": "Levure chimique ou poudre à lever",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de levure chimique",
+  "grams": 4.6,
+  "source": "USDA SR Legacy #172803 « Leavening agents, baking powder, double-acting, sodium aluminum sulfate » : 1 tsp = 4.6 g"
+ },
+ {
+  "ciqual": 11046,
+  "food": "Levure chimique ou poudre à lever",
+  "unit": "piece",
+  "size": null,
+  "label": "1 sachet de levure chimique",
+  "grams": 11,
+  "source": "Conditionnement standard du commerce en France (sachet de 11 g)"
+ },
+ {
+  "ciqual": 11507,
+  "food": "Bicarbonate de soude",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de bicarbonate",
+  "grams": 4.6,
+  "source": "USDA SR Legacy #175040 « Leavening agents, baking soda » : 1 tsp = 4.6 g"
+ },
+ {
+  "ciqual": 23424,
+  "food": "Pâte feuilletée, pur beurre, préemballée, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 rouleau de pâte feuilletée",
+  "grams": 230,
+  "source": "Conditionnement standard du commerce en France (rouleau de 230 g)"
+ },
+ {
+  "ciqual": 23420,
+  "food": "Pâte feuilletée, matière grasse végétale, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 rouleau de pâte feuilletée",
+  "grams": 230,
+  "source": "Conditionnement standard du commerce en France (rouleau de 230 g)"
+ },
+ {
+  "ciqual": 23414,
+  "food": "Pâte brisée, pur beurre, préemballée, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 rouleau de pâte brisée",
+  "grams": 230,
+  "source": "Conditionnement standard du commerce en France (rouleau de 230 g)"
+ },
+ {
+  "ciqual": 23410,
+  "food": "Pâte brisée, matière grasse végétale, préemballée, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 rouleau de pâte brisée",
+  "grams": 230,
+  "source": "Conditionnement standard du commerce en France (rouleau de 230 g)"
+ },
+ {
+  "ciqual": 19041,
+  "food": "Lait demi-écrémé, UHT",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 244.0,
+  "source": "USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19041,
+  "food": "Lait demi-écrémé, UHT",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 206.27,
+  "source": "verre de 20 cl, calculé depuis la tasse US (236,6 ml) ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19041,
+  "food": "Lait demi-écrémé, UHT",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.25,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19042,
+  "food": "Lait demi-écrémé, pasteurisé",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 244.0,
+  "source": "USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19042,
+  "food": "Lait demi-écrémé, pasteurisé",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 206.27,
+  "source": "verre de 20 cl, calculé depuis la tasse US (236,6 ml) ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19042,
+  "food": "Lait demi-écrémé, pasteurisé",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.25,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19037,
+  "food": "Lait demi-écrémé, UHT, enrichi en vitamine D",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 244.0,
+  "source": "USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19037,
+  "food": "Lait demi-écrémé, UHT, enrichi en vitamine D",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 206.27,
+  "source": "verre de 20 cl, calculé depuis la tasse US (236,6 ml) ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19037,
+  "food": "Lait demi-écrémé, UHT, enrichi en vitamine D",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.25,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19023,
+  "food": "Lait entier, UHT",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 244.0,
+  "source": "USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19023,
+  "food": "Lait entier, UHT",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 206.27,
+  "source": "verre de 20 cl, calculé depuis la tasse US (236,6 ml) ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19023,
+  "food": "Lait entier, UHT",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.25,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19024,
+  "food": "Lait entier, pasteurisé",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 244.0,
+  "source": "USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19024,
+  "food": "Lait entier, pasteurisé",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 206.27,
+  "source": "verre de 20 cl, calculé depuis la tasse US (236,6 ml) ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19024,
+  "food": "Lait entier, pasteurisé",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.25,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19050,
+  "food": "Lait écrémé, UHT",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 244.0,
+  "source": "USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19050,
+  "food": "Lait écrémé, UHT",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 206.27,
+  "source": "verre de 20 cl, calculé depuis la tasse US (236,6 ml) ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19050,
+  "food": "Lait écrémé, UHT",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.25,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19051,
+  "food": "Lait écrémé, pasteurisé",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 244.0,
+  "source": "USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19051,
+  "food": "Lait écrémé, pasteurisé",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 206.27,
+  "source": "verre de 20 cl, calculé depuis la tasse US (236,6 ml) ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19051,
+  "food": "Lait écrémé, pasteurisé",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.25,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #171267 « Milk, reduced fat, fluid, 2% milkfat, with added vitamin A and vitamin D » : 1 cup = 244 g"
+ },
+ {
+  "ciqual": 19417,
+  "food": "Crème 30% MG, fluide, UHT",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.0,
+  "source": "USDA SR Legacy #170859 « Cream, fluid, heavy whipping » : 1 tbsp = 15 g"
+ },
+ {
+  "ciqual": 19417,
+  "food": "Crème 30% MG, fluide, UHT",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 238.0,
+  "source": "USDA SR Legacy #170859 « Cream, fluid, heavy whipping » : 1 cup, fluid (yields 2 cups whipped) = 238 g"
+ },
+ {
+  "ciqual": 19436,
+  "food": "Crème 12 à 20% MG, légère, fluide, rayon frais",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.0,
+  "source": "USDA SR Legacy #170859 « Cream, fluid, heavy whipping » : 1 tbsp = 15 g"
+ },
+ {
+  "ciqual": 19436,
+  "food": "Crème 12 à 20% MG, légère, fluide, rayon frais",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 238.0,
+  "source": "USDA SR Legacy #170859 « Cream, fluid, heavy whipping » : 1 cup, fluid (yields 2 cups whipped) = 238 g"
+ },
+ {
+  "ciqual": 19415,
+  "food": "Crème 30% MG, semi-épaisse, UHT",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.0,
+  "source": "USDA SR Legacy #170859 « Cream, fluid, heavy whipping » : 1 tbsp = 15 g"
+ },
+ {
+  "ciqual": 19415,
+  "food": "Crème 30% MG, semi-épaisse, UHT",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 238.0,
+  "source": "USDA SR Legacy #170859 « Cream, fluid, heavy whipping » : 1 cup, fluid (yields 2 cups whipped) = 238 g"
+ },
+ {
+  "ciqual": 19410,
+  "food": "Crème 30% MG, épaisse, rayon frais",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 12.0,
+  "source": "USDA SR Legacy #171257 « Cream, sour, cultured » : 1 tbsp = 12 g"
+ },
+ {
+  "ciqual": 19431,
+  "food": "Crème 12 à 25% MG, légère, épaisse, rayon frais",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 12.0,
+  "source": "USDA SR Legacy #171257 « Cream, sour, cultured » : 1 tbsp = 12 g"
+ },
+ {
+  "ciqual": 19411,
+  "food": "Crème d'Isigny, >= 35% MG",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 12.0,
+  "source": "USDA SR Legacy #171257 « Cream, sour, cultured » : 1 tbsp = 12 g"
+ },
+ {
+  "ciqual": 16400,
+  "food": "Beurre à 80% MG minimum, doux",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 14.2,
+  "source": "USDA SR Legacy #173430 « Butter, without salt » : 1 tbsp = 14.2 g"
+ },
+ {
+  "ciqual": 16400,
+  "food": "Beurre à 80% MG minimum, doux",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 4.73,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #173430 « Butter, without salt » : 1 tbsp = 14.2 g"
+ },
+ {
+  "ciqual": 16400,
+  "food": "Beurre à 80% MG minimum, doux",
+  "unit": "piece",
+  "size": null,
+  "label": "1 noisette de beurre",
+  "grams": 5.0,
+  "source": "USDA SR Legacy #173430 « Butter, without salt » : 1 pat (1\" sq, 1/3\" high) = 5 g"
+ },
+ {
+  "ciqual": 16400,
+  "food": "Beurre à 80% MG minimum, doux",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 plaquette de beurre",
+  "grams": 250,
+  "source": "Conditionnement standard du commerce en France (plaquette de 250 g)"
+ },
+ {
+  "ciqual": 16402,
+  "food": "Beurre à 80% MG, demi-sel",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 14.2,
+  "source": "USDA SR Legacy #173430 « Butter, without salt » : 1 tbsp = 14.2 g"
+ },
+ {
+  "ciqual": 16402,
+  "food": "Beurre à 80% MG, demi-sel",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 4.73,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #173430 « Butter, without salt » : 1 tbsp = 14.2 g"
+ },
+ {
+  "ciqual": 16402,
+  "food": "Beurre à 80% MG, demi-sel",
+  "unit": "piece",
+  "size": null,
+  "label": "1 noisette de beurre",
+  "grams": 5.0,
+  "source": "USDA SR Legacy #173430 « Butter, without salt » : 1 pat (1\" sq, 1/3\" high) = 5 g"
+ },
+ {
+  "ciqual": 16402,
+  "food": "Beurre à 80% MG, demi-sel",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 plaquette de beurre",
+  "grams": 250,
+  "source": "Conditionnement standard du commerce en France (plaquette de 250 g)"
+ },
+ {
+  "ciqual": 16403,
+  "food": "Beurre à 80% MG, salé",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 14.2,
+  "source": "USDA SR Legacy #173430 « Butter, without salt » : 1 tbsp = 14.2 g"
+ },
+ {
+  "ciqual": 16403,
+  "food": "Beurre à 80% MG, salé",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 4.73,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #173430 « Butter, without salt » : 1 tbsp = 14.2 g"
+ },
+ {
+  "ciqual": 16403,
+  "food": "Beurre à 80% MG, salé",
+  "unit": "piece",
+  "size": null,
+  "label": "1 noisette de beurre",
+  "grams": 5.0,
+  "source": "USDA SR Legacy #173430 « Butter, without salt » : 1 pat (1\" sq, 1/3\" high) = 5 g"
+ },
+ {
+  "ciqual": 16403,
+  "food": "Beurre à 80% MG, salé",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 plaquette de beurre",
+  "grams": 250,
+  "source": "Conditionnement standard du commerce en France (plaquette de 250 g)"
+ },
+ {
+  "ciqual": 16404,
+  "food": "Beurre à 80% MG minimum, doux, tendre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 14.2,
+  "source": "USDA SR Legacy #173430 « Butter, without salt » : 1 tbsp = 14.2 g"
+ },
+ {
+  "ciqual": 16404,
+  "food": "Beurre à 80% MG minimum, doux, tendre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 4.73,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #173430 « Butter, without salt » : 1 tbsp = 14.2 g"
+ },
+ {
+  "ciqual": 16404,
+  "food": "Beurre à 80% MG minimum, doux, tendre",
+  "unit": "piece",
+  "size": null,
+  "label": "1 noisette de beurre",
+  "grams": 5.0,
+  "source": "USDA SR Legacy #173430 « Butter, without salt » : 1 pat (1\" sq, 1/3\" high) = 5 g"
+ },
+ {
+  "ciqual": 16404,
+  "food": "Beurre à 80% MG minimum, doux, tendre",
+  "unit": "piece",
+  "size": "large",
+  "label": "1 plaquette de beurre",
+  "grams": 250,
+  "source": "Conditionnement standard du commerce en France (plaquette de 250 g)"
+ },
+ {
+  "ciqual": 19593,
+  "food": "Yaourt ou lait fermenté, nature",
+  "unit": "piece",
+  "size": null,
+  "label": "1 pot de yaourt",
+  "grams": 125,
+  "source": "Conditionnement standard du commerce en France (pot de 125 g)"
+ },
+ {
+  "ciqual": 19594,
+  "food": "Yaourt ou lait fermenté, nature, 0% MG",
+  "unit": "piece",
+  "size": null,
+  "label": "1 pot de yaourt",
+  "grams": 125,
+  "source": "Conditionnement standard du commerce en France (pot de 125 g)"
+ },
+ {
+  "ciqual": 19600,
+  "food": "Yaourt ou lait fermenté, nature, sans précision sur teneur en matière grasse et sucre (aliment moyen)",
+  "unit": "piece",
+  "size": null,
+  "label": "1 pot de yaourt",
+  "grams": 125,
+  "source": "Conditionnement standard du commerce en France (pot de 125 g)"
+ },
+ {
+  "ciqual": 12120,
+  "food": "Parmesan",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de parmesan râpé",
+  "grams": 5.0,
+  "source": "USDA SR Legacy #171247 « Cheese, parmesan, grated » : 1 tbsp = 5 g"
+ },
+ {
+  "ciqual": 12118,
+  "food": "Emmental ou emmenthal, râpé",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse d'emmental râpé (240 ml)",
+  "grams": 108.0,
+  "source": "USDA SR Legacy #168124 « Cheese, swiss, low sodium » : 1 cup, shredded = 108 g"
+ },
+ {
+  "ciqual": 12118,
+  "food": "Emmental ou emmenthal, râpé",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 6.75,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168124 « Cheese, swiss, low sodium » : 1 cup, shredded = 108 g"
+ },
+ {
+  "ciqual": 12115,
+  "food": "Emmental ou emmenthal",
+  "unit": "slice",
+  "size": null,
+  "label": "1 tranche d'emmental",
+  "grams": 28.0,
+  "source": "USDA SR Legacy #168124 « Cheese, swiss, low sodium » : 1 slice = 28 g"
+ },
+ {
+  "ciqual": 12114,
+  "food": "Gruyère, sans précision (origine France ou Suisse)",
+  "unit": "slice",
+  "size": null,
+  "label": "1 tranche de gruyère",
+  "grams": 28.0,
+  "source": "USDA SR Legacy #171242 « Cheese, gruyere » : 1 slice (1 oz) = 28 g"
+ },
+ {
+  "ciqual": 12114,
+  "food": "Gruyère, sans précision (origine France ou Suisse)",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de gruyère râpé (240 ml)",
+  "grams": 108.0,
+  "source": "USDA SR Legacy #171242 « Cheese, gruyere » : 1 cup, shredded = 108 g"
+ },
+ {
+  "ciqual": 12114,
+  "food": "Gruyère, sans précision (origine France ou Suisse)",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 6.75,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #171242 « Cheese, gruyere » : 1 cup, shredded = 108 g"
+ },
+ {
+  "ciqual": 19590,
+  "food": "Mozzarella au lait de vache",
+  "unit": "piece",
+  "size": null,
+  "label": "1 boule de mozzarella",
+  "grams": 125,
+  "source": "Conditionnement standard du commerce en France (boule de 125 g)"
+ },
+ {
+  "ciqual": 19591,
+  "food": "Mozzarella au lait de bufflonne ou buflesse (\"di bufala\")",
+  "unit": "piece",
+  "size": null,
+  "label": "1 boule de mozzarella",
+  "grams": 125,
+  "source": "Conditionnement standard du commerce en France (boule de 125 g)"
+ },
+ {
+  "ciqual": 12066,
+  "food": "Feta, au lait de brebis 70% minimum et lait de chèvre 30% maximum",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de feta émiettée (240 ml)",
+  "grams": 150.0,
+  "source": "USDA SR Legacy #173420 « Cheese, feta » : 1 cup, crumbled = 150 g"
+ },
+ {
+  "ciqual": 12066,
+  "food": "Feta, au lait de brebis 70% minimum et lait de chèvre 30% maximum",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 9.38,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #173420 « Cheese, feta » : 1 cup, crumbled = 150 g"
+ },
+ {
+  "ciqual": 19584,
+  "food": "Mascarpone",
+  "unit": "piece",
+  "size": null,
+  "label": "1 pot de mascarpone",
+  "grams": 250,
+  "source": "Conditionnement standard du commerce en France (pot de 250 g)"
+ },
+ {
+  "ciqual": 19585,
+  "food": "Ricotta",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de ricotta (240 ml)",
+  "grams": 248.0,
+  "source": "USDA SR Legacy #170851 « Cheese, ricotta, whole milk » : 0.5 cup = 124 g"
+ },
+ {
+  "ciqual": 19585,
+  "food": "Ricotta",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.5,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170851 « Cheese, ricotta, whole milk » : 0.5 cup = 124 g"
+ },
+ {
+  "ciqual": 18041,
+  "food": "Lait de coco",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de lait de coco",
+  "grams": 15.0,
+  "source": "USDA SR Legacy #170173 « Nuts, coconut milk, canned (liquid expressed from grated meat and water) » : 1 tbsp = 15 g"
+ },
+ {
+  "ciqual": 18041,
+  "food": "Lait de coco",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de lait de coco (240 ml)",
+  "grams": 226.0,
+  "source": "USDA SR Legacy #170173 « Nuts, coconut milk, canned (liquid expressed from grated meat and water) » : 1 cup = 226 g"
+ },
+ {
+  "ciqual": 19027,
+  "food": "Lait concentré sucré, entier",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de lait concentré sucré (240 ml)",
+  "grams": 306.0,
+  "source": "USDA SR Legacy #171275 « Milk, canned, condensed, sweetened » : 1 cup = 306 g"
+ },
+ {
+  "ciqual": 19027,
+  "food": "Lait concentré sucré, entier",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 19.12,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #171275 « Milk, canned, condensed, sweetened » : 1 cup = 306 g"
+ },
+ {
+  "ciqual": 19026,
+  "food": "Lait concentré sans sucres ajoutés, entier",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de lait concentré non sucré (240 ml)",
+  "grams": 256.0,
+  "source": "USDA SR Legacy #170878 « Milk, canned, evaporated, nonfat, with added vitamin A and vitamin D » : 1 cup = 256 g"
+ },
+ {
+  "ciqual": 19026,
+  "food": "Lait concentré sans sucres ajoutés, entier",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 16.0,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170878 « Milk, canned, evaporated, nonfat, with added vitamin A and vitamin D » : 1 cup = 256 g"
+ },
+ {
+  "ciqual": 6250,
+  "food": "Boeuf, steak haché 5% MG cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 steak haché",
+  "grams": 100,
+  "source": "Conditionnement standard du commerce en France (steak haché de 100 g)"
+ },
+ {
+  "ciqual": 6252,
+  "food": "Boeuf, steak haché 10% MG cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 steak haché",
+  "grams": 100,
+  "source": "Conditionnement standard du commerce en France (steak haché de 100 g)"
+ },
+ {
+  "ciqual": 6254,
+  "food": "Boeuf, steak haché 15% MG cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 steak haché",
+  "grams": 100,
+  "source": "Conditionnement standard du commerce en France (steak haché de 100 g)"
+ },
+ {
+  "ciqual": 6256,
+  "food": "Boeuf, steak haché 20% MG cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 steak haché",
+  "grams": 100,
+  "source": "Conditionnement standard du commerce en France (steak haché de 100 g)"
+ },
+ {
+  "ciqual": 28910,
+  "food": "Jambon cuit, choix",
+  "unit": "slice",
+  "size": null,
+  "label": "1 tranche de jambon",
+  "grams": 40,
+  "source": "Conditionnement standard du commerce en France (barquette de 4 tranches = 160 g)"
+ },
+ {
+  "ciqual": 28900,
+  "food": "Jambon cuit, supérieur",
+  "unit": "slice",
+  "size": null,
+  "label": "1 tranche de jambon",
+  "grams": 40,
+  "source": "Conditionnement standard du commerce en France (barquette de 4 tranches = 160 g)"
+ },
+ {
+  "ciqual": 28902,
+  "food": "Jambon cuit, supérieur, découenné",
+  "unit": "slice",
+  "size": null,
+  "label": "1 tranche de jambon",
+  "grams": 40,
+  "source": "Conditionnement standard du commerce en France (barquette de 4 tranches = 160 g)"
+ },
+ {
+  "ciqual": 26036,
+  "food": "Saumon, élevage, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 pavé de saumon",
+  "grams": 125,
+  "source": "Conditionnement standard du commerce en France (pavé d'environ 125 g)"
+ },
+ {
+  "ciqual": 26034,
+  "food": "Sardine, à l'huile, appertisée, égouttée",
+  "unit": "piece",
+  "size": null,
+  "label": "1 sardine",
+  "grams": 12.0,
+  "source": "USDA SR Legacy #175139 « Fish, sardine, Atlantic, canned in oil, drained solids with bone » : 2 sardines = 24 g"
+ },
+ {
+  "ciqual": 26177,
+  "food": "Anchois, filets, salés, à l'huile, semi-conserve, égouttés",
+  "unit": "piece",
+  "size": null,
+  "label": "1 filet d'anchois",
+  "grams": 4.0,
+  "source": "USDA SR Legacy #174183 « Fish, anchovy, european, canned in oil, drained solids » : 1 anchovy = 4 g"
+ },
+ {
+  "ciqual": 17270,
+  "food": "Huile d'olive vierge extra",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 13.5,
+  "source": "USDA SR Legacy #171413 « Oil, olive, salad or cooking » : 1 tablespoon = 13.5 g"
+ },
+ {
+  "ciqual": 17270,
+  "food": "Huile d'olive vierge extra",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 4.5,
+  "source": "USDA SR Legacy #171413 « Oil, olive, salad or cooking » : 1 tsp = 4.5 g"
+ },
+ {
+  "ciqual": 17440,
+  "food": "Huile de tournesol",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 13.6,
+  "source": "USDA SR Legacy #171017 « Oil, sunflower, linoleic (less than 60%) » : 1 tbsp = 13.6 g"
+ },
+ {
+  "ciqual": 17440,
+  "food": "Huile de tournesol",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 4.5,
+  "source": "USDA SR Legacy #171017 « Oil, sunflower, linoleic (less than 60%) » : 1 tsp = 4.5 g"
+ },
+ {
+  "ciqual": 17130,
+  "food": "Huile de colza",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 13.6,
+  "source": "USDA SR Legacy #171017 « Oil, sunflower, linoleic (less than 60%) » : 1 tbsp = 13.6 g"
+ },
+ {
+  "ciqual": 17130,
+  "food": "Huile de colza",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 4.5,
+  "source": "USDA SR Legacy #171017 « Oil, sunflower, linoleic (less than 60%) » : 1 tsp = 4.5 g"
+ },
+ {
+  "ciqual": 17400,
+  "food": "Huile de sésame",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 13.6,
+  "source": "USDA SR Legacy #171016 « Oil, sesame, salad or cooking » : 1 tablespoon = 13.6 g"
+ },
+ {
+  "ciqual": 17400,
+  "food": "Huile de sésame",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 4.5,
+  "source": "USDA SR Legacy #171016 « Oil, sesame, salad or cooking » : 1 tsp = 4.5 g"
+ },
+ {
+  "ciqual": 16590,
+  "food": "Matière grasse tartinable à teneur en MG > 62%, doux, standard",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 14.0,
+  "source": "USDA SR Legacy #171040 « Margarine, regular, 80% fat, composite, stick, without salt, with added vitamin D » : 1 tbsp = 14 g"
+ },
+ {
+  "ciqual": 16590,
+  "food": "Matière grasse tartinable à teneur en MG > 62%, doux, standard",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 4.8,
+  "source": "USDA SR Legacy #171040 « Margarine, regular, 80% fat, composite, stick, without salt, with added vitamin D » : 1 teaspoon = 4.8 g"
+ },
+ {
+  "ciqual": 16591,
+  "food": "Matière grasse tartinable à teneur en MG > 41% et <= 62%, doux, standard",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 14.0,
+  "source": "USDA SR Legacy #171040 « Margarine, regular, 80% fat, composite, stick, without salt, with added vitamin D » : 1 tbsp = 14 g"
+ },
+ {
+  "ciqual": 16591,
+  "food": "Matière grasse tartinable à teneur en MG > 41% et <= 62%, doux, standard",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 4.8,
+  "source": "USDA SR Legacy #171040 « Margarine, regular, 80% fat, composite, stick, without salt, with added vitamin D » : 1 teaspoon = 4.8 g"
+ },
+ {
+  "ciqual": 16520,
+  "food": "Saindoux",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 12.8,
+  "source": "USDA SR Legacy #171401 « Lard » : 1 tbsp = 12.8 g"
+ },
+ {
+  "ciqual": 16520,
+  "food": "Saindoux",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 4.27,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #171401 « Lard » : 1 tbsp = 12.8 g"
+ },
+ {
+  "ciqual": 31016,
+  "food": "Sucre blanc",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de sucre",
+  "grams": 4.2,
+  "source": "USDA SR Legacy #169655 « Sugars, granulated » : 1 tsp = 4.2 g"
+ },
+ {
+  "ciqual": 31016,
+  "food": "Sucre blanc",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de sucre (240 ml)",
+  "grams": 200.0,
+  "source": "USDA SR Legacy #169655 « Sugars, granulated » : 1 cup = 200 g"
+ },
+ {
+  "ciqual": 31016,
+  "food": "Sucre blanc",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 12.5,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #169655 « Sugars, granulated » : 1 cup = 200 g"
+ },
+ {
+  "ciqual": 31017,
+  "food": "Sucre roux",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de sucre roux",
+  "grams": 3.0,
+  "source": "USDA SR Legacy #168833 « Sugars, brown » : 1 tsp unpacked = 3 g"
+ },
+ {
+  "ciqual": 31017,
+  "food": "Sucre roux",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de sucre roux (240 ml)",
+  "grams": 145.0,
+  "source": "USDA SR Legacy #168833 « Sugars, brown » : 1 cup unpacked = 145 g"
+ },
+ {
+  "ciqual": 31017,
+  "food": "Sucre roux",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 9.06,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #168833 « Sugars, brown » : 1 cup unpacked = 145 g"
+ },
+ {
+  "ciqual": 31044,
+  "food": "Sucre vanillé",
+  "unit": "piece",
+  "size": null,
+  "label": "1 sachet de sucre vanillé",
+  "grams": 7.5,
+  "source": "Conditionnement standard du commerce en France (sachet de 7,5 g)"
+ },
+ {
+  "ciqual": 31008,
+  "food": "Miel",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de miel",
+  "grams": 21.0,
+  "source": "USDA SR Legacy #169640 « Honey » : 1 tbsp = 21 g"
+ },
+ {
+  "ciqual": 31008,
+  "food": "Miel",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 7.0,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #169640 « Honey » : 1 tbsp = 21 g"
+ },
+ {
+  "ciqual": 31034,
+  "food": "Sirop d'érable",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de sirop d'érable",
+  "grams": 20.0,
+  "source": "USDA SR Legacy #169661 « Syrups, maple » : 1 tbsp = 20 g"
+ },
+ {
+  "ciqual": 31034,
+  "food": "Sirop d'érable",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 6.67,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #169661 « Syrups, maple » : 1 tbsp = 20 g"
+ },
+ {
+  "ciqual": 31089,
+  "food": "Sirop d'agave",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de sirop d'agave",
+  "grams": 6.9,
+  "source": "USDA SR Legacy #170277 « Sweetener, syrup, agave » : 1 tsp = 6.9 g"
+ },
+ {
+  "ciqual": 31089,
+  "food": "Sirop d'agave",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 20.7,
+  "source": "1 c. à soupe = 3 c. à café ; base : USDA SR Legacy #170277 « Sweetener, syrup, agave » : 1 tsp = 6.9 g"
+ },
+ {
+  "ciqual": 31006,
+  "food": "Confiture ou marmelade ou gelée, tout type de fruits, non allégée en sucres (aliment moyen)",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de confiture",
+  "grams": 20.0,
+  "source": "USDA SR Legacy #169641 « Jams and preserves » : 1 tbsp = 20 g"
+ },
+ {
+  "ciqual": 31006,
+  "food": "Confiture ou marmelade ou gelée, tout type de fruits, non allégée en sucres (aliment moyen)",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 6.67,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #169641 « Jams and preserves » : 1 tbsp = 20 g"
+ },
+ {
+  "ciqual": 30999,
+  "food": "Confiture ou marmelade, tout type de fruits, sans précision sur la teneur en sucres (aliment moyen)",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de confiture",
+  "grams": 20.0,
+  "source": "USDA SR Legacy #169641 « Jams and preserves » : 1 tbsp = 20 g"
+ },
+ {
+  "ciqual": 30999,
+  "food": "Confiture ou marmelade, tout type de fruits, sans précision sur la teneur en sucres (aliment moyen)",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 6.67,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #169641 « Jams and preserves » : 1 tbsp = 20 g"
+ },
+ {
+  "ciqual": 31024,
+  "food": "Confiture de fraise (extra ou classique)",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de confiture",
+  "grams": 20.0,
+  "source": "USDA SR Legacy #169641 « Jams and preserves » : 1 tbsp = 20 g"
+ },
+ {
+  "ciqual": 31024,
+  "food": "Confiture de fraise (extra ou classique)",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 6.67,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #169641 « Jams and preserves » : 1 tbsp = 20 g"
+ },
+ {
+  "ciqual": 31037,
+  "food": "Confiture d'abricot (extra ou classique)",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de confiture",
+  "grams": 20.0,
+  "source": "USDA SR Legacy #169641 « Jams and preserves » : 1 tbsp = 20 g"
+ },
+ {
+  "ciqual": 31037,
+  "food": "Confiture d'abricot (extra ou classique)",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 6.67,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #169641 « Jams and preserves » : 1 tbsp = 20 g"
+ },
+ {
+  "ciqual": 18100,
+  "food": "Cacao, sans sucres ajoutés, poudre soluble",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de cacao en poudre",
+  "grams": 5.4,
+  "source": "USDA SR Legacy #169593 « Cocoa, dry powder, unsweetened » : 1 tbsp = 5.4 g"
+ },
+ {
+  "ciqual": 18100,
+  "food": "Cacao, sans sucres ajoutés, poudre soluble",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 1.8,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #169593 « Cocoa, dry powder, unsweetened » : 1 tbsp = 5.4 g"
+ },
+ {
+  "ciqual": 31032,
+  "food": "Pâte à tartiner chocolat et noisette",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de pâte à tartiner",
+  "grams": 20.0,
+  "source": "USDA FNDDS 2021-2023 #2710289 « Chocolate hazelnut spread » : 1 tablespoon = 20 g"
+ },
+ {
+  "ciqual": 31032,
+  "food": "Pâte à tartiner chocolat et noisette",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 6.67,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA FNDDS 2021-2023 #2710289 « Chocolate hazelnut spread » : 1 tablespoon = 20 g"
+ },
+ {
+  "ciqual": 11065,
+  "food": "Vanille, extrait alcoolique",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café d'extrait de vanille",
+  "grams": 4.2,
+  "source": "USDA SR Legacy #173471 « Vanilla extract » : 1 tsp = 4.2 g"
+ },
+ {
+  "ciqual": 11065,
+  "food": "Vanille, extrait alcoolique",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe d'extrait de vanille",
+  "grams": 13.0,
+  "source": "USDA SR Legacy #173471 « Vanilla extract » : 1 tbsp = 13 g"
+ },
+ {
+  "ciqual": 11013,
+  "food": "Moutarde",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de moutarde",
+  "grams": 5.0,
+  "source": "USDA SR Legacy #172234 « Mustard, prepared, yellow » : 1 tsp or 1 packet = 5 g"
+ },
+ {
+  "ciqual": 11013,
+  "food": "Moutarde",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.0,
+  "source": "1 c. à soupe = 3 c. à café ; base : USDA SR Legacy #172234 « Mustard, prepared, yellow » : 1 tsp or 1 packet = 5 g"
+ },
+ {
+  "ciqual": 11021,
+  "food": "Moutarde à l'ancienne",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de moutarde",
+  "grams": 5.0,
+  "source": "USDA SR Legacy #172234 « Mustard, prepared, yellow » : 1 tsp or 1 packet = 5 g"
+ },
+ {
+  "ciqual": 11021,
+  "food": "Moutarde à l'ancienne",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.0,
+  "source": "1 c. à soupe = 3 c. à café ; base : USDA SR Legacy #172234 « Mustard, prepared, yellow » : 1 tsp or 1 packet = 5 g"
+ },
+ {
+  "ciqual": 11008,
+  "food": "Ketchup, préemballé",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de ketchup",
+  "grams": 17.0,
+  "source": "USDA SR Legacy #168556 « Catsup » : 1 tbsp = 17 g"
+ },
+ {
+  "ciqual": 11008,
+  "food": "Ketchup, préemballé",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 5.67,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #168556 « Catsup » : 1 tbsp = 17 g"
+ },
+ {
+  "ciqual": 11054,
+  "food": "Mayonnaise (70% MG min.), préemballée",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de mayonnaise",
+  "grams": 13.8,
+  "source": "USDA SR Legacy #171009 « Salad dressing, mayonnaise, regular » : 1 tbsp = 13.8 g"
+ },
+ {
+  "ciqual": 11054,
+  "food": "Mayonnaise (70% MG min.), préemballée",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 4.6,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #171009 « Salad dressing, mayonnaise, regular » : 1 tbsp = 13.8 g"
+ },
+ {
+  "ciqual": 11104,
+  "food": "Sauce soja, préemballée",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de sauce soja",
+  "grams": 18.0,
+  "source": "USDA SR Legacy #174278 « Soy sauce made from soy (tamari) » : 1 tbsp = 18 g"
+ },
+ {
+  "ciqual": 11104,
+  "food": "Sauce soja, préemballée",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de sauce soja",
+  "grams": 6.0,
+  "source": "USDA SR Legacy #174278 « Soy sauce made from soy (tamari) » : 1 tsp = 6 g"
+ },
+ {
+  "ciqual": 11018,
+  "food": "Vinaigre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de vinaigre",
+  "grams": 14.9,
+  "source": "USDA SR Legacy #173469 « Vinegar, cider » : 1 tbsp = 14.9 g"
+ },
+ {
+  "ciqual": 11018,
+  "food": "Vinaigre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de vinaigre",
+  "grams": 5.0,
+  "source": "USDA SR Legacy #173469 « Vinegar, cider » : 1 tsp = 5 g"
+ },
+ {
+  "ciqual": 11090,
+  "food": "Vinaigre de cidre",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de vinaigre",
+  "grams": 14.9,
+  "source": "USDA SR Legacy #173469 « Vinegar, cider » : 1 tbsp = 14.9 g"
+ },
+ {
+  "ciqual": 11090,
+  "food": "Vinaigre de cidre",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de vinaigre",
+  "grams": 5.0,
+  "source": "USDA SR Legacy #173469 « Vinegar, cider » : 1 tsp = 5 g"
+ },
+ {
+  "ciqual": 11220,
+  "food": "Vinaigre de vin rouge",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de vinaigre",
+  "grams": 14.9,
+  "source": "USDA SR Legacy #173469 « Vinegar, cider » : 1 tbsp = 14.9 g"
+ },
+ {
+  "ciqual": 11220,
+  "food": "Vinaigre de vin rouge",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de vinaigre",
+  "grams": 5.0,
+  "source": "USDA SR Legacy #173469 « Vinegar, cider » : 1 tsp = 5 g"
+ },
+ {
+  "ciqual": 11091,
+  "food": "Vinaigre balsamique",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de vinaigre balsamique",
+  "grams": 16.0,
+  "source": "USDA SR Legacy #172241 « Vinegar, balsamic » : 1 tbsp = 16 g"
+ },
+ {
+  "ciqual": 11091,
+  "food": "Vinaigre balsamique",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café de vinaigre balsamique",
+  "grams": 5.3,
+  "source": "USDA SR Legacy #172241 « Vinegar, balsamic » : 1 tsp = 5.3 g"
+ },
+ {
+  "ciqual": 20068,
+  "food": "Tomate, concentré, appertisé",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de concentré de tomate",
+  "grams": 16.0,
+  "source": "USDA SR Legacy #170459 « Tomato products, canned, paste, without salt added (Includes foods for USDA's Food Distribution Program) » : 1 tbsp = 16 g"
+ },
+ {
+  "ciqual": 20068,
+  "food": "Tomate, concentré, appertisé",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 5.33,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #170459 « Tomato products, canned, paste, without salt added (Includes foods for USDA's Food Distribution Program) » : 1 tbsp = 16 g"
+ },
+ {
+  "ciqual": 20268,
+  "food": "Tomate, double concentré, appertisé",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de concentré de tomate",
+  "grams": 16.0,
+  "source": "USDA SR Legacy #170459 « Tomato products, canned, paste, without salt added (Includes foods for USDA's Food Distribution Program) » : 1 tbsp = 16 g"
+ },
+ {
+  "ciqual": 20268,
+  "food": "Tomate, double concentré, appertisé",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 5.33,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #170459 « Tomato products, canned, paste, without salt added (Includes foods for USDA's Food Distribution Program) » : 1 tbsp = 16 g"
+ },
+ {
+  "ciqual": 20170,
+  "food": "Tomate, purée, appertisée",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de purée de tomate (240 ml)",
+  "grams": 250.0,
+  "source": "USDA SR Legacy #170460 « Tomato products, canned, puree, without salt added » : 1 cup = 250 g"
+ },
+ {
+  "ciqual": 20170,
+  "food": "Tomate, purée, appertisée",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 15.62,
+  "source": "1 c. à soupe = 1/16 de tasse US ; base : USDA SR Legacy #170460 « Tomato products, canned, puree, without salt added » : 1 cup = 250 g"
+ },
+ {
+  "ciqual": 20137,
+  "food": "Tomate, pelée, appertisée, au jus, non égouttée",
+  "unit": "can",
+  "size": null,
+  "label": "1 boîte de tomates pelées",
+  "grams": 400,
+  "source": "Conditionnement standard du commerce en France (boîte de 400 g, poids net)"
+ },
+ {
+  "ciqual": 11179,
+  "food": "Sauce pesto, préemballée",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de pesto",
+  "grams": 16.0,
+  "source": "USDA FNDDS 2021-2023 #2710175 « Pesto sauce » : 1 tablespoon = 16 g"
+ },
+ {
+  "ciqual": 11179,
+  "food": "Sauce pesto, préemballée",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 5.33,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA FNDDS 2021-2023 #2710175 « Pesto sauce » : 1 tablespoon = 16 g"
+ },
+ {
+  "ciqual": 11001,
+  "food": "Bouillon de boeuf, déshydraté",
+  "unit": "piece",
+  "size": null,
+  "label": "1 cube de bouillon",
+  "grams": 10,
+  "source": "Conditionnement standard du commerce en France (cube de 10 g)"
+ },
+ {
+  "ciqual": 11041,
+  "food": "Bouillon de légumes, déshydraté",
+  "unit": "piece",
+  "size": null,
+  "label": "1 cube de bouillon",
+  "grams": 10,
+  "source": "Conditionnement standard du commerce en France (cube de 10 g)"
+ },
+ {
+  "ciqual": 11174,
+  "food": "Bouillon de volaille, déshydraté",
+  "unit": "piece",
+  "size": null,
+  "label": "1 cube de bouillon",
+  "grams": 10,
+  "source": "Conditionnement standard du commerce en France (cube de 10 g)"
+ },
+ {
+  "ciqual": 11007,
+  "food": "Gélatine, sèche",
+  "unit": "leaf",
+  "size": null,
+  "label": "1 feuille de gélatine",
+  "grams": 2,
+  "source": "Conditionnement standard du commerce en France (feuille de 2 g)"
+ },
+ {
+  "ciqual": 11194,
+  "food": "Sauce nuoc mâm ou sauce au poisson, préemballée",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de nuoc-mâm",
+  "grams": 18.0,
+  "source": "USDA SR Legacy #174531 « Sauce, fish, ready-to-serve » : 1 tbsp = 18 g"
+ },
+ {
+  "ciqual": 11194,
+  "food": "Sauce nuoc mâm ou sauce au poisson, préemballée",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café",
+  "grams": 6.0,
+  "source": "1 c. à café = 1/3 de c. à soupe ; base : USDA SR Legacy #174531 « Sauce, fish, ready-to-serve » : 1 tbsp = 18 g"
+ },
+ {
+  "ciqual": 18066,
+  "food": "Eau du robinet",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre d'eau (20 cl)",
+  "grams": 200,
+  "source": "Eau : 1 ml = 1 g"
+ },
+ {
+  "ciqual": 18066,
+  "food": "Eau du robinet",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe d'eau",
+  "grams": 15,
+  "source": "Eau : 1 ml = 1 g (c. à soupe de 15 ml)"
+ },
+ {
+  "ciqual": 18066,
+  "food": "Eau du robinet",
+  "unit": "tsp",
+  "size": null,
+  "label": "1 c. à café d'eau",
+  "grams": 5,
+  "source": "Eau : 1 ml = 1 g (c. à café de 5 ml)"
+ },
+ {
+  "ciqual": 5214,
+  "food": "Vin rouge",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 198.83,
+  "source": "USDA SR Legacy #171872 « Alcoholic Beverage, wine, table, red, Gamay » : 1 fl oz = 29.4 g (× 6.76281)"
+ },
+ {
+  "ciqual": 5214,
+  "food": "Vin rouge",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 14.91,
+  "source": "USDA SR Legacy #171872 « Alcoholic Beverage, wine, table, red, Gamay » : 1 fl oz = 29.4 g (× 0.507211)"
+ },
+ {
+  "ciqual": 5215,
+  "food": "Vin blanc sec",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 199.5,
+  "source": "USDA SR Legacy #173195 « Alcoholic beverage, wine, table, white, Chenin Blanc » : 1 fl oz = 29.5 g (× 6.76281)"
+ },
+ {
+  "ciqual": 5215,
+  "food": "Vin blanc sec",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe",
+  "grams": 14.96,
+  "source": "USDA SR Legacy #173195 « Alcoholic beverage, wine, table, white, Chenin Blanc » : 1 fl oz = 29.5 g (× 0.507211)"
+ },
+ {
+  "ciqual": 5001,
+  "food": "Bière \"coeur de marché\" (4-5° alcool)",
+  "unit": "can",
+  "size": null,
+  "label": "1 canette (33 cl)",
+  "grams": 331.41,
+  "source": "USDA SR Legacy #168746 « Alcoholic beverage, beer, regular, all » : 1 fl oz = 29.7 g (× 11.1586)"
+ },
+ {
+  "ciqual": 2070,
+  "food": "Jus d'orange, pur jus",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de jus d'orange (240 ml)",
+  "grams": 248.0,
+  "source": "USDA SR Legacy #169098 « Orange juice, raw (Includes foods for USDA's Food Distribution Program) » : 1 cup = 248 g"
+ },
+ {
+  "ciqual": 2070,
+  "food": "Jus d'orange, pur jus",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 209.65,
+  "source": "verre de 20 cl, calculé depuis la tasse US (236,6 ml) ; base : USDA SR Legacy #169098 « Orange juice, raw (Includes foods for USDA's Food Distribution Program) » : 1 cup = 248 g"
+ },
+ {
+  "ciqual": 2070,
+  "food": "Jus d'orange, pur jus",
+  "unit": "juice",
+  "size": null,
+  "label": "le jus d'1 orange",
+  "grams": 86.0,
+  "source": "USDA SR Legacy #169098 « Orange juice, raw (Includes foods for USDA's Food Distribution Program) » : 1 fruit yields = 86 g"
+ },
+ {
+  "ciqual": 18004,
+  "food": "Café, non instantané, sans sucres ajoutés, prêt à boire",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de café (240 ml)",
+  "grams": 237.0,
+  "source": "USDA SR Legacy #171889 « Beverages, coffee, brewed, prepared with tap water, decaffeinated » : 1 cup (8 fl oz) = 237 g"
+ },
+ {
+  "ciqual": 18004,
+  "food": "Café, non instantané, sans sucres ajoutés, prêt à boire",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 200.35,
+  "source": "verre de 20 cl, calculé depuis la tasse US (236,6 ml) ; base : USDA SR Legacy #171889 « Beverages, coffee, brewed, prepared with tap water, decaffeinated » : 1 cup (8 fl oz) = 237 g"
+ },
+ {
+  "ciqual": 18020,
+  "food": "Thé infusé, sans sucres ajoutés",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse de thé (240 ml)",
+  "grams": 237.0,
+  "source": "USDA SR Legacy #173227 « Beverages, tea, black, brewed, prepared with tap water » : 1 cup (8 fl oz) = 237 g"
+ },
+ {
+  "ciqual": 18020,
+  "food": "Thé infusé, sans sucres ajoutés",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 200.35,
+  "source": "verre de 20 cl, calculé depuis la tasse US (236,6 ml) ; base : USDA SR Legacy #173227 « Beverages, tea, black, brewed, prepared with tap water » : 1 cup (8 fl oz) = 237 g"
+ },
+ {
+  "ciqual": 1004,
+  "food": "Rhum",
+  "unit": "tbsp",
+  "size": null,
+  "label": "1 c. à soupe de rhum",
+  "grams": 14.1,
+  "source": "USDA SR Legacy #174817 « Alcoholic beverage, distilled, rum, 80 proof » : 1 fl oz = 27.8 g (× 0.507211)"
+ },
+ {
+  "ciqual": 18111,
+  "food": "Boisson à l'amande, préemballée (aliment moyen)",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 240.0,
+  "source": "USDA SR Legacy #168751 « Beverages, almond milk, sweetened, vanilla flavor, ready-to-drink » : 1 cup = 240 g"
+ },
+ {
+  "ciqual": 18111,
+  "food": "Boisson à l'amande, préemballée (aliment moyen)",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 202.88,
+  "source": "verre de 20 cl, calculé depuis la tasse US (236,6 ml) ; base : USDA SR Legacy #168751 « Beverages, almond milk, sweetened, vanilla flavor, ready-to-drink » : 1 cup = 240 g"
+ },
+ {
+  "ciqual": 18113,
+  "food": "Boisson au soja, préemballée (aliment moyen)",
+  "unit": "cup",
+  "size": null,
+  "label": "1 tasse (240 ml)",
+  "grams": 243.0,
+  "source": "USDA SR Legacy #172446 « Soymilk, original and vanilla, unfortified » : 1 cup = 243 g"
+ },
+ {
+  "ciqual": 18113,
+  "food": "Boisson au soja, préemballée (aliment moyen)",
+  "unit": "glass",
+  "size": null,
+  "label": "1 verre (20 cl)",
+  "grams": 205.42,
+  "source": "verre de 20 cl, calculé depuis la tasse US (236,6 ml) ; base : USDA SR Legacy #172446 « Soymilk, original and vanilla, unfortified » : 1 cup = 243 g"
+ },
+ {
+  "ciqual": 12045,
+  "food": "Reblochon",
+  "unit": "piece",
+  "size": null,
+  "label": "1 reblochon",
+  "grams": 450,
+  "source": "Conditionnement standard du commerce en France"
+ },
+ {
+  "ciqual": 24430,
+  "food": "Biscuit sec aux oeufs à la cuillère (cuiller) ou boudoir",
+  "unit": "piece",
+  "size": null,
+  "label": "1 biscuit à la cuillère",
+  "grams": 6,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 36017,
+  "food": "Poulet, filet sans peau cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 filet de poulet",
+  "grams": 150,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 36024,
+  "food": "Poulet, cuisse, viande crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 cuisse de poulet (viande)",
+  "grams": 160,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 36016,
+  "food": "Poulet, viande et peau crues",
+  "unit": "piece",
+  "size": null,
+  "label": "1 poulet entier (partie comestible)",
+  "grams": 1200,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 28302,
+  "food": "Porc, échine crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 tranche d'échine",
+  "grams": 200,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 20132,
+  "food": "Potimarron, chair sans peau, cru",
+  "unit": "piece",
+  "size": null,
+  "label": "1 potimarron (chair)",
+  "grams": 1000,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 11004,
+  "food": "Cornichon, au vinaigre",
+  "unit": "piece",
+  "size": null,
+  "label": "1 cornichon",
+  "grams": 8,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 20003,
+  "food": "Betterave rouge, cuite",
+  "unit": "piece",
+  "size": null,
+  "label": "1 betterave cuite",
+  "grams": 150,
+  "source": "Conditionnement standard du commerce en France"
+ },
+ {
+  "ciqual": 51550,
+  "food": "Feuille de brick ou khatfa, préemballée",
+  "unit": "piece",
+  "size": null,
+  "label": "1 feuille de pâte (wonton, gyoza)",
+  "grams": 8,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 11057,
+  "food": "Vanille, gousse",
+  "unit": "clove",
+  "size": null,
+  "label": "1 gousse de vanille",
+  "grams": 3,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 11053,
+  "food": "Laurier, feuille",
+  "unit": "leaf",
+  "size": null,
+  "label": "1 feuille de laurier",
+  "grams": 0.2,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 11070,
+  "food": "Thym, frais",
+  "unit": "sprig",
+  "size": null,
+  "label": "1 branche de thym",
+  "grams": 1,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 11033,
+  "food": "Basilic, frais",
+  "unit": "sprig",
+  "size": null,
+  "label": "1 branche de basilic",
+  "grams": 3,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 11027,
+  "food": "Menthe, fraîche",
+  "unit": "sprig",
+  "size": null,
+  "label": "1 branche de menthe",
+  "grams": 3,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 7100,
+  "food": "Pain de campagne",
+  "unit": "slice",
+  "size": null,
+  "label": "1 tranche de pain de campagne",
+  "grams": 40,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 11075,
+  "food": "Cardamome, poudre",
+  "unit": "piece",
+  "size": null,
+  "label": "1 gousse de cardamome",
+  "grams": 0.2,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 20097,
+  "food": "Échalote, crue",
+  "unit": "piece",
+  "size": null,
+  "label": "1 échalote",
+  "grams": 30,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ },
+ {
+  "ciqual": 11000,
+  "food": "Ail, cru",
+  "unit": "head",
+  "size": null,
+  "label": "1 tête d'ail",
+  "grams": 40,
+  "source": "Estimation (poids moyen de la partie comestible)"
+ }
+]

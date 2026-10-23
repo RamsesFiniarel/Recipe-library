@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bibliothèque de recettes</title>
+    <meta name="description" content="Bibliothèque de recettes personnelle : livres, recettes et étagère 3D." />
+    <meta name="theme-color" content="#f2ede4" />
+    <link rel="icon" href="/favicon.png" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <!-- Library-to-book transition (see cover-backdrop.js). Before #app so the
+         library's canvas, same z-index, stays above it. -->
+    <div class="cover-backdrop cover-backdrop--transition" aria-hidden="true"></div>
+    <div id="app"></div>
+    <div class="page-transition-veil"></div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

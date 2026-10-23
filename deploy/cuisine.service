@@ -1,0 +1,29 @@
+# The app as a systemd service (see documentation/technical.md). Copy to
+# /etc/systemd/system/, then `sudo systemctl enable --now cuisine`.
+# Assumes the app in /opt/cuisine and Node in /usr/bin/node.
+
+[Unit]
+Description=Cuisine, recipe library
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=cuisine
+WorkingDirectory=/opt/cuisine
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node --env-file=.env --disable-warning=ExperimentalWarning server/index.js
+Restart=on-failure
+RestartSec=5
+
+# Only data/ is writable.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/opt/cuisine/data
+
+# To serve on port 80 (PORT=80 in .env):
+# AmbientCapabilities=CAP_NET_BIND_SERVICE
+
+[Install]
+WantedBy=multi-user.target

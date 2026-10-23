@@ -1,0 +1,194 @@
+/* =====================================================================
+   New recipe dialog (new-recipe-dialog.js), in dark glass
+   (.modal--glass-dark): the ways as a segmented control, then a form or
+   the reading view.
+   ===================================================================== */
+
+/* Segments in a pill, a paper thumb sliding under the chosen one
+   (--thumb-x/--thumb-w, set by placeThumb()). */
+.new-recipe-ways {
+  position: relative;
+  display: flex;
+  padding: 4px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius-full);
+}
+
+.new-recipe-ways-thumb {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  width: var(--thumb-w, 0);
+  translate: var(--thumb-x, 0) 0;
+  background: color-mix(in srgb, var(--color-paper) 94%, transparent);
+  border-radius: var(--radius-full);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.new-recipe-ways.is-ready .new-recipe-ways-thumb {
+  transition:
+    translate 320ms var(--ease),
+    width 320ms var(--ease);
+}
+
+.new-recipe-way {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  min-height: 2.5rem;
+  padding: 0 var(--space-3);
+  white-space: nowrap;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--glass-text-soft);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: color 250ms var(--ease);
+}
+
+.new-recipe-way:hover {
+  color: #fff;
+}
+
+.new-recipe-way:has(input:checked) {
+  color: var(--color-page-text);
+}
+
+.new-recipe-way:has(input:focus-visible) {
+  outline: 2px solid var(--glass-line-strong);
+  outline-offset: 1px;
+}
+
+.new-recipe-way input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The field is as tall as the ways' control it replaces: the dialog keeps
+   its size. */
+.modal.new-recipe .new-recipe-field {
+  height: calc(2.5rem + 2 * 4px + 2px);
+}
+
+/* Photos dragged over the dialog. */
+.modal.new-recipe.is-dragging {
+  outline: 2px dashed var(--glass-line-strong);
+  outline-offset: -10px;
+}
+
+/* Reading: photos (or site), ring, progress, status. */
+.new-recipe-reading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) 0 var(--space-2);
+  color: var(--glass-text-soft);
+}
+
+.new-recipe-thumbs {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+}
+
+.new-recipe-thumbs img {
+  width: 54px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* The site being read, in a pill where the photos would be. */
+.new-recipe-site {
+  max-width: 100%;
+  padding: 4px var(--space-3);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--glass-text-soft);
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius-full);
+}
+
+.new-recipe-spinner {
+  width: 32px;
+  height: 32px;
+}
+
+/* The whole job's progress: a thin bar, its percentage on the right. */
+.new-recipe-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: min(100%, 300px);
+}
+
+.new-recipe-progress-track {
+  flex: 1;
+  height: 6px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-full);
+}
+
+.new-recipe-progress-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: inherit;
+  transition: width 240ms var(--ease);
+}
+
+/* Nothing to count: a stretch of light running along the bar. */
+.new-recipe-progress-track.is-endless .new-recipe-progress-fill {
+  width: 40%;
+  animation: new-recipe-endless 1.4s var(--ease) infinite;
+}
+
+@keyframes new-recipe-endless {
+  from {
+    translate: -100% 0;
+  }
+  to {
+    translate: 250% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .new-recipe-progress-track.is-endless .new-recipe-progress-fill {
+    width: 100%;
+    opacity: 0.5;
+    animation: none;
+  }
+}
+
+.new-recipe-progress-value {
+  min-width: 3.2em;
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  color: var(--glass-text-muted);
+}
+
+/* Above the glass's own paragraph colour. */
+.modal.new-recipe .new-recipe-status {
+  font-size: var(--text-sm);
+  color: var(--glass-text-muted);
+}
+
+.modal.new-recipe .new-recipe-error {
+  color: #ffb4a6;
+}

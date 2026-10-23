@@ -1,0 +1,1150 @@
+[
+ {
+  "alias": "agar agar",
+  "ciqual": 11085
+ },
+ {
+  "alias": "all-purpose flour",
+  "ciqual": 9436
+ },
+ {
+  "alias": "allspice",
+  "ciqual": 11081
+ },
+ {
+  "alias": "anise",
+  "ciqual": 11081
+ },
+ {
+  "alias": "apple",
+  "ciqual": 13039
+ },
+ {
+  "alias": "apricot",
+  "ciqual": 13000
+ },
+ {
+  "alias": "bacon",
+  "ciqual": 28720
+ },
+ {
+  "alias": "baker's yeast",
+  "ciqual": 11045
+ },
+ {
+  "alias": "baking powder",
+  "ciqual": 11046
+ },
+ {
+  "alias": "baking soda",
+  "ciqual": 11507
+ },
+ {
+  "alias": "banana",
+  "ciqual": 13005
+ },
+ {
+  "alias": "basmati",
+  "ciqual": 9119
+ },
+ {
+  "alias": "basmati rice",
+  "ciqual": 9119
+ },
+ {
+  "alias": "bay",
+  "ciqual": 11053
+ },
+ {
+  "alias": "bay leaf",
+  "ciqual": 11053
+ },
+ {
+  "alias": "bay leaves",
+  "ciqual": 11053
+ },
+ {
+  "alias": "bearnaise sauce",
+  "ciqual": 11102
+ },
+ {
+  "alias": "beef",
+  "ciqual": 6231
+ },
+ {
+  "alias": "beef brisket",
+  "ciqual": 6231
+ },
+ {
+  "alias": "beef broth",
+  "ciqual": 11001,
+  "ratio": 0.02
+ },
+ {
+  "alias": "beef chuck",
+  "ciqual": 6270
+ },
+ {
+  "alias": "beef mince",
+  "ciqual": 6254
+ },
+ {
+  "alias": "beef shin",
+  "ciqual": 6150
+ },
+ {
+  "alias": "beef stock",
+  "ciqual": 11001,
+  "ratio": 0.02
+ },
+ {
+  "alias": "beet",
+  "ciqual": 20003
+ },
+ {
+  "alias": "beetroot",
+  "ciqual": 20003
+ },
+ {
+  "alias": "bell pepper",
+  "ciqual": 20087
+ },
+ {
+  "alias": "bicarbonate of soda",
+  "ciqual": 11507
+ },
+ {
+  "alias": "black pepper",
+  "ciqual": 11015
+ },
+ {
+  "alias": "braising beef",
+  "ciqual": 6231
+ },
+ {
+  "alias": "brandy",
+  "ciqual": 1023
+ },
+ {
+  "alias": "bread",
+  "ciqual": 7100
+ },
+ {
+  "alias": "brisket",
+  "ciqual": 6231
+ },
+ {
+  "alias": "broccoli",
+  "ciqual": 20057
+ },
+ {
+  "alias": "broth",
+  "ciqual": 11001,
+  "ratio": 0.02
+ },
+ {
+  "alias": "brown onion",
+  "ciqual": 20239
+ },
+ {
+  "alias": "brown sugar",
+  "ciqual": 31017
+ },
+ {
+  "alias": "buckwheat flour",
+  "ciqual": 9540
+ },
+ {
+  "alias": "butter",
+  "ciqual": 16400
+ },
+ {
+  "alias": "button mushroom",
+  "ciqual": 20056
+ },
+ {
+  "alias": "cabbage",
+  "ciqual": 20116
+ },
+ {
+  "alias": "canned tomato",
+  "ciqual": 20169
+ },
+ {
+  "alias": "caper",
+  "ciqual": 11040
+ },
+ {
+  "alias": "cardamom",
+  "ciqual": 11075
+ },
+ {
+  "alias": "carrot",
+  "ciqual": 20009
+ },
+ {
+  "alias": "caster sugar",
+  "ciqual": 31016
+ },
+ {
+  "alias": "cauliflower",
+  "ciqual": 20016
+ },
+ {
+  "alias": "cayenne",
+  "ciqual": 11088
+ },
+ {
+  "alias": "cayenne pepper",
+  "ciqual": 11088
+ },
+ {
+  "alias": "celeriac",
+  "ciqual": 20055
+ },
+ {
+  "alias": "celery",
+  "ciqual": 20023
+ },
+ {
+  "alias": "chestnut",
+  "ciqual": 15024
+ },
+ {
+  "alias": "chick pea",
+  "ciqual": 20532
+ },
+ {
+  "alias": "chicken",
+  "ciqual": 36016
+ },
+ {
+  "alias": "chicken breast",
+  "ciqual": 36017
+ },
+ {
+  "alias": "chicken broth",
+  "ciqual": 11174,
+  "ratio": 0.02
+ },
+ {
+  "alias": "chicken fillet",
+  "ciqual": 36017
+ },
+ {
+  "alias": "chicken leg",
+  "ciqual": 36024
+ },
+ {
+  "alias": "chicken stock",
+  "ciqual": 11174,
+  "ratio": 0.02
+ },
+ {
+  "alias": "chicken thigh",
+  "ciqual": 36024
+ },
+ {
+  "alias": "chicken wing",
+  "ciqual": 36023
+ },
+ {
+  "alias": "chickpea",
+  "ciqual": 20532
+ },
+ {
+  "alias": "chili",
+  "ciqual": 20151
+ },
+ {
+  "alias": "chili flakes",
+  "ciqual": 11088
+ },
+ {
+  "alias": "chili pepper",
+  "ciqual": 20151
+ },
+ {
+  "alias": "chili powder",
+  "ciqual": 11088
+ },
+ {
+  "alias": "chilli",
+  "ciqual": 20151
+ },
+ {
+  "alias": "chilli flakes",
+  "ciqual": 11088
+ },
+ {
+  "alias": "chilli pepper",
+  "ciqual": 20151
+ },
+ {
+  "alias": "chilli powder",
+  "ciqual": 11088
+ },
+ {
+  "alias": "chinese cabbage",
+  "ciqual": 20167
+ },
+ {
+  "alias": "chinese five spice",
+  "ciqual": 11081
+ },
+ {
+  "alias": "chive",
+  "ciqual": 20034
+ },
+ {
+  "alias": "chocolate",
+  "ciqual": 31085
+ },
+ {
+  "alias": "chopped tomato",
+  "ciqual": 20169
+ },
+ {
+  "alias": "chuck",
+  "ciqual": 6270
+ },
+ {
+  "alias": "cilantro",
+  "ciqual": 11094
+ },
+ {
+  "alias": "cinnamon",
+  "ciqual": 11025
+ },
+ {
+  "alias": "clarified butter",
+  "ciqual": 16401
+ },
+ {
+  "alias": "clove",
+  "ciqual": 11052
+ },
+ {
+  "alias": "coarse salt",
+  "ciqual": 11017
+ },
+ {
+  "alias": "cocoa",
+  "ciqual": 18100
+ },
+ {
+  "alias": "cocoa powder",
+  "ciqual": 18100
+ },
+ {
+  "alias": "coconut cream",
+  "ciqual": 18041
+ },
+ {
+  "alias": "coconut milk",
+  "ciqual": 18041
+ },
+ {
+  "alias": "coffee",
+  "ciqual": 18073
+ },
+ {
+  "alias": "coffee powder",
+  "ciqual": 18005
+ },
+ {
+  "alias": "coriander",
+  "ciqual": 11094
+ },
+ {
+  "alias": "coriander seed",
+  "ciqual": 11026
+ },
+ {
+  "alias": "corn starch",
+  "ciqual": 9510
+ },
+ {
+  "alias": "cornflour",
+  "ciqual": 9510
+ },
+ {
+  "alias": "cornstarch",
+  "ciqual": 9510
+ },
+ {
+  "alias": "cranberry juice",
+  "ciqual": 2381
+ },
+ {
+  "alias": "cream",
+  "ciqual": 19410
+ },
+ {
+  "alias": "crushed tomato",
+  "ciqual": 20169
+ },
+ {
+  "alias": "cucumber",
+  "ciqual": 20019
+ },
+ {
+  "alias": "curry powder",
+  "ciqual": 11005
+ },
+ {
+  "alias": "dark chocolate",
+  "ciqual": 31085
+ },
+ {
+  "alias": "dill",
+  "ciqual": 11093
+ },
+ {
+  "alias": "double cream",
+  "ciqual": 19410
+ },
+ {
+  "alias": "dried chili",
+  "ciqual": 11088
+ },
+ {
+  "alias": "dried chilli",
+  "ciqual": 11088
+ },
+ {
+  "alias": "dried yeast",
+  "ciqual": 11045
+ },
+ {
+  "alias": "dry yeast",
+  "ciqual": 11045
+ },
+ {
+  "alias": "egg",
+  "ciqual": 22000
+ },
+ {
+  "alias": "egg white",
+  "ciqual": 22001
+ },
+ {
+  "alias": "egg yolk",
+  "ciqual": 22002
+ },
+ {
+  "alias": "eggplant",
+  "ciqual": 20053
+ },
+ {
+  "alias": "fennel seed",
+  "ciqual": 11066
+ },
+ {
+  "alias": "fenugreek",
+  "ciqual": 11077
+ },
+ {
+  "alias": "feta cheese",
+  "ciqual": 12066
+ },
+ {
+  "alias": "fig",
+  "ciqual": 13012
+ },
+ {
+  "alias": "filo pastry",
+  "ciqual": 51550
+ },
+ {
+  "alias": "five spice",
+  "ciqual": 11081
+ },
+ {
+  "alias": "five-spice",
+  "ciqual": 11081
+ },
+ {
+  "alias": "flour",
+  "ciqual": 9436
+ },
+ {
+  "alias": "fusilli",
+  "ciqual": 9810
+ },
+ {
+  "alias": "garlic powder",
+  "ciqual": 11023
+ },
+ {
+  "alias": "gelatin",
+  "ciqual": 11007
+ },
+ {
+  "alias": "gelatine",
+  "ciqual": 11007
+ },
+ {
+  "alias": "gherkin",
+  "ciqual": 11004
+ },
+ {
+  "alias": "ginger",
+  "ciqual": 11074
+ },
+ {
+  "alias": "ginger powder",
+  "ciqual": 11006
+ },
+ {
+  "alias": "goat cheese",
+  "ciqual": 12812
+ },
+ {
+  "alias": "goat's cheese",
+  "ciqual": 12812
+ },
+ {
+  "alias": "granulated sugar",
+  "ciqual": 31016
+ },
+ {
+  "alias": "grated cheese",
+  "ciqual": 12118
+ },
+ {
+  "alias": "greek yoghurt",
+  "ciqual": 19860
+ },
+ {
+  "alias": "greek yogurt",
+  "ciqual": 19860
+ },
+ {
+  "alias": "green onion",
+  "ciqual": 20034,
+  "piece": 20
+ },
+ {
+  "alias": "green salad",
+  "ciqual": 20031
+ },
+ {
+  "alias": "ground beef",
+  "ciqual": 6254
+ },
+ {
+  "alias": "ground ginger",
+  "ciqual": 11006
+ },
+ {
+  "alias": "heavy cream",
+  "ciqual": 19417
+ },
+ {
+  "alias": "ice",
+  "ciqual": 18066
+ },
+ {
+  "alias": "ice cube",
+  "ciqual": 18066
+ },
+ {
+  "alias": "icing sugar",
+  "ciqual": 31016
+ },
+ {
+  "alias": "instant coffee",
+  "ciqual": 18005
+ },
+ {
+  "alias": "kidney bean",
+  "ciqual": 20524
+ },
+ {
+  "alias": "lady finger",
+  "ciqual": 24430
+ },
+ {
+  "alias": "ladyfinger",
+  "ciqual": 24430
+ },
+ {
+  "alias": "lamb",
+  "ciqual": 21504
+ },
+ {
+  "alias": "lamb neck",
+  "ciqual": 21514
+ },
+ {
+  "alias": "lamb shoulder",
+  "ciqual": 21504
+ },
+ {
+  "alias": "lardons",
+  "ciqual": 28720
+ },
+ {
+  "alias": "leek",
+  "ciqual": 20039
+ },
+ {
+  "alias": "lemon",
+  "ciqual": 13009
+ },
+ {
+  "alias": "lemon zest",
+  "ciqual": 13125
+ },
+ {
+  "alias": "lentil",
+  "ciqual": 20359
+ },
+ {
+  "alias": "lettuce",
+  "ciqual": 20031
+ },
+ {
+  "alias": "lime",
+  "ciqual": 13067
+ },
+ {
+  "alias": "lime juice",
+  "ciqual": 2030
+ },
+ {
+  "alias": "linguine",
+  "ciqual": 9810
+ },
+ {
+  "alias": "liquid cream",
+  "ciqual": 19417
+ },
+ {
+  "alias": "macaroni",
+  "ciqual": 9810
+ },
+ {
+  "alias": "mango",
+  "ciqual": 13025
+ },
+ {
+  "alias": "milk",
+  "ciqual": 19041
+ },
+ {
+  "alias": "minced beef",
+  "ciqual": 6254
+ },
+ {
+  "alias": "mineral water",
+  "ciqual": 18044
+ },
+ {
+  "alias": "mint",
+  "ciqual": 11027
+ },
+ {
+  "alias": "mixed spice",
+  "ciqual": 11081
+ },
+ {
+  "alias": "mushroom",
+  "ciqual": 20056
+ },
+ {
+  "alias": "mustard",
+  "ciqual": 11013
+ },
+ {
+  "alias": "mustard seed",
+  "ciqual": 11081
+ },
+ {
+  "alias": "napa cabbage",
+  "ciqual": 20167
+ },
+ {
+  "alias": "neutral oil",
+  "ciqual": 17440
+ },
+ {
+  "alias": "noodles",
+  "ciqual": 9810
+ },
+ {
+  "alias": "nutmeg",
+  "ciqual": 11048
+ },
+ {
+  "alias": "oat",
+  "ciqual": 32140
+ },
+ {
+  "alias": "oat flake",
+  "ciqual": 32140
+ },
+ {
+  "alias": "oil",
+  "ciqual": 17001
+ },
+ {
+  "alias": "onion powder",
+  "ciqual": 20180
+ },
+ {
+  "alias": "orange juice",
+  "ciqual": 2070
+ },
+ {
+  "alias": "oregano",
+  "ciqual": 11035
+ },
+ {
+  "alias": "paprika powder",
+  "ciqual": 11049
+ },
+ {
+  "alias": "parmesan cheese",
+  "ciqual": 12120
+ },
+ {
+  "alias": "passata",
+  "ciqual": 20170
+ },
+ {
+  "alias": "pasta",
+  "ciqual": 9810
+ },
+ {
+  "alias": "peach",
+  "ciqual": 13043
+ },
+ {
+  "alias": "peanut",
+  "ciqual": 15001
+ },
+ {
+  "alias": "pear",
+  "ciqual": 13037
+ },
+ {
+  "alias": "pearl onion",
+  "ciqual": 20034,
+  "piece": 15
+ },
+ {
+  "alias": "peeled tomato",
+  "ciqual": 20169
+ },
+ {
+  "alias": "penne",
+  "ciqual": 9810
+ },
+ {
+  "alias": "phyllo pastry",
+  "ciqual": 51550
+ },
+ {
+  "alias": "pickle",
+  "ciqual": 11004
+ },
+ {
+  "alias": "pie crust",
+  "ciqual": 23414
+ },
+ {
+  "alias": "pineapple",
+  "ciqual": 13002
+ },
+ {
+  "alias": "pineapple juice",
+  "ciqual": 2073
+ },
+ {
+  "alias": "plain flour",
+  "ciqual": 9436
+ },
+ {
+  "alias": "plain yogurt",
+  "ciqual": 19593
+ },
+ {
+  "alias": "popcorn kernel",
+  "ciqual": 9545
+ },
+ {
+  "alias": "pork",
+  "ciqual": 28001
+ },
+ {
+  "alias": "pork loin",
+  "ciqual": 28302
+ },
+ {
+  "alias": "pork shoulder",
+  "ciqual": 28001
+ },
+ {
+  "alias": "potato",
+  "ciqual": 4008
+ },
+ {
+  "alias": "preserved lemon",
+  "ciqual": 13009
+ },
+ {
+  "alias": "pumpkin",
+  "ciqual": 20044
+ },
+ {
+  "alias": "quark",
+  "ciqual": 19646
+ },
+ {
+  "alias": "red bell pepper",
+  "ciqual": 20087
+ },
+ {
+  "alias": "red kidney bean",
+  "ciqual": 20524
+ },
+ {
+  "alias": "red kuri",
+  "ciqual": 20132
+ },
+ {
+  "alias": "red kuri squash",
+  "ciqual": 20132
+ },
+ {
+  "alias": "red onion",
+  "ciqual": 20238
+ },
+ {
+  "alias": "red pepper flakes",
+  "ciqual": 11088
+ },
+ {
+  "alias": "red wine",
+  "ciqual": 5214
+ },
+ {
+  "alias": "rice",
+  "ciqual": 9100
+ },
+ {
+  "alias": "roasted garlic",
+  "ciqual": 11306
+ },
+ {
+  "alias": "rolled oat",
+  "ciqual": 32140
+ },
+ {
+  "alias": "rooster",
+  "ciqual": 36016
+ },
+ {
+  "alias": "rum",
+  "ciqual": 1004
+ },
+ {
+  "alias": "saffron",
+  "ciqual": 11039
+ },
+ {
+  "alias": "salad",
+  "ciqual": 20031
+ },
+ {
+  "alias": "salted butter",
+  "ciqual": 16403
+ },
+ {
+  "alias": "sandwich bread",
+  "ciqual": 7200
+ },
+ {
+  "alias": "scallion",
+  "ciqual": 20034,
+  "piece": 20
+ },
+ {
+  "alias": "sea salt",
+  "ciqual": 11017
+ },
+ {
+  "alias": "semolina",
+  "ciqual": 9610
+ },
+ {
+  "alias": "sesame",
+  "ciqual": 15010
+ },
+ {
+  "alias": "sesame oil",
+  "ciqual": 17400
+ },
+ {
+  "alias": "sesame seed",
+  "ciqual": 15010
+ },
+ {
+  "alias": "shallot",
+  "ciqual": 20097
+ },
+ {
+  "alias": "short rib",
+  "ciqual": 6231
+ },
+ {
+  "alias": "shortcrust",
+  "ciqual": 23414
+ },
+ {
+  "alias": "shortcrust pastry",
+  "ciqual": 23414
+ },
+ {
+  "alias": "sichuan pepper",
+  "ciqual": 11015
+ },
+ {
+  "alias": "single cream",
+  "ciqual": 19417
+ },
+ {
+  "alias": "sliced bread",
+  "ciqual": 7200
+ },
+ {
+  "alias": "sour cream",
+  "ciqual": 19410
+ },
+ {
+  "alias": "soy sauce",
+  "ciqual": 11104
+ },
+ {
+  "alias": "soya sauce",
+  "ciqual": 11104
+ },
+ {
+  "alias": "spaghetti",
+  "ciqual": 9810
+ },
+ {
+  "alias": "sparkling water",
+  "ciqual": 18046
+ },
+ {
+  "alias": "spice",
+  "ciqual": 11081
+ },
+ {
+  "alias": "spices",
+  "ciqual": 11081
+ },
+ {
+  "alias": "sponge finger",
+  "ciqual": 24430
+ },
+ {
+  "alias": "spring onion",
+  "ciqual": 20034,
+  "piece": 20
+ },
+ {
+  "alias": "squash",
+  "ciqual": 20044
+ },
+ {
+  "alias": "star anise",
+  "ciqual": 11081
+ },
+ {
+  "alias": "stewing beef",
+  "ciqual": 6231
+ },
+ {
+  "alias": "stock",
+  "ciqual": 11001,
+  "ratio": 0.02
+ },
+ {
+  "alias": "stock cube",
+  "ciqual": 11001
+ },
+ {
+  "alias": "sugar",
+  "ciqual": 31016
+ },
+ {
+  "alias": "sunflower oil",
+  "ciqual": 17440
+ },
+ {
+  "alias": "sweet pepper",
+  "ciqual": 20087
+ },
+ {
+  "alias": "szechuan pepper",
+  "ciqual": 11015
+ },
+ {
+  "alias": "tagliatelle",
+  "ciqual": 9810
+ },
+ {
+  "alias": "thyme",
+  "ciqual": 11070
+ },
+ {
+  "alias": "tinned tomato",
+  "ciqual": 20169
+ },
+ {
+  "alias": "tomato",
+  "ciqual": 20276
+ },
+ {
+  "alias": "tomato concentrate",
+  "ciqual": 20068
+ },
+ {
+  "alias": "tomato coulis",
+  "ciqual": 20170
+ },
+ {
+  "alias": "tomato paste",
+  "ciqual": 20068
+ },
+ {
+  "alias": "tomato puree",
+  "ciqual": 20170
+ },
+ {
+  "alias": "tomato sauce",
+  "ciqual": 20170
+ },
+ {
+  "alias": "turmeric",
+  "ciqual": 11089
+ },
+ {
+  "alias": "turnip",
+  "ciqual": 20064
+ },
+ {
+  "alias": "unsalted butter",
+  "ciqual": 16400
+ },
+ {
+  "alias": "vanilla",
+  "ciqual": 11057
+ },
+ {
+  "alias": "vanilla bean",
+  "ciqual": 11057
+ },
+ {
+  "alias": "vanilla essence",
+  "ciqual": 11098
+ },
+ {
+  "alias": "vanilla extract",
+  "ciqual": 11098
+ },
+ {
+  "alias": "vanilla pod",
+  "ciqual": 11057
+ },
+ {
+  "alias": "veal stock",
+  "ciqual": 11304
+ },
+ {
+  "alias": "vegetable broth",
+  "ciqual": 11041,
+  "ratio": 0.02
+ },
+ {
+  "alias": "vegetable oil",
+  "ciqual": 17001
+ },
+ {
+  "alias": "vegetable stock",
+  "ciqual": 11041,
+  "ratio": 0.02
+ },
+ {
+  "alias": "vinegar",
+  "ciqual": 11018
+ },
+ {
+  "alias": "walnut",
+  "ciqual": 15005
+ },
+ {
+  "alias": "water",
+  "ciqual": 18066
+ },
+ {
+  "alias": "wheat beer",
+  "ciqual": 5009
+ },
+ {
+  "alias": "wheat flour",
+  "ciqual": 9436
+ },
+ {
+  "alias": "whipping cream",
+  "ciqual": 19417
+ },
+ {
+  "alias": "white bread",
+  "ciqual": 7200
+ },
+ {
+  "alias": "white cabbage",
+  "ciqual": 20116
+ },
+ {
+  "alias": "white rice",
+  "ciqual": 9100
+ },
+ {
+  "alias": "white sugar",
+  "ciqual": 31016
+ },
+ {
+  "alias": "white wine",
+  "ciqual": 5215
+ },
+ {
+  "alias": "wrap",
+  "ciqual": 7815
+ },
+ {
+  "alias": "yeast",
+  "ciqual": 11045
+ },
+ {
+  "alias": "yellow onion",
+  "ciqual": 20239
+ },
+ {
+  "alias": "yoghurt",
+  "ciqual": 19593
+ },
+ {
+  "alias": "yogurt",
+  "ciqual": 19593
+ },
+ {
+  "alias": "zucchini",
+  "ciqual": 20020
+ }
+]

@@ -1,0 +1,45 @@
+<!-- Nutrition database page: every food and its values per 100 g, on the
+     library's wall. foods.page.js fills the table a slice at a time. -->
+<div class="page foods-page">
+  <div class="wall-backdrop" aria-hidden="true">
+    <div data-window-light></div>
+  </div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">
+        <h1 data-i18n="foods.title">Base nutritionnelle</h1>
+      </div>
+      <div class="topbar-actions">
+        <a class="btn btn-icon btn-round btn-surface" href="/parametres" data-transition="crossfade"
+          aria-label="Retour aux paramètres" title="Retour aux paramètres"
+          data-i18n-attr="aria-label:foods.back title:foods.back">
+          <i data-icon="back"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="foods-sheet">
+    <div class="foods-toolbar">
+      <div class="foods-search">
+        <span class="foods-search-icon"><i data-icon="search"></i></span>
+        <input type="search" class="foods-search-input" autocomplete="off" data-foods-search
+          placeholder="Rechercher un aliment…" aria-label="Rechercher un aliment"
+          data-i18n-attr="placeholder:foods.search aria-label:foods.search" />
+      </div>
+      <select class="foods-group" data-foods-group aria-label="Famille d'aliments"
+        data-i18n-attr="aria-label:foods.groupLabel">
+        <option value="" data-i18n="foods.allGroups">Toutes les familles</option>
+      </select>
+      <span class="foods-count" data-foods-count></span>
+    </div>
+
+    <!-- Corner, header row | food column, figures: filled by foods.page.js. -->
+    <div class="foods-grid" data-foods-grid>
+      <p class="foods-message" data-foods-message data-i18n="common.loading">Chargement…</p>
+    </div>
+
+    <p class="foods-source" data-foods-source></p>
+  </main>
+</div>

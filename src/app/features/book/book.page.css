@@ -1,0 +1,243 @@
+/* =====================================================================
+   Book page: the shared components inverted, on a dark backdrop from the
+   book's cover, with white header text and cards in the book's paper.
+   ===================================================================== */
+
+/* Backdrop settings (--book-bg-blur, --book-bg-darken): see .cover-backdrop
+   in components.css. */
+.book-page {
+  position: relative;
+  isolation: isolate;
+  /* Set from the book's page colour by book.page.js. */
+  --page-color: var(--color-paper);
+}
+
+.book-page-bg {
+  z-index: -1;
+}
+
+/* ---------------------------------------------------------------------
+   Header: the library's layout, white on the dark backdrop.
+   --------------------------------------------------------------------- */
+.book-page .topbar-inner {
+  align-items: center;
+}
+
+/* Back button, then the title. */
+.book-page-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.book-page .title-input {
+  color: #fff;
+}
+.book-page .title-input:hover {
+  border-bottom-color: rgba(255, 255, 255, 0.4);
+}
+.book-page .title-input:focus {
+  border-bottom-color: var(--color-accent);
+}
+
+/* Recipe search: the library's field in this page's dark glass. */
+.book-search {
+  position: relative;
+}
+
+.book-search-icon {
+  position: absolute;
+  top: 50%;
+  left: var(--space-3);
+  transform: translateY(-50%);
+  /* Above the field, whose backdrop-filter paints over earlier siblings. */
+  z-index: 1;
+  display: flex;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.book-search-input {
+  width: 11rem;
+  min-height: 2.5rem;
+  padding: 0 var(--space-3) 0 calc(var(--space-3) * 2 + 16px);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: #fff;
+  background: rgba(20, 15, 11, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition: width var(--duration-base) var(--ease),
+    background var(--duration-base) var(--ease),
+    border-color var(--duration-base) var(--ease),
+    box-shadow var(--duration-base) var(--ease);
+}
+
+.book-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.book-search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+/* Focus: no ring; the glass deepens, its rim brightens and it lifts. */
+.book-search-input:focus {
+  width: 21rem;
+  outline: none;
+  background: rgba(20, 15, 11, 0.46);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 12px 30px -14px rgba(0, 0, 0, 0.7);
+}
+
+.book-search:focus-within .book-search-icon {
+  color: #fff;
+}
+
+.book-page .save-indicator {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* The chef's-hat menu, in dark glass: the round button stretches left on
+   hover, focus or a first tap (.is-open) over new recipe and delete; the
+   hat stays at the right end and turns into the back arrow. Icons stay
+   grey until pointed at. */
+.book-menu {
+  --book-menu-size: 2.5rem;
+  --book-menu-slot: 2.25rem;
+  display: flex;
+  align-items: center;
+  /* Right-aligned and clipped: the hidden icons wait to the hat's left. */
+  justify-content: flex-end;
+  width: var(--book-menu-size);
+  height: var(--book-menu-size);
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.66);
+  background: rgba(20, 15, 11, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  transition:
+    width 420ms var(--ease-entrance),
+    background var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.book-menu:hover,
+.book-menu:has(:focus-visible),
+.book-menu.is-open {
+  width: calc(var(--book-menu-size) + 2 * var(--book-menu-slot));
+  background: rgba(20, 15, 11, 0.46);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.book-menu-hat,
+.book-menu-btn {
+  position: relative;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0;
+  color: inherit;
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.book-menu-hat {
+  width: calc(var(--book-menu-size) - 2px);
+}
+
+.book-menu-btn {
+  width: var(--book-menu-slot);
+  opacity: 0;
+  transition:
+    opacity 200ms var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+
+.book-menu:hover .book-menu-btn,
+.book-menu:has(:focus-visible) .book-menu-btn,
+.book-menu.is-open .book-menu-btn {
+  opacity: 1;
+  transition-delay: 90ms, 0ms;
+}
+
+/* Under the pointer an icon only brightens - delete, to a soft red. */
+.book-menu-hat:hover,
+.book-menu-hat:focus-visible,
+.book-menu-btn:hover,
+.book-menu-btn:focus-visible {
+  color: #fff;
+  outline: none;
+}
+
+.book-menu-btn--danger:hover,
+.book-menu-btn--danger:focus-visible {
+  color: #ffa094;
+}
+
+.book-menu-hat .icon-swap {
+  width: 18px;
+  height: 18px;
+}
+
+/* Icon swaps (see .icon-swap): hat to arrow when open, trash to check on
+   hover. */
+.book-menu:hover .book-menu-hat .icon-swap-face--rest,
+.book-menu:has(:focus-visible) .book-menu-hat .icon-swap-face--rest,
+.book-menu.is-open .book-menu-hat .icon-swap-face--rest,
+.book-menu-btn:hover .icon-swap-face--rest,
+.book-menu-btn:focus-visible .icon-swap-face--rest {
+  transform: rotate(360deg) scale(0);
+  opacity: 0;
+}
+
+.book-menu:hover .book-menu-hat .icon-swap-face--hover,
+.book-menu:has(:focus-visible) .book-menu-hat .icon-swap-face--hover,
+.book-menu.is-open .book-menu-hat .icon-swap-face--hover,
+.book-menu-btn:hover .icon-swap-face--hover,
+.book-menu-btn:focus-visible .icon-swap-face--hover {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------
+   Recipe cards: sheets of the book's paper (.recipe-card--paper) in a grid.
+   --------------------------------------------------------------------- */
+.book-page .card-grid {
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-5);
+  /* Doubles the header-to-cards gap (topbar padding + grid padding + this). */
+  margin-top: calc(var(--space-2) + 2.5rem);
+}
+
+/* Hidden by the search: beats an author "display". */
+.book-page .recipe-card[hidden] {
+  display: none;
+}
+
+/* A card shown again by the search replays its entrance at once. */
+.book-page .card-grid.is-filtering > * {
+  animation-duration: var(--duration-base);
+  animation-delay: 0ms;
+}
+
+.book-search-empty {
+  margin: 0;
+  text-align: center;
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.7);
+}

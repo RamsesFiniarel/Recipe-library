@@ -1,0 +1,1062 @@
+/* =====================================================================
+   Recipe page: a sheet of the book's paper, rounded, its top-right corner
+   turned like a hovered card's, framed by the cover backdrop. Fields read
+   like printed text.
+   ===================================================================== */
+
+.recipe-page {
+  position: relative;
+  isolation: isolate;
+  /* Set from the book's page colour by recipe.page.js. */
+  --page-color: var(--color-paper);
+  /* Cover frame width, and the sheet's inner margin. */
+  --recipe-frame: var(--space-5);
+  --recipe-margin: var(--space-8);
+  /* Temporary servings and quantities (never saved): an ochre readable on
+     every paper colour. */
+  --recipe-scaled: #9a6516;
+  padding: var(--recipe-frame);
+}
+
+.recipe-page-bg {
+  z-index: -1;
+}
+
+.recipe-sheet {
+  /* How far the corner is turned. */
+  --curl: 40px;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100dvh - 2 * var(--recipe-frame));
+}
+
+/* The paper (see .recipe-card--paper): background cut at a 45deg fold, a
+   drop-shadow following the cut, on its own layer so typing doesn't
+   repaint it. */
+.recipe-sheet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(-135deg, transparent calc(var(--curl) * 0.7071), var(--page-color) 0);
+  border-radius: var(--radius-md);
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2)) drop-shadow(0 18px 30px rgba(0, 0, 0, 0.35));
+  pointer-events: none;
+}
+
+/* The folded flap: darker at the fold, lighter at its rounded tip. */
+.recipe-sheet::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 3;
+  width: var(--curl);
+  height: var(--curl);
+  background: linear-gradient(
+    to left bottom,
+    transparent 50%,
+    color-mix(in srgb, var(--page-color), #3a2a1c 26%) 50%,
+    color-mix(in srgb, var(--page-color), #3a2a1c 10%) 72%,
+    var(--page-color)
+  );
+  border-bottom-left-radius: var(--radius-md);
+  filter: drop-shadow(-3px 4px 4px rgba(0, 0, 0, 0.22));
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------
+   Header: the book page's layout, in ink on paper.
+   --------------------------------------------------------------------- */
+.recipe-page .topbar {
+  position: relative;
+  /* The tags' menu opens over the columns. */
+  z-index: 2;
+  padding: var(--recipe-margin) var(--recipe-margin) var(--space-5);
+}
+
+/* The actions line up with the title's line, the tags running under it. */
+.recipe-page .topbar-actions {
+  height: calc(var(--text-3xl) * var(--leading-tight) + 2px);
+}
+
+.recipe-page-title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Tags under the title, in italics. A hovered tag is struck through (click
+   removes it); hovering the header shows the "+" after them and the
+   refresh button before, the tags sliding over, all on one line. */
+.recipe-tags {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--color-page-text-muted);
+}
+
+/* A tag and its comma. */
+.recipe-tags-item {
+  display: inline-block;
+}
+
+/* Recomputed: tags fade, then come back from the left one by one. */
+.recipe-tags-list {
+  transition: opacity 140ms var(--ease);
+}
+
+.recipe-tags-list.is-leaving {
+  opacity: 0;
+}
+
+.recipe-tags-item.is-entering {
+  animation: recipe-tag-in 420ms var(--ease-entrance) backwards;
+  animation-delay: calc(var(--i) * 220ms);
+}
+
+@keyframes recipe-tag-in {
+  from {
+    opacity: 0;
+    transform: translateX(-0.5em);
+  }
+}
+
+.recipe-tag {
+  padding: 0;
+  font: inherit;
+  white-space: nowrap;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: line-through 1px transparent;
+  transition:
+    color var(--duration-fast) var(--ease),
+    text-decoration-color var(--duration-fast) var(--ease);
+}
+
+.recipe-tag:hover,
+.recipe-tag:focus-visible {
+  color: var(--color-page-text);
+  text-decoration-color: currentColor;
+  outline: none;
+}
+
+.recipe-tags-more {
+  position: relative;
+  display: inline-block;
+  margin-left: var(--space-2);
+}
+
+/* No room at rest: tags start with the title; header hover slides them
+   right. */
+.recipe-tags-lead {
+  display: flex;
+  flex: none;
+  width: 0;
+  overflow: hidden;
+  transition:
+    width var(--duration-base) var(--ease),
+    margin-right var(--duration-base) var(--ease);
+}
+
+.recipe-page-title:hover .recipe-tags-lead,
+.recipe-tags:focus-within .recipe-tags-lead,
+.recipe-tags.is-open .recipe-tags-lead {
+  width: 1.375rem;
+  margin-right: var(--space-2);
+}
+
+.recipe-tags.is-empty .recipe-tags-more {
+  margin-left: 0;
+}
+
+.recipe-tags-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.375rem;
+  height: 1.375rem;
+  padding: 0;
+  color: var(--color-page-text-muted);
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--color-page-text) 22%, transparent);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  cursor: pointer;
+  transition:
+    opacity var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.recipe-tags-add[hidden] {
+  display: none;
+}
+
+.recipe-tags-button svg {
+  width: 12px;
+  height: 12px;
+}
+
+.recipe-page-title:hover .recipe-tags-button,
+.recipe-tags:focus-within .recipe-tags-button,
+.recipe-tags.is-open .recipe-tags-button {
+  opacity: 1;
+}
+
+.recipe-tags-button:hover,
+.recipe-tags-button:focus-visible,
+.recipe-tags.is-open .recipe-tags-add {
+  color: var(--color-page-text);
+  border-color: color-mix(in srgb, var(--color-page-text) 40%, transparent);
+  outline: none;
+}
+
+/* One turn of its arrows when clicked. */
+.recipe-tags-refresh.is-turning svg {
+  animation: recipe-tags-turn 600ms var(--ease-entrance);
+}
+
+@keyframes recipe-tags-turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Touch screens have no hover to show them. */
+@media (hover: none) {
+  .recipe-tags-button {
+    opacity: 1;
+  }
+
+  .recipe-tags-lead {
+    width: 1.375rem;
+    margin-right: var(--space-2);
+  }
+}
+
+/* The tags not shown, to put on - a small card of the page's paper. */
+.recipe-tags-menu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 9rem;
+  padding: var(--space-1);
+  background: var(--page-color);
+  border: 1px solid color-mix(in srgb, var(--color-page-text) 14%, transparent);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  animation: recipe-tags-menu-in 160ms var(--ease-entrance);
+}
+
+.recipe-tags-menu[hidden] {
+  display: none;
+}
+
+@keyframes recipe-tags-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+.recipe-tags-option {
+  padding: 0.125rem var(--space-3);
+  font: inherit;
+  line-height: 1.6;
+  text-align: left;
+  white-space: nowrap;
+  color: var(--color-page-text-soft);
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease),
+    background-color var(--duration-fast) var(--ease);
+}
+
+.recipe-tags-option:hover,
+.recipe-tags-option:focus-visible {
+  color: var(--color-page-text);
+  background: color-mix(in srgb, var(--color-page-text) 7%, transparent);
+  outline: none;
+}
+
+/* The shared hover underline is too faint on tinted paper. */
+.recipe-page .title-input:hover {
+  border-bottom-color: color-mix(in srgb, var(--color-page-text) 30%, transparent);
+}
+
+/* The chef's-hat menu: the round button (always clear) stretches left on
+   hover, focus or a first tap (.is-open) to show delete and download; the
+   hat stays at the right end and turns into the back arrow. Icons are
+   grey, ink when pointed at, delete red. */
+.recipe-menu {
+  --recipe-menu-size: 2.5rem;
+  --recipe-menu-slot: 2.125rem;
+  display: flex;
+  align-items: center;
+  /* Right-aligned and clipped: the hidden icons wait to the hat's left. */
+  justify-content: flex-end;
+  width: var(--recipe-menu-size);
+  height: var(--recipe-menu-size);
+  overflow: hidden;
+  color: var(--color-page-text-muted);
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--color-page-text) 22%, transparent);
+  border-radius: var(--radius-full);
+  transition:
+    width 420ms var(--ease-entrance),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.recipe-menu:hover,
+.recipe-menu:has(:focus-visible),
+.recipe-menu.is-open {
+  width: calc(var(--recipe-menu-size) + 2 * var(--recipe-menu-slot));
+  border-color: color-mix(in srgb, var(--color-page-text) 40%, transparent);
+}
+
+.recipe-menu-hat {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: calc(var(--recipe-menu-size) - 2px);
+  height: 100%;
+  padding: 0;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.recipe-menu-hat:hover,
+.recipe-menu-hat:focus-visible {
+  color: var(--color-page-text);
+  outline: none;
+}
+
+.recipe-menu-hat .icon-swap {
+  width: 18px;
+  height: 18px;
+}
+
+/* Hat to back arrow when the menu opens (see .icon-swap). */
+.recipe-menu:hover .recipe-menu-hat .icon-swap-face--rest,
+.recipe-menu:has(:focus-visible) .recipe-menu-hat .icon-swap-face--rest,
+.recipe-menu.is-open .recipe-menu-hat .icon-swap-face--rest {
+  transform: rotate(360deg) scale(0);
+  opacity: 0;
+}
+
+.recipe-menu:hover .recipe-menu-hat .icon-swap-face--hover,
+.recipe-menu:has(:focus-visible) .recipe-menu-hat .icon-swap-face--hover,
+.recipe-menu.is-open .recipe-menu-hat .icon-swap-face--hover {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+/* Delete and download: bare icons, only their colour (and trash to check)
+   reacting. */
+.recipe-menu-btn {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--recipe-menu-slot);
+  height: 100%;
+  padding: 0;
+  color: var(--color-page-text-muted);
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity 200ms var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+
+.recipe-menu:hover .recipe-menu-btn,
+.recipe-menu:has(:focus-visible) .recipe-menu-btn,
+.recipe-menu.is-open .recipe-menu-btn {
+  opacity: 1;
+  transition-delay: 90ms, 0ms;
+}
+
+.recipe-menu-btn:hover,
+.recipe-menu-btn:focus-visible {
+  color: var(--color-page-text);
+  outline: none;
+}
+
+.recipe-menu-btn--danger:hover,
+.recipe-menu-btn--danger:focus-visible {
+  color: var(--color-danger);
+}
+
+/* The shared trash -> check swap (see .icon-swap), on this bare icon. */
+.recipe-menu-btn:hover .icon-swap-face--rest,
+.recipe-menu-btn:focus-visible .icon-swap-face--rest {
+  transform: rotate(360deg) scale(0);
+  opacity: 0;
+}
+
+.recipe-menu-btn:hover .icon-swap-face--hover,
+.recipe-menu-btn:focus-visible .icon-swap-face--hover {
+  transform: rotate(0deg) scale(1);
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------
+   Body: servings, time and ingredients on the left, method or nutrition
+   on the right.
+   --------------------------------------------------------------------- */
+.recipe-body {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 3fr 7fr;
+  gap: var(--space-7);
+  padding: var(--space-5) var(--recipe-margin) var(--recipe-margin);
+}
+
+.recipe-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Vertical rule between the two columns, centred in the gap. */
+.recipe-column--steps {
+  position: relative;
+}
+
+.recipe-column--steps::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--space-7) / -2);
+  width: 1px;
+  background: color-mix(in srgb, var(--color-page-text) 18%, transparent);
+}
+
+/* Both columns open on a row of equal height (meta left, tabs right), so
+   ingredients and method start level. */
+.recipe-meta,
+.recipe-tabs {
+  min-height: 2.5rem;
+  margin-bottom: var(--space-3);
+}
+
+/* Fields look printed at rest; hover or focus shows a lighter paper patch. */
+.recipe-field,
+.recipe-meta-field {
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast) var(--ease);
+}
+
+.recipe-field:hover,
+.recipe-meta-field:hover {
+  background: color-mix(in srgb, #fff 32%, transparent);
+}
+
+.recipe-field:focus-within,
+.recipe-meta-field:focus-within {
+  background: color-mix(in srgb, #fff 50%, transparent);
+}
+
+.recipe-field {
+  flex: 1 1 auto;
+  display: block;
+  padding: var(--space-4) var(--space-5);
+  cursor: text;
+}
+
+.recipe-text {
+  display: block;
+  width: 100%;
+  min-height: 6rem;
+  padding: 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--color-page-text);
+  background: transparent;
+  border: none;
+  resize: none;
+  overflow: hidden;
+}
+
+.recipe-text::placeholder {
+  color: var(--color-page-text-muted);
+  font-style: italic;
+}
+
+.recipe-text:focus {
+  outline: none;
+}
+
+/* Servings and time, half the row each: an icon aligned with the
+   ingredient dashes, then the field (the patch covers the value only). */
+.recipe-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 0 var(--space-5);
+}
+
+.recipe-meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-page-text-soft);
+}
+
+.recipe-meta-item--servings {
+  width: 30%;
+}
+
+/* Before the icon: two stacked chevrons, darker when hovered. */
+.recipe-servings-steps {
+  display: flex;
+  flex: none;
+  flex-direction: column;
+}
+
+.recipe-servings-step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.125rem;
+  height: 0.875rem;
+  padding: 0;
+  color: var(--color-page-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease),
+    opacity var(--duration-fast) var(--ease);
+}
+
+.recipe-servings-step svg {
+  width: 14px;
+  height: 14px;
+}
+
+.recipe-servings-step:hover,
+.recipe-servings-step:focus-visible {
+  color: var(--color-page-text);
+  outline: none;
+}
+
+.recipe-servings-step:disabled {
+  color: var(--color-page-text-muted);
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* Temporary (arrows): the number and the quantities in ochre. */
+.recipe-meta-item--servings.is-scaled .recipe-meta-input,
+.ingredient-cell.is-scaled .ingredient-input {
+  color: var(--recipe-scaled);
+}
+
+.recipe-meta-item--prep-time {
+  width: 50%;
+}
+
+.recipe-meta-icon {
+  display: inline-flex;
+  flex: none;
+}
+
+.recipe-meta-field {
+  flex: 1 1 auto;
+  display: flex;
+  min-width: 0;
+  padding: 0 var(--space-2);
+  cursor: text;
+}
+
+.recipe-meta-input {
+  width: 100%;
+  min-width: 0;
+  padding: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-lg);
+  line-height: 1.6;
+  color: var(--color-page-text);
+  background: transparent;
+  border: none;
+  -moz-appearance: textfield;
+}
+.recipe-meta-input::-webkit-inner-spin-button,
+.recipe-meta-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.recipe-meta-input::placeholder {
+  color: var(--color-page-text-muted);
+  font-weight: 500;
+}
+.recipe-meta-input:focus {
+  outline: none;
+}
+
+/* ---------------------------------------------------------------------
+   Ingredients: three borderless fields per line (ingredient-list.js)
+   that set like plain text, "- 250 g de farine".
+   --------------------------------------------------------------------- */
+.recipe-ingredients {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) var(--space-5);
+  cursor: text;
+}
+
+.ingredient-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Paper patch only on the hovered or edited line, a little wider than the
+   text. */
+.ingredient-line {
+  display: flex;
+  align-items: flex-start;
+  margin: 0 calc(-1 * var(--space-2));
+  padding: 0 var(--space-2);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--color-page-text);
+  border-radius: var(--radius-sm);
+  transition: background var(--duration-fast) var(--ease);
+}
+
+.ingredient-line:hover {
+  background: color-mix(in srgb, #fff 32%, transparent);
+}
+
+.ingredient-line:focus-within {
+  background: color-mix(in srgb, #fff 50%, transparent);
+}
+
+/* The dash, outside the fields; none for headings or the lone hint line. */
+.ingredient-line::before {
+  content: "- ";
+  flex: none;
+  white-space: pre;
+}
+
+.ingredient-line.is-heading::before,
+.ingredient-line.is-empty:only-child::before {
+  content: none;
+}
+
+.ingredient-line.is-heading:not(:first-child) {
+  margin-top: 0.5em;
+}
+
+.ingredient-input {
+  display: block;
+  padding: 0;
+  font: inherit;
+  line-height: inherit;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.ingredient-input:focus {
+  outline: none;
+}
+
+.ingredient-input::placeholder {
+  color: var(--color-page-text-muted);
+  font-style: italic;
+}
+
+/* Quantity and unit as wide as their text plus a space; no room if empty. */
+.ingredient-cell {
+  position: relative;
+  /* Above the name's field, which runs under them (see .ingredient-name). */
+  z-index: 1;
+  display: inline-grid;
+  flex: none;
+}
+
+.ingredient-cell > .ingredient-input,
+.ingredient-cell::after {
+  grid-area: 1 / 1;
+}
+
+.ingredient-cell > .ingredient-input {
+  width: 0;
+  min-width: 100%;
+  height: 1.75em;
+}
+
+.ingredient-cell::after {
+  content: attr(data-value);
+  visibility: hidden;
+  overflow: hidden;
+  white-space: pre;
+}
+
+.ingredient-cell:not([data-value=""])::after {
+  content: attr(data-value) " ";
+}
+
+/* Edited line: quantity | unit | name, each slot open, thin rules between. */
+.ingredient-line:focus-within .ingredient-cell {
+  min-width: 0.8em;
+  padding-right: 0.6em;
+}
+
+.ingredient-line:focus-within .ingredient-cell:not([data-value=""])::after {
+  content: attr(data-value);
+}
+
+.ingredient-line:focus-within .ingredient-cell::before {
+  content: "";
+  position: absolute;
+  top: 0.35em;
+  bottom: 0.35em;
+  right: 0.3em;
+  width: 1px;
+  background: color-mix(in srgb, var(--color-page-text) 30%, transparent);
+}
+
+/* The name starts back at the line's start, its first line indented by
+   --lead (ingredient-list.js), so wrapped text returns to the left edge. */
+.ingredient-name {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 1.75em;
+  margin-left: calc(-1 * var(--lead, 0px));
+  text-indent: var(--lead, 0px);
+  resize: none;
+  overflow: hidden;
+}
+
+/* "+ New ingredient": a pill under the list, shown on list hover or
+   keyboard focus. */
+.ingredient-add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  align-self: center;
+  min-width: min(100%, 16rem);
+  margin-top: var(--space-3);
+  padding: var(--space-1) var(--space-5);
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--color-page-text-soft);
+  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--color-page-text) 22%, transparent);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  opacity: 0;
+  transition:
+    opacity var(--duration-fast) var(--ease),
+    background var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+
+.recipe-ingredients:hover .ingredient-add,
+.ingredient-add:focus-visible {
+  opacity: 1;
+}
+
+.ingredient-add:hover,
+.ingredient-add:focus-visible {
+  color: var(--color-page-text);
+  background: color-mix(in srgb, #fff 55%, transparent);
+}
+
+/* ---------------------------------------------------------------------
+   Method / Nutrition tabs: two quiet words, the active one underlined.
+   --------------------------------------------------------------------- */
+.recipe-tabs {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  padding: 0 var(--space-5);
+}
+
+.recipe-tab {
+  padding: 2px 0;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: color-mix(in srgb, var(--color-page-text-muted) 65%, transparent);
+  background: none;
+  border: none;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.recipe-tab:hover {
+  color: var(--color-page-text-soft);
+}
+
+.recipe-tab[aria-selected="true"] {
+  color: var(--color-page-text);
+  border-bottom-color: currentColor;
+  cursor: default;
+}
+
+.recipe-panel[hidden] {
+  display: none;
+}
+
+/* ---------------------------------------------------------------------
+   Nutrition table: printed like the page (thin rules, aligned figures, bold
+   total). Scrolls in its own box (height set by nutrition-table.js), with
+   sticky header row and ingredient column; widened, it scrolls sideways.
+   --------------------------------------------------------------------- */
+.recipe-nutrition {
+  padding: var(--space-4) var(--space-5) 0;
+}
+
+/* The chevron hangs just outside, right of the box (see .nutrition-expand). */
+.nutrition-frame {
+  position: relative;
+}
+
+/* No rubber-band bounce at the ends: the box simply stops. */
+.nutrition-scroll {
+  overflow: auto;
+  overscroll-behavior: none;
+}
+
+[aria-busy="true"] > .nutrition-scroll {
+  opacity: 0.6;
+  transition: opacity var(--duration-fast) var(--ease);
+}
+
+.nutrition-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--color-page-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.nutrition-table.is-expanded {
+  width: max-content;
+  min-width: 100%;
+}
+
+.nutrition-table th,
+.nutrition-table td {
+  padding: var(--space-2);
+  text-align: left;
+  vertical-align: baseline;
+  background: var(--page-color);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-page-text) 12%, transparent);
+}
+
+.nutrition-table th:first-child,
+.nutrition-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  padding-left: 0;
+}
+
+/* Widened, the held column is set off from the figures sliding under it. */
+.nutrition-table.is-expanded th:first-child,
+.nutrition-table.is-expanded td:first-child {
+  box-shadow: inset -1px 0 0 color-mix(in srgb, var(--color-page-text) 12%, transparent);
+}
+
+.nutrition-table th:last-child,
+.nutrition-table td:last-child {
+  padding-right: 0;
+}
+
+.nutrition-table thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--color-page-text-soft);
+  white-space: nowrap;
+  border-bottom-color: color-mix(in srgb, var(--color-page-text) 28%, transparent);
+}
+
+.nutrition-table thead th:first-child {
+  z-index: 3;
+}
+
+.nutrition-unit {
+  font-weight: 400;
+  color: var(--color-page-text-muted);
+}
+
+.nutrition-table .nutrition-value {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* The micronutrients start here: a little more room after Lipides. */
+.nutrition-table .nutrition-extra-start {
+  padding-left: var(--space-5);
+}
+
+/* The widen/narrow chevron: right of the box, level with the header row
+   (top set by nutrition-table.js). */
+.nutrition-expand {
+  position: absolute;
+  left: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: var(--space-1);
+  padding: 2px;
+  color: var(--color-page-text-muted);
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.nutrition-expand svg {
+  transition: transform var(--duration-fast) var(--ease);
+}
+
+.nutrition-expand[aria-expanded="true"] svg {
+  transform: rotate(180deg);
+}
+
+.nutrition-expand:hover,
+.nutrition-expand:focus-visible {
+  color: var(--color-page-text);
+}
+
+.nutrition-name {
+  display: block;
+  font-weight: 500;
+}
+
+/* What the line was matched to in the reference table, and its weight. */
+.nutrition-food {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-xs);
+  color: var(--color-page-text-muted);
+}
+
+/* Widened, the ingredient column keeps a fixed width and wraps. */
+.nutrition-table.is-expanded .nutrition-name,
+.nutrition-table.is-expanded .nutrition-food {
+  width: 15rem;
+}
+
+.nutrition-table tr.is-missing .nutrition-name,
+.nutrition-table tr.is-missing .nutrition-value {
+  color: var(--color-page-text-muted);
+}
+
+/* Sticky totals at the bottom: "Par personne" last, "Total" above it. */
+.nutrition-table tfoot th,
+.nutrition-table tfoot td {
+  position: sticky;
+  z-index: 2;
+  border-bottom: none;
+}
+
+.nutrition-table tfoot th:first-child {
+  z-index: 3;
+}
+
+.nutrition-total th,
+.nutrition-total td {
+  bottom: var(--nutrition-serving-height, 0px);
+  font-weight: 700;
+  border-top: 1px solid color-mix(in srgb, var(--color-page-text) 28%, transparent);
+}
+
+/* "Total" set like the header's "Ingrédients". */
+.nutrition-total th {
+  font-weight: 600;
+  font-size: var(--text-sm);
+  color: var(--color-page-text-soft);
+}
+
+.nutrition-serving th,
+.nutrition-serving td {
+  bottom: 0;
+  padding-top: 0;
+  font-weight: 500;
+  color: var(--color-page-text-soft);
+}
+
+/* A total that leaves out an ingredient with no known value. */
+.nutrition-partial {
+  font-weight: 400;
+  color: var(--color-page-text-muted);
+}
+
+.nutrition-message {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--color-page-text-muted);
+}
+
+/* The two columns arrive one after the other (see .rise-in). */
+.recipe-column--ingredients {
+  animation-delay: 90ms;
+}
+.recipe-column--steps {
+  animation-delay: 150ms;
+}
+
+@media (max-width: 760px) {
+  .recipe-sheet {
+    --curl: 30px;
+  }
+
+  .recipe-body {
+    grid-template-columns: 1fr;
+  }
+
+  .recipe-column--steps::before {
+    display: none;
+  }
+}

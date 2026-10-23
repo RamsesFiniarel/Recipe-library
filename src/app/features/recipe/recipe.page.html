@@ -1,0 +1,103 @@
+<!-- Recipe page shell: a sheet of the book's paper on its cover backdrop,
+     filled and autosaved by recipe.page.js. -->
+<div class="page recipe-page">
+  <div class="cover-backdrop recipe-page-bg" data-book-bg aria-hidden="true"></div>
+
+  <article class="recipe-sheet">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <div class="topbar-title recipe-page-title">
+          <span class="title-field" data-title-field>
+            <input class="title-input" type="text" size="1" data-field="title" aria-label="Titre de la recette" data-i18n-attr="aria-label:recipe.title" />
+          </span>
+          <!-- Tags, the refresh button before them, "+" after (see
+               recipe-tags.js). -->
+          <div class="recipe-tags" data-recipe-tags>
+            <span class="recipe-tags-lead">
+              <button type="button" class="recipe-tags-button recipe-tags-refresh" data-tags-refresh aria-label="Recalculer les tags" title="Recalculer les tags"
+                data-i18n-attr="aria-label:recipe.tags.refresh title:recipe.tags.refresh"><i data-icon="refresh"></i></button>
+            </span>
+            <span class="recipe-tags-list" data-tags-list></span>
+            <span class="recipe-tags-more">
+              <button type="button" class="recipe-tags-button recipe-tags-add" data-tags-add aria-label="Ajouter un tag" title="Ajouter un tag" data-i18n-attr="aria-label:recipe.tags.add title:recipe.tags.add"
+                aria-haspopup="menu" aria-expanded="false"><i data-icon="plus"></i></button>
+              <span class="recipe-tags-menu" data-tags-menu role="menu" aria-label="Tags" data-i18n-attr="aria-label:recipe.tags.menu" hidden></span>
+            </span>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <span class="save-indicator" data-save-indicator><span class="save-indicator-icon" data-save-icon hidden><i data-icon="check"></i></span><span data-save-text></span></span>
+          <!-- The chef's-hat menu: opens over delete and PDF, the hat turning into
+               the way back (see .recipe-menu). -->
+          <div class="recipe-menu" data-recipe-menu>
+            <button type="button" class="recipe-menu-btn recipe-menu-btn--danger" data-action="delete-recipe" aria-label="Supprimer la recette" title="Supprimer la recette" data-i18n-attr="aria-label:recipe.delete title:recipe.delete">
+              <span class="icon-swap">
+                <span class="icon-swap-face icon-swap-face--rest"><i data-icon="trash"></i></span>
+                <span class="icon-swap-face icon-swap-face--hover"><i data-icon="check"></i></span>
+              </span>
+            </button>
+            <button type="button" class="recipe-menu-btn" data-action="download-pdf" aria-label="Télécharger en PDF" title="Télécharger en PDF" data-i18n-attr="aria-label:recipe.pdf title:recipe.pdf">
+              <i data-icon="download"></i>
+            </button>
+            <a class="recipe-menu-hat" data-book-link data-transition="crossfade" data-recipe-menu-toggle aria-label="Retour aux recettes" title="Retour aux recettes" data-i18n-attr="aria-label:recipe.back title:recipe.back">
+              <span class="icon-swap">
+                <span class="icon-swap-face icon-swap-face--rest"><i data-icon="chefHat"></i></span>
+                <span class="icon-swap-face icon-swap-face--hover"><i data-icon="back"></i></span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="recipe-body">
+      <section class="recipe-column recipe-column--ingredients rise-in">
+        <!-- Servings and time; the leading arrows scale the recipe for a while. -->
+        <div class="recipe-meta">
+          <div class="recipe-meta-item recipe-meta-item--servings" title="Nombre de personnes" data-i18n-attr="title:recipe.servings">
+            <span class="recipe-servings-steps">
+              <button type="button" class="recipe-servings-step" data-servings-step="1" aria-label="Une personne de plus" title="Une personne de plus"
+                data-i18n-attr="aria-label:recipe.servingsMore title:recipe.servingsMore"><i data-icon="chevronUp"></i></button>
+              <button type="button" class="recipe-servings-step" data-servings-step="-1" aria-label="Une personne de moins" title="Une personne de moins"
+                data-i18n-attr="aria-label:recipe.servingsLess title:recipe.servingsLess"><i data-icon="chevronDown"></i></button>
+            </span>
+            <span class="recipe-meta-icon" aria-hidden="true"><i data-icon="users"></i></span>
+            <label class="recipe-meta-field">
+              <input class="recipe-meta-input" type="number" min="1" max="999" data-field="servings" placeholder="—"
+                aria-label="Nombre de personnes" data-i18n-attr="aria-label:recipe.servings" />
+            </label>
+          </div>
+          <div class="recipe-meta-item recipe-meta-item--prep-time" title="Temps de préparation" data-i18n-attr="title:recipe.prepTime">
+            <span class="recipe-meta-icon" aria-hidden="true"><i data-icon="clock"></i></span>
+            <label class="recipe-meta-field">
+              <input class="recipe-meta-input" type="text" size="1" data-field="prepTime" placeholder="—"
+                autocomplete="off" spellcheck="false" aria-label="Temps de préparation (min, h, j)" data-i18n-attr="aria-label:recipe.prepTimeLabel" />
+            </label>
+          </div>
+        </div>
+        <!-- One line per ingredient (see ingredient-list.js). Clicking the empty
+             area goes to the end of the list. -->
+        <div class="recipe-ingredients" data-ingredients-field>
+          <ul class="ingredient-list" data-ingredients aria-label="Ingrédients" data-i18n-attr="aria-label:recipe.ingredients"></ul>
+          <button type="button" class="ingredient-add" data-action="add-ingredient">
+            <i data-icon="plus"></i><span data-i18n="recipe.newIngredient">Nouvel ingrédient</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="recipe-column recipe-column--steps rise-in">
+        <div class="recipe-tabs" role="tablist" aria-label="Contenu" data-i18n-attr="aria-label:recipe.tabs">
+          <button type="button" class="recipe-tab" role="tab" id="recipe-tab-steps" aria-controls="recipe-panel-steps" aria-selected="true" data-tab="steps" data-i18n="recipe.steps">Préparation</button>
+          <button type="button" class="recipe-tab" role="tab" id="recipe-tab-nutrition" aria-controls="recipe-panel-nutrition" aria-selected="false" tabindex="-1" data-tab="nutrition" data-i18n="recipe.nutrition">Nutrition</button>
+        </div>
+        <label class="recipe-field recipe-panel" role="tabpanel" id="recipe-panel-steps" aria-labelledby="recipe-tab-steps" data-panel="steps">
+          <textarea class="recipe-text" data-field="instructions" aria-label="Préparation" placeholder="Étapes de préparation…" data-i18n-attr="aria-label:recipe.steps placeholder:recipe.stepsPlaceholder"></textarea>
+        </label>
+        <div class="recipe-panel recipe-nutrition" role="tabpanel" id="recipe-panel-nutrition" aria-labelledby="recipe-tab-nutrition" data-panel="nutrition" hidden>
+          <div data-nutrition></div>
+        </div>
+      </section>
+    </div>
+
+  </article>
+</div>

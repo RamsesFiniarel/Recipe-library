@@ -1,0 +1,233 @@
+<!-- Library page shell, filled by library.page.js: counts, search results
+     (templates below) and the Three.js scene in .library-canvas. -->
+<div class="page library-page">
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">
+        <h1 data-i18n="library.title">Bibliothèque</h1>
+      </div>
+      <div class="topbar-actions">
+        <!-- The slot keeps the header's layout; the box inside grows into the
+             hero's search bar and back. -->
+        <div class="library-search">
+          <div class="library-search-box" data-search-box>
+            <span class="library-search-icon"><i data-icon="search"></i></span>
+            <input
+              type="search"
+              class="library-search-input"
+              placeholder="Livres ou recettes…"
+              aria-label="Rechercher un livre ou une recette"
+              data-i18n-attr="placeholder:library.search.placeholder aria-label:library.search.label"
+              autocomplete="off"
+              data-search-input
+            />
+            <!-- Hero only: the placeholder, cycling through recipe names. -->
+            <span class="library-search-hint" data-search-hint aria-hidden="true"></span>
+            <!-- "/" puts the cursor here from anywhere on the page. -->
+            <kbd class="library-search-kbd" aria-hidden="true">/</kbd>
+            <button type="button" class="library-search-go" data-search-go aria-label="Ouvrir le premier résultat" tabindex="-1"
+              data-i18n-attr="aria-label:library.search.go">
+              <i data-icon="arrowRight"></i>
+            </button>
+            <div class="library-search-results" data-search-results hidden></div>
+          </div>
+        </div>
+        <!-- The chef's-hat menu (hidden on the hero): opens over new book and
+             settings, the hat turning into edit mode's pencil, open while editing
+             (see .library-menu). -->
+        <div class="library-menu" data-library-menu>
+          <a class="library-menu-btn library-menu-btn--settings" href="/parametres" data-transition="crossfade"
+            aria-label="Paramètres" title="Paramètres" data-i18n-attr="aria-label:library.menu.settings title:library.menu.settings">
+            <i data-icon="settings"></i>
+          </a>
+          <button type="button" class="library-menu-btn" data-action="add-book" aria-label="Nouveau livre"
+            title="Nouveau livre" data-i18n-attr="aria-label:library.menu.newBook title:library.menu.newBook">
+            <i data-icon="plus"></i>
+          </button>
+          <button type="button" class="library-menu-hat" data-action="toggle-edit" aria-pressed="false"
+            aria-label="Modifier la bibliothèque" title="Modifier la bibliothèque"
+            data-i18n-attr="aria-label:library.menu.edit title:library.menu.edit">
+            <span class="icon-swap">
+              <span class="icon-swap-face icon-swap-face--rest"><i data-icon="chefHat"></i></span>
+              <span class="icon-swap-face icon-swap-face--hover"><i data-icon="edit"></i></span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="library-canvas-wrap">
+    <!-- Decorative backdrop behind the 3D scene (see library.page.css). -->
+    <div class="library-bg" aria-hidden="true">
+      <div class="library-bg-glow"></div>
+      <div class="library-bg-streak library-bg-streak-3"></div>
+      <div class="library-bg-streak library-bg-streak-4"></div>
+      <div class="library-bg-streak library-bg-streak-5"></div>
+      <!-- The window's sunlight on the wall (see window-light.js). -->
+      <div data-window-light></div>
+      <div class="library-bg-highlight"></div>
+    </div>
+    <canvas class="library-canvas" role="img" aria-label="Bibliothèque en trois dimensions des livres de recettes"
+      data-i18n-attr="aria-label:library.canvas"></canvas>
+    <!-- Hero only: a soft light behind the text, with a fine grain. -->
+    <div class="library-hero-veil" aria-hidden="true"></div>
+    <!-- Decorative overlay; pointer-events off so books stay hoverable. -->
+    <div class="library-fg-streak" aria-hidden="true"></div>
+    <!-- Leader line from the hovered book to its popup, placed by JS. -->
+    <svg class="library-hover-line" data-hover-line aria-hidden="true">
+      <line class="library-hover-line-segment" data-hover-line-a></line>
+      <line class="library-hover-line-segment" data-hover-line-b></line>
+      <circle class="library-hover-line-dot" data-hover-dot-book r="3.5"></circle>
+      <circle class="library-hover-line-dot" data-hover-dot-elbow r="3.5"></circle>
+    </svg>
+    <!-- Hover popup, placed by JS, never blocking the pointer. -->
+    <div class="library-hover-popup-anchor" data-hover-popup aria-hidden="true">
+      <div class="library-hover-popup" data-hover-popup-box>
+        <span class="library-hover-popup-title" data-hover-title></span>
+        <span class="library-hover-popup-meta" data-hover-meta></span>
+      </div>
+    </div>
+    <!-- Edit mode: a new shelf below the last one, placed by the scene (see
+         onShelfEndChange). -->
+    <button type="button" class="btn btn-icon btn-round btn-surface library-add-shelf" data-add-shelf
+      aria-label="Ajouter une étagère" title="Ajouter une étagère" tabindex="-1"
+      data-i18n-attr="aria-label:library.addShelf title:library.addShelf">
+      <i data-icon="plus"></i>
+    </button>
+  </div>
+
+  <!-- Landing hero: subtitle and scroll hint around two slots the title and
+       search bar move onto (see placeHero()). -->
+  <div class="library-hero" data-hero>
+    <div class="library-hero-stack">
+      <div class="library-hero-title-slot" data-hero-title-slot></div>
+      <p class="library-hero-subtitle">
+        <span class="library-hero-count" data-hero-count></span>
+        <span data-hero-question></span>
+      </p>
+      <div class="library-hero-search-slot" data-hero-search-slot></div>
+      <!-- Hero search results: one row of cards, as many as fit (see
+           renderHeroResults()). -->
+      <div class="library-hero-results" data-hero-results aria-label="Résultats" data-i18n-attr="aria-label:library.hero.results">
+        <p class="library-hero-results-empty" data-hero-results-empty></p>
+      </div>
+    </div>
+    <button type="button" class="library-hero-scroll" data-hero-scroll aria-label="Voir la bibliothèque" data-i18n-attr="aria-label:library.hero.scroll">
+      <i data-icon="chevronDown"></i>
+    </button>
+  </div>
+
+  <!-- Loader: covers everything until the shelves are ready, then fades (see
+       mountScene()). -->
+  <div class="library-loader" data-loader>
+    <!-- A ring, its caption below keeping it centred. -->
+    <div class="library-loader-mark">
+      <span class="spinner" aria-hidden="true"></span>
+      <p class="library-loader-text" data-loader-text data-i18n="library.loader">Chargement de la bibliothèque</p>
+    </div>
+  </div>
+
+  <!-- Edit panel, right of the shrunk 3D scene (.library-page.is-editing). -->
+  <aside class="library-edit-panel" data-edit-panel aria-hidden="true">
+    <div class="library-edit-card library-edit-card--book">
+      <p class="library-edit-empty" data-edit-empty data-i18n="library.edit.empty">Cliquez sur un livre pour le modifier.</p>
+      <div class="library-edit-book" data-edit-book hidden>
+        <label class="library-edit-field">
+          <span class="library-edit-label" data-i18n="library.edit.title">Titre</span>
+          <input type="text" class="library-edit-title-input" data-edit-title />
+        </label>
+
+        <div class="library-edit-body">
+          <div class="library-edit-fields">
+            <div class="library-edit-field">
+              <span class="library-edit-label" data-i18n="library.edit.cover">Couverture</span>
+              <div class="library-edit-cover-options">
+                <input type="color" class="library-edit-color-input" data-edit-cover-color aria-label="Couverture unie" data-i18n-attr="aria-label:library.edit.coverColor" />
+                <button type="button" class="library-edit-texture-button" data-edit-cover-textures aria-label="Couverture avec textures" data-i18n-attr="aria-label:library.edit.coverTextures">
+                  <span aria-hidden="true" data-i18n="library.edit.images">Images</span>
+                </button>
+                <!-- Replaces the Images button while a picked colour waits to replace the
+                     textures. -->
+                <div class="library-edit-cover-confirm" data-edit-cover-confirm hidden>
+                  <button type="button" class="btn btn-icon btn-round library-texture-action" data-edit-cover-cancel aria-label="Garder les textures" title="Garder les textures" data-i18n-attr="aria-label:library.edit.keepTextures title:library.edit.keepTextures"><i data-icon="close"></i></button>
+                  <button type="button" class="btn btn-icon btn-round library-texture-action" data-edit-cover-apply aria-label="Passer en couleur unie" title="Passer en couleur unie" data-i18n-attr="aria-label:library.edit.useColor title:library.edit.useColor"><i data-icon="check"></i></button>
+                </div>
+              </div>
+            </div>
+
+            <div class="library-edit-field">
+              <span class="library-edit-label" data-i18n="library.edit.pages">Pages</span>
+              <div class="library-edit-swatches" data-edit-page-color-group></div>
+            </div>
+
+            <label class="library-edit-field">
+              <span class="library-edit-label" data-i18n="library.edit.width">Largeur</span>
+              <input type="range" class="library-edit-range" data-edit-width-slider step="0.01" />
+            </label>
+
+            <label class="library-edit-field">
+              <span class="library-edit-label" data-i18n="library.edit.height">Hauteur</span>
+              <input type="range" class="library-edit-range" data-edit-height-slider step="0.005" />
+            </label>
+
+            <label class="library-edit-field">
+              <span class="library-edit-label" data-i18n="library.edit.gloss">Brillance</span>
+              <input type="range" class="library-edit-range" data-edit-gloss-slider step="0.01" />
+            </label>
+          </div>
+
+          <canvas class="library-edit-preview" data-edit-preview aria-label="Aperçu du livre en trois dimensions" data-i18n-attr="aria-label:library.edit.preview"></canvas>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <div class="library-texture-popover" data-texture-popover role="dialog" aria-label="Textures de la couverture" data-i18n-attr="aria-label:library.textures.title" hidden></div>
+
+  <template data-template="page-color-swatch">
+    <label class="library-edit-swatch">
+      <input type="radio" name="page-color" />
+    </label>
+  </template>
+
+  <!-- A book result: a small cover, its title and recipe count. -->
+  <template data-template="book-result">
+    <button type="button" class="library-search-result library-search-result--book">
+      <span class="library-search-result-cover" aria-hidden="true"></span>
+      <span class="library-search-result-text">
+        <span class="library-search-result-title"></span>
+        <span class="library-search-result-meta"></span>
+      </span>
+      <span class="library-search-result-go" aria-hidden="true"><i data-icon="arrowRight"></i></span>
+    </button>
+  </template>
+
+  <!-- A recipe result: a small sheet of its book's paper, title and servings. -->
+  <template data-template="hero-recipe-card">
+    <button type="button" class="recipe-card recipe-card--paper library-hero-card library-hero-card--recipe">
+      <span class="recipe-card-title"></span>
+      <span class="recipe-card-meta"></span>
+    </button>
+  </template>
+
+  <!-- A book: a cover in its colour, the size of a recipe card, its title on it. -->
+  <template data-template="hero-book-card">
+    <button type="button" class="library-hero-card library-hero-card--book">
+      <span class="library-hero-card-title"></span>
+    </button>
+  </template>
+
+  <!-- A recipe: a page, its title and the book it's in. -->
+  <template data-template="recipe-result">
+    <button type="button" class="library-search-result library-search-result--recipe">
+      <span class="library-search-result-icon" aria-hidden="true"><i data-icon="page"></i></span>
+      <span class="library-search-result-text">
+        <span class="library-search-result-title"></span>
+        <span class="library-search-result-meta"></span>
+      </span>
+      <span class="library-search-result-go" aria-hidden="true"><i data-icon="arrowRight"></i></span>
+    </button>
+  </template>
+</div>

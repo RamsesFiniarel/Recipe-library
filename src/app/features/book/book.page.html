@@ -1,0 +1,57 @@
+<!-- Book page shell: editable title and the recipe cards (from the
+     template below), on the book's cover backdrop. -->
+<div class="page book-page">
+  <div class="cover-backdrop book-page-bg" data-book-bg aria-hidden="true"></div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title book-page-title">
+        <span class="title-field" data-title-field>
+          <input class="title-input" type="text" size="1" data-field="title" aria-label="Titre du livre" data-i18n-attr="aria-label:book.title" />
+        </span>
+      </div>
+      <div class="topbar-actions">
+        <span class="save-indicator" data-save-indicator><span class="save-indicator-icon" data-save-icon hidden><i
+              data-icon="check"></i></span><span data-save-text></span></span>
+        <div class="book-search">
+          <span class="book-search-icon"><i data-icon="search"></i></span>
+          <input type="search" class="book-search-input" placeholder="Recettes..."
+            aria-label="Rechercher une recette dans ce livre" autocomplete="off" data-search-input
+            data-i18n-attr="placeholder:book.search.placeholder aria-label:book.search.label" />
+        </div>
+        <!-- The chef's-hat menu: stretches open over new recipe and delete, the
+             hat turning into the way back (see .book-menu). -->
+        <div class="book-menu" data-book-menu>
+          <button type="button" class="book-menu-btn book-menu-btn--danger" data-action="delete-book"
+            aria-label="Supprimer le livre" title="Supprimer le livre" data-i18n-attr="aria-label:book.delete title:book.delete">
+            <span class="icon-swap">
+              <span class="icon-swap-face icon-swap-face--rest"><i data-icon="trash"></i></span>
+              <span class="icon-swap-face icon-swap-face--hover"><i data-icon="check"></i></span>
+            </span>
+          </button>
+          <button type="button" class="book-menu-btn" data-action="add-recipe" aria-label="Nouvelle recette"
+            title="Nouvelle recette" data-i18n-attr="aria-label:book.newRecipe title:book.newRecipe">
+            <i data-icon="plus"></i>
+          </button>
+          <a class="book-menu-hat" href="/" data-book-menu-toggle aria-label="Retour à la bibliothèque"
+            title="Retour à la bibliothèque" data-i18n-attr="aria-label:common.backToLibrary title:common.backToLibrary">
+            <span class="icon-swap">
+              <span class="icon-swap-face icon-swap-face--rest"><i data-icon="chefHat"></i></span>
+              <span class="icon-swap-face icon-swap-face--hover"><i data-icon="back"></i></span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="card-grid" data-card-grid></div>
+  <p class="book-search-empty" data-search-empty data-i18n="book.empty" hidden>Aucune recette ne correspond.</p>
+
+  <template data-template="recipe-card">
+    <a class="recipe-card recipe-card--paper" data-transition="crossfade">
+      <span class="recipe-card-title"></span>
+      <span class="recipe-card-meta"></span>
+    </a>
+  </template>
+</div>

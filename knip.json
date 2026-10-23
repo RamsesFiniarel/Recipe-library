@@ -1,0 +1,6 @@
+{
+  "entry": ["scripts/**/*.mjs"],
+  "project": ["src/**/*.js", "server/**/*.js", "shared/**/*.js", "scripts/**/*.mjs", "tests/**/*.js"],
+  "paths": { "@shared/*": ["shared/*"] },
+  "ignoreDependencies": ["@tesseract.js-data/eng", "@tesseract.js-data/fra"]
+}
