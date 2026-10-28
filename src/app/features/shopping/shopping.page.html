@@ -1,0 +1,114 @@
+<!-- Groceries page, on the library's wall: on the left the basket (on a
+     computer, a 3D shelf the picked recipes fly to, see basket-scene.js),
+     then the recipes to pick (searched and filtered like the library's);
+     on the right the
+     merged shopping list (see shopping.page.js). -->
+<div class="page shopping-page is-resting">
+  <div class="wall-backdrop" aria-hidden="true">
+    <div data-window-light></div>
+  </div>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="topbar-title">
+        <h1 data-i18n="shopping.title">Courses</h1>
+      </div>
+      <div class="topbar-actions">
+        <a class="btn btn-icon btn-round btn-surface" href="/" data-transition="crossfade"
+          aria-label="Retour à la bibliothèque" title="Retour à la bibliothèque"
+          data-i18n-attr="aria-label:common.backToLibrary title:common.backToLibrary">
+          <i data-icon="back"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Phones only: one half at a time, the list's count on its tab (see
+       shopping.page.js). -->
+  <div class="shopping-tabs" role="tablist" aria-label="Courses" data-i18n-attr="aria-label:shopping.title">
+    <button type="button" class="shopping-tab" role="tab" aria-selected="true" data-shopping-tab="recipes"
+      data-i18n="shopping.tab.recipes">Recettes</button>
+    <button type="button" class="shopping-tab" role="tab" aria-selected="false" data-shopping-tab="list">
+      <span data-i18n="shopping.tab.list">Liste</span>
+      <span class="shopping-tab-count" data-list-count></span>
+    </button>
+  </div>
+
+  <main class="shopping-main" data-tab="recipes">
+    <!-- The recipes picked, a click taking one out: a shelf on a computer
+         (the title and cards then hidden), cards on a phone. -->
+    <section class="shopping-basket" aria-labelledby="shopping-basket-title">
+      <h2 class="shopping-heading" id="shopping-basket-title" data-i18n="shopping.basket">Panier</h2>
+      <div class="shopping-basket-cards" data-basket></div>
+      <!-- Phones only: the recipes are in the other tab. -->
+      <p class="shopping-hint shopping-basket-empty" data-basket-empty data-i18n="shopping.basketEmpty">Allez dans Recettes pour ajouter des ingrédients à la liste de courses.</p>
+      <p class="shopping-hint shopping-hint--error" data-basket-error hidden data-i18n="shopping.saveFailed">Le panier n'a pas pu être enregistré.</p>
+    </section>
+
+    <!-- Below on the left: the recipes to pick. -->
+    <section class="shopping-pick" aria-label="Recettes" data-i18n-attr="aria-label:shopping.recipes">
+      <!-- The bar. -->
+      <div class="shopping-finder">
+        <!-- The slot holds the bar's place; the bar and its filters are the
+             library's (search-filters.css). -->
+        <div class="shopping-search">
+          <div class="library-search-box" data-search-box>
+            <span class="library-search-icon"><i data-icon="search"></i></span>
+            <input
+              type="search"
+              class="library-search-input"
+              placeholder="Rechercher une recette…"
+              aria-label="Rechercher une recette"
+              data-i18n-attr="placeholder:shopping.search.placeholder aria-label:shopping.search.label"
+              autocomplete="off"
+              data-search-input
+            />
+            <!-- Hovered, lists the filters; "/" anywhere puts the cursor in the bar. -->
+            <kbd class="library-search-kbd" aria-hidden="true" data-search-kbd>/</kbd>
+          </div>
+        </div>
+      </div>
+
+      <div class="shopping-browse">
+        <div class="shopping-cards" data-cards></div>
+        <p class="shopping-message" data-cards-message hidden></p>
+      </div>
+    </section>
+
+    <!-- Below on the right: the merged shopping list. -->
+    <section class="shopping-list-panel" aria-labelledby="shopping-list-title">
+      <div class="shopping-list-head">
+        <h2 class="shopping-heading" id="shopping-list-title" data-i18n="shopping.list">Liste de courses</h2>
+        <!-- Phones: the system's share sheet, the list as dashes (see
+             shopping.page.js). -->
+        <button type="button" class="shopping-share" data-share hidden aria-label="Partager la liste" title="Partager la liste"
+          data-i18n-attr="aria-label:shopping.share title:shopping.share">
+          <i data-icon="share"></i>
+        </button>
+      </div>
+      <ul class="shopping-list" data-list></ul>
+    </section>
+  </main>
+
+  <!-- A recipe to pick: its sheet of paper, how much of it the list already
+       has, and a check once picked. -->
+  <template data-template="pick-card">
+    <button type="button" class="recipe-card recipe-card--paper shopping-card">
+      <span class="recipe-card-title"></span>
+      <span class="shopping-card-foot">
+        <span class="shopping-card-have"></span>
+        <span class="recipe-card-meta"></span>
+      </span>
+      <span class="shopping-card-check" aria-hidden="true"><i data-icon="check"></i></span>
+    </button>
+  </template>
+
+  <!-- A recipe in the basket: a smaller sheet; clicking takes it out. -->
+  <template data-template="basket-card">
+    <button type="button" class="recipe-card recipe-card--paper shopping-basket-card">
+      <span class="recipe-card-title"></span>
+      <span class="recipe-card-meta"></span>
+      <span class="shopping-basket-card-remove" aria-hidden="true"><i data-icon="close"></i></span>
+    </button>
+  </template>
+</div>

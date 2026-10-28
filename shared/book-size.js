@@ -1,5 +1,5 @@
-/** Bounds of the width/height sliders (library edit panel): the range of
- * the automatic sizes (see three/book-sizing.js). Shared with the server to
+/** Bounds of the width/height sliders (library edit panel), around the
+ * default sizes (see three/book-sizing.js). Shared with the server to
  * validate saved overrides. */
 export const WIDTH_MULTIPLIER_MIN = 0.7;
 export const WIDTH_MULTIPLIER_MAX = 2.5;

@@ -84,7 +84,7 @@ export function exportDatabase() {
 const SQLITE_HEADER = Buffer.from("SQLite format 3\0", "latin1");
 // Only the app's tables and their indexes: a trigger or view would run with
 // the app's own queries.
-const LIBRARY_TABLES = new Set(["books", "recipes", "custom_tags"]);
+const LIBRARY_TABLES = new Set(["books", "recipes", "custom_tags", "shopping_recipes", "shopping_hidden"]);
 const REQUIRED_COLUMNS = {
   books: ["id", "title", "color_token"],
   recipes: ["id", "book_id", "title", "ingredients", "instructions"],

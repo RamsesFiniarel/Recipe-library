@@ -192,3 +192,44 @@
 .modal.new-recipe .new-recipe-error {
   color: #ffb4a6;
 }
+
+/* A phone's photos: the camera or the gallery, two wide glass buttons. */
+.new-recipe-photo-ways {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.new-recipe-photo-way {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  min-height: 3rem;
+  padding: 0 var(--space-4);
+  font: inherit;
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--glass-text);
+  background: var(--glass-field);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.new-recipe-photo-way:hover,
+.new-recipe-photo-way:focus-visible {
+  background: var(--glass-hover);
+  border-color: var(--glass-line-strong);
+  outline: none;
+}
+
+/* Phones: the three ways fit the dialog's width. */
+@media (max-width: 640px) {
+  .new-recipe-way {
+    padding: 0 var(--space-2);
+    font-size: 0.8125rem;
+  }
+}

@@ -8,7 +8,7 @@
       <div class="topbar-inner">
         <div class="topbar-title recipe-page-title">
           <span class="title-field" data-title-field>
-            <input class="title-input" type="text" size="1" data-field="title" aria-label="Titre de la recette" data-i18n-attr="aria-label:recipe.title" />
+            <textarea class="title-input" rows="1" data-field="title" aria-label="Titre de la recette" data-i18n-attr="aria-label:recipe.title"></textarea>
           </span>
           <!-- Tags, the refresh button before them, "+" after (see
                recipe-tags.js). -->
@@ -86,7 +86,9 @@
       </section>
 
       <section class="recipe-column recipe-column--steps rise-in">
+        <!-- On a phone, the ingredients are a third tab, the first. -->
         <div class="recipe-tabs" role="tablist" aria-label="Contenu" data-i18n-attr="aria-label:recipe.tabs">
+          <button type="button" class="recipe-tab recipe-tab--ingredients" role="tab" id="recipe-tab-ingredients" aria-selected="false" tabindex="-1" data-tab="ingredients" data-i18n="recipe.ingredients">Ingrédients</button>
           <button type="button" class="recipe-tab" role="tab" id="recipe-tab-steps" aria-controls="recipe-panel-steps" aria-selected="true" data-tab="steps" data-i18n="recipe.steps">Préparation</button>
           <button type="button" class="recipe-tab" role="tab" id="recipe-tab-nutrition" aria-controls="recipe-panel-nutrition" aria-selected="false" tabindex="-1" data-tab="nutrition" data-i18n="recipe.nutrition">Nutrition</button>
         </div>

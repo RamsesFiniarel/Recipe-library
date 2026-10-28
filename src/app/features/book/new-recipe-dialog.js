@@ -3,6 +3,8 @@ import { recipesApi } from "../../core/api/recipes.api.js";
 import { ApiError } from "../../core/api/http.js";
 import { t } from "../../shared/i18n/i18n.js";
 import { el } from "../../shared/utils/dom.js";
+import { mountIcons } from "../../shared/icons.js";
+import { PHONE_LAYOUT } from "../../shared/utils/media.js";
 import { findWebAddress } from "@shared/web-address.js";
 import "./new-recipe-dialog.css";
 
@@ -38,7 +40,13 @@ export function newRecipeDialog(bookId) {
       fileInput.accept = "image/*,.heic,.heif";
       fileInput.multiple = true;
       fileInput.hidden = true;
-      modal.append(body, fileInput);
+      // A phone's camera, straight to a photo (see showPhotoWays()).
+      const cameraInput = el("input");
+      cameraInput.type = "file";
+      cameraInput.accept = "image/*";
+      cameraInput.setAttribute("capture", "environment");
+      cameraInput.hidden = true;
+      modal.append(body, fileInput, cameraInput);
 
       // Dismissed while reading: the recipe is still made, but nothing opens.
       let closed = false;
@@ -92,7 +100,8 @@ export function newRecipeDialog(bookId) {
 
         const proceed = () => {
           const way = group.querySelector("input:checked").value;
-          if (way === "photos") fileInput.click();
+          if (way === "photos" && window.matchMedia(PHONE_LAYOUT).matches) showPhotoWays().focus();
+          else if (way === "photos") fileInput.click();
           else if (way === "web") showWebForm();
           else showTitleForm();
         };
@@ -107,6 +116,30 @@ export function newRecipeDialog(bookId) {
         show(group, actions);
         placeThumb();
         return group.querySelector("input:checked");
+      }
+
+      // On a phone: take a photo with the camera, or choose some.
+      function showPhotoWays() {
+        const ways = el("div", "new-recipe-photo-ways");
+        const button = (icon, label, input) => {
+          const node = el("button", "new-recipe-photo-way");
+          node.type = "button";
+          const slot = el("i");
+          slot.dataset.icon = icon;
+          node.append(slot, el("span", null, label));
+          node.addEventListener("click", () => input.click());
+          return node;
+        };
+        const take = button("camera", t("newRecipe.takePhoto"), cameraInput);
+        ways.append(take, button("image", t("newRecipe.choosePhotos"), fileInput));
+        mountIcons(ways);
+        const actions = el("div", "modal-actions");
+        const back = el("button", "btn btn-ghost", t("common.back"));
+        back.type = "button";
+        back.addEventListener("click", () => showChoices("photos").focus());
+        actions.append(back);
+        show(ways, actions);
+        return take;
       }
 
       // A field replacing the ways, its label as placeholder; the dialog keeps
@@ -331,11 +364,13 @@ export function newRecipeDialog(bookId) {
         else readPhotos(files);
       });
 
-      fileInput.addEventListener("change", () => {
-        const files = [...fileInput.files];
-        fileInput.value = "";
-        readPhotos(files);
-      });
+      for (const input of [fileInput, cameraInput]) {
+        input.addEventListener("change", () => {
+          const files = [...input.files];
+          input.value = "";
+          readPhotos(files);
+        });
+      }
 
       return showChoices();
     },

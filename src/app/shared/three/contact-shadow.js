@@ -1,8 +1,8 @@
 import * as THREE from "three";
 
-// A soft dark oval under each book's foot: shadow maps leave a gap at a
-// vertical book on a horizontal shelf ("peter-panning"), so this decal
-// grounds them. Built once, shared by every book.
+// A soft dark oval under each book's (or groceries sheet's) foot: shadow
+// maps leave a gap at a vertical book on a horizontal shelf
+// ("peter-panning"), so this decal grounds them. Built once, shared.
 const TEXTURE_SIZE = 128;
 
 let cachedMaterial = null;
@@ -25,7 +25,8 @@ function paintContactShadow() {
 }
 
 /** A shared unlit, alpha-blended material, its plane fitted to each book's
- * footprint (see placeBook() in scene.js). */
+ * footprint (see placeBook() in library/three/scene.js); clone it to fade
+ * one alone. */
 export function getContactShadowMaterial() {
   if (!cachedMaterial) {
     const texture = new THREE.CanvasTexture(paintContactShadow());

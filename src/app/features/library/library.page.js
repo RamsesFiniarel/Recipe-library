@@ -16,6 +16,7 @@ import {
   hexForColorToken,
   hexForPageColorToken,
   darken,
+  isLightColor,
   PAGE_COLOR_TOKENS,
   PAGE_COLORS,
   DEFAULT_PAGE_COLOR_TOKEN,
@@ -28,10 +29,13 @@ import {
   GLOSS_MIN,
   GLOSS_MAX,
 } from "@shared/book-size.js";
-import { widthMultiplierForRecipeCount, heightMultiplierForId } from "./three/book-sizing.js";
+import { DEFAULT_WIDTH_MULTIPLIER, heightMultiplierForId } from "./three/book-sizing.js";
 import { faceLengths } from "./three/book-outline.js";
-import { createSearchFilters, matchesFilters } from "./search-filters.js";
+import { createSearchFilters, matchesFilters, matchRank } from "../../shared/components/search-filters.js";
+import { newRecipeDialog } from "../book/new-recipe-dialog.js";
+import { bookPickerDialog } from "./book-picker-dialog.js";
 import { loadShelfObjects } from "../../shared/utils/preferences.js";
+import { PHONE_LAYOUT } from "../../shared/utils/media.js";
 import template from "./library.page.html?raw";
 import "./library.page.css";
 
@@ -86,6 +90,10 @@ const HERO_SEARCH_TO_TITLE_WIDTH = 1.33;
 const HERO_SEARCH_MIN_EM = 7;
 const HERO_MAX_WIDTH_RATIO = 0.92;
 const HERO_DURATION_MS = 1100;
+// Back from the shelves, the subtitle and the buttons under the bar fade in
+// late, done as title and bar settle (delay + fade = HERO_DURATION_MS).
+const HERO_LATE_DELAY_MS = 600;
+const HERO_LATE_FADE_MS = 500;
 // Keys that scroll a page: on the hero they leave it instead.
 const HERO_EXIT_KEYS = new Set([" ", "ArrowDown", "PageDown"]);
 // The hero bar's placeholder: recipe names, one every few seconds.
@@ -100,6 +108,17 @@ const LOADER_MAX_WAIT_MS = 8000;
 // The hero greets the first library visit per page load; coming back from
 // a book lands on the shelves.
 let heroSeen = false;
+
+// Phones (narrow, or a phone on its side) get the hero alone: no 3D
+// shelves, Three.js never loaded. Crossing it (turning a tablet) re-renders.
+const PHONE_QUERY = `${PHONE_LAYOUT}, (max-height: 500px) and (pointer: coarse)`;
+// The phone's results: a grid, every match up to this many.
+const PHONE_MAX_RESULTS = 60;
+// Room kept above the lifted title and below the results, on a phone.
+const PHONE_EDGE_PX = 16;
+// A phone on its side: a smaller hero title, leaving room for results.
+const PHONE_SHORT_HEIGHT = 520;
+const PHONE_SHORT_TITLE_SCALE = 1.4;
 
 function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
@@ -171,7 +190,7 @@ export async function render(container, params, navigate) {
   let disposed = false;
   // { books: [{ type, id, title, colorToken, folded }],
   //   recipes: [{ type, id, title, servings, prepMinutes, bookId, bookTitle,
-  //               tags, ingredients, ingredientLabels, folded }] }
+  //               tags, ingredients, foods, folded }] }
   let searchEntries = null;
 
   // --- Landing hero -----------------------------------------------------------
@@ -185,12 +204,22 @@ export async function render(container, params, navigate) {
   const heroSearchSlot = container.querySelector("[data-hero-search-slot]");
   const heroCountEl = container.querySelector("[data-hero-count]");
   const heroQuestionEl = container.querySelector("[data-hero-question]");
-  let heroActive = !heroSeen;
+  const heroNewBookButton = container.querySelector("[data-hero-new-book]");
+  const heroNewRecipeButton = container.querySelector("[data-hero-new-recipe]");
+  const phoneQuery = window.matchMedia(PHONE_QUERY);
+  const phone = phoneQuery.matches;
+  let heroActive = phone || !heroSeen;
   heroSeen = true;
+  libraryPageEl.classList.toggle("is-phone", phone);
+  const onPhoneChange = () => navigate("/");
+  phoneQuery.addEventListener("change", onPhoneChange);
   let heroHints = [];
   let heroHintTimer = null;
   let heroEndTimer = null;
   libraryPageEl.style.setProperty("--hero-duration", `${HERO_DURATION_MS}ms`);
+  libraryPageEl.style.setProperty("--hero-late-delay", `${HERO_LATE_DELAY_MS}ms`);
+  libraryPageEl.style.setProperty("--hero-late-fade", `${HERO_LATE_FADE_MS}ms`);
+  let heroLateTimer = null;
 
   /** Lays the hero out: sizes its slots from the header title, then moves the
    * title and search bar onto them by transforms. Expects the hero state. */
@@ -204,7 +233,8 @@ export async function render(container, params, navigate) {
 
     const title = heroTitleEl.getBoundingClientRect();
     const maxWidth = libraryPageEl.clientWidth * HERO_MAX_WIDTH_RATIO;
-    const titleScale = Math.min(HERO_TITLE_SCALE, maxWidth / title.width);
+    const short = phone && libraryPageEl.clientHeight < PHONE_SHORT_HEIGHT;
+    const titleScale = Math.min(short ? PHONE_SHORT_TITLE_SCALE : HERO_TITLE_SCALE, maxWidth / title.width);
     libraryPageEl.style.setProperty("--hero-title-w", `${title.width * titleScale}px`);
     libraryPageEl.style.setProperty("--hero-title-h", `${title.height * titleScale}px`);
     const titleFontSize = parseFloat(getComputedStyle(heroTitleEl).fontSize);
@@ -273,15 +303,20 @@ export async function render(container, params, navigate) {
     });
     heroHints = shuffled(recipes).slice(0, HERO_HINT_COUNT).map((recipe) => `${recipe.title}…`);
     if (heroActive) startHintCycle();
+    // A recipe needs a book to go in.
+    heroNewRecipeButton.hidden = books.length === 0;
   }
 
   /** To the shelves: title and search glide to the header, buttons fade in,
    * the scene comes into focus. */
   function exitHero() {
-    if (!heroActive) return;
+    // A phone stays on the hero: no shelves.
+    if (!heroActive || phone) return;
     heroActive = false;
     clearInterval(heroHintTimer);
     clearTimeout(heroEndTimer);
+    clearTimeout(heroLateTimer);
+    libraryPageEl.classList.remove("is-hero-entering");
     // The placeholder settles back on the field's own words for the move.
     if (!searchBox.classList.contains("has-value")) showHint(HERO_HINT_DEFAULT, { slide: false });
     hideHeroResults();
@@ -301,9 +336,10 @@ export async function render(container, params, navigate) {
     clearTimeout(heroEndTimer);
     clearSearch();
     if (searchBox.contains(document.activeElement)) document.activeElement.blur();
-    // Laid out in the hero state, out of sight, then started from the header.
+    // Laid out in the hero state, out of sight, then started from the header;
+    // entering from the start, so the late pieces never show early.
     libraryPageEl.classList.remove("is-hero-transition");
-    libraryPageEl.classList.add("is-hero", "has-hero");
+    libraryPageEl.classList.add("is-hero", "has-hero", "is-hero-entering");
     placeHero();
     libraryPageEl.classList.remove("is-hero");
     void libraryPageEl.offsetWidth;
@@ -313,6 +349,11 @@ export async function render(container, params, navigate) {
     sceneHandle?.setHero(true);
     startHintCycle();
     heroEndTimer = setTimeout(() => libraryPageEl.classList.remove("is-hero-transition"), HERO_DURATION_MS + 50);
+    clearTimeout(heroLateTimer);
+    heroLateTimer = setTimeout(
+      () => libraryPageEl.classList.remove("is-hero-entering"),
+      HERO_LATE_DELAY_MS + HERO_LATE_FADE_MS + 50
+    );
   }
 
   // The row of results holds more or fewer cards as the window changes.
@@ -331,6 +372,8 @@ export async function render(container, params, navigate) {
   // the search), unless a long filter menu takes the wheel. On the shelves,
   // scrolling closes an open search.
   function onPageWheel(event) {
+    // A phone's results scroll on their own.
+    if (phone) return;
     if (!pageReady) {
       event.preventDefault();
       return;
@@ -397,8 +440,8 @@ export async function render(container, params, navigate) {
     pageReady = true;
     loaderEl.classList.add("is-done");
     if (!heroActive) return;
-    // Ready to type straight away.
-    searchInput.focus({ preventScroll: true });
+    // Ready to type straight away (on a phone, no keyboard popping up).
+    if (!phone) searchInput.focus({ preventScroll: true });
     libraryPageEl.classList.add("is-hero-intro");
     setTimeout(() => libraryPageEl.classList.remove("is-hero-intro"), HERO_INTRO_MS);
   }
@@ -911,7 +954,7 @@ export async function render(container, params, navigate) {
 
   function automaticSizes(book) {
     return {
-      widthMultiplier: widthMultiplierForRecipeCount(book.recipes.length),
+      widthMultiplier: DEFAULT_WIDTH_MULTIPLIER,
       heightMultiplier: heightMultiplierForId(book.id),
     };
   }
@@ -1095,16 +1138,6 @@ export async function render(container, params, navigate) {
     return group;
   }
 
-  // Match quality: whole title, its start, a word's start, anywhere (-1: none).
-  function matchRank(folded, needle) {
-    if (folded === needle) return 0;
-    if (folded.startsWith(needle)) return 1;
-    for (let at = folded.indexOf(needle); at >= 0; at = folded.indexOf(needle, at + 1)) {
-      if (!/[\p{L}\p{N}]/u.test(folded[at - 1])) return 2;
-    }
-    return folded.includes(needle) ? 3 : -1;
-  }
-
   const titleCollator = new Intl.Collator(locale, { sensitivity: "base", numeric: true });
 
   /** Books and recipes (recipes only under filters), best matches first, then
@@ -1132,9 +1165,7 @@ export async function render(container, params, navigate) {
 
   // Light lettering on a dark cover, dark on a light one.
   function inkOn(hex) {
-    const value = parseInt(hex.slice(1), 16);
-    const [r, g, b] = [16, 8, 0].map((shift) => ((value >> shift) & 0xff) / 255);
-    return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.6 ? "var(--color-page-text)" : "#fbf5ec";
+    return isLightColor(hex) ? "var(--color-page-text)" : "#fbf5ec";
   }
 
   function buildHeroCard(entry) {
@@ -1152,14 +1183,15 @@ export async function render(container, params, navigate) {
     const card = cloneTemplate(container, "hero-recipe-card");
     card.style.setProperty("--page-color", hexForPageColorToken(bookById.get(entry.bookId)?.pageColorToken));
     card.querySelector(".recipe-card-title").textContent = entry.title;
-    card.querySelector(".recipe-card-meta").textContent = entry.servings ? `${entry.servings} pers.` : "—";
+    card.querySelector(".recipe-card-meta").textContent = entry.servings ? t("people.short", { n: entry.servings }) : "—";
     card.setAttribute("aria-label", `${entry.title}, ${entry.bookTitle}`);
     card.dataset.nav = resultPath(entry);
     return card;
   }
 
-  // As many cards as the row's width holds.
+  // As many cards as the row's width holds; on a phone, a grid of them all.
   function heroCardsThatFit() {
+    if (phone) return PHONE_MAX_RESULTS;
     const style = getComputedStyle(heroResultsEl);
     const card = parseFloat(style.getPropertyValue("--hero-card-width"));
     const gap = parseFloat(style.columnGap) || 0;
@@ -1173,7 +1205,7 @@ export async function render(container, params, navigate) {
     Object.assign(card.style, {
       position: "absolute",
       left: `${rect.left - origin.left}px`,
-      top: `${rect.top - origin.top}px`,
+      top: `${rect.top - origin.top + heroResultsEl.scrollTop}px`,
       pointerEvents: "none",
     });
     card
@@ -1198,7 +1230,14 @@ export async function render(container, params, navigate) {
    * From layout offsets (which ignore the lift). */
   function updateHeroLift() {
     let lift = 0;
-    if (heroActive && searchBox.classList.contains("has-value")) {
+    // On a phone, the block goes to the top and the results grid fills the
+    // rest of the screen, scrolling.
+    if (phone && searchBox.classList.contains("has-value")) {
+      const stack = heroResultsEl.offsetParent;
+      lift = Math.max(0, stack.offsetTop + heroTitleSlot.offsetTop - PHONE_EDGE_PX);
+      const resultsTop = stack.offsetTop + heroResultsEl.offsetTop - lift;
+      libraryPageEl.style.setProperty("--hero-results-height", `${heroEl.clientHeight - resultsTop - PHONE_EDGE_PX}px`);
+    } else if (heroActive && searchBox.classList.contains("has-value")) {
       const cardWidth = parseFloat(getComputedStyle(heroResultsEl).getPropertyValue("--hero-card-width"));
       const stack = heroResultsEl.offsetParent;
       const top = stack.offsetTop + heroTitleSlot.offsetTop;
@@ -1249,9 +1288,11 @@ export async function render(container, params, navigate) {
         entering += 1;
         continue;
       }
-      const dx = from.left - card.getBoundingClientRect().left;
-      if (Math.abs(dx) < 0.5) continue;
-      card.animate([{ translate: `${dx}px 0` }, { translate: "0 0" }], {
+      const to = card.getBoundingClientRect();
+      const dx = from.left - to.left;
+      const dy = from.top - to.top;
+      if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) continue;
+      card.animate([{ translate: `${dx}px ${dy}px` }, { translate: "0 0" }], {
         duration: HERO_CARD_MOVE_MS,
         easing: "cubic-bezier(0.2, 0.7, 0.3, 1)",
       });
@@ -1439,6 +1480,12 @@ export async function render(container, params, navigate) {
       sceneHandle = null;
     }
 
+    // A phone: the hero alone, no scene.
+    if (phone) {
+      if (first) revealPage();
+      return;
+    }
+
     // Three.js loads on demand, for this page only.
     const { createLibraryScene } = await import("./three/scene.js");
     if (disposed) return;
@@ -1476,16 +1523,41 @@ export async function render(container, params, navigate) {
     }
   }
 
-  addButton.addEventListener("click", async () => {
+  // `glass`: the title prompt's, dark from the hero's button.
+  async function createBook({ glass } = {}) {
     const title = await promptDialog({
       title: t("library.newBook.title"),
       label: t("library.newBook.label"),
       confirmLabel: t("common.create"),
+      glass,
     });
     if (!title) return;
-    await booksApi.create(title);
-    if (!disposed) mountScene();
-  });
+    const book = await booksApi.create(title);
+    if (disposed) return;
+    // From the hero, straight to its page: the shelves place it on their
+    // next showing.
+    if (heroActive) {
+      navigate(`/${book.id}`, { transition: "veil" });
+      return;
+    }
+    // Rebuilt with the book on the highest shelf with room (see scene.js),
+    // then opened like a click, out of edit mode.
+    if (editMode) closeEditMode();
+    await mountScene();
+    if (!disposed) sceneHandle?.openBook(book.id);
+  }
+
+  // Which book, then the book page's "New recipe" dialog, then the recipe.
+  async function createRecipe() {
+    const bookId = await bookPickerDialog([...bookById.values()]);
+    if (!bookId || disposed) return;
+    const recipe = await newRecipeDialog(bookId);
+    if (recipe && !disposed) navigate(`/${bookId}/${recipe.id}`, { transition: "veil" });
+  }
+
+  addButton.addEventListener("click", () => createBook());
+  heroNewBookButton.addEventListener("click", () => createBook({ glass: "dark" }));
+  heroNewRecipeButton.addEventListener("click", createRecipe);
 
   try {
     await mountScene({ first: true });
@@ -1501,8 +1573,10 @@ export async function render(container, params, navigate) {
     window.removeEventListener("keydown", onEditModeKeydown);
     window.removeEventListener("resize", onHeroResize);
     window.removeEventListener("keydown", onPageKeydown);
+    phoneQuery.removeEventListener("change", onPhoneChange);
     clearInterval(heroHintTimer);
     clearTimeout(heroEndTimer);
+    clearTimeout(heroLateTimer);
     scheduleSaveBookEdits.cancel();
     previewHoleObserver.disconnect();
     closePreview();

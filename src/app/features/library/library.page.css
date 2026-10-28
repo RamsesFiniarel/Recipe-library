@@ -55,7 +55,7 @@
 .library-menu:has(:focus-visible),
 .library-menu.is-open,
 .library-page.is-editing .library-menu {
-  width: calc(var(--library-menu-size) + 2 * var(--library-menu-slot));
+  width: calc(var(--library-menu-size) + 3 * var(--library-menu-slot));
   background: color-mix(in srgb, var(--color-paper) 85%, transparent);
   border-color: var(--color-page-border-strong);
 }
@@ -127,16 +127,6 @@
   opacity: 1;
 }
 
-/* The settings' wheel turns a little under the pointer. */
-.library-menu-btn--settings svg {
-  transition: rotate 500ms var(--ease-entrance);
-}
-
-.library-menu-btn--settings:hover svg,
-.library-menu-btn--settings:focus-visible svg {
-  rotate: 60deg;
-}
-
 /* ---------------------------------------------------------------------
    Search (books and recipes). The slot keeps the header's place; the box
    inside, anchored right, stretches into the hero's long bar.
@@ -155,101 +145,6 @@
 /* Closed by a scroll: back to its size at once, no shrinking on the way. */
 .library-search.is-snapping {
   transition: none;
-}
-
-.library-search-box {
-  /* Room kept at the end of the field (for the hero's "/" and arrow). */
-  --search-end: var(--space-3);
-  position: absolute;
-  top: 50%;
-  right: 0;
-  width: 100%;
-  height: 2.5rem;
-  margin-top: -1.25rem;
-  font-size: var(--text-sm);
-}
-
-.library-search-icon {
-  position: absolute;
-  top: 50%;
-  left: var(--space-3);
-  z-index: 1;
-  transform: translateY(-50%);
-  display: flex;
-  color: var(--color-page-text-muted);
-  pointer-events: none;
-  transition: color var(--duration-fast) var(--ease);
-}
-
-.library-search-icon svg {
-  width: 16px;
-  height: 16px;
-}
-
-.library-search-input {
-  width: 100%;
-  height: 100%;
-  /* The text starts after the icon, and after the filters' chips if any. */
-  padding: 0 var(--search-end) 0 calc(var(--space-3) * 2 + 16px + var(--chips-width, 0px));
-  font-family: var(--font-body);
-  font-size: inherit;
-  color: var(--color-page-text);
-  background: color-mix(in srgb, var(--color-paper) 60%, transparent);
-  border: 1px solid var(--color-paper-border);
-  border-radius: var(--radius-full);
-  box-shadow: var(--shadow-lg);
-  transition:
-    background var(--duration-base) var(--ease),
-    border-color var(--duration-base) var(--ease),
-    box-shadow var(--duration-base) var(--ease);
-}
-
-.library-search-input::placeholder {
-  color: var(--color-page-text-muted);
-}
-
-/* Hides the native "clear" control (Escape empties the field). */
-.library-search-input::-webkit-search-cancel-button {
-  display: none;
-}
-
-/* Focus: no ring; the field firms up like paper laid on top (more opaque,
-   darker edge, lit rim, soft shadow). */
-.library-search-input:focus {
-  outline: none;
-  background: color-mix(in srgb, var(--color-paper) 94%, transparent);
-  border-color: color-mix(in srgb, var(--color-page-text) 22%, transparent);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.7),
-    0 12px 30px -14px rgb(30 20 12 / 0.5);
-}
-
-.library-search-box:focus-within .library-search-icon {
-  color: var(--color-page-text);
-}
-
-/* The "/" shortcut hint, at the end of the hero bar only (the shortcut
-   works everywhere). */
-.library-search-kbd {
-  position: absolute;
-  top: 50%;
-  right: var(--space-3);
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 1.25rem;
-  height: 1.25rem;
-  padding: 0 0.3rem;
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: var(--color-page-text-muted);
-  transform: translateY(-50%);
-  pointer-events: none;
-  opacity: 0;
-  transition:
-    opacity var(--duration-fast) var(--ease),
-    color var(--duration-fast) var(--ease);
 }
 
 /* Hovered, it lists the filters (see search-filters.js); greyed while the
@@ -377,13 +272,6 @@
   flex-direction: column;
   gap: var(--space-1);
   animation: library-results-in 180ms var(--ease) both;
-}
-
-@keyframes library-results-in {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
 }
 
 /* "display: flex" ties with the browser's [hidden] rule: restate it, or the
@@ -531,53 +419,12 @@
 }
 
 /* ---------------------------------------------------------------------
-   Search filters (see search-filters.js): chips at the start of the bar,
-   then the text, and a menu below listing commands, then value
-   suggestions. Each kind keeps a tint from the book palette.
+   Search filters on this page (the rest in search-filters.css): the
+   header's and the hero's sizes, the results behind the menu.
    --------------------------------------------------------------------- */
-.library-search-box [data-type="ingredient"] {
-  --filter-tint: #727d63;
-}
-
-.library-search-box [data-type="tag"] {
-  --filter-tint: #be8b44;
-}
-
-.library-search-box [data-type="time"] {
-  --filter-tint: #4d5b60;
-}
-
-.library-search-box [data-type="people"] {
-  --filter-tint: #ad5a3b;
-}
-
 /* Room for the chips: the header's bar widens while it holds some. */
 .library-page:not(.is-hero) .library-search:has(.library-search-chip) {
   width: 26rem;
-}
-
-.library-search-chips {
-  position: absolute;
-  top: 50%;
-  left: calc(var(--space-3) * 2 + 16px);
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.3em;
-  /* Chips stop where the field keeps a few words; beyond, they scroll, the
-     first ones fading at the left. */
-  max-width: calc(100% - (var(--space-3) * 2 + 16px) - var(--search-end) - 4rem);
-  overflow-x: auto;
-  scrollbar-width: none;
-  transform: translateY(-50%);
-}
-
-.library-search-chips.is-scrolled {
-  mask-image: linear-gradient(to right, transparent, #000 1.5rem);
-}
-
-.library-search-chips::-webkit-scrollbar {
-  display: none;
 }
 
 .library-page.is-hero .library-search-chips {
@@ -585,108 +432,10 @@
   max-width: calc(100% - (1.25rem + 18px + var(--space-3)) - var(--search-end) - 4rem);
 }
 
-.library-search-chip {
-  display: inline-flex;
-  flex: none;
-  align-items: center;
-  gap: 0.35em;
-  height: 1.9em;
-  padding: 0 0.25em 0 0.6em;
-  font-size: 0.875em;
-  font-weight: 500;
-  color: var(--color-page-text);
-  white-space: nowrap;
-  background: color-mix(in srgb, var(--filter-tint) 14%, var(--color-paper));
-  border: 1px solid color-mix(in srgb, var(--filter-tint) 28%, transparent);
-  border-radius: var(--radius-full);
-  animation: library-chip-in 240ms var(--ease-entrance) both;
-}
-
-.library-search-chip > svg {
-  flex: none;
-  width: 1.1em;
-  height: 1.1em;
-  color: var(--filter-tint);
-}
-
-/* The one whose value is being typed: an outline waiting to be filled. */
-.library-search-chip.is-pending {
-  padding-right: 0.7em;
-  color: var(--color-page-text-soft);
-  background: transparent;
-  border-style: dashed;
-  border-color: color-mix(in srgb, var(--filter-tint) 55%, transparent);
-}
-
-@keyframes library-chip-in {
-  from {
-    opacity: 0;
-    transform: scale(0.85);
-  }
-}
-
-.library-search-chip-remove {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.45em;
-  height: 1.45em;
-  padding: 0;
-  color: var(--color-page-text-muted);
-  background: none;
-  border: none;
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition:
-    color var(--duration-fast) var(--ease),
-    background var(--duration-fast) var(--ease);
-}
-
-.library-search-chip-remove:hover {
-  color: var(--color-page-text);
-  background: color-mix(in srgb, var(--filter-tint) 18%, transparent);
-}
-
-.library-search-chip-remove svg {
-  width: 0.85em;
-  height: 0.85em;
-}
-
 /* While a value is typed, the field says what it expects (the hero
    otherwise hides its own placeholder behind the cycling hint). */
 .library-page .library-search-box.is-pending .library-search-input::placeholder {
   color: color-mix(in srgb, var(--color-page-text-muted) 80%, transparent);
-}
-
-/* The menu: the results' frosted paper, under the bar. */
-.library-search-menu {
-  position: absolute;
-  top: calc(100% + var(--space-2));
-  right: 0;
-  z-index: 5;
-  display: flex;
-  flex-direction: column;
-  width: max(100%, 21rem);
-  max-height: min(60vh, 420px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding: var(--space-2);
-  font-family: var(--font-body);
-  font-size: 0.875rem;
-  color: var(--color-page-text);
-  background: color-mix(in srgb, var(--color-paper) 82%, transparent);
-  border: 1px solid rgb(255 255 255 / 0.5);
-  border-radius: var(--radius-lg);
-  box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.55),
-    0 24px 48px -20px rgb(30 20 12 / 0.5);
-  backdrop-filter: blur(18px) saturate(1.15);
-  -webkit-backdrop-filter: blur(18px) saturate(1.15);
-  animation: library-results-in 180ms var(--ease) both;
-}
-
-.library-search-menu[hidden] {
-  display: none;
 }
 
 .library-page.is-hero .library-search-menu {
@@ -706,160 +455,6 @@
 
 .library-page:has(.library-search-box.is-menu-open) .library-hero-results {
   opacity: 0.3;
-}
-
-.library-search-menu-label {
-  margin: 0;
-  padding: var(--space-1) var(--space-2) var(--space-2);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-page-text-muted);
-}
-
-.library-search-menu-empty {
-  margin: 0;
-  padding: var(--space-1) var(--space-2) var(--space-2);
-  font-size: 0.875em;
-  color: var(--color-page-text-muted);
-}
-
-/* A command: icon on a tinted square, name, description and keys. */
-.library-search-command {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  width: 100%;
-  padding: 0.4rem var(--space-2);
-  font: inherit;
-  text-align: left;
-  color: inherit;
-  background: none;
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: background var(--duration-fast) var(--ease);
-}
-
-.library-search-command.is-active {
-  background: color-mix(in srgb, var(--color-page-text) 7%, transparent);
-}
-
-.library-search-command-icon {
-  display: flex;
-  flex: none;
-  align-items: center;
-  justify-content: center;
-  width: 2.125em;
-  height: 2.125em;
-  color: var(--filter-tint);
-  background: color-mix(in srgb, var(--filter-tint) 15%, var(--color-paper));
-  border-radius: var(--radius-sm);
-}
-
-.library-search-command-text {
-  display: flex;
-  flex: 1 1 auto;
-  flex-direction: column;
-  min-width: 0;
-  line-height: 1.3;
-}
-
-.library-search-command-label {
-  font-family: var(--font-display);
-  font-weight: 600;
-}
-
-.library-search-command-hint {
-  font-size: 0.85em;
-  color: var(--color-page-text-muted);
-}
-
-.library-search-command-key {
-  flex: none;
-  padding: 0.1em 0.45em;
-  font-family: var(--font-body);
-  font-size: 0.8em;
-  color: var(--color-page-text-soft);
-  background: var(--color-paper);
-  border: 1px solid color-mix(in srgb, var(--color-page-text) 16%, transparent);
-  border-bottom-width: 2px;
-  border-radius: 5px;
-}
-
-/* Ingredient suggestions: the typed part picked out, recipe count right. */
-.library-search-ideas {
-  display: flex;
-  flex-direction: column;
-}
-
-.library-search-idea {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  width: 100%;
-  padding: 0.45rem var(--space-2);
-  font: inherit;
-  text-align: left;
-  color: var(--color-page-text-soft);
-  background: none;
-  border: none;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition:
-    background var(--duration-fast) var(--ease),
-    color var(--duration-fast) var(--ease);
-}
-
-.library-search-idea.is-active {
-  color: var(--color-page-text);
-  background: color-mix(in srgb, var(--color-page-text) 7%, transparent);
-}
-
-.library-search-idea mark {
-  font-weight: 650;
-  color: var(--color-page-text);
-  background: none;
-}
-
-.library-search-idea-count {
-  font-size: 0.8em;
-  font-variant-numeric: tabular-nums;
-  color: var(--color-page-text-muted);
-}
-
-/* Tags, times and numbers of people: pills to pick from. */
-.library-search-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  padding: 0 var(--space-2) var(--space-2);
-}
-
-.library-search-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45em;
-  height: 2em;
-  padding: 0 0.8em;
-  font: inherit;
-  color: var(--color-page-text);
-  background: var(--color-paper);
-  border: 1px solid color-mix(in srgb, var(--color-page-text) 14%, transparent);
-  border-radius: var(--radius-full);
-  cursor: pointer;
-  transition:
-    border-color var(--duration-fast) var(--ease),
-    background var(--duration-fast) var(--ease),
-    transform var(--duration-fast) var(--ease);
-}
-
-.library-search-pill.is-active {
-  background: color-mix(in srgb, var(--color-page-text) 6%, var(--color-paper));
-  border-color: color-mix(in srgb, var(--color-page-text) 45%, transparent);
-  transform: translateY(-1px);
 }
 
 /* ---------------------------------------------------------------------
@@ -1106,11 +701,23 @@
 }
 
 .library-hero-stack {
+  /* The buttons under the bar (out of the flow): their gap and height. */
+  --hero-actions-gap: 1.5rem;
+  --hero-actions-height: 2.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* A little above the middle: the scroll hint sits below. */
-  margin-top: -4vh;
+}
+
+/* Phones: the buttons under the bar (computers have the menu instead), the
+   title to the buttons centred, the buttons counted in: a negative top
+   margin raises a centred item by half its size. */
+.library-hero-actions {
+  display: none;
+}
+
+.library-page.is-phone .library-hero-stack {
+  margin-top: calc(-1 * (var(--hero-actions-gap) + var(--hero-actions-height)));
 }
 
 .library-hero-title-slot {
@@ -1252,6 +859,92 @@
   opacity: 1;
 }
 
+/* Under the bar: three glass buttons, centred in a row, gone while the bar
+   holds anything or its menu is open. */
+.library-page.is-phone .library-hero-actions {
+  position: absolute;
+  top: calc(100% + var(--hero-actions-gap));
+  left: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  width: var(--hero-search-width, 0px);
+  translate: -50% 0;
+  transition:
+    opacity 250ms var(--ease),
+    visibility 0s linear 0s;
+}
+
+.library-page:has(.library-search-box.has-value) .library-hero-actions,
+.library-page:has(.library-search-box.is-menu-open) .library-hero-actions {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 180ms var(--ease),
+    visibility 0s linear 180ms;
+}
+
+.library-hero-action {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: var(--hero-actions-height);
+  padding: 0 1rem;
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--hero-ink);
+  text-decoration: none;
+  white-space: nowrap;
+  background: rgb(251 245 236 / 0.1);
+  border: 1px solid rgb(251 245 236 / 0.24);
+  border-radius: var(--radius-full);
+  box-shadow: 0 12px 30px -16px rgb(0 0 0 / 0.6);
+  backdrop-filter: blur(14px) saturate(1.1);
+  -webkit-backdrop-filter: blur(14px) saturate(1.1);
+  cursor: pointer;
+  pointer-events: auto;
+  transition:
+    background var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    transform var(--duration-fast) var(--ease);
+}
+
+.library-hero-action[hidden] {
+  display: none;
+}
+
+.library-hero-action:hover,
+.library-hero-action:focus-visible {
+  background: rgb(251 245 236 / 0.18);
+  border-color: rgb(251 245 236 / 0.42);
+  transform: translateY(-1px);
+  outline: none;
+}
+
+.library-hero-action svg {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+/* Back from the shelves, the subtitle and the buttons wait for title and
+   bar to settle, then fade in (--hero-late-*, library.page.js); leaving,
+   they go with the hero layer and only then turn transparent. */
+.library-page:not(.is-hero) .library-hero-subtitle,
+.library-page:not(.is-hero) .library-hero-actions {
+  opacity: 0;
+  transition: opacity 0s linear 450ms;
+}
+
+.library-page.is-hero-entering .library-hero-subtitle,
+.library-page.is-hero-entering .library-hero-actions {
+  transition: opacity var(--hero-late-fade) var(--ease) var(--hero-late-delay);
+}
+
 /* While results are up, the scroll hint makes way for them. */
 .library-page:has(.library-hero-card) .library-hero-scroll {
   opacity: 0;
@@ -1291,6 +984,10 @@
 /* First arrival: the hero's own pieces rise in, one after the other. */
 .library-page.is-hero-intro .library-hero-subtitle {
   animation: library-hero-rise 900ms var(--ease-entrance) 160ms backwards;
+}
+
+.library-page.is-hero-intro .library-hero-actions {
+  animation: library-hero-rise 900ms var(--ease-entrance) 600ms backwards;
 }
 
 .library-page.is-hero-intro .library-hero-scroll {
@@ -1498,7 +1195,6 @@
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
 }
-
 
 .library-edit-empty {
   margin: auto 0;
@@ -2115,4 +1811,123 @@
   font-size: var(--text-sm);
   font-weight: 500;
   letter-spacing: 0.02em;
+}
+
+/* ---------------------------------------------------------------------
+   "Which book?" before a new recipe (book-picker-dialog.js): the books as
+   rows in the dialog's glass, a small cover, the title, the recipe count.
+   --------------------------------------------------------------------- */
+.book-picker-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  max-height: min(52vh, 26rem);
+  margin: 0 calc(-1 * var(--space-2));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.book-picker-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: var(--space-2);
+  font: inherit;
+  text-align: left;
+  color: var(--glass-text);
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease);
+}
+
+.book-picker-item:hover,
+.book-picker-item:focus-visible {
+  background: var(--glass-hover);
+  outline: none;
+}
+
+.book-picker-cover {
+  flex: none;
+  width: 1.75rem;
+  height: 2.3rem;
+  background: var(--book-color) center / cover;
+  border-radius: 2px 4px 4px 2px;
+  box-shadow: inset 3px 0 0 rgb(0 0 0 / 0.2), 0 2px 6px rgb(0 0 0 / 0.35);
+}
+
+.book-picker-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-display);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.book-picker-count {
+  flex: none;
+  font-size: var(--text-xs);
+  color: var(--glass-text-muted);
+}
+
+/* ---------------------------------------------------------------------
+   Phones (.is-phone, PHONE_QUERY in library.page.js): the hero alone, on
+   the blurred wall, the settings at the top right; while searching, the
+   bar at the top and the results as a scrolling grid of smaller cards.
+   --------------------------------------------------------------------- */
+.library-hero-settings {
+  display: none;
+}
+
+.library-page.is-phone .library-hero-settings {
+  position: absolute;
+  top: max(var(--space-4), env(safe-area-inset-top));
+  right: max(var(--space-4), env(safe-area-inset-right));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* The icon alone, its tap area the book and recipe pages' menu buttons'
+     size. */
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--hero-ink);
+  pointer-events: auto;
+}
+
+.library-page.is-phone .library-hero-settings svg {
+  width: 18px;
+  height: 18px;
+}
+
+.library-page.is-phone .library-hero-scroll {
+  display: none;
+}
+
+.library-page.is-phone .library-hero-results {
+  --hero-card-width: clamp(92px, 26vw, 124px);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--hero-card-width), 1fr));
+  align-items: start;
+  gap: var(--space-3);
+  max-height: var(--hero-results-height, 50dvh);
+  padding: 4px 4px var(--space-4);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  pointer-events: auto;
+}
+
+.library-page.is-phone .library-hero-card {
+  width: auto;
+}
+
+/* A phone on its side: the bar closer to the subtitle, more room for the
+   results (the title is smaller too, see placeHero()). */
+@media (max-height: 520px) {
+  .library-page.is-phone .library-hero-search-slot {
+    margin-top: var(--space-4);
+  }
 }

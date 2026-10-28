@@ -1,16 +1,18 @@
-import { mountIcons } from "../../shared/icons.js";
-import { DURATION_CHARS, formatDuration, parseDuration } from "../../shared/utils/duration.js";
-import { el } from "../../shared/utils/dom.js";
+import { mountIcons } from "../icons.js";
+import { DURATION_CHARS, formatDuration, parseDuration } from "../utils/duration.js";
+import { el } from "../utils/dom.js";
 import { foldForSearch } from "@shared/text.js";
 import { ingredientWords, indexOfRun } from "@shared/ingredients.js";
 import { RECIPE_TAGS } from "@shared/recipe-tags.js";
-import { locale, t } from "../../shared/i18n/i18n.js";
+import { locale, t } from "../i18n/i18n.js";
+import "./search-filters.css";
 
-/** Library search filters, typed as commands: "/i" ingredient, "/t" tag,
- * "/c" longest time, "/p" people. A command becomes a chip awaiting its
- * value, typed in the bar with suggestions below; Enter, Tab or a click
- * settles it. Ingredients and tags add up; time and people replace. "/"
- * alone, or hovering the hero bar's "/" hint, lists the commands. */
+/** Search filters (library and groceries pages), typed as commands: "/i"
+ * ingredient, "/t" tag, "/c" longest time, "/p" people, "/b" book. A
+ * command becomes a chip awaiting its value, typed in the bar with
+ * suggestions below; Enter, Tab or a click settles it. Ingredients and tags
+ * add up; time, people and book replace. "/" alone, or hovering the bar's
+ * "/" hint, lists the commands. */
 
 const searchFilter = (key, type, icon) => ({
   key,
@@ -26,7 +28,11 @@ const SEARCH_FILTERS = [
   searchFilter("t", "tag", "tag"),
   searchFilter("c", "time", "clock"),
   searchFilter("p", "people", "users"),
+  searchFilter("b", "book", "book"),
 ];
+
+// One of each: a new one replaces the chip.
+const SINGLE_TYPES = new Set(["time", "people", "book"]);
 
 const FILTER_BY_TYPE = new Map(SEARCH_FILTERS.map((filter) => [filter.type, filter]));
 
@@ -49,10 +55,18 @@ function hasIngredient(recipe, words) {
   return words.length === 0 || lineWords(recipe).some((line) => indexOfRun(line, words) >= 0);
 }
 
-function matchesFilter(recipe, { type, value, words }) {
-  if (type === "ingredient") return hasIngredient(recipe, words);
+// One of the foods the recipe's lines are about (see search.service.js).
+function hasFood(recipe, key) {
+  return recipe.foods?.some((food) => food.key === key) ?? false;
+}
+
+// An ingredient picked among the suggestions is a food (`key`): "clove"
+// isn't "garlic clove". Typed freely, its words are looked for in the lines.
+function matchesFilter(recipe, { type, value, words, key }) {
+  if (type === "ingredient") return key ? hasFood(recipe, key) : hasIngredient(recipe, words);
   if (type === "tag") return recipe.tags?.includes(value) ?? false;
   if (type === "time") return recipe.prepMinutes != null && recipe.prepMinutes <= value;
+  if (type === "book") return recipe.bookId === value;
   return recipe.servings != null && Math.abs(recipe.servings - value) <= 1;
 }
 
@@ -61,13 +75,27 @@ export function matchesFilters(recipe, filters) {
   return filters.every((filter) => matchesFilter(recipe, filter));
 }
 
-// The tags added in the settings, by key (see createSearchFilters()).
+/** How well a folded title matches the text: whole title, its start, a
+ * word's start, anywhere (-1: not at all). */
+export function matchRank(folded, needle) {
+  if (folded === needle) return 0;
+  if (folded.startsWith(needle)) return 1;
+  for (let at = folded.indexOf(needle); at >= 0; at = folded.indexOf(needle, at + 1)) {
+    if (!/[\p{L}\p{N}]/u.test(folded[at - 1])) return 2;
+  }
+  return folded.includes(needle) ? 3 : -1;
+}
+
+// The tags added in the settings, by key, and the books' titles by id (see
+// createSearchFilters()).
 let customTagLabels = new Map();
 const tagLabel = (key) => customTagLabels.get(key) ?? t(`tag.${key}`);
+let bookTitles = new Map();
 
 function chipText({ type, value }) {
   if (type === "ingredient") return value;
   if (type === "tag") return tagLabel(value);
+  if (type === "book") return bookTitles.get(value) ?? "";
   if (type === "time") return `≤ ${formatDuration(value)}`;
   return t("people.range", { min: Math.max(1, value - 1), max: value + 1 });
 }
@@ -114,9 +142,11 @@ export function createSearchFilters({ box, input, getRecipes, getCustomTags = ()
 
   // --- Chips ---
 
-  // The tags added in the settings, as the search index has them.
+  // The tags added in the settings, as the search index has them, and the
+  // books the recipes are in.
   function syncCustomTags() {
     customTagLabels = new Map((getCustomTags() ?? []).map((tag) => [tag.key, tag.label]));
+    bookTitles = new Map((getRecipes() ?? []).map((recipe) => [recipe.bookId, recipe.bookTitle]));
   }
 
   function renderChips() {
@@ -153,11 +183,13 @@ export function createSearchFilters({ box, input, getRecipes, getCustomTags = ()
     chipsEl.classList.toggle("is-scrolled", chipsEl.scrollLeft > 0);
   }
 
-  function addChip(type, value) {
-    const chip = { type, value, words: type === "ingredient" ? ingredientWords(value) : null };
-    if (type === "time" || type === "people") chips = chips.filter((other) => other.type !== type);
-    const duplicate = chips.some((other) =>
-      type === "ingredient" ? other.type === type && other.words.join(" ") === chip.words.join(" ") : other.type === type && other.value === value
+  // `key`: the food of an ingredient picked among the suggestions.
+  function addChip(type, value, key = null) {
+    const chip = { type, value, key, words: type === "ingredient" ? ingredientWords(value) : null };
+    if (SINGLE_TYPES.has(type)) chips = chips.filter((other) => other.type !== type);
+    const sameIngredient = (other) => (key || other.key ? other.key === key : other.words.join(" ") === chip.words.join(" "));
+    const duplicate = chips.some(
+      (other) => other.type === type && (type === "ingredient" ? sameIngredient(other) : other.value === value)
     );
     if (!duplicate) chips.push(chip);
   }
@@ -195,8 +227,8 @@ export function createSearchFilters({ box, input, getRecipes, getCustomTags = ()
     onChange();
   }
 
-  function settle(value) {
-    addChip(pending.type, value);
+  function settle(value, key) {
+    addChip(pending.type, value, key);
     endPending();
   }
 
@@ -207,10 +239,10 @@ export function createSearchFilters({ box, input, getRecipes, getCustomTags = ()
     const typed = input.value.trim();
     const option = options[active] ?? (typed ? options[0] : undefined);
     if (option?.value !== undefined) {
-      settle(option.value);
+      settle(option.value, option.key);
       return true;
     }
-    if (!typed || pending.type === "tag") return false;
+    if (!typed || pending.type === "tag" || pending.type === "book") return false;
     if (pending.type === "ingredient") {
       settle(typed);
       return true;
@@ -286,110 +318,119 @@ export function createSearchFilters({ box, input, getRecipes, getCustomTags = ()
     showMenu(mode, [heading(t("search.menu.filter")), ...list.map((option) => option.node)], list, mode === "help" ? -1 : 0);
   }
 
-  function countLabel(count) {
-    return el("span", "library-search-idea-count", String(count));
-  }
-
   // A pill: the idea and how many recipes it leaves.
   function pill(text, value, count) {
     const node = el("button", "library-search-pill", text);
     node.type = "button";
-    node.append(countLabel(count));
+    node.append(el("span", "library-search-pill-count", String(count)));
     return { node, value };
   }
 
-  // Ingredient suggestions from the remaining recipes, most common first,
-  // prefix matches ahead.
-  let labelsSource = null;
-  let labels = [];
-  function allLabels() {
+  // Ingredient suggestions: one per food the recipes' lines are about, named
+  // by its shortest label ("garlic" for "garlic clove" too) but found by any.
+  let foodsSource = null;
+  let foods = [];
+  function allFoods() {
     const recipes = getRecipes() ?? [];
-    if (labelsSource === recipes) return labels;
+    if (foodsSource === recipes) return foods;
     const byKey = new Map();
     for (const recipe of recipes) {
-      for (const label of recipe.ingredientLabels ?? []) {
-        const words = ingredientWords(label);
-        const key = words.join(" ");
-        if (!key) continue;
-        const entry = byKey.get(key) ?? { words, forms: new Map() };
-        entry.forms.set(label, (entry.forms.get(label) ?? 0) + 1);
-        byKey.set(key, entry);
+      for (const { key, label } of recipe.foods ?? []) {
+        const forms = byKey.get(key) ?? new Map();
+        forms.set(label, (forms.get(label) ?? 0) + 1);
+        byKey.set(key, forms);
       }
     }
-    labels = [...byKey.values()].map(({ words, forms }) => ({
-      words,
-      label: [...forms].sort((a, b) => b[1] - a[1])[0][0],
+    foods = [...byKey].map(([key, forms]) => ({
+      key,
+      labels: [...forms].sort((a, b) => a[0].length - b[0].length || b[1] - a[1]).map(([label]) => label),
     }));
-    labelsSource = recipes;
-    return labels;
+    foodsSource = recipes;
+    return foods;
   }
 
+  // From the remaining recipes, most common first, prefix matches ahead; a
+  // food shows under the label the text matches.
   function ingredientOptions(base, typed) {
     const needle = foldForSearch(typed);
-    const chosen = new Set(chips.filter((chip) => chip.type === "ingredient").map((chip) => chip.words.join(" ")));
-    const ideas = [];
-    for (const { words, label } of allLabels()) {
-      if (chosen.has(words.join(" "))) continue;
+    const chosen = new Set(chips.filter((chip) => chip.type === "ingredient").map((chip) => chip.key));
+    const rankOf = (label) => {
       const folded = foldForSearch(label);
-      const rank = !needle ? (PANTRY.has(folded) ? -1 : 0) : folded.startsWith(needle) ? 0 : folded.includes(` ${needle}`) ? 1 : -1;
-      if (rank < 0) continue;
-      const count = base.filter((recipe) => hasIngredient(recipe, words)).length;
-      if (count) ideas.push({ label, rank, count });
+      if (!needle) return 0;
+      return folded.startsWith(needle) ? 0 : folded.includes(` ${needle}`) ? 1 : -1;
+    };
+    const ideas = [];
+    for (const { key, labels } of allFoods()) {
+      if (chosen.has(key)) continue;
+      // Salt, pepper, water: everywhere, so suggested only when typed.
+      if (!needle && PANTRY.has(foldForSearch(labels[0]))) continue;
+      const ranked = labels.map((label) => ({ label, rank: rankOf(label) })).filter(({ rank }) => rank >= 0);
+      if (!ranked.length) continue;
+      const { label, rank } = ranked.reduce((best, next) => (next.rank < best.rank ? next : best));
+      const count = base.filter((recipe) => hasFood(recipe, key)).length;
+      if (count) ideas.push({ key, label, rank, count });
     }
     ideas.sort((a, b) => a.rank - b.rank || b.count - a.count || a.label.localeCompare(b.label, locale));
-    return ideas.slice(0, INGREDIENT_IDEAS).map(({ label, count }) => {
-      const node = el("button", "library-search-idea");
-      node.type = "button";
-      const text = el("span", "library-search-idea-text");
-      // What's typed, picked out at the start of the name.
-      if (needle && foldForSearch(label.slice(0, needle.length)) === needle) {
-        text.append(el("mark", null, label.slice(0, needle.length)), label.slice(needle.length));
-      } else {
-        text.textContent = label;
-      }
-      node.append(text, countLabel(count));
-      return { node, value: label };
-    });
+    return ideas.slice(0, INGREDIENT_IDEAS).map(({ key, label, count }) => ({ ...pill(label, label, count), key }));
+  }
+
+  // Book suggestions: the titles the text starts or has a word starting
+  // with, alphabetical, counted on the recipes the other filters keep.
+  function bookOptions(typed) {
+    syncCustomTags();
+    const needle = foldForSearch(typed);
+    const others = chips.filter((chip) => chip.type !== "book");
+    const pool = (getRecipes() ?? []).filter(
+      (recipe) => recipe.folded.includes(foldForSearch(freeText().trim())) && matchesFilters(recipe, others)
+    );
+    return [...bookTitles]
+      .filter(([, title]) => {
+        const folded = foldForSearch(title);
+        return !needle || folded.startsWith(needle) || folded.includes(` ${needle}`);
+      })
+      .map(([id, title]) => ({ id, title, count: pool.filter((recipe) => recipe.bookId === id).length }))
+      .filter(({ count }) => count > 0)
+      .sort((a, b) => a.title.localeCompare(b.title, locale))
+      .map(({ id, title, count }) => pill(title, id, count));
   }
 
   function renderValues() {
     const base = baseRecipes();
     const typed = input.value.trim();
     let list;
-    let body;
     let title;
+    const body = el("div", "library-search-pills");
     if (pending.type === "ingredient") {
       title = t(typed ? "search.menu.ingredients" : "search.menu.frequent");
       list = ingredientOptions(base, typed);
-      body = el("div", "library-search-ideas");
+    } else if (pending.type === "book") {
+      title = t("search.menu.books");
+      list = bookOptions(typed);
+    } else if (pending.type === "tag") {
+      title = t("search.menu.tags");
+      const needle = foldForSearch(typed);
+      const chosen = chips.filter((chip) => chip.type === "tag").map((chip) => chip.value);
+      syncCustomTags();
+      list = [...RECIPE_TAGS.map((tag) => tag.key), ...customTagLabels.keys()]
+        .filter((key) => !chosen.includes(key) && foldForSearch(tagLabel(key)).startsWith(needle))
+        .map((key) => ({ key, count: base.filter((recipe) => recipe.tags?.includes(key)).length }))
+        .filter(({ count }) => count > 0)
+        .map(({ key, count }) => pill(tagLabel(key), key, count));
     } else {
-      body = el("div", "library-search-pills");
-      if (pending.type === "tag") {
-        title = t("search.menu.tags");
-        const needle = foldForSearch(typed);
-        const chosen = chips.filter((chip) => chip.type === "tag").map((chip) => chip.value);
-        syncCustomTags();
-        list = [...RECIPE_TAGS.map((tag) => tag.key), ...customTagLabels.keys()]
-          .filter((key) => !chosen.includes(key) && foldForSearch(tagLabel(key)).startsWith(needle))
-          .map((key) => ({ key, count: base.filter((recipe) => recipe.tags?.includes(key)).length }))
-          .filter(({ count }) => count > 0)
-          .map(({ key, count }) => pill(tagLabel(key), key, count));
-      } else {
-        const time = pending.type === "time";
-        title = t(time ? "search.menu.time" : "search.menu.people");
-        const typedValue = typed ? (time ? parseDuration(typed) : Number.parseInt(typed, 10)) : null;
-        const ideas = time ? TIME_IDEAS : PEOPLE_IDEAS;
-        // What's typed comes first, so Enter takes it.
-        const values = typedValue > 0 ? [typedValue, ...ideas.filter((value) => value !== typedValue)] : ideas;
-        const others = chips.filter((chip) => chip.type !== pending.type);
-        const pool = (getRecipes() ?? []).filter(
-          (recipe) => recipe.folded.includes(foldForSearch(freeText().trim())) && matchesFilters(recipe, others)
-        );
-        list = values
-          .map((value) => ({ value, count: pool.filter((recipe) => matchesFilter(recipe, { type: pending.type, value })).length }))
-          .filter(({ value, count }) => count > 0 || value === typedValue)
-          .map(({ value, count }) => pill(time ? `≤ ${formatDuration(value)}` : t("people.short", { n: value }), value, count));
-      }
+      const time = pending.type === "time";
+      title = t(time ? "search.menu.time" : "search.menu.people");
+      const typedValue = typed ? (time ? parseDuration(typed) : Number.parseInt(typed, 10)) : null;
+      const ideas = time ? TIME_IDEAS : PEOPLE_IDEAS;
+      // What's typed comes first, so Enter takes it.
+      const values = typedValue > 0 ? [typedValue, ...ideas.filter((value) => value !== typedValue)] : ideas;
+      const others = chips.filter((chip) => chip.type !== pending.type);
+      const pool = (getRecipes() ?? []).filter(
+        (recipe) => recipe.folded.includes(foldForSearch(freeText().trim())) && matchesFilters(recipe, others)
+      );
+      list = values
+        .map((value) => ({ value, count: pool.filter((recipe) => matchesFilter(recipe, { type: pending.type, value })).length }))
+        .filter(({ value, count }) => count > 0 || value === typedValue)
+        .map(({ value, count }) => pill(time ? `≤ ${formatDuration(value)}` : t("people.short", { n: value }), value, count));
     }
     const nodes = [heading(title)];
     if (list.length) {
@@ -410,7 +451,7 @@ export function createSearchFilters({ box, input, getRecipes, getCustomTags = ()
       const before = input.value.replace(/(^|\s)\/[a-z]?$/i, "$1");
       startPending(option.filter, before);
     } else if (option.value !== undefined && pending) {
-      settle(option.value);
+      settle(option.value, option.key);
     }
   }
 

@@ -7,13 +7,13 @@ import {
   facePicturesSettled,
   faceMapChangeCount,
 } from "./book-asset.js";
-import { getWoodMaterial } from "./wood-texture.js";
-import { getContactShadowMaterial } from "./contact-shadow.js";
+import { getWoodMaterial } from "../../../shared/three/wood-texture.js";
+import { getContactShadowMaterial } from "../../../shared/three/contact-shadow.js";
 import { loadPepperMill } from "./pepper-mill.js";
 import { loadOliveOilBottle } from "./olive-oil.js";
 import { loadSaltMill } from "./salt.js";
 import { layoutBooksIntoShelves, splitShelfLeftRight } from "./layout.js";
-import { widthMultiplierForRecipeCount, heightMultiplierForId } from "./book-sizing.js";
+import { DEFAULT_WIDTH_MULTIPLIER, heightMultiplierForId } from "./book-sizing.js";
 import { hexForColorToken, hexForPageColorToken, darken } from "@shared/palette.js";
 
 const TARGET_BOOK_HEIGHT = 1;
@@ -220,11 +220,11 @@ export async function createLibraryScene({
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-  // Per-book width (recipe-count tier or override) and height (stable +/-10%
+  // Per-book width (the default or an override) and height (stable +/-10%
   // by id or override), resolved once per mount.
   const sizedBooks = books.map((book) => ({
     ...book,
-    width: baseBookWidth * (book.widthMultiplier ?? widthMultiplierForRecipeCount(book.recipeCount)),
+    width: baseBookWidth * (book.widthMultiplier ?? DEFAULT_WIDTH_MULTIPLIER),
     heightMultiplier: book.heightMultiplier ?? heightMultiplierForId(book.id),
   }));
   const sizedBookById = new Map(sizedBooks.map((book) => [book.id, book]));
@@ -311,10 +311,10 @@ export async function createLibraryScene({
 
   // The shelf structure for this mount, the single source of truth: the
   // books on each row's left and right, edge to gap. Seeded from saved
-  // placements (shelfRow/shelfSide/sortOrder); unplaced books get new rows
-  // (layoutUnplacedBooksIntoNewRows()). Drags edit it in place, never
-  // re-running the layout (whose cuts depend on counts and would reshuffle
-  // untouched rows).
+  // placements (shelfRow/shelfSide/sortOrder); unplaced books (new ones) go
+  // on the highest shelf with room, else on new rows (placeUnplacedBooks()).
+  // Drags edit it in place, never re-running the layout (whose cuts depend
+  // on counts and would reshuffle untouched rows).
   const shelfSideLists = new Map();
   let placedRowCount = 0;
   const unplacedIds = [];
@@ -362,11 +362,38 @@ export async function createLibraryScene({
     return shelves.length;
   }
 
-  const newRowCount = layoutUnplacedBooksIntoNewRows(unplacedIds, placedRowCount);
+  /** Puts each unplaced book on the highest shelf with room for it, at the
+   * gap end of its lighter side; those that fit nowhere go on new rows
+   * below. Returns the number of rows added. */
+  function placeUnplacedBooks(ids) {
+    const homeless = [];
+    for (const id of ids) {
+      const width = sizedBookById.get(id).width;
+      let rowIndex = 0;
+      while (
+        rowIndex < placedRowCount &&
+        totalWidth(sideIds(rowIndex, "left")) + totalWidth(sideIds(rowIndex, "right")) + width > SHELF_INNER_WIDTH
+      ) {
+        rowIndex += 1;
+      }
+      if (rowIndex === placedRowCount) {
+        homeless.push(id);
+        continue;
+      }
+      const side = totalWidth(sideIds(rowIndex, "left")) <= totalWidth(sideIds(rowIndex, "right")) ? "left" : "right";
+      shelfSideLists.set(`${rowIndex}:${side}`, [...sideIds(rowIndex, side), id]);
+    }
+    return layoutUnplacedBooksIntoNewRows(homeless, placedRowCount);
+  }
+
+  const newRowCount = placeUnplacedBooks(unplacedIds);
   // Only shelves holding books: grows when a resize pushes books down
   // (applyBookSize()) or a shelf is added (addShelf()), shrinks when a drag
   // empties one (closeUpEmptyRows()).
   let shelfRowCount = Math.max(1, placedRowCount + newRowCount);
+  // Widths may have changed since the layout was saved: a shelf too full
+  // passes books on to the next.
+  const overflowed = pushOverflowingBooks(0);
 
   const shelfMeshes = [];
   // Shelves shrinking away (animate()); later ones grow in from their middle.
@@ -395,8 +422,8 @@ export async function createLibraryScene({
     placeBook(book, slot.x, slot.rowY);
   }
 
-  // Books placed for the first time get saved, to stay put next time.
-  if (unplacedIds.length > 0 || rowsClosedUp) {
+  // Books placed for the first time, or moved, get saved, to stay put next time.
+  if (unplacedIds.length > 0 || rowsClosedUp || overflowed) {
     onBooksReordered(buildShelfRowsPayload());
   }
 
@@ -522,16 +549,22 @@ export async function createLibraryScene({
   // A grown book can overflow its row: books move one at a time from the
   // fuller side, nearest the gap, to the next row's start, which may
   // overflow in turn. Rows above, and rows that still fit, stay as they are.
+  // Returns whether any moved.
   function pushOverflowingBooks(fromRowIndex) {
+    let moved = false;
     for (let rowIndex = fromRowIndex; rowIndex < shelfRowCount; rowIndex += 1) {
       while (totalWidth(sideIds(rowIndex, "left")) + totalWidth(sideIds(rowIndex, "right")) > SHELF_INNER_WIDTH) {
+        // A single book wider than a shelf stays.
+        if (sideIds(rowIndex, "left").length + sideIds(rowIndex, "right").length < 2) break;
         const side = totalWidth(sideIds(rowIndex, "left")) >= totalWidth(sideIds(rowIndex, "right")) ? "left" : "right";
         const pushed = sideIds(rowIndex, side).pop();
         if (rowIndex + 1 === shelfRowCount) shelfRowCount += 1;
         const nextKey = `${rowIndex + 1}:${side}`;
         shelfSideLists.set(nextKey, [pushed, ...(shelfSideLists.get(nextKey) ?? [])]);
+        moved = true;
       }
     }
+    return moved;
   }
 
   /** Sends every book towards its slot in shelfSideLists (eased in animate()). */
@@ -691,8 +724,11 @@ export async function createLibraryScene({
     invalid = true;
   };
 
-  // The hero looks slightly above the second shelf (1 = right on it).
+  // Where the hero aims (see heroTargetY()): three shelves or more, slightly
+  // above the second (1 = right on it); two, the first one's middle at this
+  // share of the height from the top; one, its middle at the centre.
   const HERO_SHELF_OFFSET = 1.3;
+  const HERO_TWO_SHELVES_TOP = 0.3;
 
   // Back to the hero by scrolling up past the top: a gesture starting there
   // needs a short push, one arriving by momentum a much longer one, so
@@ -748,11 +784,24 @@ export async function createLibraryScene({
     invalidate(); // a resized canvas is blank until drawn again
   }
 
+  /** The height the hero looks at, by the number of shelves. A height `dy`
+   * above the aim shows `dy * cos(elevation)` above the screen's centre, on
+   * a screen `2 * radius * tan(fov / 2)` high. */
+  function heroTargetY() {
+    if (shelfRowCount >= 3) return initialCameraY - shelfGap * HERO_SHELF_OFFSET;
+    if (shelfRowCount === 1) return SHELF_CENTER_Y;
+    const radius =
+      cameraDistance * heroDistanceRatio * Math.hypot(CAMERA_RIGHT_RATIO, CAMERA_DOWN_RATIO, 1);
+    const elevation = Math.asin((cameraDistance * heroDistanceRatio * CAMERA_DOWN_RATIO) / radius);
+    const screenHeight = 2 * radius * Math.tan(THREE.MathUtils.degToRad(camera.fov) / 2);
+    return SHELF_CENTER_Y - ((0.5 - HERO_TWO_SHELVES_TOP) * screenHeight) / Math.cos(elevation);
+  }
+
   function updateCameraPosition() {
-    // The hero frames the second shelf; the library the first, plus scroll and
-    // the pull past the top.
+    // The hero frames the shelves by their number (heroTargetY()); the
+    // library the first, plus scroll and the pull past the top.
     const libraryY = initialCameraY - scrollY + pull * HERO_PULL_DISTANCE_RATIO * visibleWorldHeight();
-    const y = THREE.MathUtils.lerp(libraryY, initialCameraY - shelfGap * HERO_SHELF_OFFSET, heroT);
+    const y = THREE.MathUtils.lerp(libraryY, heroTargetY(), heroT);
     // The camera's rest spot: fixed radius, azimuth and elevation around
     // (0, y, 0); the pointer orbit adds to azimuth and elevation.
     const distance =
@@ -791,6 +840,8 @@ export async function createLibraryScene({
   const openTimers = [];
   let hoveredBook = null;
   let opening = null;
+  // A book to open once its shelf is in view: { pivot, scrollY } (openBook()).
+  let bookToOpen = null;
   let pointerDown = false;
   // The pointer, or the scene under it, moved since the last hover test.
   let pickStale = true;
@@ -906,7 +957,7 @@ export async function createLibraryScene({
    * frame on both axes. Recentred along the camera's up vector (the pivot is
    * at the spine's foot), reliable whatever the orientation. */
   function computeOpenTarget(book) {
-    // The width tier only thickens the spine on the shelf: the open book uses a
+    // The width only thickens the spine on the shelf: the open book uses a
     // normal width; its height variation stays.
     const scale = new THREE.Vector3(baseScale, book.scale.y, baseScale);
     const bookHeight = size.y * scale.y;
@@ -1221,6 +1272,7 @@ export async function createLibraryScene({
 
   function onPointerDown(event) {
     scrollGlide = null;
+    bookToOpen = null;
     if (opening) return;
     pointerDown = true;
     dragging = false;
@@ -1255,6 +1307,7 @@ export async function createLibraryScene({
 
   function onWheel(event) {
     scrollGlide = null;
+    bookToOpen = null;
     event.preventDefault();
     if (opening) return;
     // Under the hero, the page decides (see onPageWheel in library.page.js).
@@ -1400,10 +1453,14 @@ export async function createLibraryScene({
       orbitX = THREE.MathUtils.damp(orbitX, targetOrbitX, MOUSE_ORBIT_DAMPING, delta);
       orbitY = THREE.MathUtils.damp(orbitY, targetOrbitY, MOUSE_ORBIT_DAMPING, delta);
       editModeT = THREE.MathUtils.damp(editModeT, targetEditModeT, EDIT_MODE_DAMPING, delta);
-      // Gliding down to a shelf just added (see addShelf()).
+      // Gliding to a shelf just added (see addShelf()) or a book to open.
       if (scrollGlide !== null) {
         scrollY = THREE.MathUtils.damp(scrollY, scrollGlide, SCROLL_GLIDE_DAMPING, delta);
         if (Math.abs(scrollY - scrollGlide) < 0.001) scrollGlide = null;
+      }
+      if (bookToOpen && Math.abs(scrollY - bookToOpen.scrollY) < 0.02) {
+        openBookAndNavigate(bookToOpen.pivot);
+        bookToOpen = null;
       }
       // The pull past the top springs back once the gesture stops.
       if (performance.now() - lastWheelTime > WHEEL_GESTURE_GAP_MS) wheelPull = 0;
@@ -1528,6 +1585,16 @@ export async function createLibraryScene({
       refitDecorations();
       onBooksReordered(buildShelfRowsPayload());
       scrollGlide = maxScrollY;
+    },
+    /** Opens a book as a click does, after gliding its shelf into view (a
+     * book just created, see library.page.js). */
+    openBook(bookId) {
+      const pivot = pivotById.get(bookId);
+      if (!pivot || opening) return;
+      const target = Math.min(rowIndexOf(bookId) * shelfGap, maxScrollY);
+      bookToOpen = { pivot, scrollY: target };
+      scrollGlide = target;
+      invalidate();
     },
     /** Marks the book open in the edit panel (null: none). */
     setSelectedBook(bookId) {

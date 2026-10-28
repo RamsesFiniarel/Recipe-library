@@ -11,6 +11,8 @@ export const LANGUAGES = [
   { key: "fr", label: "Français" },
   { key: "en", label: "English" },
 ];
+// Until a device picks one in the settings.
+const DEFAULT_LANGUAGE = "en";
 
 function read(key) {
   try {
@@ -40,7 +42,7 @@ export function saveShelfObject(key, shown) {
 
 export function loadLanguage() {
   const saved = read(LANGUAGE_KEY);
-  return LANGUAGES.some(({ key }) => key === saved) ? saved : LANGUAGES[0].key;
+  return LANGUAGES.some(({ key }) => key === saved) ? saved : DEFAULT_LANGUAGE;
 }
 
 export function saveLanguage(key) {

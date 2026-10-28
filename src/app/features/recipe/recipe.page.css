@@ -305,6 +305,9 @@
 .recipe-menu {
   --recipe-menu-size: 2.5rem;
   --recipe-menu-slot: 2.125rem;
+  /* Room before the first icon, so the trash sits as far from the left end
+     as the back arrow's ink from the right one. */
+  --recipe-menu-lead: 3px;
   display: flex;
   align-items: center;
   /* Right-aligned and clipped: the hidden icons wait to the hat's left. */
@@ -324,7 +327,7 @@
 .recipe-menu:hover,
 .recipe-menu:has(:focus-visible),
 .recipe-menu.is-open {
-  width: calc(var(--recipe-menu-size) + 2 * var(--recipe-menu-slot));
+  width: calc(var(--recipe-menu-size) + 2 * var(--recipe-menu-slot) + var(--recipe-menu-lead));
   border-color: color-mix(in srgb, var(--color-page-text) 40%, transparent);
 }
 
@@ -838,6 +841,11 @@
   display: none;
 }
 
+/* The ingredients' tab: a phone's only (see the end of this file). */
+.recipe-tab--ingredients {
+  display: none;
+}
+
 /* ---------------------------------------------------------------------
    Nutrition table: printed like the page (thin rules, aligned figures, bold
    total). Scrolls in its own box (height set by nutrition-table.js), with
@@ -1058,5 +1066,165 @@
 
   .recipe-column--steps::before {
     display: none;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Phones: the sheet edge to edge (no cover frame, no turned corner),
+   narrower margins, the title wrapping, its tags to read only (no
+   refresh or "+"), then servings
+   and time, the three tabs (ingredients first, see recipe.page.js) and
+   the chosen one; the nutrition table always scrolls sideways, its first
+   column held.
+   --------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .recipe-page {
+    --recipe-frame: 0px;
+    --recipe-margin: var(--space-5);
+  }
+
+  .recipe-sheet {
+    --curl: 0px;
+  }
+
+  .recipe-sheet::before {
+    display: none;
+  }
+
+  .recipe-sheet::after {
+    border-radius: 0;
+  }
+
+  .recipe-page .topbar-actions {
+    --recipe-actions-height: calc(var(--text-2xl) * var(--leading-tight) + 2px);
+    height: var(--recipe-actions-height);
+  }
+
+  /* The hat's menu opens downwards, over what's below: the hat stays put,
+     back arrow at the top, download then delete under it; the header keeps
+     its height (the actions' box is fixed), so nothing else moves. */
+  .recipe-menu {
+    position: relative;
+    z-index: 3;
+    flex-direction: column-reverse;
+    align-self: flex-start;
+    margin-top: calc((var(--recipe-actions-height) - var(--recipe-menu-size)) / 2);
+    background: var(--page-color);
+    transition:
+      height 420ms var(--ease-entrance),
+      border-color var(--duration-fast) var(--ease);
+  }
+
+  .recipe-menu:hover,
+  .recipe-menu:has(:focus-visible),
+  .recipe-menu.is-open {
+    width: var(--recipe-menu-size);
+    height: calc(var(--recipe-menu-size) + 2 * var(--recipe-menu-slot) + var(--recipe-menu-lead));
+  }
+
+  .recipe-menu-hat {
+    width: 100%;
+    height: calc(var(--recipe-menu-size) - 2px);
+  }
+
+  .recipe-menu-btn {
+    width: 100%;
+    height: var(--recipe-menu-slot);
+  }
+
+  .recipe-page-title {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .recipe-tags {
+    flex-wrap: wrap;
+  }
+
+  .recipe-tags-list {
+    min-width: 0;
+  }
+
+  /* Tags are read here: no refresh, no "+" (a computer's job). */
+  .recipe-tags-lead,
+  .recipe-tags-more {
+    display: none;
+  }
+
+  /* One column, its pieces reordered: meta, tabs, the chosen part. */
+  .recipe-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: var(--space-3) var(--recipe-margin) var(--recipe-margin);
+  }
+
+  .recipe-column {
+    display: contents;
+  }
+
+  /* Lined up with the title, like the tabs. */
+  .recipe-meta {
+    order: 1;
+    padding: 0;
+  }
+
+  /* From the title's left edge to its right one. */
+  .recipe-tabs {
+    order: 2;
+    justify-content: space-between;
+    gap: var(--space-5);
+    min-height: 2.75rem;
+    margin: var(--space-2) 0;
+    padding: 0;
+  }
+
+  .recipe-ingredients {
+    order: 3;
+  }
+
+  .recipe-panel {
+    order: 4;
+  }
+
+  .recipe-body:not([data-tab="ingredients"]) .recipe-ingredients {
+    display: none;
+  }
+
+  /* No hover on a phone: "New ingredient" always shows. */
+  .ingredient-add {
+    opacity: 1;
+  }
+
+  .recipe-tab--ingredients {
+    display: block;
+  }
+
+  .recipe-tab {
+    font-size: 1.125rem;
+  }
+
+  .ingredient-line,
+  .recipe-text {
+    font-size: 1.0625rem;
+  }
+
+  .recipe-nutrition {
+    padding: var(--space-3) 0 0;
+  }
+
+  .nutrition-table {
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .nutrition-table th:first-child,
+  .nutrition-table td:first-child {
+    box-shadow: inset -1px 0 0 color-mix(in srgb, var(--color-page-text) 12%, transparent);
+  }
+
+  .nutrition-name,
+  .nutrition-food {
+    width: 9.5rem;
   }
 }

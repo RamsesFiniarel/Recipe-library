@@ -12,6 +12,25 @@
   "ciqual": 11081
  },
  {
+  "alias": "almond",
+  "ciqual": 15000
+ },
+ {
+  "alias": "anchovies",
+  "ciqual": 26177,
+  "piece": 4
+ },
+ {
+  "alias": "anchovy",
+  "ciqual": 26177,
+  "piece": 4
+ },
+ {
+  "alias": "anchovy fillet",
+  "ciqual": 26177,
+  "piece": 4
+ },
+ {
   "alias": "anise",
   "ciqual": 11081
  },
@@ -24,8 +43,16 @@
   "ciqual": 13000
  },
  {
+  "alias": "avocado",
+  "ciqual": 13004
+ },
+ {
   "alias": "bacon",
   "ciqual": 28720
+ },
+ {
+  "alias": "baguette",
+  "ciqual": 7001
  },
  {
   "alias": "baker's yeast",
@@ -62,6 +89,10 @@
  {
   "alias": "bay leaves",
   "ciqual": 11053
+ },
+ {
+  "alias": "bean sprout",
+  "ciqual": 20183
  },
  {
   "alias": "bearnaise sauce",
@@ -114,8 +145,33 @@
   "ciqual": 11507
  },
  {
+  "alias": "black bean",
+  "ciqual": 20524
+ },
+ {
+  "alias": "black olive",
+  "ciqual": 13032
+ },
+ {
   "alias": "black pepper",
   "ciqual": 11015
+ },
+ {
+  "alias": "blueberries",
+  "ciqual": 13028
+ },
+ {
+  "alias": "blueberry",
+  "ciqual": 13028
+ },
+ {
+  "alias": "bok choy",
+  "ciqual": 20340
+ },
+ {
+  "alias": "bouquet garni",
+  "ciqual": 11053,
+  "piece": 5
  },
  {
   "alias": "braising beef",
@@ -151,8 +207,16 @@
   "ciqual": 31017
  },
  {
+  "alias": "bucatini",
+  "ciqual": 9810
+ },
+ {
   "alias": "buckwheat flour",
   "ciqual": 9540
+ },
+ {
+  "alias": "bulgur",
+  "ciqual": 9690
  },
  {
   "alias": "butter",
@@ -169,6 +233,10 @@
  {
   "alias": "canned tomato",
   "ciqual": 20169
+ },
+ {
+  "alias": "cannellini bean",
+  "ciqual": 20511
  },
  {
   "alias": "caper",
@@ -205,6 +273,11 @@
  {
   "alias": "celery",
   "ciqual": 20023
+ },
+ {
+  "alias": "celery stick",
+  "ciqual": 20023,
+  "piece": 40
  },
  {
   "alias": "chestnut",
@@ -269,6 +342,10 @@
   "ciqual": 11088
  },
  {
+  "alias": "chilies",
+  "ciqual": 20151
+ },
+ {
   "alias": "chilli",
   "ciqual": 20151
  },
@@ -283,6 +360,10 @@
  {
   "alias": "chilli powder",
   "ciqual": 11088
+ },
+ {
+  "alias": "chillies",
+  "ciqual": 20151
  },
  {
   "alias": "chinese cabbage",
@@ -365,6 +446,11 @@
   "ciqual": 9510
  },
  {
+  "alias": "corn tortilla",
+  "ciqual": 7813,
+  "piece": 30
+ },
+ {
   "alias": "cornflour",
   "ciqual": 9510
  },
@@ -405,12 +491,24 @@
   "ciqual": 19410
  },
  {
+  "alias": "dried chickpea",
+  "ciqual": 20516
+ },
+ {
   "alias": "dried chili",
   "ciqual": 11088
  },
  {
   "alias": "dried chilli",
   "ciqual": 11088
+ },
+ {
+  "alias": "dried cranberries",
+  "ciqual": 13178
+ },
+ {
+  "alias": "dried kidney bean",
+  "ciqual": 20525
  },
  {
   "alias": "dried yeast",
@@ -425,6 +523,10 @@
   "ciqual": 22000
  },
  {
+  "alias": "egg noodle",
+  "ciqual": 9863
+ },
+ {
   "alias": "egg white",
   "ciqual": 22001
  },
@@ -435,6 +537,10 @@
  {
   "alias": "eggplant",
   "ciqual": 20053
+ },
+ {
+  "alias": "emmental",
+  "ciqual": 12115
  },
  {
   "alias": "fennel seed",
@@ -457,6 +563,10 @@
   "ciqual": 51550
  },
  {
+  "alias": "fish sauce",
+  "ciqual": 11194
+ },
+ {
   "alias": "five spice",
   "ciqual": 11081
  },
@@ -465,12 +575,39 @@
   "ciqual": 11081
  },
  {
+  "alias": "flat-leaf parsley",
+  "ciqual": 11014
+ },
+ {
+  "alias": "flatbread",
+  "ciqual": 7180,
+  "piece": 60
+ },
+ {
   "alias": "flour",
   "ciqual": 9436
  },
  {
+  "alias": "flour tortilla",
+  "ciqual": 7815,
+  "piece": 40
+ },
+ {
+  "alias": "frozen pea",
+  "ciqual": 20084
+ },
+ {
   "alias": "fusilli",
   "ciqual": 9810
+ },
+ {
+  "alias": "gammon",
+  "ciqual": 28900
+ },
+ {
+  "alias": "garlic clove",
+  "ciqual": 11000,
+  "piece": 4
  },
  {
   "alias": "garlic powder",
@@ -521,9 +658,22 @@
   "ciqual": 19860
  },
  {
+  "alias": "green bean",
+  "ciqual": 20061
+ },
+ {
+  "alias": "green olive",
+  "ciqual": 13033
+ },
+ {
   "alias": "green onion",
   "ciqual": 20034,
   "piece": 20
+ },
+ {
+  "alias": "green pepper",
+  "ciqual": 20085,
+  "piece": 150
  },
  {
   "alias": "green salad",
@@ -534,8 +684,32 @@
   "ciqual": 6254
  },
  {
+  "alias": "ground coriander",
+  "ciqual": 11026
+ },
+ {
+  "alias": "ground fennel",
+  "ciqual": 11066
+ },
+ {
   "alias": "ground ginger",
   "ciqual": 11006
+ },
+ {
+  "alias": "gruyere",
+  "ciqual": 12114
+ },
+ {
+  "alias": "guanciale",
+  "ciqual": 28858
+ },
+ {
+  "alias": "ham",
+  "ciqual": 28900
+ },
+ {
+  "alias": "haricot bean",
+  "ciqual": 20511
  },
  {
   "alias": "heavy cream",
@@ -556,6 +730,10 @@
  {
   "alias": "instant coffee",
   "ciqual": 18005
+ },
+ {
+  "alias": "kalamata olive",
+  "ciqual": 13131
  },
  {
   "alias": "kidney bean",
@@ -586,6 +764,15 @@
   "ciqual": 28720
  },
  {
+  "alias": "lasagne",
+  "ciqual": 9810
+ },
+ {
+  "alias": "lasagne sheet",
+  "ciqual": 9810,
+  "piece": 20
+ },
+ {
   "alias": "leek",
   "ciqual": 20039
  },
@@ -612,6 +799,14 @@
  {
   "alias": "lime juice",
   "ciqual": 2030
+ },
+ {
+  "alias": "lime leaf",
+  "ciqual": 11053
+ },
+ {
+  "alias": "lime leaves",
+  "ciqual": 11053
  },
  {
   "alias": "linguine",
@@ -644,6 +839,18 @@
  {
   "alias": "mint",
   "ciqual": 11027
+ },
+ {
+  "alias": "miso",
+  "ciqual": 20916
+ },
+ {
+  "alias": "mixed berries",
+  "ciqual": 13997
+ },
+ {
+  "alias": "mixed berry",
+  "ciqual": 13997
  },
  {
   "alias": "mixed spice",
@@ -702,12 +909,24 @@
   "ciqual": 11035
  },
  {
+  "alias": "pak choi",
+  "ciqual": 20340
+ },
+ {
   "alias": "paprika powder",
   "ciqual": 11049
  },
  {
+  "alias": "parma ham",
+  "ciqual": 28844
+ },
+ {
   "alias": "parmesan cheese",
   "ciqual": 12120
+ },
+ {
+  "alias": "parsley",
+  "ciqual": 11014
  },
  {
   "alias": "passata",
@@ -718,7 +937,15 @@
   "ciqual": 9810
  },
  {
+  "alias": "pea",
+  "ciqual": 20072
+ },
+ {
   "alias": "peach",
+  "ciqual": 13043
+ },
+ {
+  "alias": "peaches",
   "ciqual": 13043
  },
  {
@@ -735,12 +962,20 @@
   "piece": 15
  },
  {
+  "alias": "pecorino",
+  "ciqual": 12122
+ },
+ {
   "alias": "peeled tomato",
   "ciqual": 20169
  },
  {
   "alias": "penne",
   "ciqual": 9810
+ },
+ {
+  "alias": "peppercorn",
+  "ciqual": 11015
  },
  {
   "alias": "phyllo pastry",
@@ -763,12 +998,39 @@
   "ciqual": 2073
  },
  {
+  "alias": "pistachio",
+  "ciqual": 15044
+ },
+ {
+  "alias": "pita",
+  "ciqual": 7180,
+  "piece": 60
+ },
+ {
+  "alias": "pitta",
+  "ciqual": 7180,
+  "piece": 60
+ },
+ {
+  "alias": "pitta bread",
+  "ciqual": 7180,
+  "piece": 60
+ },
+ {
   "alias": "plain flour",
   "ciqual": 9436
  },
  {
   "alias": "plain yogurt",
   "ciqual": 19593
+ },
+ {
+  "alias": "pomegranate",
+  "ciqual": 13018
+ },
+ {
+  "alias": "pomegranate seed",
+  "ciqual": 13018
  },
  {
   "alias": "popcorn kernel",
@@ -791,6 +1053,10 @@
   "ciqual": 4008
  },
  {
+  "alias": "prawn",
+  "ciqual": 10021
+ },
+ {
   "alias": "preserved lemon",
   "ciqual": 13009
  },
@@ -801,6 +1067,28 @@
  {
   "alias": "quark",
   "ciqual": 19646
+ },
+ {
+  "alias": "radish",
+  "ciqual": 20045,
+  "piece": 10
+ },
+ {
+  "alias": "radishes",
+  "ciqual": 20045,
+  "piece": 10
+ },
+ {
+  "alias": "raisin",
+  "ciqual": 13046
+ },
+ {
+  "alias": "raspberries",
+  "ciqual": 13015
+ },
+ {
+  "alias": "raspberry",
+  "ciqual": 13015
  },
  {
   "alias": "red bell pepper",
@@ -831,8 +1119,25 @@
   "ciqual": 5214
  },
  {
+  "alias": "red wine vinegar",
+  "ciqual": 11220
+ },
+ {
   "alias": "rice",
   "ciqual": 9100
+ },
+ {
+  "alias": "rice paper",
+  "ciqual": 9100,
+  "piece": 9
+ },
+ {
+  "alias": "rice vinegar",
+  "ciqual": 11018
+ },
+ {
+  "alias": "rigatoni",
+  "ciqual": 9810
  },
  {
   "alias": "roasted garlic",
@@ -847,6 +1152,10 @@
   "ciqual": 36016
  },
  {
+  "alias": "rosemary",
+  "ciqual": 11068
+ },
+ {
   "alias": "rum",
   "ciqual": 1004
  },
@@ -857,6 +1166,15 @@
  {
   "alias": "salad",
   "ciqual": 20031
+ },
+ {
+  "alias": "salmon",
+  "ciqual": 26036
+ },
+ {
+  "alias": "salmon fillet",
+  "ciqual": 26036,
+  "piece": 130
  },
  {
   "alias": "salted butter",
@@ -870,6 +1188,11 @@
   "alias": "scallion",
   "ciqual": 20034,
   "piece": 20
+ },
+ {
+  "alias": "scallop",
+  "ciqual": 10003,
+  "piece": 30
  },
  {
   "alias": "sea salt",
@@ -912,6 +1235,10 @@
   "ciqual": 11015
  },
  {
+  "alias": "silken tofu",
+  "ciqual": 20906
+ },
+ {
   "alias": "single cream",
   "ciqual": 19417
  },
@@ -948,6 +1275,10 @@
   "ciqual": 11081
  },
  {
+  "alias": "spinach",
+  "ciqual": 20059
+ },
+ {
   "alias": "sponge finger",
   "ciqual": 24430
  },
@@ -978,8 +1309,20 @@
   "ciqual": 11001
  },
  {
+  "alias": "strawberries",
+  "ciqual": 13014
+ },
+ {
+  "alias": "strawberry",
+  "ciqual": 13014
+ },
+ {
   "alias": "sugar",
   "ciqual": 31016
+ },
+ {
+  "alias": "sugar snap pea",
+  "ciqual": 20173
  },
  {
   "alias": "sunflower oil",
@@ -990,6 +1333,10 @@
   "ciqual": 20087
  },
  {
+  "alias": "sweet potato",
+  "ciqual": 4101
+ },
+ {
   "alias": "szechuan pepper",
   "ciqual": 11015
  },
@@ -998,12 +1345,20 @@
   "ciqual": 9810
  },
  {
+  "alias": "tamarind paste",
+  "ciqual": 13080
+ },
+ {
   "alias": "thyme",
   "ciqual": 11070
  },
  {
   "alias": "tinned tomato",
   "ciqual": 20169
+ },
+ {
+  "alias": "tofu",
+  "ciqual": 20904
  },
  {
   "alias": "tomato",
@@ -1028,6 +1383,14 @@
  {
   "alias": "tomato sauce",
   "ciqual": 20170
+ },
+ {
+  "alias": "tuna",
+  "ciqual": 26039
+ },
+ {
+  "alias": "turkey",
+  "ciqual": 36301
  },
  {
   "alias": "turmeric",
@@ -1084,6 +1447,10 @@
   "ciqual": 11018
  },
  {
+  "alias": "wakame",
+  "ciqual": 20999
+ },
+ {
   "alias": "walnut",
   "ciqual": 15005
  },
@@ -1102,6 +1469,10 @@
  {
   "alias": "whipping cream",
   "ciqual": 19417
+ },
+ {
+  "alias": "white bean",
+  "ciqual": 20511
  },
  {
   "alias": "white bread",
@@ -1124,6 +1495,14 @@
   "ciqual": 5215
  },
  {
+  "alias": "white wine vinegar",
+  "ciqual": 11018
+ },
+ {
+  "alias": "wine vinegar",
+  "ciqual": 11220
+ },
+ {
   "alias": "wrap",
   "ciqual": 7815
  },
@@ -1134,6 +1513,11 @@
  {
   "alias": "yellow onion",
   "ciqual": 20239
+ },
+ {
+  "alias": "yellow pepper",
+  "ciqual": 20041,
+  "piece": 150
  },
  {
   "alias": "yoghurt",

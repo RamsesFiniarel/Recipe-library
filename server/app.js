@@ -8,6 +8,7 @@ import { booksRouter } from "./routes/books.routes.js";
 import { nutritionRouter } from "./routes/nutrition.routes.js";
 import { tagsRouter } from "./routes/tags.routes.js";
 import { backupRouter } from "./routes/backup.routes.js";
+import { shoppingRouter } from "./routes/shopping.routes.js";
 import { errorHandler, notFoundHandler } from "./middleware/error-handler.js";
 import { hostGuard, isSafeMethod, sameOriginGuard } from "./middleware/request-guards.js";
 import { rateLimit } from "./middleware/rate-limit.js";
@@ -17,6 +18,7 @@ import {
   IS_PRODUCTION,
   JSON_BODY_LIMIT,
   JSON_UPLOAD_LIMIT,
+  TRUST_PROXY,
 } from "./config.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -26,6 +28,7 @@ export function createApp() {
   const app = express();
 
   app.disable("x-powered-by");
+  if (TRUST_PROXY) app.set("trust proxy", TRUST_PROXY);
   // Only this machine's names are answered, and only its own pages may
   // change data (see request-guards.js).
   app.use(hostGuard({ allowedHosts: ALLOWED_HOSTS }));
@@ -66,6 +69,7 @@ export function createApp() {
   app.use("/api/nutrition", nutritionRouter);
   app.use("/api/tags", tagsRouter);
   app.use("/api/backup", backupRouter);
+  app.use("/api/shopping", shoppingRouter);
   // Any other /api path is a real 404, never the SPA fallback below.
   app.use("/api", notFoundHandler);
 

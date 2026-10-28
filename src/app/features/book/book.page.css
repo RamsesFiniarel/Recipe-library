@@ -111,7 +111,12 @@
 .book-menu {
   --book-menu-size: 2.5rem;
   --book-menu-slot: 2.25rem;
+  /* Room before the first icon, so the trash sits as far from the left end
+     as the back arrow's ink from the right one. */
+  --book-menu-lead: 2px;
   display: flex;
+  /* Its own width, even next to a search filling the line (phones). */
+  flex: none;
   align-items: center;
   /* Right-aligned and clipped: the hidden icons wait to the hat's left. */
   justify-content: flex-end;
@@ -134,7 +139,7 @@
 .book-menu:hover,
 .book-menu:has(:focus-visible),
 .book-menu.is-open {
-  width: calc(var(--book-menu-size) + 2 * var(--book-menu-slot));
+  width: calc(var(--book-menu-size) + 2 * var(--book-menu-slot) + var(--book-menu-lead));
   background: rgba(20, 15, 11, 0.46);
   border-color: rgba(255, 255, 255, 0.4);
 }
@@ -240,4 +245,65 @@
   text-align: center;
   font-size: var(--text-sm);
   color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---------------------------------------------------------------------
+   Phones: the title on a line of its own, the search filling the next one
+   up to the hat; three small cards to a row.
+   --------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .book-page .topbar {
+    position: relative;
+  }
+
+  .book-page .topbar-inner {
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  /* Out of the search's way: at the end of the title's line. */
+  .book-page .save-indicator {
+    position: absolute;
+    top: calc(var(--space-5) + 0.6rem);
+    right: var(--page-gutter);
+  }
+
+  .book-page-title {
+    flex: 1 0 100%;
+  }
+
+  .book-page .topbar-actions {
+    flex: 1 1 auto;
+    gap: var(--space-3);
+  }
+
+  .book-search {
+    flex: 1 1 auto;
+  }
+
+  .book-search-input,
+  .book-search-input:focus {
+    width: 100%;
+    font-size: var(--text-base);
+  }
+
+  .book-page .card-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-3);
+    margin-top: var(--space-2);
+  }
+
+  .book-page .recipe-card--paper {
+    --paper-curl: 24px;
+    gap: var(--space-3);
+    padding: 0.8rem 0.55rem 0.55rem;
+  }
+
+  .book-page .recipe-card--paper .recipe-card-title {
+    font-size: 0.8125rem;
+  }
+
+  .book-page .recipe-card--paper .recipe-card-meta {
+    font-size: 0.5625rem;
+  }
 }

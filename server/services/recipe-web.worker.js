@@ -19,7 +19,7 @@ export function readRecipePageApart(html, url) {
   return new Promise((resolve, reject) => {
     const worker = new Worker(new URL(import.meta.url), {
       workerData: { recipePage: { html, url } },
-      resourceLimits: { maxOldGenerationSizeMb: 512 },
+      resourceLimits: { maxOldGenerationSizeMb: 256 },
     });
     const unreadable = () => new HttpError(422, "Page illisible", "unreadable");
     const timer = setTimeout(() => {

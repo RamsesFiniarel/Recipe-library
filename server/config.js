@@ -13,6 +13,9 @@ export const ALLOWED_HOSTS = (process.env.ALLOWED_HOSTS ?? "")
   .filter(Boolean);
 // Set by `npm start`; when true the Express server also serves the built client.
 export const IS_PRODUCTION = process.env.NODE_ENV === "production";
+// Reverse proxies in front (1 behind Caddy): the client's address is then
+// read from X-Forwarded-For, for the per-device limits. 0 when served directly.
+export const TRUST_PROXY = Number(process.env.TRUST_PROXY) || 0;
 // Body limits: the larger one only for cover pictures (data: URLs) and text
 // read from photos.
 export const JSON_BODY_LIMIT = "1mb";

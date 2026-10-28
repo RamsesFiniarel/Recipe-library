@@ -1,0 +1,803 @@
+/* =====================================================================
+   Groceries page: the library's wall and window light (.wall-backdrop).
+   On the left, the basket (on a computer a 3D shelf, .has-shelf, drawn by
+   basket-scene.js on a canvas over the page), then the recipes to pick:
+   at rest (.is-resting) the shelf and a compact search bar in the
+   column's middle; searching, the shelf and a longer
+   bar at its top, the results as sheets of paper below, scrolling. On the right, the
+   shopping list on a paper card (350px at most), from under the back
+   button to the bottom, scrolling on its own. One column on narrow
+   screens, two tabs on phones.
+   ===================================================================== */
+
+.shopping-page {
+  /* A picked recipe: a green frame and check. */
+  --picked: #4f8452;
+  /* How much of a recipe the list has: none, half, all (shopping.page.js). */
+  --have-none: #b23a2e;
+  --have-half: #a87a0c;
+  --have-all: var(--picked);
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+.shopping-page .topbar-inner {
+  align-items: center;
+}
+
+.shopping-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) min(350px, 40%);
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas:
+    "basket list"
+    "pick list";
+  gap: var(--space-5) var(--space-6);
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0 var(--space-6) var(--space-6);
+}
+
+/* --- Recipes to pick ------------------------------------------------- */
+
+.shopping-pick {
+  grid-area: pick;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  animation: rise-in var(--duration-slow) var(--ease-entrance) backwards;
+}
+
+/* The bar, centred. */
+.shopping-finder {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The bar's slot (the bar itself is placed inside, search-filters.css):
+   compact at rest, longer once in use. */
+.shopping-search {
+  position: relative;
+  flex: none;
+  width: 34rem;
+  max-width: 100%;
+  height: 2.5rem;
+  transition: width 600ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.shopping-page:not(.is-resting) .shopping-search {
+  width: min(100%, 44rem);
+}
+
+/* With filters: long at once (their chips are measured as they come), the
+   placeholder making way for them. */
+.shopping-search:has(.library-search-chip) {
+  width: min(100%, 44rem);
+  transition: none;
+}
+
+.shopping-search:has(.library-search-chip) .library-search-input::placeholder {
+  color: transparent;
+}
+
+/* The "/" hint while the bar is idle: hovered, it lists the filters. */
+.shopping-page .library-search-box:not(:focus-within):not(.has-value) .library-search-kbd {
+  opacity: 1;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.shopping-page .library-search-kbd:hover {
+  color: var(--color-page-text);
+}
+
+/* The results, scrolling, with room around the sheets for their lift and
+   shadow. */
+.shopping-browse {
+  flex: 1 1 auto;
+  min-height: 0;
+  margin: 0 calc(-1 * var(--space-3));
+  padding: var(--space-5) var(--space-3) var(--space-6);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  /* Sheets fade under the bar and at the bottom rather than being cut. */
+  mask-image: linear-gradient(transparent, #000 var(--space-4), #000 calc(100% - var(--space-6)), transparent);
+}
+
+.shopping-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  gap: var(--space-4);
+}
+
+.shopping-cards:empty {
+  display: none;
+}
+
+/* The library's hero card, a little larger for the line on the list.
+   Hovered, a sheet only rises: no turned corner here. */
+.shopping-card {
+  --paper-curl: 0px;
+  flex: none;
+  width: 150px;
+  gap: var(--space-3);
+  padding: 1.1rem 0.8rem 0.8rem;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    --curl 420ms var(--ease),
+    transform 420ms var(--ease),
+    filter 420ms var(--ease),
+    outline-color var(--duration-fast) var(--ease);
+}
+
+.shopping-card .recipe-card-title {
+  font-size: 0.875rem;
+}
+
+.shopping-card .recipe-card-meta {
+  font-size: 0.5625rem;
+}
+
+.shopping-card-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.shopping-card-have {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.shopping-card-have:empty {
+  display: none;
+}
+
+.shopping-card.is-picked {
+  outline: 2px solid var(--picked);
+  outline-offset: 3px;
+}
+
+.shopping-card:focus-visible {
+  outline: 2px solid var(--color-page-text);
+  outline-offset: 3px;
+}
+
+/* The check: a green disc in the middle of the sheet. */
+.shopping-card-check {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  color: #fff;
+  background: var(--picked);
+  border-radius: var(--radius-full);
+  box-shadow: 0 6px 16px -6px rgb(30 20 12 / 0.5);
+  opacity: 0;
+  translate: -50% -50%;
+  scale: 0.6;
+  pointer-events: none;
+  transition:
+    opacity 200ms var(--ease),
+    scale 320ms var(--ease-entrance);
+}
+
+.shopping-card-check svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.25;
+}
+
+.shopping-card.is-picked .shopping-card-check {
+  opacity: 1;
+  scale: 1;
+}
+
+.shopping-message {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-page-text-muted);
+}
+
+/* --- Basket ------------------------------------------------------------ */
+
+/* The basket: a band on the wall, its title then its cards in a row
+   (scrolling sideways when long), a hairline under it. */
+.shopping-basket {
+  grid-area: basket;
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  min-width: 0;
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-page-text) 14%, transparent);
+  animation: rise-in var(--duration-slow) var(--ease-entrance) backwards;
+}
+
+.shopping-basket .shopping-heading {
+  flex: none;
+  margin: 0;
+}
+
+.shopping-basket .shopping-hint {
+  margin: 0;
+}
+
+/* The list: a paper card, scrolling on its own. */
+.shopping-list-panel {
+  grid-area: list;
+  min-height: 0;
+  padding: var(--space-6);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--color-paper);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  animation: rise-in var(--duration-slow) var(--ease-entrance) 80ms backwards;
+}
+
+.shopping-heading {
+  margin: 0 0 var(--space-4);
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 600;
+}
+
+/* The list's title, and on a phone the share button at its right. */
+.shopping-list-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.shopping-list-head .shopping-heading {
+  margin: 0;
+}
+
+.shopping-share {
+  display: none;
+}
+
+.shopping-hint {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-page-text-muted);
+}
+
+/* The empty basket's hint: phones only (see the end of this file). */
+.shopping-basket-empty {
+  display: none;
+}
+
+.shopping-hint--error {
+  margin-top: var(--space-3);
+  color: var(--color-accent);
+}
+
+/* Room around the cards for their lift and shadow, inside the scroll. */
+.shopping-basket-cards {
+  display: flex;
+  gap: var(--space-3);
+  min-width: 0;
+  margin: calc(-1 * var(--space-3)) calc(-1 * var(--space-5)) calc(-1 * var(--space-5));
+  padding: var(--space-3) var(--space-5) var(--space-5);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+
+.shopping-basket-cards:empty {
+  display: none;
+}
+
+/* A picked recipe: the hero card's size, a cross on hover to take it out. */
+.shopping-basket-card {
+  --paper-curl: 0px;
+  flex: none;
+  width: 100px;
+  gap: 0.75rem;
+  padding: 0.85rem 0.6rem 0.6rem;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  animation: shopping-card-in 360ms var(--ease-entrance) backwards;
+}
+
+.shopping-basket-card .recipe-card-title {
+  font-size: 0.75rem;
+}
+
+.shopping-basket-card .recipe-card-meta {
+  font-size: 0.5rem;
+}
+
+.shopping-basket-card-remove {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  color: var(--color-paper);
+  background: color-mix(in srgb, var(--color-page-text) 82%, transparent);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  translate: -50% -50%;
+  scale: 0.7;
+  pointer-events: none;
+  transition:
+    opacity 180ms var(--ease),
+    scale 240ms var(--ease-entrance);
+}
+
+.shopping-basket-card-remove svg {
+  width: 14px;
+  height: 14px;
+}
+
+.shopping-basket-card:hover .shopping-basket-card-remove,
+.shopping-basket-card:focus-visible .shopping-basket-card-remove {
+  opacity: 1;
+  scale: 1;
+}
+
+@keyframes shopping-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.96);
+  }
+}
+
+/* --- Shopping list: what to buy, then the recipes it's for ------------- */
+
+.shopping-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.shopping-list:empty {
+  display: none;
+}
+
+/* What to buy, the recipes it's for under it, the cross at the end. */
+.shopping-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "what remove"
+    "recipes remove";
+  gap: 0.15rem var(--space-3);
+  align-items: baseline;
+  padding: 0.6rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+  border-bottom: 1px solid var(--color-page-border);
+}
+
+.shopping-item:last-child {
+  border-bottom: none;
+}
+
+.shopping-item-amount {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.shopping-item-recipes {
+  font-size: var(--text-sm);
+  color: var(--color-page-text-muted);
+}
+
+.shopping-item-recipes::before {
+  content: "→ ";
+}
+
+.shopping-item-what {
+  grid-area: what;
+}
+
+.shopping-item-recipes {
+  grid-area: recipes;
+}
+
+/* The cross taking a thing off the list. */
+.shopping-item-remove {
+  display: flex;
+  grid-area: remove;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  padding: 0;
+  color: var(--color-page-text-muted);
+  background: none;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease),
+    background var(--duration-fast) var(--ease);
+}
+
+.shopping-item-remove:hover,
+.shopping-item-remove:focus-visible {
+  color: var(--color-page-text);
+  background: color-mix(in srgb, var(--color-page-text) 8%, transparent);
+  outline: none;
+}
+
+.shopping-item-remove svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* On a touch screen, the cross to take a recipe out shows at rest, in the
+   card's corner. */
+@media (hover: none) {
+  .shopping-basket-card-remove {
+    top: auto;
+    right: 0.45rem;
+    bottom: 0.45rem;
+    left: auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    opacity: 0.85;
+    translate: none;
+    scale: 1;
+  }
+
+  .shopping-basket-card-remove svg {
+    width: 11px;
+    height: 11px;
+  }
+}
+
+/* The phone's tabs, hidden elsewhere. */
+.shopping-tabs {
+  display: none;
+}
+
+/* --- One column: basket, list, then the recipes; the page scrolling --- */
+
+@media (max-width: 860px) {
+  .shopping-page {
+    height: auto;
+  }
+
+  .shopping-main {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas:
+      "basket"
+      "list"
+      "pick";
+    align-content: start;
+    padding: 0 var(--space-4) var(--space-6);
+  }
+
+  .shopping-list-panel {
+    overflow: visible;
+    padding: var(--space-5);
+  }
+
+  .shopping-browse {
+    overflow: visible;
+    mask-image: none;
+  }
+}
+
+/* --- Phones: two tabs, one half at a time; three small cards to a row --- */
+
+@media (max-width: 640px) {
+  .shopping-tabs {
+    position: sticky;
+    top: var(--space-2);
+    z-index: 5;
+    display: flex;
+    gap: 4px;
+    margin: 0 var(--page-gutter) var(--space-4);
+    padding: 4px;
+    background: color-mix(in srgb, var(--color-paper) 70%, transparent);
+    border: 1px solid var(--color-paper-border);
+    border-radius: var(--radius-full);
+    box-shadow: var(--shadow-md);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .shopping-tab {
+    display: flex;
+    flex: 1 1 0;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    min-height: 2.5rem;
+    font: inherit;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-page-text-soft);
+    background: none;
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition:
+      background var(--duration-fast) var(--ease),
+      color var(--duration-fast) var(--ease);
+  }
+
+  .shopping-tab[aria-selected="true"] {
+    color: var(--color-page-text);
+    background: var(--color-paper);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .shopping-tab-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.35rem;
+    height: 1.35rem;
+    padding: 0 0.35rem;
+    font-size: 0.75rem;
+    color: #fff;
+    background: var(--picked);
+    border-radius: var(--radius-full);
+  }
+
+  .shopping-tab-count:empty {
+    display: none;
+  }
+
+  /* Only the tab's sections, one under the other in page order. */
+  .shopping-main {
+    grid-template-areas: none;
+    gap: var(--space-4);
+    padding: 0 var(--page-gutter) var(--space-6);
+  }
+
+  .shopping-basket,
+  .shopping-pick,
+  .shopping-list-panel {
+    grid-area: auto;
+  }
+
+  .shopping-main[data-tab="recipes"] .shopping-basket,
+  .shopping-main[data-tab="recipes"] .shopping-list-panel,
+  .shopping-main[data-tab="list"] .shopping-pick {
+    display: none;
+  }
+
+  .shopping-page .library-search-input {
+    font-size: var(--text-base);
+  }
+
+  /* The bar the full width. */
+
+  .shopping-search,
+  .shopping-page:not(.is-resting) .shopping-search,
+  .shopping-search:has(.library-search-chip) {
+    width: 100%;
+  }
+
+  .shopping-browse {
+    margin: 0;
+    padding: var(--space-4) 0 var(--space-6);
+    overflow: visible;
+    mask-image: none;
+  }
+
+  .shopping-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .shopping-card {
+    width: auto;
+    gap: var(--space-2);
+    padding: 0.8rem 0.55rem 0.55rem;
+  }
+
+  .shopping-card .recipe-card-title {
+    font-size: 0.8125rem;
+  }
+
+  .shopping-card .recipe-card-meta {
+    font-size: 0.5rem;
+  }
+
+  .shopping-card-have {
+    font-size: 0.625rem;
+  }
+
+  .shopping-card-check {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .shopping-card-check svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* The basket: its title over three cards to a row. */
+  .shopping-basket {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-3);
+  }
+
+  .shopping-basket-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    overflow: visible;
+  }
+
+  .shopping-basket-card {
+    width: auto;
+  }
+
+  .shopping-basket-empty:not([hidden]) {
+    display: block;
+  }
+
+  .shopping-share:not([hidden]) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 0;
+    color: var(--color-page-text-soft);
+    background: none;
+    border: 1px solid var(--color-page-border-strong);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+  }
+
+  .shopping-share svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* A finger's size. */
+  .shopping-item-remove {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+}
+
+/* --- The basket's shelf (computers, .has-shelf: see basket-scene.js) ----- */
+
+.shopping-page.has-shelf .shopping-basket {
+  position: relative;
+  display: block;
+  height: 17.5rem;
+  padding: 0;
+  border-bottom: none;
+}
+
+/* At rest, the shelf and the bar in the left column's middle
+   (--rest-offset, placeResting()); searching, at its top. Not where the
+   page is one column. */
+@media (min-width: 861px) {
+  /* The page never scrolls: what the move down pushes past its foot (the
+     hidden results) is cut off; the results and the list scroll inside. */
+  .shopping-page {
+    overflow: clip;
+  }
+
+  .shopping-basket,
+  .shopping-finder,
+  .shopping-browse {
+    transition: translate 600ms cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .shopping-page.is-resting .shopping-basket,
+  .shopping-page.is-resting .shopping-finder,
+  .shopping-page.is-resting .shopping-browse {
+    translate: 0 var(--rest-offset, 0px);
+  }
+
+  /* The results go up with the bar, fading in on the way, never over it. */
+  .shopping-browse {
+    transition:
+      translate 600ms cubic-bezier(0.65, 0, 0.35, 1),
+      opacity 350ms var(--ease) 200ms;
+  }
+
+  .shopping-page.is-resting .shopping-browse {
+    opacity: 0;
+    transition:
+      translate 600ms cubic-bezier(0.65, 0, 0.35, 1),
+      opacity 150ms var(--ease);
+  }
+
+  .shopping-page.is-placing .shopping-basket,
+  .shopping-page.is-placing .shopping-finder,
+  .shopping-page.is-placing .shopping-browse {
+    transition: none;
+  }
+}
+
+.shopping-page.has-shelf .shopping-basket .shopping-heading,
+.shopping-page.has-shelf .shopping-basket-cards {
+  display: none;
+}
+
+/* The sheets pointed at take the pointer. */
+.shopping-page.has-shelf .shopping-basket.is-pointing {
+  cursor: pointer;
+}
+
+/* A save failure, above the shelf. */
+.shopping-page.has-shelf .shopping-basket .shopping-hint--error {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
+  text-align: center;
+}
+
+/* Over the left column (placed by basket-scene.js), drawing the shelf and
+   the sheets' flights, never in the pointer's way. */
+.shopping-shelf-canvas {
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* The hovered sheet's cross, placed on its centre by the scene. */
+.shopping-shelf-remove {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin: -1rem 0 0 -1rem;
+  padding: 0;
+  color: var(--color-paper);
+  background: color-mix(in srgb, var(--color-page-text) 82%, transparent);
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  opacity: 0;
+  scale: 0.7;
+  pointer-events: none;
+  transition:
+    opacity 160ms var(--ease),
+    scale 220ms var(--ease-entrance);
+}
+
+.shopping-shelf-remove.is-shown {
+  opacity: 1;
+  scale: 1;
+  pointer-events: auto;
+}

@@ -1,0 +1,36 @@
+services:
+  cuisine:
+    build: .
+    container_name: cuisine
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    # Reached only by the reverse proxy on shared_net, never published on the host.
+    expose:
+      - "3000"
+    # Reading an imported web page can briefly take a few hundred MB.
+    mem_limit: 768m
+    cpus: 1.0
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+    environment:
+      # The name(s) the proxy serves the app under, comma separated (see
+      # request-guards.js): any other name is refused.
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-cuisine.home}
+      # One proxy in front: the client's address comes from X-Forwarded-For.
+      - TRUST_PROXY=1
+    volumes:
+      - cuisine_data:/app/data
+    networks:
+      - shared_net
+networks:
+  shared_net:
+    external: true
+volumes:
+  cuisine_data:
+    name: cuisine_data

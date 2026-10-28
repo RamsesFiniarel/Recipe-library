@@ -70,6 +70,13 @@ export function darken(hex, factor = 0.87) {
   return `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1)}`;
 }
 
+/** Whether a colour is light (dark lettering on it reads better). */
+export function isLightColor(hex) {
+  const value = parseInt(hex.slice(1), 16);
+  const [r, g, b] = [16, 8, 0].map((shift) => ((value >> shift) & 0xff) / 255);
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b > 0.6;
+}
+
 /** A second, independent hash: a stable pseudo-random value per book (e.g.
  * height variation). */
 export function stableUnitFromId(id, salt = "") {

@@ -113,6 +113,11 @@ const FRACTIONS = new Map([
   [0.75, "3/4"],
 ]);
 
+/** Measured by spoon, cup, glass or pinch rather than weighed. */
+export function isKitchenMeasure(unitKey) {
+  return KITCHEN_MEASURES.has(unitKey);
+}
+
 function roundScaled(value, metric) {
   const step = metric
     ? value >= 1000 ? 10 : value >= 100 ? 5 : value >= 10 ? 1 : value >= 1 ? 0.1 : 0.05

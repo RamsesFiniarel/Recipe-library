@@ -132,6 +132,18 @@ function migrate(connection) {
       created_at TEXT NOT NULL DEFAULT (datetime('now'))
     )
   `);
+  // Recipes in the groceries basket, in the order picked, and the things
+  // taken off its list (see shopping.service.js).
+  connection.exec(`
+    CREATE TABLE IF NOT EXISTS shopping_recipes (
+      recipe_id TEXT PRIMARY KEY REFERENCES recipes(id) ON DELETE CASCADE,
+      added_at TEXT NOT NULL DEFAULT (datetime('now'))
+    );
+
+    CREATE TABLE IF NOT EXISTS shopping_hidden (
+      key TEXT PRIMARY KEY
+    )
+  `);
 }
 
 /** Closes the database when the server stops (no-op if already closed). */

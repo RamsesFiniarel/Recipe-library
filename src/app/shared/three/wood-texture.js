@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { paintWoodPlank } from "./wood-plank.js";
 
-// Built once for every shelf, kept across scene rebuilds.
+// Built once for every shelf (library and groceries), kept across scenes.
 let cached = null;
 
 export function getWoodMaterial() {

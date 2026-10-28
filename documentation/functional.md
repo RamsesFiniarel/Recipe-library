@@ -8,18 +8,18 @@ The application is a website served by a local server on the home network. Each 
   Phones, tablets and computers at home
   (the browser renders the 3D, reads photos, makes PDFs)
                          │
-                         │  local network
+                         │  local network, HTTPS through a reverse proxy
                          ▼
   ┌──────────────────────────────────────────────────┐
   │  Local server                                    │
   │                                                  │
-  │  Node.js server                                  │
+  │  Node.js server, in a Docker container           │
   │    ├ the application's pages and files           │
   │    └ the API: books, recipes, tags, nutrition,   │
   │      backups, reading web pages                  │
   │                                                  │
   │  data/cuisine.db      the library                │
-  │  data/nutrition.db    nutritionnal value table   │
+  │  data/nutrition.db    nutritional value table    │
   │  data/backups/        one copy a day             │
   └──────────────────────────────────────────────────┘
                          │
@@ -30,12 +30,13 @@ The application is a website served by a local server on the home network. Each 
 
 The browser loads nothing from the internet: fonts, 3D models and the photo reader are served by the local server. Only importing a recipe from a website sends a request out, made by the server and on demand.
 
-The site has five pages:
+The site has six pages:
 
 ```
 Library                           /
  ├ Book                           /{book}
  │  └ Recipe                      /{book}/{recipe}
+ ├ Groceries                      /courses
  └ Settings                       /parametres
     └ Nutrition database          /parametres/nutrition
 ```
@@ -46,6 +47,7 @@ A few rules apply everywhere:
 - There are no accounts: any device on the network can read and change everything. A copy of the library is made every day.
 - Recipes stay in the language they were written in; only the interface changes language.
 - The "/" key opens the page's search, Escape closes whatever is open.
+- On a phone, every page has its own layout (see [On a phone](#on-a-phone)).
 
 ## Library
 
@@ -53,7 +55,7 @@ This is the home page.
 
 ### Welcome
 
-At the top of the page: a question that follows the time of day ("What's cooking tonight?"), the number of recipes and books, and the search bar. Scrolling down leads to the library.
+At the top of the page: a question that follows the time of day ("What's cooking tonight?"), the number of recipes and books, and the search bar. On a phone, three buttons under the bar create a book (its page opens at once), create a recipe (after choosing its book, the "New recipe" dialog opens) and lead to the groceries page; they step aside while a search is typed. On a computer, the menu leads to the groceries page and creates books. Scrolling down leads to the library.
 
 ### Shelves
 
@@ -69,12 +71,13 @@ The bar searches books and recipes at once. The arrow keys move through the resu
 | /t | a tag | /t veggie |
 | /c | a maximum time, in minutes | /c 30 |
 | /p | a number of people, give or take one | /p 4 |
+| /b | the recipes of one book | /b Italy |
 
 Several ingredients or tags add up. Typing "/" alone lists the commands.
 
 ### Menu
 
-The menu at the top right leads to the settings, creates a new book (a title is enough) and opens edit mode.
+The menu at the top right leads to the settings and the groceries page, creates a new book (a title is enough; it goes on the highest shelf with room, or a new one at the bottom, and opens at once) and opens edit mode.
 
 ### Edit mode
 
@@ -136,13 +139,23 @@ Two tabs share the right side of the page.
 - Method: the free text of the steps.
 - Nutrition: a table of calories, carbohydrates, protein, fat, sugars, fibre, saturated fat and salt, per ingredient, in total and per person. Minerals and vitamins unfold below. An unknown food, a missing quantity or a unit of unknown weight is pointed out.
 
+## Groceries
+
+The page turns recipes into one shopping list.
+
+- On the left, the basket: a 3D shelf like the library's, across the column, a sheet of paper standing straight on it for each chosen recipe. A recipe picked below flies from its card up in front of the shelf, then down to its place, the paper rippling on the way. A hovered sheet shows a cross; a click takes the recipe out.
+- Below it, a search bar with the library's filters (ingredient, tag, time, people, book). At rest, the shelf and the bar sit in the middle of the column, the bar centred. Once the bar is used, it grows longer, and the shelf and the bar move to the top, the results showing below. Each recipe card says how many of the recipe's ingredients are already on the list ("3/9 ingredients already on the list"), in red for none, yellow for half, green for all. A click puts the recipe in the basket, shown by a green frame and a check; another click takes it out.
+- On the right, the shopping list, the page's whole height. Each line gives the quantity, the ingredient and the recipes that need it ("250 g + 2 tbsp butter → Crêpes, Quiche"). The same ingredient from several recipes is merged and its quantities added up: grams with kilos, millilitres with litres, spoons with spoons. Things counted differently stay side by side ("5 garlic cloves + 1 head garlic"). Water is left out. A cross at the end of each line takes it off the list (already at home, say); it comes back if a recipe added later needs it, and an emptied basket starts a fresh list.
+
+The basket is kept on the server: prepared on the computer, it is the same on the phone in the shop, where recipes and list are two tabs.
+
 ## Settings
 
 The page has five sections, in this order:
 
 | Section | Content |
 |---|---|
-| Language | French or English, for the interface and the food names |
+| Language | English (by default) or French, for the interface and the food names; remembered per device |
 | Backup | the date of the last automatic copy and a button to make one now; export of the whole library to a file; import of such a file, which replaces the library after confirmation (the current one is copied on the server first) |
 | Nutrition database | the link to its page |
 | Tags | the automatic tags with their rules, and personal tags, added or deleted (a deleted tag disappears from the recipes that had it) |
@@ -161,10 +174,23 @@ The page has five sections, in this order:
 | Hearty | meal or dessert over 800 kcal per person |
 | Solo, For 2, Family, Big table | meal or dessert for 1, 2, 3 to 7, or at least 8 people |
 
+## On a phone
+
+Up to 640 pixels wide, the pages take a phone layout: narrower margins, text of at least 16 pixels in fields (so the phone doesn't zoom in on them), recipes in larger type, and buttons big enough for a finger.
+
+| Page | On a phone |
+|---|---|
+| Library | the welcome screen alone, on a dark background: no 3D shelves, also on a phone turned sideways. Books are found through the search (a title, or /b). The settings are at the top right. While searching, the bar goes to the top and the results scroll below as a grid of small cards. A book's look (colours, pictures, size) is set on a computer. |
+| Book | the title on a line of its own, the search below it by the menu, three small cards to a row |
+| Recipe | the title wraps; under servings and time, three tabs: Ingredients (open first), Method, Nutrition. The nutrition table takes the whole width and scrolls sideways, the ingredient column held. |
+| New recipe | "Import photos" offers to take a photo with the camera or to choose photos |
+| Groceries | no shelf: the basket is cards. Two tabs, Recipes and List, the list's tab showing how many recipes the basket holds; the list opens first when the basket isn't empty. In the basket, a cross on each card takes it out. A button by the list's title shares it through the phone's share sheet (messages, WhatsApp…), one dash per line ("- 60 g butter"). |
+| Settings | each section's choices under its title |
+
 ## Nutrition database
 
 The foods of the Anses Ciqual table, with their values per 100 g. Foods can be searched by name and filtered by food group. This table is what the recipes' nutrition is computed from.
 
 ## Ideas for later
 
-Noted for the future, not built: a cooking mode (screen kept on, larger text, steps to tick off), timers taken from the steps' durations, a shopping list from several recipes, a weekly meal plan, seasonal tags, a photo per recipe, a log of when recipes were made, unit conversion, an offline mode, an automatic copy of the backups to another machine, and a dark theme.
+Noted for the future, not built: a cooking mode (screen kept on, larger text, steps to tick off), timers taken from the steps' durations, a weekly meal plan, seasonal tags, a photo per recipe, a log of when recipes were made, unit conversion, an offline mode, an automatic copy of the backups to another machine, and a dark theme.

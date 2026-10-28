@@ -13,6 +13,7 @@ document.title = t("app.title");
 registerRoute("/", () => import("./app/features/library/library.page.js"));
 // Before "/:bookId", which would take it for a book.
 registerRoute("/parametres", () => import("./app/features/settings/settings.page.js"));
+registerRoute("/courses", () => import("./app/features/shopping/shopping.page.js"));
 // Before "/:bookId/:recipeId", likewise.
 registerRoute("/parametres/nutrition", () => import("./app/features/foods/foods.page.js"));
 registerRoute("/:bookId", () => import("./app/features/book/book.page.js"));

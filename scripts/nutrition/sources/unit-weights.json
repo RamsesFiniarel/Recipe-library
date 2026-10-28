@@ -1809,6 +1809,15 @@
   "source": "USDA SR Legacy #167747 « Lemon juice, raw » : 1 lemon yields = 48 g"
  },
  {
+  "ciqual": 2030,
+  "food": "Jus de citron vert, frais",
+  "unit": "juice",
+  "size": null,
+  "label": "le jus d'1 citron vert",
+  "grams": 44.0,
+  "source": "USDA SR Legacy #168156 « Lime juice, raw » : 1 lime yields = 44 g"
+ },
+ {
   "ciqual": 2028,
   "food": "Jus de citron, pur jus",
   "unit": "cup",

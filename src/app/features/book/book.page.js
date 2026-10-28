@@ -7,6 +7,7 @@ import { debounce } from "../../shared/utils/debounce.js";
 import { bindEscapeBack } from "../../shared/utils/escape-back.js";
 import { bindHatMenu } from "../../shared/utils/hat-menu.js";
 import { cloneTemplate, mountTemplate } from "../../shared/utils/dom.js";
+import { keepSingleLine } from "../../shared/utils/single-line.js";
 import { t, tn } from "../../shared/i18n/i18n.js";
 import { hexForPageColorToken } from "@shared/palette.js";
 import { paintCoverBackdrop, coverBackdropReady, hideTransitionBackdrop } from "../../shared/components/cover-backdrop.js";
@@ -38,6 +39,7 @@ export async function render(container, params, navigate) {
 
   const pageEl = container.querySelector(".book-page");
   const titleInput = container.querySelector('[data-field="title"]');
+  keepSingleLine(titleInput);
   const titleField = container.querySelector("[data-title-field]");
   const cardGrid = container.querySelector("[data-card-grid]");
   const addButton = container.querySelector('[data-action="add-recipe"]');

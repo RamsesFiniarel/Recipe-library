@@ -32,13 +32,17 @@
             <div class="library-search-results" data-search-results hidden></div>
           </div>
         </div>
-        <!-- The chef's-hat menu (hidden on the hero): opens over new book and
-             settings, the hat turning into edit mode's pencil, open while editing
-             (see .library-menu). -->
+        <!-- The chef's-hat menu (hidden on the hero): opens over settings,
+             groceries and new book, the hat turning into edit mode's pencil,
+             open while editing (see .library-menu). -->
         <div class="library-menu" data-library-menu>
-          <a class="library-menu-btn library-menu-btn--settings" href="/parametres" data-transition="crossfade"
+          <a class="library-menu-btn" href="/parametres" data-transition="crossfade"
             aria-label="Paramètres" title="Paramètres" data-i18n-attr="aria-label:library.menu.settings title:library.menu.settings">
             <i data-icon="settings"></i>
+          </a>
+          <a class="library-menu-btn" href="/courses" data-transition="crossfade"
+            aria-label="Courses" title="Courses" data-i18n-attr="aria-label:library.menu.shopping title:library.menu.shopping">
+            <i data-icon="groceries"></i>
           </a>
           <button type="button" class="library-menu-btn" data-action="add-book" aria-label="Nouveau livre"
             title="Nouveau livre" data-i18n-attr="aria-label:library.menu.newBook title:library.menu.newBook">
@@ -107,12 +111,33 @@
         <span data-hero-question></span>
       </p>
       <div class="library-hero-search-slot" data-hero-search-slot></div>
+      <!-- Under the bar while it's empty: a new book, a new recipe (once
+           there's a book), the groceries. -->
+      <div class="library-hero-actions">
+        <button type="button" class="library-hero-action" data-hero-new-book>
+          <i data-icon="book"></i>
+          <span data-i18n="library.hero.newBook">Créer un livre</span>
+        </button>
+        <button type="button" class="library-hero-action" data-hero-new-recipe hidden>
+          <i data-icon="page"></i>
+          <span data-i18n="library.hero.newRecipe">Créer une recette</span>
+        </button>
+        <a class="library-hero-action" href="/courses" data-transition="crossfade">
+          <i data-icon="groceries"></i>
+          <span data-i18n="library.hero.groceries">Faire mes courses</span>
+        </a>
+      </div>
       <!-- Hero search results: one row of cards, as many as fit (see
            renderHeroResults()). -->
       <div class="library-hero-results" data-hero-results aria-label="Résultats" data-i18n-attr="aria-label:library.hero.results">
         <p class="library-hero-results-empty" data-hero-results-empty></p>
       </div>
     </div>
+    <!-- Phones only (no shelves, so no menu): the settings, top right. -->
+    <a class="library-hero-settings" href="/parametres" data-transition="crossfade"
+      aria-label="Paramètres" title="Paramètres" data-i18n-attr="aria-label:library.menu.settings title:library.menu.settings">
+      <i data-icon="settings"></i>
+    </a>
     <button type="button" class="library-hero-scroll" data-hero-scroll aria-label="Voir la bibliothèque" data-i18n-attr="aria-label:library.hero.scroll">
       <i data-icon="chevronDown"></i>
     </button>

@@ -13,6 +13,8 @@ import { DURATION_CHARS, formatDuration, parseDuration } from "../../shared/util
 import { bindEscapeBack } from "../../shared/utils/escape-back.js";
 import { bindHatMenu } from "../../shared/utils/hat-menu.js";
 import { mountTemplate } from "../../shared/utils/dom.js";
+import { PHONE_LAYOUT } from "../../shared/utils/media.js";
+import { keepSingleLine } from "../../shared/utils/single-line.js";
 import { t } from "../../shared/i18n/i18n.js";
 import { hexForPageColorToken } from "@shared/palette.js";
 import { createIngredientList } from "./ingredient-list.js";
@@ -56,6 +58,7 @@ export async function render(container, params, navigate) {
 
   const pageEl = container.querySelector(".recipe-page");
   const titleInput = container.querySelector('[data-field="title"]');
+  keepSingleLine(titleInput);
   const titleField = container.querySelector("[data-title-field]");
   const servingsInput = container.querySelector('[data-field="servings"]');
   const servingsItem = container.querySelector(".recipe-meta-item--servings");
@@ -285,6 +288,8 @@ export async function render(container, params, navigate) {
   }
   const scheduleNutrition = debounce(refreshNutrition, NUTRITION_DELAY_MS);
 
+  // On a phone the ingredients are a tab too: shown by .recipe-body's
+  // data-tab, the other panels hidden.
   function selectTab(name) {
     for (const tab of tabs) {
       const selected = tab.dataset.tab === name;
@@ -292,6 +297,7 @@ export async function render(container, params, navigate) {
       tab.tabIndex = selected ? 0 : -1;
     }
     for (const panel of panels) panel.hidden = panel.dataset.panel !== name;
+    bodyEl.dataset.tab = name;
     nutritionShown = name === "nutrition";
     if (nutritionShown) {
       scheduleNutrition.cancel();
@@ -301,14 +307,24 @@ export async function render(container, params, navigate) {
 
   for (const tab of tabs) {
     tab.addEventListener("click", () => selectTab(tab.dataset.tab));
-    // Arrow keys move between the two tabs (WAI-ARIA tabs pattern).
+    // Arrow keys move between the tabs shown (WAI-ARIA tabs pattern).
     tab.addEventListener("keydown", (event) => {
       if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-      const next = tabs[(tabs.indexOf(tab) + (event.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+      const shown = tabs.filter((other) => other.offsetParent !== null);
+      const next = shown[(shown.indexOf(tab) + (event.key === "ArrowRight" ? 1 : shown.length - 1)) % shown.length];
       next.focus();
       selectTab(next.dataset.tab);
     });
   }
+
+  // A phone opens on the ingredients; leaving the phone layout on them, the
+  // method takes over (the ingredients are always shown there).
+  const phoneQuery = window.matchMedia(PHONE_LAYOUT);
+  selectTab(phoneQuery.matches ? "ingredients" : "steps");
+  function onPhoneChange() {
+    if (!phoneQuery.matches && bodyEl.dataset.tab === "ingredients") selectTab("steps");
+  }
+  phoneQuery.addEventListener("change", onPhoneChange);
 
   // The hat's menu (see hat-menu.js): its link goes back to the book.
   const unbindHatMenu = bindHatMenu(
@@ -366,6 +382,7 @@ export async function render(container, params, navigate) {
     scheduleTags.cancel();
     tags.dispose();
     window.removeEventListener("resize", onResize);
+    phoneQuery.removeEventListener("change", onPhoneChange);
     unbindHatMenu();
     unbindEscape();
     flush();

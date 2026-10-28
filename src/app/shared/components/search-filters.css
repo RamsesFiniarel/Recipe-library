@@ -1,0 +1,372 @@
+/* =====================================================================
+   The search bar and its filters (see search-filters.js), on the library
+   and groceries pages: a frosted paper field with its icon, the filters'
+   chips, and their menu. Each page sizes and places the bar.
+   ===================================================================== */
+.library-search-box {
+  /* Room kept at the end of the field (for the hero's "/" and arrow). */
+  --search-end: var(--space-3);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 100%;
+  height: 2.5rem;
+  margin-top: -1.25rem;
+  font-size: var(--text-sm);
+}
+
+.library-search-icon {
+  position: absolute;
+  top: 50%;
+  left: var(--space-3);
+  z-index: 1;
+  transform: translateY(-50%);
+  display: flex;
+  color: var(--color-page-text-muted);
+  pointer-events: none;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+.library-search-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.library-search-input {
+  width: 100%;
+  height: 100%;
+  /* The text starts after the icon, and after the filters' chips if any. */
+  padding: 0 var(--search-end) 0 calc(var(--space-3) * 2 + 16px + var(--chips-width, 0px));
+  font-family: var(--font-body);
+  font-size: inherit;
+  color: var(--color-page-text);
+  background: color-mix(in srgb, var(--color-paper) 60%, transparent);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  transition:
+    background var(--duration-base) var(--ease),
+    border-color var(--duration-base) var(--ease),
+    box-shadow var(--duration-base) var(--ease);
+}
+
+.library-search-input::placeholder {
+  color: var(--color-page-text-muted);
+}
+
+/* Hides the native "clear" control (Escape empties the field). */
+.library-search-input::-webkit-search-cancel-button {
+  display: none;
+}
+
+/* Focus: no ring; the field firms up like paper laid on top (more opaque,
+   darker edge, lit rim, soft shadow). */
+.library-search-input:focus {
+  outline: none;
+  background: color-mix(in srgb, var(--color-paper) 94%, transparent);
+  border-color: color-mix(in srgb, var(--color-page-text) 22%, transparent);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.7),
+    0 12px 30px -14px rgb(30 20 12 / 0.5);
+}
+
+.library-search-box:focus-within .library-search-icon {
+  color: var(--color-page-text);
+}
+
+/* The "/" shortcut hint, at the end of the hero bar only (the shortcut
+   works everywhere). */
+.library-search-kbd {
+  position: absolute;
+  top: 50%;
+  right: var(--space-3);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.3rem;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-page-text-muted);
+  transform: translateY(-50%);
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity var(--duration-fast) var(--ease),
+    color var(--duration-fast) var(--ease);
+}
+
+@keyframes library-results-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Search filters (see search-filters.js): chips at the start of the bar,
+   then the text, and a menu below listing commands, then value
+   suggestions. Each kind keeps a tint from the book palette.
+   --------------------------------------------------------------------- */
+.library-search-box [data-type="ingredient"] {
+  --filter-tint: #727d63;
+}
+
+.library-search-box [data-type="tag"] {
+  --filter-tint: #be8b44;
+}
+
+.library-search-box [data-type="time"] {
+  --filter-tint: #4d5b60;
+}
+
+.library-search-box [data-type="people"] {
+  --filter-tint: #ad5a3b;
+}
+
+.library-search-box [data-type="book"] {
+  --filter-tint: #763a3a;
+}
+
+.library-search-chips {
+  position: absolute;
+  top: 50%;
+  left: calc(var(--space-3) * 2 + 16px);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  /* Chips stop where the field keeps a few words; beyond, they scroll, the
+     first ones fading at the left. */
+  max-width: calc(100% - (var(--space-3) * 2 + 16px) - var(--search-end) - 4rem);
+  overflow-x: auto;
+  scrollbar-width: none;
+  transform: translateY(-50%);
+}
+
+.library-search-chips.is-scrolled {
+  mask-image: linear-gradient(to right, transparent, #000 1.5rem);
+}
+
+.library-search-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.library-search-chip {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: 0.35em;
+  height: 1.9em;
+  padding: 0 0.25em 0 0.6em;
+  font-size: 0.875em;
+  font-weight: 500;
+  color: var(--color-page-text);
+  white-space: nowrap;
+  background: color-mix(in srgb, var(--filter-tint) 14%, var(--color-paper));
+  border: 1px solid color-mix(in srgb, var(--filter-tint) 28%, transparent);
+  border-radius: var(--radius-full);
+  animation: library-chip-in 240ms var(--ease-entrance) both;
+}
+
+.library-search-chip > svg {
+  flex: none;
+  width: 1.1em;
+  height: 1.1em;
+  color: var(--filter-tint);
+}
+
+/* The one whose value is being typed: an outline waiting to be filled. */
+.library-search-chip.is-pending {
+  padding-right: 0.7em;
+  color: var(--color-page-text-soft);
+  background: transparent;
+  border-style: dashed;
+  border-color: color-mix(in srgb, var(--filter-tint) 55%, transparent);
+}
+
+@keyframes library-chip-in {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+}
+
+.library-search-chip-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.45em;
+  height: 1.45em;
+  padding: 0;
+  color: var(--color-page-text-muted);
+  background: none;
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease),
+    background var(--duration-fast) var(--ease);
+}
+
+.library-search-chip-remove:hover {
+  color: var(--color-page-text);
+  background: color-mix(in srgb, var(--filter-tint) 18%, transparent);
+}
+
+.library-search-chip-remove svg {
+  width: 0.85em;
+  height: 0.85em;
+}
+
+/* The menu: the results' frosted paper, under the bar. */
+.library-search-menu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  width: max(100%, 21rem);
+  max-height: min(60vh, 420px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--color-page-text);
+  background: color-mix(in srgb, var(--color-paper) 82%, transparent);
+  border: 1px solid rgb(255 255 255 / 0.5);
+  border-radius: var(--radius-lg);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.55),
+    0 24px 48px -20px rgb(30 20 12 / 0.5);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+  animation: library-results-in 180ms var(--ease) both;
+}
+
+.library-search-menu[hidden] {
+  display: none;
+}
+
+.library-search-menu-label {
+  margin: 0;
+  padding: var(--space-1) var(--space-2) var(--space-2);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-page-text-muted);
+}
+
+.library-search-menu-empty {
+  margin: 0;
+  padding: var(--space-1) var(--space-2) var(--space-2);
+  font-size: 0.875em;
+  color: var(--color-page-text-muted);
+}
+
+/* A command: icon on a tinted square, name, description and keys. */
+.library-search-command {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  padding: 0.4rem var(--space-2);
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  background: none;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease);
+}
+
+.library-search-command.is-active {
+  background: color-mix(in srgb, var(--color-page-text) 7%, transparent);
+}
+
+.library-search-command-icon {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.125em;
+  height: 2.125em;
+  color: var(--filter-tint);
+  background: color-mix(in srgb, var(--filter-tint) 15%, var(--color-paper));
+  border-radius: var(--radius-sm);
+}
+
+.library-search-command-text {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.library-search-command-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.library-search-command-hint {
+  font-size: 0.85em;
+  color: var(--color-page-text-muted);
+}
+
+.library-search-command-key {
+  flex: none;
+  padding: 0.1em 0.45em;
+  font-family: var(--font-body);
+  font-size: 0.8em;
+  color: var(--color-page-text-soft);
+  background: var(--color-paper);
+  border: 1px solid color-mix(in srgb, var(--color-page-text) 16%, transparent);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+}
+
+/* Suggestions (ingredients, tags, times, people, books): pills to pick
+   from, each with how many recipes it leaves. */
+.library-search-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0 var(--space-2) var(--space-2);
+}
+
+.library-search-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  height: 2em;
+  padding: 0 0.8em;
+  font: inherit;
+  color: var(--color-page-text);
+  background: var(--color-paper);
+  border: 1px solid color-mix(in srgb, var(--color-page-text) 14%, transparent);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease),
+    background var(--duration-fast) var(--ease),
+    transform var(--duration-fast) var(--ease);
+}
+
+.library-search-pill-count {
+  font-size: 0.8em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-page-text-muted);
+}
+
+.library-search-pill.is-active {
+  background: color-mix(in srgb, var(--color-page-text) 6%, var(--color-paper));
+  border-color: color-mix(in srgb, var(--color-page-text) 45%, transparent);
+  transform: translateY(-1px);
+}

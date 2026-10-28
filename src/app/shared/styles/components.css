@@ -292,6 +292,9 @@
   border: none;
   border-bottom: 2px solid transparent;
   border-radius: 0;
+  /* A textarea (see single-line.js): no handle, no scrollbar. */
+  resize: none;
+  overflow: hidden;
 }
 .title-input:hover {
   border-bottom-color: var(--color-page-border);
@@ -301,8 +304,9 @@
   border-bottom-color: var(--color-accent);
 }
 
-/* A title field as wide as its text: the input and a hidden copy share a
-   grid cell (the page script keeps data-value on .title-field in sync). */
+/* A title field as wide as its text: the textarea and a hidden copy share
+   a grid cell (the page script keeps data-value on .title-field in sync).
+   One line on a computer; on a phone, a long title wraps. */
 .title-field {
   display: inline-grid;
   grid-template-columns: minmax(0, max-content);
@@ -320,6 +324,11 @@
   line-height: var(--leading-tight);
   letter-spacing: -0.015em;
   border-bottom: 2px solid transparent;
+}
+
+.title-field > .title-input {
+  height: 100%;
+  white-space: pre;
 }
 
 .title-field::after {
@@ -794,11 +803,17 @@ html.has-modal {
 }
 
 /* ---------------------------------------------------------------------
-   Small screens
+   Phones (up to 640px wide): narrower gutters and header, titles a size
+   down, three small cards to a row, lighter dialogs. Fields stay at 16px
+   or more there: below, iOS zooms in on them.
    --------------------------------------------------------------------- */
-@media (max-width: 600px) {
+@media (max-width: 640px) {
+  :root {
+    --page-gutter: var(--space-4);
+  }
+
   .topbar {
-    padding-top: var(--space-5);
+    padding: var(--space-5) var(--page-gutter) var(--space-4);
   }
 
   .topbar-inner {
@@ -806,11 +821,28 @@ html.has-modal {
   }
 
   .topbar-title h1,
-  .title-input {
+  .title-input,
+  .title-field > .title-input,
+  .title-field::after {
     font-size: var(--text-2xl);
   }
 
+  .title-field > .title-input,
+  .title-field::after {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+
   .card-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .modal-overlay {
+    padding: var(--space-4);
+  }
+
+  .modal {
+    padding: var(--space-5);
   }
 }
