@@ -132,7 +132,8 @@ export function createSearchFilters({ box, input, getRecipes, getCustomTags = ()
   let menuMode = null;
   let options = [];
   let active = -1;
-  const freeText = () => (pending ? stash : input.value);
+  // A "/" just typed opens the commands: no part of the text searched.
+  const freeText = () => (pending ? stash : input.value.replace(/(^|\s)\/$/, "$1"));
 
   // Recipes suggestions are counted on: those the other filters and text keep.
   function baseRecipes() {

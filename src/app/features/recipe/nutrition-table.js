@@ -3,8 +3,8 @@ import { locale, t } from "../../shared/i18n/i18n.js";
 import { el } from "../../shared/utils/dom.js";
 
 /** The nutrition table: a row per ingredient (calories, carbs, protein,
- * fat, then the detail columns behind the chevron), then total and per
- * person. Scrolls in its own box within the window, header and totals
+ * fat, then the detail columns behind the chevron), then per person and
+ * total. Scrolls in its own box within the window, header and totals
  * sticky. textContent only: names are user data. */
 
 // Why a line counts for nothing: "food", "quantity" or "unit".
@@ -90,16 +90,24 @@ export function createNutritionTable(container, { reserveBelow }) {
     }
 
     const foot = table.appendChild(el("tfoot"));
-    const total = el("tr", "nutrition-total");
-    total.append(el("th", null, t("nutrition.total")));
-    valueCells(total, columns, analysis.total, analysis.partial);
-    foot.append(total);
     if (analysis.perServing) {
       const serving = el("tr", "nutrition-serving");
-      serving.append(el("th", null, t("nutrition.perPerson", { n: analysis.servings })));
+      serving.append(el("th", null, t("nutrition.perPerson")));
       valueCells(serving, columns, analysis.perServing, analysis.partial);
       foot.append(serving);
     }
+    // "Total (4 [people])": for how many, as the servings field shows it.
+    const total = el("tr", "nutrition-total");
+    const label = total.appendChild(el("th", null, t("nutrition.total")));
+    if (analysis.servings) {
+      const people = el("span", "nutrition-people", ` (${analysis.servings}`);
+      people.appendChild(el("i")).dataset.icon = "users";
+      people.append(")");
+      label.append(people);
+      mountIcons(label);
+    }
+    valueCells(total, columns, analysis.total, analysis.partial);
+    foot.append(total);
     return table;
   }
 
@@ -112,13 +120,13 @@ export function createNutritionTable(container, { reserveBelow }) {
     scroll.style.maxHeight = `${Math.max(MIN_HEIGHT_PX, Math.floor(available))}px`;
   }
 
-  /** Layout-dependent settings: sticky totals stacked ("Total" above "Par
-   * personne"), the chevron aligned with the header row. */
+  /** Layout-dependent settings: sticky rows stacked ("Par personne" above
+   * "Total"), the chevron aligned with the header row. */
   function place() {
     const scroll = container.querySelector(".nutrition-scroll");
     if (!scroll?.offsetParent) return;
-    const serving = scroll.querySelector(".nutrition-serving");
-    scroll.style.setProperty("--nutrition-serving-height", `${serving?.offsetHeight ?? 0}px`);
+    const total = scroll.querySelector(".nutrition-total");
+    scroll.style.setProperty("--nutrition-total-height", `${total?.offsetHeight ?? 0}px`);
     const header = scroll.querySelector("thead tr");
     const chevron = container.querySelector(".nutrition-expand");
     chevron.style.top = `${scroll.offsetTop + (header.offsetHeight - chevron.offsetHeight) / 2}px`;

@@ -104,9 +104,9 @@
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* The chef's-hat menu, in dark glass: the round button stretches left on
+/* The three-bar menu, in dark glass: the round button stretches left on
    hover, focus or a first tap (.is-open) over new recipe and delete; the
-   hat stays at the right end and turns into the back arrow. Icons stay
+   toggle stays at the right end and turns into the back arrow. Icons stay
    grey until pointed at. */
 .book-menu {
   --book-menu-size: 2.5rem;
@@ -118,7 +118,7 @@
   /* Its own width, even next to a search filling the line (phones). */
   flex: none;
   align-items: center;
-  /* Right-aligned and clipped: the hidden icons wait to the hat's left. */
+  /* Right-aligned and clipped: the hidden icons wait to the toggle's left. */
   justify-content: flex-end;
   width: var(--book-menu-size);
   height: var(--book-menu-size);
@@ -144,7 +144,7 @@
   border-color: rgba(255, 255, 255, 0.4);
 }
 
-.book-menu-hat,
+.book-menu-toggle,
 .book-menu-btn {
   position: relative;
   display: flex;
@@ -161,7 +161,7 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.book-menu-hat {
+.book-menu-toggle {
   width: calc(var(--book-menu-size) - 2px);
 }
 
@@ -181,8 +181,8 @@
 }
 
 /* Under the pointer an icon only brightens - delete, to a soft red. */
-.book-menu-hat:hover,
-.book-menu-hat:focus-visible,
+.book-menu-toggle:hover,
+.book-menu-toggle:focus-visible,
 .book-menu-btn:hover,
 .book-menu-btn:focus-visible {
   color: #fff;
@@ -194,25 +194,25 @@
   color: #ffa094;
 }
 
-.book-menu-hat .icon-swap {
+.book-menu-toggle .icon-swap {
   width: 18px;
   height: 18px;
 }
 
-/* Icon swaps (see .icon-swap): hat to arrow when open, trash to check on
+/* Icon swaps (see .icon-swap): bars to arrow when open, trash to check on
    hover. */
-.book-menu:hover .book-menu-hat .icon-swap-face--rest,
-.book-menu:has(:focus-visible) .book-menu-hat .icon-swap-face--rest,
-.book-menu.is-open .book-menu-hat .icon-swap-face--rest,
+.book-menu:hover .book-menu-toggle .icon-swap-face--rest,
+.book-menu:has(:focus-visible) .book-menu-toggle .icon-swap-face--rest,
+.book-menu.is-open .book-menu-toggle .icon-swap-face--rest,
 .book-menu-btn:hover .icon-swap-face--rest,
 .book-menu-btn:focus-visible .icon-swap-face--rest {
   transform: rotate(360deg) scale(0);
   opacity: 0;
 }
 
-.book-menu:hover .book-menu-hat .icon-swap-face--hover,
-.book-menu:has(:focus-visible) .book-menu-hat .icon-swap-face--hover,
-.book-menu.is-open .book-menu-hat .icon-swap-face--hover,
+.book-menu:hover .book-menu-toggle .icon-swap-face--hover,
+.book-menu:has(:focus-visible) .book-menu-toggle .icon-swap-face--hover,
+.book-menu.is-open .book-menu-toggle .icon-swap-face--hover,
 .book-menu-btn:hover .icon-swap-face--hover,
 .book-menu-btn:focus-visible .icon-swap-face--hover {
   transform: rotate(0deg) scale(1);
@@ -249,7 +249,7 @@
 
 /* ---------------------------------------------------------------------
    Phones: the title on a line of its own, the search filling the next one
-   up to the hat; three small cards to a row.
+   up to the menu; three small cards to a row.
    --------------------------------------------------------------------- */
 @media (max-width: 640px) {
   .book-page .topbar {

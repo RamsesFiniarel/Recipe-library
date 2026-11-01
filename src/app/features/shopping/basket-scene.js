@@ -16,9 +16,11 @@ import { getContactShadowMaterial } from "../../shared/three/contact-shadow.js";
 
 // A sheet's size (a recipe card's proportions, 1 by 1.3), and the room
 // between two on the shelf.
-const SHEET_W = 148;
-const SHEET_H = 192;
-const SHEET_GAP = 18;
+const SHEET_W = 178;
+const SHEET_H = 230;
+const SHEET_GAP = 22;
+// The face's lettering, set for a sheet 148 wide, grows with the sheet.
+const FACE_UNIT = SHEET_W / 148;
 // Its texture: as many texels as the screen has pixels where the sheet
 // stands (square to the camera, about one pixel per unit), so the title
 // reads sharp; twice at least.
@@ -283,10 +285,10 @@ export async function createBasketScene({ container, area, onRemove, removeLabel
 
   // The sheet's face: the book's paper, the title, the servings at the foot.
   function paintSheet({ title, meta, color }) {
-    const s = TEXTURE_SCALE;
     const paper = document.createElement("canvas");
-    paper.width = SHEET_W * s;
-    paper.height = SHEET_H * s;
+    paper.width = SHEET_W * TEXTURE_SCALE;
+    paper.height = SHEET_H * TEXTURE_SCALE;
+    const s = TEXTURE_SCALE * FACE_UNIT;
     const ctx = paper.getContext("2d");
     ctx.fillStyle = color;
     ctx.fillRect(0, 0, paper.width, paper.height);

@@ -5,7 +5,7 @@
    at rest (.is-resting) the shelf and a compact search bar in the
    column's middle; searching, the shelf and a longer
    bar at its top, the results as sheets of paper below, scrolling. On the right, the
-   shopping list on a paper card (350px at most), from under the back
+   shopping list on a paper card (378px at most), from under the back
    button to the bottom, scrolling on its own. One column on narrow
    screens, two tabs on phones.
    ===================================================================== */
@@ -30,7 +30,7 @@
 
 .shopping-main {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) min(350px, 40%);
+  grid-template-columns: minmax(0, 1fr) min(378px, 43.2%);
   grid-template-rows: auto minmax(0, 1fr);
   grid-template-areas:
     "basket list"
@@ -87,8 +87,9 @@
   color: transparent;
 }
 
-/* The "/" hint while the bar is idle: hovered, it lists the filters. */
-.shopping-page .library-search-box:not(:focus-within):not(.has-value) .library-search-kbd {
+/* The "/" hint while the bar is empty, focused or not: hovered, it lists
+   the filters. */
+.shopping-page .library-search-box:not(.has-value) .library-search-kbd {
   opacity: 1;
   pointer-events: auto;
   cursor: pointer;
@@ -111,10 +112,12 @@
   mask-image: linear-gradient(transparent, #000 var(--space-4), #000 calc(100% - var(--space-6)), transparent);
 }
 
+/* Centred under the bar; six to a row on a 1440px wide window. */
 .shopping-cards {
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
+  justify-content: center;
   gap: var(--space-4);
 }
 
@@ -127,7 +130,7 @@
 .shopping-card {
   --paper-curl: 0px;
   flex: none;
-  width: 150px;
+  width: 144px;
   gap: var(--space-3);
   padding: 1.1rem 0.8rem 0.8rem;
   font: inherit;
@@ -208,9 +211,41 @@
   scale: 1;
 }
 
+/* "Show the rest": a small pill centred under the results. */
+.shopping-more {
+  display: block;
+  margin: var(--space-5) auto 0;
+  padding: 0.4rem 1rem;
+  font: inherit;
+  font-size: var(--text-sm);
+  color: var(--color-page-text-soft);
+  background: color-mix(in srgb, var(--color-paper) 60%, transparent);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) var(--ease),
+    background var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease);
+}
+
+.shopping-more:hover,
+.shopping-more:focus-visible {
+  color: var(--color-page-text);
+  background: color-mix(in srgb, var(--color-paper) 85%, transparent);
+  border-color: var(--color-page-border-strong);
+  outline: none;
+}
+
+.shopping-more[hidden] {
+  display: none;
+}
+
+/* Under the bar, centred like it; behind the filters' menu when it opens. */
 .shopping-message {
   margin: 0;
   font-size: var(--text-sm);
+  text-align: center;
   color: var(--color-page-text-muted);
 }
 
@@ -693,7 +728,7 @@
 .shopping-page.has-shelf .shopping-basket {
   position: relative;
   display: block;
-  height: 17.5rem;
+  height: 17rem;
   padding: 0;
   border-bottom: none;
 }

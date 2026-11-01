@@ -4,6 +4,9 @@
   <div class="cover-backdrop recipe-page-bg" data-book-bg aria-hidden="true"></div>
 
   <article class="recipe-sheet">
+    <!-- The turned corner goes back to the book, as the backdrop does (the
+         menu's toggle is the way back for keyboards). -->
+    <a class="recipe-corner-link" data-book-link data-transition="crossfade" tabindex="-1" aria-hidden="true"></a>
     <header class="topbar">
       <div class="topbar-inner">
         <div class="topbar-title recipe-page-title">
@@ -27,7 +30,7 @@
         </div>
         <div class="topbar-actions">
           <span class="save-indicator" data-save-indicator><span class="save-indicator-icon" data-save-icon hidden><i data-icon="check"></i></span><span data-save-text></span></span>
-          <!-- The chef's-hat menu: opens over delete and PDF, the hat turning into
+          <!-- The three-bar menu: opens over delete and PDF, the toggle turning into
                the way back (see .recipe-menu). -->
           <div class="recipe-menu" data-recipe-menu>
             <button type="button" class="recipe-menu-btn recipe-menu-btn--danger" data-action="delete-recipe" aria-label="Supprimer la recette" title="Supprimer la recette" data-i18n-attr="aria-label:recipe.delete title:recipe.delete">
@@ -39,9 +42,9 @@
             <button type="button" class="recipe-menu-btn" data-action="download-pdf" aria-label="Télécharger en PDF" title="Télécharger en PDF" data-i18n-attr="aria-label:recipe.pdf title:recipe.pdf">
               <i data-icon="download"></i>
             </button>
-            <a class="recipe-menu-hat" data-book-link data-transition="crossfade" data-recipe-menu-toggle aria-label="Retour aux recettes" title="Retour aux recettes" data-i18n-attr="aria-label:recipe.back title:recipe.back">
+            <a class="recipe-menu-toggle" data-book-link data-transition="crossfade" data-recipe-menu-toggle aria-label="Retour aux recettes" title="Retour aux recettes" data-i18n-attr="aria-label:recipe.back title:recipe.back">
               <span class="icon-swap">
-                <span class="icon-swap-face icon-swap-face--rest"><i data-icon="chefHat"></i></span>
+                <span class="icon-swap-face icon-swap-face--rest"><i data-icon="menu"></i></span>
                 <span class="icon-swap-face icon-swap-face--hover"><i data-icon="back"></i></span>
               </span>
             </a>

@@ -11,7 +11,7 @@ import { autosizeTextarea } from "../../shared/utils/autosize-textarea.js";
 import { debounce } from "../../shared/utils/debounce.js";
 import { DURATION_CHARS, formatDuration, parseDuration } from "../../shared/utils/duration.js";
 import { bindEscapeBack } from "../../shared/utils/escape-back.js";
-import { bindHatMenu } from "../../shared/utils/hat-menu.js";
+import { bindMenuButton } from "../../shared/utils/menu-button.js";
 import { mountTemplate } from "../../shared/utils/dom.js";
 import { PHONE_LAYOUT } from "../../shared/utils/media.js";
 import { keepSingleLine } from "../../shared/utils/single-line.js";
@@ -72,7 +72,9 @@ export async function render(container, params, navigate) {
   for (const link of container.querySelectorAll("[data-book-link]")) {
     link.setAttribute("href", bookHref);
   }
-  paintCoverBackdrop(container.querySelector("[data-book-bg]"), book);
+  const backdropEl = container.querySelector("[data-book-bg]");
+  paintCoverBackdrop(backdropEl, book);
+  backdropEl.addEventListener("click", () => navigate(bookHref, { transition: "crossfade" }));
   pageEl.style.setProperty("--page-color", hexForPageColorToken(book.pageColorToken));
 
   // The field's hidden copy of the text sizes it (see .title-field).
@@ -252,13 +254,21 @@ export async function render(container, params, navigate) {
   const tabs = [...container.querySelectorAll("[data-tab]")];
   const nutritionPanel = container.querySelector('[data-panel="nutrition"]');
   const bodyEl = container.querySelector(".recipe-body");
-  // Room below the table (sheet margin, cover frame), so the box ends with
-  // the sheet's text.
+  const ingredientsColumn = container.querySelector(".recipe-column--ingredients");
+  // Room below the table: the sheet's margin and cover frame, so the box ends
+  // with the sheet's text; when the ingredients already take the sheet past
+  // the window, only twice the frame, the box running down to the window's
+  // bottom.
   const nutritionTable = createNutritionTable(nutritionEl, {
-    reserveBelow: () =>
-      parseFloat(getComputedStyle(nutritionPanel).paddingBottom) +
-      parseFloat(getComputedStyle(bodyEl).paddingBottom) +
-      parseFloat(getComputedStyle(pageEl).paddingBottom),
+    reserveBelow: () => {
+      const frame = parseFloat(getComputedStyle(pageEl).paddingBottom);
+      const sheetMargin =
+        parseFloat(getComputedStyle(nutritionPanel).paddingBottom) +
+        parseFloat(getComputedStyle(bodyEl).paddingBottom) +
+        frame;
+      const ingredientsBottom = ingredientsColumn.getBoundingClientRect().bottom + window.scrollY;
+      return ingredientsBottom + sheetMargin > window.innerHeight ? 2 * frame : sheetMargin;
+    },
   });
   const onResize = () => nutritionTable.fit();
   window.addEventListener("resize", onResize);
@@ -326,8 +336,8 @@ export async function render(container, params, navigate) {
   }
   phoneQuery.addEventListener("change", onPhoneChange);
 
-  // The hat's menu (see hat-menu.js): its link goes back to the book.
-  const unbindHatMenu = bindHatMenu(
+  // The three-bar menu (see menu-button.js): its toggle goes back to the book.
+  const unbindMenuButton = bindMenuButton(
     container.querySelector("[data-recipe-menu]"),
     container.querySelector("[data-recipe-menu-toggle]")
   );
@@ -383,7 +393,7 @@ export async function render(container, params, navigate) {
     tags.dispose();
     window.removeEventListener("resize", onResize);
     phoneQuery.removeEventListener("change", onPhoneChange);
-    unbindHatMenu();
+    unbindMenuButton();
     unbindEscape();
     flush();
     indicator.dispose();

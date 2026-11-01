@@ -55,7 +55,7 @@ This is the home page.
 
 ### Welcome
 
-At the top of the page: a question that follows the time of day ("What's cooking tonight?"), the number of recipes and books, and the search bar. On a phone, three buttons under the bar create a book (its page opens at once), create a recipe (after choosing its book, the "New recipe" dialog opens) and lead to the groceries page; they step aside while a search is typed. On a computer, the menu leads to the groceries page and creates books. Scrolling down leads to the library.
+At the top of the page: a question that follows the time of day ("What's cooking tonight?"), the number of recipes and books, and the search bar. On a phone, three buttons under the bar create a book (its page opens at once), create a recipe (after choosing its book, the "New recipe" dialog opens) and lead to the groceries page; they step aside while a search is typed. On a computer, the groceries page and the menu that creates books are at the top right of the library. Scrolling down leads to the library.
 
 ### Shelves
 
@@ -77,7 +77,7 @@ Several ingredients or tags add up. Typing "/" alone lists the commands.
 
 ### Menu
 
-The menu at the top right leads to the settings and the groceries page, creates a new book (a title is enough; it goes on the highest shelf with room, or a new one at the bottom, and opens at once) and opens edit mode.
+At the top right, a round button leads to the groceries page; next to it, the three-bar menu leads to the settings, creates a new book (a title is enough; it goes on the highest shelf with room, or a new one at the bottom, and opens at once) and opens edit mode.
 
 ### Edit mode
 
@@ -98,7 +98,7 @@ A book's page uses its cover as a background.
 - The title is edited in place at the top of the page.
 - Recipes show as cards (title and number of people), whose corner curls up when hovered.
 - A search field filters the book's recipes.
-- The menu, behind the chef's hat, creates a new recipe, deletes the book after confirmation (saying how many recipes will go with it) and leads back to the library.
+- The menu, behind the three-bar button, creates a new recipe, deletes the book after confirmation (saying how many recipes will go with it) and leads back to the library.
 
 ### New recipe
 
@@ -122,7 +122,8 @@ Paste the recipe's address; a link with text around it, or a link dragged from a
 
 - The title is edited in place.
 - Under the title, the recipe's tags. Automatic tags are computed by themselves; the "+" button adds one, a cross removes one. The refresh button clears these corrections and brings the automatic tags back one by one.
-- The menu, behind the chef's hat, downloads the recipe as a PDF, deletes it after confirmation and leads back to the book.
+- The menu, behind the three-bar button, downloads the recipe as a PDF, deletes it after confirmation and leads back to the book.
+- A click on the page's turned corner, or on the blurred cover around it, also leads back to the book.
 
 ### People and time
 
@@ -137,14 +138,14 @@ Each line is a quantity, a unit and a name. Typing stays natural: with "2 onions
 Two tabs share the right side of the page.
 
 - Method: the free text of the steps.
-- Nutrition: a table of calories, carbohydrates, protein, fat, sugars, fibre, saturated fat and salt, per ingredient, in total and per person. Minerals and vitamins unfold below. An unknown food, a missing quantity or a unit of unknown weight is pointed out.
+- Nutrition: a table of calories, carbohydrates, protein, fat, sugars, fibre, saturated fat and salt, per ingredient, then per person and in total (for the number of people saved). Minerals and vitamins unfold below. An unknown food, a missing quantity or a unit of unknown weight is pointed out.
 
 ## Groceries
 
 The page turns recipes into one shopping list.
 
 - On the left, the basket: a 3D shelf like the library's, across the column, a sheet of paper standing straight on it for each chosen recipe. A recipe picked below flies from its card up in front of the shelf, then down to its place, the paper rippling on the way. A hovered sheet shows a cross; a click takes the recipe out.
-- Below it, a search bar with the library's filters (ingredient, tag, time, people, book). At rest, the shelf and the bar sit in the middle of the column, the bar centred. Once the bar is used, it grows longer, and the shelf and the bar move to the top, the results showing below. Each recipe card says how many of the recipe's ingredients are already on the list ("3/9 ingredients already on the list"), in red for none, yellow for half, green for all. A click puts the recipe in the basket, shown by a green frame and a check; another click takes it out.
+- Below it, a search bar with the library's filters (ingredient, tag, time, people, book). At rest, the shelf and the bar sit in the middle of the column, the bar centred. Once the bar is used, it grows longer, and the shelf and the bar move to the top, the results showing below: twelve at first, the others behind a "Show the rest" button. Each recipe card says how many of the recipe's ingredients are already on the list ("3/9 ingredients already on the list"), in red for none, yellow for half, green for all. A click puts the recipe in the basket, shown by a green frame and a check; another click takes it out.
 - On the right, the shopping list, the page's whole height. Each line gives the quantity, the ingredient and the recipes that need it ("250 g + 2 tbsp butter → Crêpes, Quiche"). The same ingredient from several recipes is merged and its quantities added up: grams with kilos, millilitres with litres, spoons with spoons. Things counted differently stay side by side ("5 garlic cloves + 1 head garlic"). Water is left out. A cross at the end of each line takes it off the list (already at home, say); it comes back if a recipe added later needs it, and an emptied basket starts a fresh list.
 
 The basket is kept on the server: prepared on the computer, it is the same on the phone in the shop, where recipes and list are two tabs.
@@ -177,6 +178,8 @@ The page has five sections, in this order:
 ## On a phone
 
 Up to 640 pixels wide, the pages take a phone layout: narrower margins, text of at least 16 pixels in fields (so the phone doesn't zoom in on them), recipes in larger type, and buttons big enough for a finger.
+
+The site can be installed as an app from Chrome's menu ("Install app"), or added to an iPhone's home screen from Safari: it then opens full screen, its icon the pepper mill and salt cellar on cream. Chrome offers the install only over HTTPS.
 
 | Page | On a phone |
 |---|---|

@@ -8,7 +8,7 @@ import {
   hideTransitionBackdrop,
 } from "../../shared/components/cover-backdrop.js";
 import { debounce } from "../../shared/utils/debounce.js";
-import { bindHatMenu } from "../../shared/utils/hat-menu.js";
+import { bindMenuButton } from "../../shared/utils/menu-button.js";
 import { cloneTemplate, mountTemplate } from "../../shared/utils/dom.js";
 import { locale, t, tn } from "../../shared/i18n/i18n.js";
 import { foldForSearch } from "@shared/text.js";
@@ -102,6 +102,9 @@ const HERO_HINT_COUNT = 8;
 const HERO_HINT_DEFAULT = t("library.search.placeholder");
 // The first arrival's entrance (title out of a blur, the rest after it).
 const HERO_INTRO_MS = 2000;
+// On the shelves, still this long: the chevron recalling the hero shows.
+const UP_HINT_IDLE_MS = 5000;
+const ACTIVITY_EVENTS = ["pointermove", "pointerdown", "wheel", "keydown", "touchstart"];
 // The opening loader never waits on the cover pictures longer than this.
 const LOADER_MAX_WAIT_MS = 8000;
 
@@ -163,8 +166,9 @@ export async function render(container, params, navigate) {
   const heroResultsEmpty = container.querySelector("[data-hero-results-empty]");
   const libraryPageEl = container.querySelector(".library-page");
   const editButton = container.querySelector('[data-action="toggle-edit"]');
-  // The chef's-hat menu; the hat is the edit button (see hat-menu.js).
-  const unbindHatMenu = bindHatMenu(container.querySelector("[data-library-menu]"), editButton);
+  // The three-bar menu; its toggle is the edit button (see menu-button.js).
+  const menuEl = container.querySelector("[data-library-menu]");
+  const unbindMenuButton = bindMenuButton(menuEl, editButton);
   const editPanel = container.querySelector("[data-edit-panel]");
   const editEmptyEl = container.querySelector("[data-edit-empty]");
   const editBookEl = container.querySelector("[data-edit-book]");
@@ -327,6 +331,7 @@ export async function render(container, params, navigate) {
       libraryPageEl.classList.remove("is-hero-transition");
       searchHint.replaceChildren();
     }, HERO_DURATION_MS + 50);
+    onActivity();
   }
 
   /** Back to the hero (scrolling up past the shelves): the reverse move. */
@@ -412,6 +417,20 @@ export async function render(container, params, navigate) {
     }
   }
 
+  // On the shelves, after a still moment: a chevron at the top, bobbing
+  // upwards, recalls the hero above. Any action hides it; not while editing
+  // or while search results are open.
+  const upHintEl = container.querySelector("[data-up-hint]");
+  let upHintTimer = 0;
+  function onActivity() {
+    upHintEl.classList.remove("is-shown");
+    clearTimeout(upHintTimer);
+    upHintTimer = setTimeout(() => {
+      if (pageReady && !heroActive && !editMode && searchResults.hidden && !disposed) upHintEl.classList.add("is-shown");
+    }, UP_HINT_IDLE_MS);
+  }
+  for (const type of ACTIVITY_EVENTS) window.addEventListener(type, onActivity, { passive: true });
+
   heroQuestionEl.textContent = heroQuestion();
   window.addEventListener("resize", onHeroResize);
   libraryPageEl.addEventListener("wheel", onPageWheel, { passive: false });
@@ -439,6 +458,7 @@ export async function render(container, params, navigate) {
   function revealPage() {
     pageReady = true;
     loaderEl.classList.add("is-done");
+    onActivity();
     if (!heroActive) return;
     // Ready to type straight away (on a phone, no keyboard popping up).
     if (!phone) searchInput.focus({ preventScroll: true });
@@ -1033,7 +1053,7 @@ export async function render(container, params, navigate) {
     sceneHandle?.setEditMode(true);
   }
 
-  // Not the touch screen's first tap on the hat, which only opens its menu.
+  // Not the touch screen's first tap on the toggle, which only opens its menu.
   editButton.addEventListener("click", (event) => {
     if (event.defaultPrevented) return;
     if (editMode) closeEditMode();
@@ -1048,8 +1068,13 @@ export async function render(container, params, navigate) {
     addShelfButton.tabIndex = visible ? 0 : -1;
   }
   addShelfButton.addEventListener("click", () => sceneHandle?.addShelf());
+  // Escape folds the menu too: its toggle, still focused, would now count as
+  // keyboard-focused and hold it open.
   function onEditModeKeydown(event) {
-    if (event.key === "Escape" && editMode) closeEditMode();
+    if (event.key !== "Escape" || !editMode) return;
+    closeEditMode();
+    if (menuEl.contains(document.activeElement)) document.activeElement.blur();
+    menuEl.classList.remove("is-open");
   }
   window.addEventListener("keydown", onEditModeKeydown);
 
@@ -1126,15 +1151,14 @@ export async function render(container, params, navigate) {
     return node;
   }
 
+  // No visible heading: the rows' shapes tell books from recipes; the label
+  // is for screen readers.
   function buildGroup(label, rows) {
     const group = document.createElement("div");
     group.className = "library-search-group";
     group.setAttribute("role", "group");
-    const heading = document.createElement("p");
-    heading.className = "library-search-group-label";
-    heading.textContent = label;
     group.setAttribute("aria-label", label);
-    group.append(heading, ...rows);
+    group.append(...rows);
     return group;
   }
 
@@ -1573,6 +1597,8 @@ export async function render(container, params, navigate) {
     window.removeEventListener("keydown", onEditModeKeydown);
     window.removeEventListener("resize", onHeroResize);
     window.removeEventListener("keydown", onPageKeydown);
+    for (const type of ACTIVITY_EVENTS) window.removeEventListener(type, onActivity);
+    clearTimeout(upHintTimer);
     phoneQuery.removeEventListener("change", onPhoneChange);
     clearInterval(heroHintTimer);
     clearTimeout(heroEndTimer);
@@ -1580,7 +1606,7 @@ export async function render(container, params, navigate) {
     scheduleSaveBookEdits.cancel();
     previewHoleObserver.disconnect();
     closePreview();
-    unbindHatMenu();
+    unbindMenuButton();
     if (sceneHandle) sceneHandle.dispose();
   };
 }

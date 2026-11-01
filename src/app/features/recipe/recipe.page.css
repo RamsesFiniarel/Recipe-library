@@ -15,11 +15,16 @@
   /* Temporary servings and quantities (never saved): an ochre readable on
      every paper colour. */
   --recipe-scaled: #9a6516;
+  /* Over the ways back to the book: a back arrow, ringed for any backdrop. */
+  --recipe-back-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg stroke='%23fbf5ec' stroke-width='3.75'%3E%3Cpath d='M19 12H5M12 19l-7-7 7-7'/%3E%3C/g%3E%3Cg stroke='%232a1f16' stroke-width='1.5'%3E%3Cpath d='M19 12H5M12 19l-7-7 7-7'/%3E%3C/g%3E%3C/svg%3E") 4 10, pointer;
   padding: var(--recipe-frame);
 }
 
+/* The blurred cover around the sheet: a click goes back to the book. */
 .recipe-page-bg {
   z-index: -1;
+  pointer-events: auto;
+  cursor: var(--recipe-back-cursor);
 }
 
 .recipe-sheet {
@@ -65,6 +70,17 @@
   border-bottom-left-radius: var(--radius-md);
   filter: drop-shadow(-3px 4px 4px rgba(0, 0, 0, 0.22));
   pointer-events: none;
+}
+
+/* The turned corner, flap and gap: a link back to the book. */
+.recipe-corner-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 4;
+  width: var(--curl);
+  height: var(--curl);
+  cursor: var(--recipe-back-cursor);
 }
 
 /* ---------------------------------------------------------------------
@@ -298,9 +314,9 @@
   border-bottom-color: color-mix(in srgb, var(--color-page-text) 30%, transparent);
 }
 
-/* The chef's-hat menu: the round button (always clear) stretches left on
+/* The three-bar menu: the round button (always clear) stretches left on
    hover, focus or a first tap (.is-open) to show delete and download; the
-   hat stays at the right end and turns into the back arrow. Icons are
+   toggle stays at the right end and turns into the back arrow. Icons are
    grey, ink when pointed at, delete red. */
 .recipe-menu {
   --recipe-menu-size: 2.5rem;
@@ -310,7 +326,7 @@
   --recipe-menu-lead: 3px;
   display: flex;
   align-items: center;
-  /* Right-aligned and clipped: the hidden icons wait to the hat's left. */
+  /* Right-aligned and clipped: the hidden icons wait to the toggle's left. */
   justify-content: flex-end;
   width: var(--recipe-menu-size);
   height: var(--recipe-menu-size);
@@ -331,7 +347,7 @@
   border-color: color-mix(in srgb, var(--color-page-text) 40%, transparent);
 }
 
-.recipe-menu-hat {
+.recipe-menu-toggle {
   display: flex;
   flex: none;
   align-items: center;
@@ -346,28 +362,28 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.recipe-menu-hat:hover,
-.recipe-menu-hat:focus-visible {
+.recipe-menu-toggle:hover,
+.recipe-menu-toggle:focus-visible {
   color: var(--color-page-text);
   outline: none;
 }
 
-.recipe-menu-hat .icon-swap {
+.recipe-menu-toggle .icon-swap {
   width: 18px;
   height: 18px;
 }
 
-/* Hat to back arrow when the menu opens (see .icon-swap). */
-.recipe-menu:hover .recipe-menu-hat .icon-swap-face--rest,
-.recipe-menu:has(:focus-visible) .recipe-menu-hat .icon-swap-face--rest,
-.recipe-menu.is-open .recipe-menu-hat .icon-swap-face--rest {
+/* Bars to back arrow when the menu opens (see .icon-swap). */
+.recipe-menu:hover .recipe-menu-toggle .icon-swap-face--rest,
+.recipe-menu:has(:focus-visible) .recipe-menu-toggle .icon-swap-face--rest,
+.recipe-menu.is-open .recipe-menu-toggle .icon-swap-face--rest {
   transform: rotate(360deg) scale(0);
   opacity: 0;
 }
 
-.recipe-menu:hover .recipe-menu-hat .icon-swap-face--hover,
-.recipe-menu:has(:focus-visible) .recipe-menu-hat .icon-swap-face--hover,
-.recipe-menu.is-open .recipe-menu-hat .icon-swap-face--hover {
+.recipe-menu:hover .recipe-menu-toggle .icon-swap-face--hover,
+.recipe-menu:has(:focus-visible) .recipe-menu-toggle .icon-swap-face--hover,
+.recipe-menu.is-open .recipe-menu-toggle .icon-swap-face--hover {
   transform: rotate(0deg) scale(1);
   opacity: 1;
 }
@@ -999,7 +1015,8 @@
   color: var(--color-page-text-muted);
 }
 
-/* Sticky totals at the bottom: "Par personne" last, "Total" above it. */
+/* Sticky rows at the bottom, in the table's size: "Total" last, in bold,
+   "Par personne" above it. */
 .nutrition-table tfoot th,
 .nutrition-table tfoot td {
   position: sticky;
@@ -1011,26 +1028,39 @@
   z-index: 3;
 }
 
-.nutrition-total th,
-.nutrition-total td {
-  bottom: var(--nutrition-serving-height, 0px);
-  font-weight: 700;
+.nutrition-table tfoot tr:first-child th,
+.nutrition-table tfoot tr:first-child td {
   border-top: 1px solid color-mix(in srgb, var(--color-page-text) 28%, transparent);
-}
-
-/* "Total" set like the header's "Ingrédients". */
-.nutrition-total th {
-  font-weight: 600;
-  font-size: var(--text-sm);
-  color: var(--color-page-text-soft);
 }
 
 .nutrition-serving th,
 .nutrition-serving td {
-  bottom: 0;
-  padding-top: 0;
+  bottom: var(--nutrition-total-height, 0px);
   font-weight: 500;
   color: var(--color-page-text-soft);
+}
+
+.nutrition-total th,
+.nutrition-total td {
+  bottom: 0;
+  font-weight: 700;
+}
+
+.nutrition-total th {
+  white-space: nowrap;
+}
+
+.nutrition-serving + .nutrition-total th,
+.nutrition-serving + .nutrition-total td {
+  padding-top: 0;
+}
+
+/* The people icon, at the text's size. */
+.nutrition-people svg {
+  width: 1.05em;
+  height: 1.05em;
+  margin-left: 0.25em;
+  vertical-align: -0.15em;
 }
 
 /* A total that leaves out an ingredient with no known value. */
@@ -1087,7 +1117,8 @@
     --curl: 0px;
   }
 
-  .recipe-sheet::before {
+  .recipe-sheet::before,
+  .recipe-corner-link {
     display: none;
   }
 
@@ -1100,7 +1131,7 @@
     height: var(--recipe-actions-height);
   }
 
-  /* The hat's menu opens downwards, over what's below: the hat stays put,
+  /* The menu opens downwards, over what's below: the toggle stays put,
      back arrow at the top, download then delete under it; the header keeps
      its height (the actions' box is fixed), so nothing else moves. */
   .recipe-menu {
@@ -1122,7 +1153,7 @@
     height: calc(var(--recipe-menu-size) + 2 * var(--recipe-menu-slot) + var(--recipe-menu-lead));
   }
 
-  .recipe-menu-hat {
+  .recipe-menu-toggle {
     width: 100%;
     height: calc(var(--recipe-menu-size) - 2px);
   }

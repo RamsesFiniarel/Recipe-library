@@ -17,23 +17,58 @@
 
 /* No eyebrow here: the title is centred against the actions row. */
 .library-page .topbar-inner {
+  position: relative;
   align-items: center;
+}
+
+/* The chevron recalling the hero, centred on the header row, bobbing
+   upwards: fades in slowly, out at once. */
+.library-up-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  color: var(--color-page-text-muted);
+  translate: -50% -50%;
+  opacity: 0;
+  transition: opacity 200ms var(--ease);
+}
+
+.library-up-hint.is-shown {
+  opacity: 1;
+  transition-duration: 700ms;
+}
+
+.library-up-hint svg {
+  width: 22px;
+  height: 22px;
+  animation: library-up-bob 1.8s ease-in-out infinite;
+}
+
+@keyframes library-up-bob {
+  0%,
+  100% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
 }
 
 .library-page .topbar-actions {
   pointer-events: auto;
 }
 
-/* The chef's-hat menu, in the search field's paper: stretches left on hover,
-   focus, first tap or edit mode, over new book and settings; the hat stays
-   at the right end and turns into edit mode's pencil. Icons grey until
+/* The three-bar menu, in the search field's paper: stretches left on hover,
+   focus, first tap or edit mode, over new book and settings; the toggle
+   stays at the right end and turns into edit mode's pencil. Icons grey until
    pointed at (the pencil dark while editing). */
 .library-menu {
   --library-menu-size: 2.5rem;
   --library-menu-slot: 2.125rem;
   display: flex;
   align-items: center;
-  /* Right-aligned and clipped: the hidden icons wait to the hat's left. */
+  /* Right-aligned and clipped: the hidden icons wait to the toggle's left. */
   justify-content: flex-end;
   width: var(--library-menu-size);
   height: var(--library-menu-size);
@@ -55,12 +90,12 @@
 .library-menu:has(:focus-visible),
 .library-menu.is-open,
 .library-page.is-editing .library-menu {
-  width: calc(var(--library-menu-size) + 3 * var(--library-menu-slot));
+  width: calc(var(--library-menu-size) + 2 * var(--library-menu-slot));
   background: color-mix(in srgb, var(--color-paper) 85%, transparent);
   border-color: var(--color-page-border-strong);
 }
 
-.library-menu-hat,
+.library-menu-toggle,
 .library-menu-btn {
   display: flex;
   flex: none;
@@ -76,11 +111,11 @@
   transition: color var(--duration-fast) var(--ease);
 }
 
-.library-menu-hat {
+.library-menu-toggle {
   width: calc(var(--library-menu-size) - 2px);
 }
 
-.library-menu-hat .icon-swap {
+.library-menu-toggle .icon-swap {
   width: 18px;
   height: 18px;
 }
@@ -101,30 +136,60 @@
   transition-delay: 90ms, 0ms;
 }
 
-.library-menu-hat:hover,
-.library-menu-hat:focus-visible,
-.library-menu-hat.is-active,
+.library-menu-toggle:hover,
+.library-menu-toggle:focus-visible,
+.library-menu-toggle.is-active,
 .library-menu-btn:hover,
 .library-menu-btn:focus-visible {
   color: var(--color-page-text);
   outline: none;
 }
 
-/* Hat to pencil when the menu opens (see .icon-swap). */
-.library-menu:hover .library-menu-hat .icon-swap-face--rest,
-.library-menu:has(:focus-visible) .library-menu-hat .icon-swap-face--rest,
-.library-menu.is-open .library-menu-hat .icon-swap-face--rest,
-.library-page.is-editing .library-menu-hat .icon-swap-face--rest {
+/* Bars to pencil when the menu opens (see .icon-swap). */
+.library-menu:hover .library-menu-toggle .icon-swap-face--rest,
+.library-menu:has(:focus-visible) .library-menu-toggle .icon-swap-face--rest,
+.library-menu.is-open .library-menu-toggle .icon-swap-face--rest,
+.library-page.is-editing .library-menu-toggle .icon-swap-face--rest {
   transform: rotate(360deg) scale(0);
   opacity: 0;
 }
 
-.library-menu:hover .library-menu-hat .icon-swap-face--hover,
-.library-menu:has(:focus-visible) .library-menu-hat .icon-swap-face--hover,
-.library-menu.is-open .library-menu-hat .icon-swap-face--hover,
-.library-page.is-editing .library-menu-hat .icon-swap-face--hover {
+.library-menu:hover .library-menu-toggle .icon-swap-face--hover,
+.library-menu:has(:focus-visible) .library-menu-toggle .icon-swap-face--hover,
+.library-menu.is-open .library-menu-toggle .icon-swap-face--hover,
+.library-page.is-editing .library-menu-toggle .icon-swap-face--hover {
   transform: rotate(0deg) scale(1);
   opacity: 1;
+}
+
+/* The groceries page's round button, left of the menu, in the same paper. */
+.library-shopping {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--color-page-text-muted);
+  background: color-mix(in srgb, var(--color-paper) 60%, transparent);
+  border: 1px solid var(--color-paper-border);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+  transition:
+    color var(--duration-fast) var(--ease),
+    background var(--duration-fast) var(--ease),
+    border-color var(--duration-fast) var(--ease),
+    opacity 600ms var(--ease) calc(var(--hero-duration) * 0.4),
+    visibility 0s linear calc(var(--hero-duration) * 0.4);
+}
+
+.library-shopping:hover,
+.library-shopping:focus-visible {
+  color: var(--color-page-text);
+  background: color-mix(in srgb, var(--color-paper) 85%, transparent);
+  border-color: var(--color-page-border-strong);
+  outline: none;
 }
 
 /* ---------------------------------------------------------------------
@@ -284,17 +349,6 @@
   margin-top: var(--space-1);
   padding-top: var(--space-1);
   border-top: 1px solid color-mix(in srgb, var(--color-page-text) 8%, transparent);
-}
-
-.library-search-group-label {
-  margin: 0;
-  padding: var(--space-2) var(--space-2) var(--space-1);
-  font-family: var(--font-body);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-page-text-muted);
 }
 
 .library-search-result {
@@ -667,6 +721,7 @@
 }
 
 /* The menu fades in after the hero goes, and leaves quickly when it returns. */
+.library-page.is-hero .library-shopping,
 .library-page.is-hero .library-menu {
   opacity: 0;
   visibility: hidden;

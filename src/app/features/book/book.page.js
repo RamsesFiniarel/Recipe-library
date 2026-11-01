@@ -5,7 +5,7 @@ import { createSaveIndicator } from "../../shared/components/save-indicator.js";
 import { renderLoading, renderNotFound } from "../../shared/components/page-message.js";
 import { debounce } from "../../shared/utils/debounce.js";
 import { bindEscapeBack } from "../../shared/utils/escape-back.js";
-import { bindHatMenu } from "../../shared/utils/hat-menu.js";
+import { bindMenuButton } from "../../shared/utils/menu-button.js";
 import { cloneTemplate, mountTemplate } from "../../shared/utils/dom.js";
 import { keepSingleLine } from "../../shared/utils/single-line.js";
 import { t, tn } from "../../shared/i18n/i18n.js";
@@ -102,9 +102,9 @@ export async function render(container, params, navigate) {
     searchInput.focus();
   }
   window.addEventListener("keydown", onPageKeydown);
-  // Escape goes back to the library, like the hat's link.
+  // Escape goes back to the library, like the menu's toggle.
   const unbindEscape = bindEscapeBack(() => navigate("/"));
-  const unbindHatMenu = bindHatMenu(
+  const unbindMenuButton = bindMenuButton(
     container.querySelector("[data-book-menu]"),
     container.querySelector("[data-book-menu-toggle]")
   );
@@ -165,7 +165,7 @@ export async function render(container, params, navigate) {
   return () => {
     window.removeEventListener("keydown", onPageKeydown);
     unbindEscape();
-    unbindHatMenu();
+    unbindMenuButton();
     scheduleSave.cancel();
     indicator.dispose();
   };

@@ -35,7 +35,7 @@ src/           site
   app/features/  one folder per page: library, book, recipe, groceries (shopping), settings, foods
   app/shared/    styles, components, translations, fonts
 shared/        code shared by the site and the server (ingredients, tags, shopping list, text)
-public/        3D models, photo reader (copied at install time)
+public/        3D models, icons and app manifest, photo reader (copied at install time)
 scripts/       building the nutrition database, copying the photo reader
 Dockerfile     container image
 docker-compose.yml  container stack, behind a reverse proxy

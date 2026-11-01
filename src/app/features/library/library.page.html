@@ -6,6 +6,9 @@
       <div class="topbar-title">
         <h1 data-i18n="library.title">Bibliothèque</h1>
       </div>
+      <!-- Shown after a still moment on the shelves: scrolling up leads back
+           to the big search bar (see library.page.js). -->
+      <span class="library-up-hint" data-up-hint aria-hidden="true"><i data-icon="chevronUp"></i></span>
       <div class="topbar-actions">
         <!-- The slot keeps the header's layout; the box inside grows into the
              hero's search bar and back. -->
@@ -32,27 +35,28 @@
             <div class="library-search-results" data-search-results hidden></div>
           </div>
         </div>
-        <!-- The chef's-hat menu (hidden on the hero): opens over settings,
-             groceries and new book, the hat turning into edit mode's pencil,
-             open while editing (see .library-menu). -->
+        <!-- The groceries page, by the menu (both hidden on the hero). -->
+        <a class="library-shopping" href="/courses" data-transition="crossfade"
+          aria-label="Courses" title="Courses" data-i18n-attr="aria-label:library.menu.shopping title:library.menu.shopping">
+          <i data-icon="groceries"></i>
+        </a>
+        <!-- The three-bar menu: opens over settings and new book, the toggle
+             turning into edit mode's pencil, open while editing (see
+             .library-menu). -->
         <div class="library-menu" data-library-menu>
           <a class="library-menu-btn" href="/parametres" data-transition="crossfade"
             aria-label="Paramètres" title="Paramètres" data-i18n-attr="aria-label:library.menu.settings title:library.menu.settings">
             <i data-icon="settings"></i>
           </a>
-          <a class="library-menu-btn" href="/courses" data-transition="crossfade"
-            aria-label="Courses" title="Courses" data-i18n-attr="aria-label:library.menu.shopping title:library.menu.shopping">
-            <i data-icon="groceries"></i>
-          </a>
           <button type="button" class="library-menu-btn" data-action="add-book" aria-label="Nouveau livre"
             title="Nouveau livre" data-i18n-attr="aria-label:library.menu.newBook title:library.menu.newBook">
             <i data-icon="plus"></i>
           </button>
-          <button type="button" class="library-menu-hat" data-action="toggle-edit" aria-pressed="false"
+          <button type="button" class="library-menu-toggle" data-action="toggle-edit" aria-pressed="false"
             aria-label="Modifier la bibliothèque" title="Modifier la bibliothèque"
             data-i18n-attr="aria-label:library.menu.edit title:library.menu.edit">
             <span class="icon-swap">
-              <span class="icon-swap-face icon-swap-face--rest"><i data-icon="chefHat"></i></span>
+              <span class="icon-swap-face icon-swap-face--rest"><i data-icon="menu"></i></span>
               <span class="icon-swap-face icon-swap-face--hover"><i data-icon="edit"></i></span>
             </span>
           </button>

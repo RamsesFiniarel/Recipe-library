@@ -19,6 +19,8 @@ const LAYOUT_MOVE_MS = 600;
 const LAYOUT_MOVE_EASING = "cubic-bezier(0.65, 0, 0.35, 1)";
 // Where the page has two columns, the only place they're centred at rest.
 const TWO_COLUMNS = "(min-width: 861px)";
+// Results shown before "Show the rest".
+const FIRST_RESULTS = 12;
 
 /** Groceries page: at rest, the shelf and the search bar in the left
  * column's middle; searching, they go up and the results show below.
@@ -34,6 +36,7 @@ export async function render(container, _params, navigate) {
   const searchInput = container.querySelector("[data-search-input]");
   const cardsEl = container.querySelector("[data-cards]");
   const cardsMessage = container.querySelector("[data-cards-message]");
+  const moreButton = container.querySelector("[data-cards-more]");
   const basketEl = container.querySelector("[data-basket]");
   const basketEmpty = container.querySelector("[data-basket-empty]");
   const basketError = container.querySelector("[data-basket-error]");
@@ -135,13 +138,26 @@ export async function render(container, _params, navigate) {
 
   const isSearching = () => searchFilters.text().trim() !== "" || searchFilters.filters().length > 0;
 
+  // The first twelve results, all of them once asked for; a new search goes
+  // back to twelve.
+  let showRest = false;
+  let lastSearch = "";
+
   function renderCards() {
     searchBox.classList.toggle("has-value", searchInput.value.trim() !== "" || searchFilters.isActive());
+    const search = JSON.stringify([searchFilters.text().trim(), searchFilters.filters()]);
+    if (search !== lastSearch) showRest = false;
+    lastSearch = search;
     // Nothing until searched or filtered.
     const searching = isSearching();
-    const shown = searching ? results() : [];
+    const matching = searching ? results() : [];
+    const shown = showRest ? matching : matching.slice(0, FIRST_RESULTS);
+    moreButton.hidden = shown.length === matching.length;
     const pickedIds = new Set(picked);
-    const pickedKeys = new Set(picked.flatMap((id) => recipeById.get(id)?.foodKeys ?? []));
+    // What the list has: the picked recipes' foods, less those taken off it.
+    const pickedKeys = new Set(
+      picked.flatMap((id) => recipeById.get(id)?.foodKeys ?? []).filter((key) => !hidden.has(key))
+    );
     for (const recipe of shown) updateCard(pickCard(recipe), recipe, pickedIds, pickedKeys);
     placeChildren(cardsEl, shown.map((recipe) => cardById.get(recipe.id)));
     const query = searchFilters.text().trim();
@@ -149,6 +165,13 @@ export async function render(container, _params, navigate) {
     cardsMessage.hidden = !searching || shown.length > 0;
     updateResting();
   }
+
+  // The rest appears; focus goes to the first of it.
+  moreButton.addEventListener("click", () => {
+    showRest = true;
+    renderCards();
+    cardsEl.children[FIRST_RESULTS]?.focus({ preventScroll: true });
+  });
 
   // --- At rest (nothing searched, the bar not in use): the shelf and the bar
   // in the column's middle; else at its top, the results below ---

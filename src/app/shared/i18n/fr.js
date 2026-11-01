@@ -127,6 +127,7 @@ export default {
   "shopping.search.label": "Rechercher une recette",
   "shopping.recipes": "Recettes",
   "shopping.have": "{have}/{total} ingrédients déjà dans les courses",
+  "shopping.showRest": "Afficher le reste",
   "shopping.add": "Ajouter « {title} » au panier",
   "shopping.remove": "Retirer « {title} » du panier",
   "shopping.tab.recipes": "Recettes",
@@ -225,7 +226,7 @@ export default {
   // --- Nutrition table ---
   "nutrition.ingredients": "Ingrédients",
   "nutrition.total": "Total",
-  "nutrition.perPerson": "Par personne ({n})",
+  "nutrition.perPerson": "Par personne",
   "nutrition.partial": "Valeur inconnue pour certains ingrédients",
   "nutrition.expand": "Afficher les micronutriments",
   "nutrition.collapse": "Masquer le détail",
